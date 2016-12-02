@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/main_color"
+    android:orientation="vertical">
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:isScrollContainer="true"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/main_color"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/header_color">
+
+                <LinearLayout
+                    android:id="@+id/relativeLayoutHeader"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/buttonBack"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/back_button_xml"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textSize="12dip"></Button>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="10dip"
+                    android:paddingRight="20dip"
+                    android:text="@string/statistic_export"
+                    android:textColor="@color/text_color"
+                    android:textSize="16dip"></TextView>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textViewLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:paddingRight="20dip"
+                android:text="@string/statistic_export_save"
+                android:textColor="@color/text_color"
+                android:textSize="16dip"></TextView>
+
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="50dip"
+                android:layout_height="50dip"
+                android:background="@drawable/ok_button_xml"
+                android:clickable="true"
+                android:gravity="center_horizontal"
+                android:maxLines="1"
+                android:textSize="12dip" />
+
+            <TextView
+                android:id="@+id/textViewExportData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:paddingRight="20dip"
+                android:textColor="@color/text_color"
+                android:textSize="16dip"></TextView>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

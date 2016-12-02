@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:isScrollContainer="true"
+    android:scrollbars="vertical" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/light_broun"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textViewSerchActivityLevelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="5dip"
+                android:gravity="center_vertical"
+                android:text="@string/change_weight_label"
+                android:textColor="@color/text_color"
+                android:textSize="14dip"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:id="@+id/linearLayoutActivityLabel"
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutWeightLabel"
+                        android:layout_width="0px"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1.5"
+                        android:gravity="right"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textViewWeightLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="5dip"
+                            android:gravity="center_vertical"
+                            android:maxLines="3"
+                            android:text="@string/weight"
+                            android:textColor="@color/text_color"
+                            android:textSize="15dip"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutSpiner"
+                        android:layout_width="0px"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" >
+
+                        <Spinner
+                            android:id="@+id/search_weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:textColor="#ABABAB" />
+
+                        <TextView
+                            android:id="@+id/textViewSex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentLeft="true"
+                            android:gravity="bottom"
+                            android:text=","
+                            android:textColor="@color/text_color" />
+
+                        <Spinner
+                            android:id="@+id/search_weight_decimal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="2dip"
+                            android:textColor="#ABABAB"  />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="vertical" >
+
+                    <Button
+                        android:id="@+id/buttonNo"
+                        android:layout_width="70dip"
+                        android:layout_height="70dip"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/no_button_xml"
+                        android:clickable="true"
+                        android:gravity="center_horizontal"
+                        android:maxLines="1"
+                        android:textSize="12dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="vertical" >
+
+                    <Button
+                        android:id="@+id/buttonYes"
+                        android:layout_width="70dip"
+                        android:layout_height="70dip"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/ok_button_xml"
+                        android:clickable="true"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:textSize="12dip" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

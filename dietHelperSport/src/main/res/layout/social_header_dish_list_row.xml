@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="75dip"
+    android:cacheColorHint="#00000000"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="25dip"
+        android:background="@color/day_time"
+        android:orientation="vertical"
+        android:textColor="#ffffffff" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/day_time"
+            android:orientation="horizontal"
+            android:textColor="#ffffffff" >
+
+            <LinearLayout
+
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/day_time"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/message_item_when"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:background="@color/day_time"
+                    android:textColor="#ffffffff"
+                    android:textSize="11dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/message_item_when_header"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/message_item_in_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dip"
+                    android:background="@color/day_time"
+                    android:text="@string/header_in_label"
+                    android:textColor="#ffffffff"
+                    android:textSize="11dip" />
+
+                <TextView
+                    android:id="@+id/message_item_in_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dip"
+                     android:layout_marginLeft="3dip"
+                    android:background="@color/day_time"
+                    android:textColor="#ffffffff"
+                    android:textSize="11dip" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dip"
+                    android:background="@color/day_time"
+                    android:text="@string/kcal"
+                    android:textColor="#ffffffff"
+                    android:textSize="11dip" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/very_LGreen"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.9"
+                android:orientation="horizontal" >
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5dip"
+                    android:gravity="center_vertical"
+                    android:maxLines="3"
+                    android:text="@string/kcal"
+                    android:textColor="@color/text_color"
+                    android:textSize="8dip"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textViewNameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:maxLines="3"
+                    android:text="@string/gram_full"
+                    android:textColor="@color/text_color"
+                    android:textSize="8dip"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight="6"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textViewCalorValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:maxLines="3"
+                    android:text="@string/dish_name"
+                    android:textColor="@color/text_color"
+                    android:textSize="8dip"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="4"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/linearLayoutDishCall"
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textViewAbsCaloricity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="5dip"
+                    android:gravity="center_vertical"
+                    android:maxLines="3"
+                    android:text="TextView"
+                    android:textColor="@color/text_color"
+                    android:textSize="12dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textViewWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/text_color"
+                    android:textSize="12dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutDishName"
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight="4"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textViewDishName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_vertical"
+                    android:maxLines="3"
+                    android:text="TextView"
+                    android:textColor="@color/text_color"
+                    android:textSize="14dip"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewCaloricity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:textSize="15dip"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:gravity="right"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textSize="15dip"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imageKindViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:clickable="false"
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:src="@drawable/food_icon" />            
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

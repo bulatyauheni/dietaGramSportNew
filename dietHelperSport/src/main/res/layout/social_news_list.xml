@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/main_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/title_color">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutHeader"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/buttonBack"
+
+                    android:background="@drawable/header_bg"
+                    android:gravity="center_vertical">
+
+                    <Button
+                        android:id="@+id/buttonBack"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/back_button_xml"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textSize="12dip"
+                        android:visibility="gone"></Button>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/buttonBack"
+                        android:layout_weight="0.98">
+
+                        <TextView
+                            android:id="@+id/textViewTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_margin="5dp"
+                            android:text="@string/tab_social_header"
+                            android:textColor="@color/white"
+                            android:textSize="20dip"
+                            android:textStyle="bold"></TextView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="0.8"
+                    android:gravity="right|center_vertical">
+
+                    <TextView
+                        android:id="@+id/textViewMessNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="20dip"
+                        android:textStyle="normal" />
+
+                    <Button
+                        android:id="@+id/buttonProfile"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/contacts_button_xml"
+                        android:clickable="true"
+                        android:maxLines="1"
+                        android:textSize="12dip"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/header_color"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/imageLayout1"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/messagesTab"
+                        android:layout_width="fill_parent"
+                        android:layout_height="35dip"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/noselected_tab"
+                        android:text="@string/soc_tab_messages"></Button>
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/searchTab"
+                        android:layout_width="fill_parent"
+                        android:layout_height="35dip"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/noselected_tab"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="@string/soc_tab_search"></Button>
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/newsTab"
+                        android:layout_width="fill_parent"
+                        android:layout_height="35dip"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/selected_tab"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="@string/soc_tab_news"></Button>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LayoutNewsbox"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="@color/header_color"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout02"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/EditTextNews"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="3dip"
+                        android:layout_marginLeft="5dip"
+                        android:background="@drawable/edittext_rounded_corners"
+                        android:gravity="center_vertical"
+                        android:hint="@string/enter_news"
+                        android:textColor="@color/text_color"
+                        android:textSize="12dip"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/buttonSendNews"
+                    android:layout_width="45dip"
+                    android:layout_height="45dip"
+                    android:layout_margin="5dip"
+                    android:background="@drawable/news_button_xml"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:textSize="12dip"
+                    android:visibility="visible"></Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/emptyLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewLoading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="10dip"
+                    android:gravity="center_horizontal"
+                    android:paddingRight="20dip"
+                    android:text="@string/loading_social"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="17dip"
+                    android:visibility="gone"></TextView>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutEmptyListHeader"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_grey"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textViewBadSearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dip"
+                        android:text="@string/users_instruction"
+                        android:textColor="@color/dark_grey"
+                        android:textSize="15dip"
+                        android:textStyle="bold"></TextView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listViewUser"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayoutAVG"
+        android:layout_below="@+id/relativeLayout1"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/grey_divider"
+        android:dividerHeight="1dip"></ListView>
+
+</RelativeLayout>

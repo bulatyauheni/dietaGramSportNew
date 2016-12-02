@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/main_color"
+    android:keepScreenOn="true"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/title_color" >
+
+        <LinearLayout
+            android:id="@+id/linearLayoutHeader"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/buttonBack"
+                    android:layout_weight="3"
+                    android:background="@drawable/header_bg"
+                    android:gravity="center_vertical" >
+
+                    <Button
+                        android:id="@+id/buttonBack"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/back_button_xml"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textSize="12dip"
+                        android:visibility="gone" >
+                    </Button>
+
+                    <TextView
+                        android:id="@+id/textViewTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="0.18"
+                        android:ellipsize="end"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1.2"
+                        android:shadowDy="1.2"
+                        android:shadowRadius="1.2"
+                        android:text="Test June 123"
+                        android:textColor="@color/white"
+                        android:textSize="20dip"
+                        android:textStyle="bold" >
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/buttonAddLayout"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical" >
+
+                    <Button
+                        android:id="@+id/buttonRecepy"
+                        android:layout_width="40dip"
+                        android:layout_height="40dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/recepy_button_xml"
+                        android:clickable="true"
+                        android:maxLines="1"
+                        android:textSize="12dip"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/buttonAdd"
+                        android:layout_width="40dip"
+                        android:layout_height="40dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/add_button_xml"
+                        android:clickable="true"
+                        android:maxLines="1"
+                        android:textSize="12dip"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/header_color" >
+
+                <LinearLayout
+
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/daysTab"
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dip"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/noselected_tab"
+                        android:text="@string/days"
+                        android:textColor="@color/white" >
+                    </Button>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/imageLayout1"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/templateTab"
+                        android:layout_width="fill_parent"
+                        android:layout_height="35dip"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/selected_tab"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="@string/templates"
+                        android:textColor="@color/white" >
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutEmptyListHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_grey"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/textViewEmptyList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dip"
+                    android:maxLines="3"
+                    android:text="@string/empty_list_label"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="15dip"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutAVG"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAVGcall"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" >
+
+            <TextView
+                android:id="@+id/textViewTotalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:maxLines="3"
+                android:text="@string/avg_label"
+                android:textColor="@color/text_color"
+                android:textSize="12dip" />
+
+            <TextView
+                android:id="@+id/textViewAVGValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:maxLines="3"
+                android:text="TextView"
+                android:textColor="@color/text_color"
+                android:textSize="14dip"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textViewFatLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="7dip"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
+                    android:text="@string/fat"
+                    android:textColor="@color/subtext"
+                    android:textSize="12dip" />
+
+                <TextView
+                    android:id="@+id/textViewFat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5dip"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
+                    android:text=""
+                    android:textColor="@color/subtext"
+                    android:textSize="12dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textViewCarbonLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="7dip"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
+                    android:text="@string/carbon"
+                    android:textColor="@color/subtext"
+                    android:textSize="12dip" />
+
+                <TextView
+                    android:id="@+id/textViewCarbon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5dip"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
+                    android:text=""
+                    android:textColor="@color/subtext"
+                    android:textSize="12dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textViewProteinLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="6dip"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
+                    android:text="@string/protein"
+                    android:textColor="@color/subtext"
+                    android:textSize="12dip" />
+
+                <TextView
+                    android:id="@+id/textViewProtein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="4dip"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
+                    android:text=""
+                    android:textColor="@color/subtext"
+                    android:textSize="12dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutChart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/light_grey"
+        android:gravity="center_horizontal"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:maxLines="3"
+            android:text="@string/user_weight_history"
+            android:textColor="@color/text_color"
+            android:textSize="12dip"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/linearLayoutAVG"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/listViewDays"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayoutAVG"
+        android:layout_below="@+id/relativeLayout1"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/grey_divider"
+        android:dividerHeight="1dip" >
+    </ListView>
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout1"
+        android:text="" />
+
+</RelativeLayout>

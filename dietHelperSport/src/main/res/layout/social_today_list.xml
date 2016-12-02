@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/main_color"
+    android:gravity="right"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/title_color">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutHeader"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/relativeLayoutHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/title_color">
+
+                <LinearLayout
+                    android:id="@+id/relativeLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/buttonBack"
+
+                    android:background="@drawable/header_bg"
+                    android:gravity="center_vertical">
+
+                    <Button
+                        android:id="@+id/buttonBack"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/back_button_xml"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textSize="12dip"></Button>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/buttonBack"
+                        android:layout_weight="0.98">
+
+                        <TextView
+                            android:id="@+id/textViewTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_margin="5dp"
+                            android:layout_weight="0.18"
+                            android:ellipsize="end"
+                            android:paddingRight="20dip"
+                            android:shadowColor="#000000"
+                            android:shadowDx="1.2"
+                            android:shadowDy="1.2"
+                            android:shadowRadius="1.2"
+                            android:text="Test June 123"
+                            android:textColor="@color/white"
+                            android:textSize="20dip"
+                            android:textStyle="bold"></TextView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right">
+
+                    <Button
+                        android:id="@+id/buttonFitnes"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/fitnes_button_xml"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textSize="12dip"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/buttonAdd"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/add_button_today_xml"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textSize="12dip"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/emptyLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_grey"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewLoading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="10dip"
+                    android:gravity="center_horizontal"
+                    android:paddingRight="20dip"
+                    android:text="@string/loading_social"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="17dip"
+                    android:visibility="gone"></TextView>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutEmptyListHeader"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_grey"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textViewBadSearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dip"
+                        android:text="@string/users_notfound"
+                        android:textColor="@color/dark_grey"
+                        android:textSize="15dip"
+                        android:textStyle="bold"></TextView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutTotal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/light_green">
+
+        <TextView
+            android:id="@+id/textViewTotalLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dip"
+            android:maxLines="3"
+            android:text="@string/total"
+            android:textColor="@color/text_color"
+            android:textSize="15dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewTotalValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dip"
+            android:layout_marginLeft="5dip"
+            android:maxLines="3"
+            android:text=""
+            android:textColor="@color/text_color"
+            android:textSize="15dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewLimitLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dip"
+            android:layout_marginLeft="5dip"
+            android:maxLines="3"
+            android:text="@string/limit"
+            android:textColor="@color/text_color"
+            android:textSize="15dip"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textViewLimitValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:maxLines="3"
+            android:text=""
+            android:textColor="@color/text_color"
+            android:textSize="15dip"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listViewTodayDishes"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayoutTotal"
+        android:layout_below="@+id/relativeLayout1"
+        android:cacheColorHint="#00000000"
+        android:clickable="true"
+        android:divider="@color/grey_divider"
+        android:dividerHeight="1dip"
+        android:textColor="@color/text_color"></ListView>
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_below="@+id/relativeLayout1"
+        android:text=""
+        android:textColor="@color/text_color" />
+
+</RelativeLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="light_grey">#e8e7e6</color>
+    <color name="grey">#afafaf</color>
+    <color name="grey_divider">#e6ddd5</color>
+    <color name="dark_grey">#474747</color>
+    <color name="red">#d11111</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="green">#4981A0</color>
+    <color name="light_broun">#977b5d</color>
+	<color name="light_green">#7DB8D4</color>
+	<color name="light_red">#FFB5B5</color>
+	<color name="header_color">#D39A6F</color>
+	<color name="main_color">#FFF0E5</color>
+	<color name="title_color">#4A829E</color>
+	<color name="tab_color">#4981A0</color>
+	<color name="tab_selected_color">#D39A6F</color>
+	<color name="light_orange_color">#F9C89A</color>
+	<color name="sec_tab_color">#FF0000</color>
+	<color name="text_color">#512F10</color>
+	<color name="yelow">#ffffff00</color>
+	<color name="search">#ff5392B1</color>
+	
+	<color name="cyan">#ff00ffff</color>
+	<color name="user_list">#7F0000</color>
+	<color name="user_name">#55587A</color>
+	<color name="contact_color">#FFA444</color>
+	<color name="newmessage_color">#527F3F</color>
+	<color name="day_time">#82644B</color>
+	<color name="very_LGreen">#9DCC90</color>
+	
+	<color name="fat">#F275A1</color>
+	<color name="carbon">#6777F0</color>
+	<color name="protein">#109611</color>
+	<color name="widget_green">#ff00ff00</color>
+</resources>

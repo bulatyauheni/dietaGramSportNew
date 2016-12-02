@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="80dip"
+    android:cacheColorHint="#00000000"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/imageLayout1"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <View
+                android:id="@+id/imageViewDay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/today_green" />
+
+            <TextView
+                android:id="@+id/textViewDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:maxLines="3"
+                android:text="20"
+                android:textColor="@color/white"
+                android:textSize="24dip"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewMonth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:maxLines="3"
+                android:text="okt"
+                android:layout_below="@id/textViewDay"
+                android:textColor="@color/white"
+                android:textSize="12dip"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="5"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="4"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.8"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+
+                    <LinearLayout
+                        android:id="@+id/relativeLayout3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="bottom"
+                        android:visibility="gone"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textViewWoterLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/water_label"
+                            android:textColor="@color/text_color_blue"
+                            android:layout_marginLeft="5dip"
+                            android:textSize="11dip"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewWoter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_color_blue"
+                            android:textSize="11dip"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutEmpty"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="3"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textViewCaloricityLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/empty_day"
+                        android:textSize="12dip"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutParams"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/relativeLayout2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/total_caloricity"
+                            android:textColor="@color/text_color_blue"
+                            android:textSize="12dip"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewCaloricity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_color_blue"
+                            android:textSize="13dip"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textViewWeightTotalLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/total_weight"
+                            android:textColor="@color/text_color_blue"
+                            android:textSize="12dip"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewWeightTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_color_blue"
+                            android:textSize="13dip"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textViewWeightBodyLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/body_weight"
+                            android:textColor="@color/text_color_blue"
+                            android:textSize="12dip"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewWeightBodyTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_color_blue"
+                            android:textSize="13dip"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutDishCall"
+                android:layout_width="fill_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textViewProteinLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="5dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text="@string/widjet_prot"
+                        android:textColor="@color/subtext"
+                        android:textSize="9dip" />
+
+                    <TextView
+                        android:id="@+id/textViewProtein"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="1dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text=""
+                        android:textColor="@color/subtext"
+                        android:textSize="9dip" />
+                    <TextView
+                            android:id="@+id/textViewProteinPercent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="2dip"
+                            android:gravity="center_vertical"
+                            android:maxLines="2"
+                            android:text=""
+                            android:textColor="@color/subtext"
+                            android:textSize="9dip" />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textViewFatLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="5dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text="@string/widjet_fat"
+                        android:textColor="@color/subtext"
+                        android:textSize="9dip" />
+
+                    <TextView
+                        android:id="@+id/textViewFat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="1dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text=""
+                        android:textColor="@color/subtext"
+                        android:textSize="9dip" />
+                     <TextView
+                            android:id="@+id/textViewFatPercent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="2dip"
+                            android:gravity="center_vertical"
+                            android:maxLines="2"
+                            android:text=""
+                            android:textColor="@color/subtext"
+                            android:textSize="9dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textViewCarbonLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="5dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text="@string/widjet_carb"
+                        android:textColor="@color/subtext"
+                        android:textSize="9dip" />
+
+                    <TextView
+                        android:id="@+id/textViewCarbon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="1dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text=""
+                        android:textColor="@color/subtext"
+                        android:textSize="9dip" />
+                    <TextView
+                            android:id="@+id/textViewCarbonPercent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="2dip"
+                            android:gravity="center_vertical"
+                            android:maxLines="2"
+                            android:text=""
+                            android:textColor="@color/subtext"
+                            android:textSize="9dip" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textViewId2"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textSize="15dip"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+             <!-- <Button
+                android:id="@+id/buttonHelth"
+                android:layout_width="40dip"
+                android:layout_height="40dip"
+                android:layout_margin="5dip"
+                android:background="@drawable/bad"
+                android:clickable="true"
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:textColor="@color/text_color_blue"
+                android:textSize="12dip" >
+            </Button> -->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textSize="15dip"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/buttonWeight"
+                android:layout_width="40dip"
+                android:layout_height="40dip"
+                android:layout_margin="5dip"
+                android:background="@drawable/changeweight_button_xml"
+                android:clickable="true"
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:textColor="@color/text_color_blue"
+                android:textSize="12dip" >
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

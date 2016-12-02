@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialogRoot"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:minWidth="300dp"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:fillViewport="true" >
+        <LinearLayout 
+            android:id="@+id/dialogContent"
+            android:layout_width="match_parent"
+    		android:layout_height="match_parent"
+    		android:orientation="vertical">
+        <TextView
+            android:id="@+id/dialogTitle"
+            style="@style/AlertDialogTitle" 
+			android:text="asd"/>
+
+        <TextView
+            android:id="@+id/dialogMessage"
+            style="@style/AlertDialogMessage" 
+            android:text="asd"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/dialogButtonCancel"
+            style="@style/Button"
+            android:layout_margin="5dp"
+            android:background="@drawable/red_button_xml"
+            android:layout_weight="1" 
+            android:text="asd"/>
+     
+        <Button
+            android:id="@+id/dialogButtonOk"
+            style="@style/Button"
+            android:background="@drawable/blue_button_xml"
+            android:layout_margin="5dp"
+            android:layout_weight="1" 
+            android:text="asd"/>
+    </LinearLayout>
+
+</LinearLayout>

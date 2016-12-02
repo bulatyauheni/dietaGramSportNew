@@ -1,0 +1,262 @@
+﻿CARDIO	0
+PIERNAS	1
+ESPALDA	2
+ABDOMINALES	3
+PECHO	4
+HOMBROS	5
+BRAZOS	6
+EJERCICIOS ESPECIALES	7
+VARIOS	8
+JUEGOS	9
+Correr por las escaleras (arriba)	12.9	0
+Patinaje de velocidad	11	0
+Correr (16 km/h)	10.7	0
+Clases de ballet	10.7	8
+Construcción de castillos de nieve, muñecos de nieve	10.1	8
+Cross-country	8.6	0
+Waterpolo	8.6	9
+Natación crol rápido	8.1	0
+Correr por las escaleras arriba y abajo	7.7	0
+Ciclismo (20 км/ч)	7.7	0
+Saltar la cuerda	7.7	0
+Aeróbic acuático	7.6	0
+Entrenamiento de fuerza en los aparatos	7.4	8
+Hockey sobre hierba	7	9
+Báminton (en un ritmo intenso)	6.9	9
+Correr (8 km/h)	6.9	0
+Balonmano	6.9	9
+Baile de alta intensidad	6.9	8
+Esquí nórdico	6.9	0
+Bailes al ritmo de la música disco	6.9	8
+Trabajo de serrador de madera	6.9	8
+Natación (2.4 km/h)	6.6	0
+Gimnasia (enérgica)	6.5	0
+Escalada	6.5	8
+Fútbol	6.4	9
+Striptease	6	8
+Yoga Ashanga	6	8
+Caminata deportiva	5.9	0
+Trabajo de albañil	5.7	8
+Bailes de discoteca	5.7	8
+Baloncesto	5.4	9
+Jugar con un niño (alta actividad)	5.4	8
+Buceo	5.1	8
+Esquí acuático	5.1	8
+Ciclismo (15 km/h)	4.6	0
+Labrar huerto	4.6	8
+Recoger la fruta	4.6	8
+Bailes modernos	4.6	8
+Tenis de mesa (particular)	4.5	9
+Paseo (a una velocidad de 5.8 km/h)	4.5	0
+Patinaje en línea	4.4	0
+Cortar leña	4.3	8
+Sacar hierba del año pasado	4.3	8
+Gimnasia de intensidad media	4.3	0
+Ciclismo (a una velocidad de 14 km/h)	4.3	0
+Trabajo de masajista	4.2	8
+Jugar con los niños, paseando y corriendo	4	8
+Jugar con un niño (actividad moderada)	4	8
+Limpiar las ventanas	4	8
+Baile de salón	3.9	8
+Limpiar plomería	3.9	8
+Esquí de descenso	3.9	8
+Caminata (6 km/h)	3.9	0
+Limpiar cristales y espejos	3.8	8
+Bádminton (a un ritmo moderado)	3.6	9
+voleibol	3.6	9
+Equitación	3.6	8
+Pasear con los niños en el parque	3.6	8
+Patinaje artístico	3.6	8
+Clases de gimnasia(de poca intensidad)	3.4	0
+Trabajo de carpintero o metalurgista	3.4	8
+Senderismo (4 km/h)	3.4	8
+Limpieza ligera 	3.4	8
+Sacar hierba mala del huerto	3.3	8
+Paseo (a una velocidad de 4.2 km/h)	3.1	0
+Bailes de poca intensidad	3.1	8
+Remo (4 km/h)	3	0
+Natación (0.4 km/h)	3	0
+Esgrima	3	8
+Hacer compras	3	8
+Tenis de mesa (en pareja)	2.9	9
+Limpieza de alfombras con aspiradora	2.9	8
+Tareas de hogar	2.9	8
+Tocar la guitarra de pie	2.9	8
+Cortar el césped	2.9	8
+Pasear con el perro	2.9	8
+Bailes lentos (vals, tango)	2.9	8
+Bañar a un niño	2.7	8
+llevar a los bebés en manos	2.7	8
+Piragüismo (4 km/h)	2.6	0
+Ciclismo (9 km/h)	2.6	0
+Trabajo de zapatero	2.6	8
+Caminata (4 km/h)	2.6	0
+Trabajo de encuadernador	2.4	8
+Pasear con cochecito	2.2	8
+Tocar el piano	2.2	8
+Ejercicios gimnásticos	2.1	0
+Senderismo (3.2 km/h)	2.1	8
+Hacer el amor (activo)	2.1	0
+Conducir	2.1	8
+Comprar productos	2.1	8
+Planchar ropa (de pie)	2.1	8
+Peinar pelo	2	8
+Conducir una moto o scooter	2	8
+Jugar con los niños sentado	2	8
+Dar de comer y vestir al niño	2	8
+Fregar la vajilla	2	8
+Mecanografía en el teclado de ordenador a ritmo rápido	2	8
+Escritura en el teclado	2	8
+Trabajos en el jardín	1.9	8
+Lavar suelos	1.9	8
+Hacer la cama	1.9	8
+Estiramiento 	1.8	8
+Hacer punto	1.7	8
+Vestirse, desvestirse, probar la ropa	1.7	8
+Cantar	1.7	8
+Pescar (pesca)	1.7	8
+Girar aro	4	0
+Costura a mano	1.6	8
+Leer en voz alta	1.6	8
+Trabajar en el ordenador	1.4	8
+Paseo con familia	1.4	8
+Conducir	1.4	8
+tocar la guitarra sentado	1.4	8
+Comer de pie	1.3	8
+Vestirse/desvestirse	1.3	8
+Higiene personal	1.3	8
+Ducharse	1.3	0
+Conversación durante la comida	1.3	8
+Viaje en avión	1.3	8
+Trabajo en oficina	1.2	8
+Quitar el polvo	1.1	8
+Preparar la comida	1.1	8
+Clase en el despacho, lección	1.1	8
+Escribir cartas	1.1	8
+Estar tumbado sin dormir	1.1	8
+Hacer el amor (pasivo)	1.1	0
+Trabajo sedentario	1.1	8
+Dormir	0.6	8
+Aerobic intensivo 	7.38	0
+Aerobic poco intensivo 	5.82	0
+Correr 10.4 km/hora	8.4	0
+Correr 12 km/hora	9.6	0
+Billar	2.634	9
+Boxeo	9.48	0
+Tenis	5.796	9
+Bowling	3.6	9
+Bailes rápidos	6.36	8
+Ciclismo 25 km/h	10.554	0
+Ciclismo 30 km/h	12.66	0
+Ciclismo 35+ km/h	17.394	0
+Simulador de bicicleta (alta actividad)	11.1	0
+Artes marciales	10.554	0
+Kayak	5.274	0
+Máquina de remo ( actividad media)	7.38	0
+Levantar pesas intensivo	6.36	0
+Esquí de fondo	7.398	0
+Esquí de montaña	5.196	0
+Patinaje sobre hielo	3.198	0
+Patinaje 	7.38	0
+Bolos 	3.18	0
+Curling	4.2	0
+Natación braza lenta	5.598	0
+Natación crol lento	6.996	0
+Subir la escalera/step	7.398	0
+Hockey 	8.454	9
+Ciclo de ejercicios	4.398	0
+Fútbol (delantero)	8.796	9
+Yoga estática	3.198	8
+Step aerobic intensivo 	10.554	0
+Step aerobic poco intensivo 	7.38	0
+Tiro con arco 	3.72	8
+Simulador tipo "jinete" 	5.274	8
+Entranamiento con pesas	3.798	8
+Estiramiento (Hatha Yoga) 	4.2	8
+Estiramiento	1.8	8
+Gimnasia rítmica (fácil) 	4.74	0
+Gimnasia rítmica (difícil) 	8.454	0
+Sentadillas profundas (culquiera)	0.75	0.8	1
+Sentadillas poco profundas (cualquiera)	0.75	0.6	1
+Prensa de piernas 	0	0.4	1
+Desplantes (tijeras)	0.75	0.5	1
+Flexión de las piernas con máquina	0	0.5	1
+Extención de las piernas con máquina sentado	0	0.5	1
+Subir el banco	0.75	0.5	1
+Desplantes laterales	0.75	0.6	1
+Separar las piernas en la máquina	0	0.6	1
+Juntar las piernas en  la máquina	0	0.6	1
+Sentadillas  máquina GAKK 0.4	0.4	1
+Subir de puntillas de pie (cualquiera)	1	0.1	1
+Subir de puntillas sentado (cualquiera)	0	0.1	1
+SEntadillas en una pierna	0.75	0.7	1
+Extención de la cadera en la máquina	0	0.5	1
+Extención de la cadera tumbado en el suelo	0.2	0.5	1
+Levantamiento de pelvis tumbado	0.4	0.3	1
+Acercar la pierna en crossover/máquina	0	0.5	1
+Alejar la pierna en crossover/máquina	0	0.5	1
+Extención de la pierna en el crossover	0	0.6	1
+Peso muerto con amplitud total	0.75	0.5	2
+Peso muerto con amplitud incompleta	0.75	0.3	2
+Peso muerto Sumo	0.75	0.4	2
+Inclinaciones con barra sobre los hombros	0.5	0.6	2
+Barra de bloque horizontal	0	0.6	2
+Subirse a una barra fija con manos muy cerca o distanciadas	1	0.6	2
+Subirse a una barra fija con manos muy distanciadas	1	0.4	2
+Hiperextensión	0.6	0.7	2
+Hiperextensión en máquinas	1	0.7	2
+Barra de bloque vertica con manos cerca y distanciadas	0	0.6	2
+Barra de bloque vertical con manos muy distanciadas	0	0.4	2
+Pullover tumbado	0	0.7	2
+Pullover en máquina	0	0.6	2
+Trapecio (se encoge de hombros) de pie	0	0.1	2
+Barra de tiro/pesas con inclinaciones	0.2	0.4	2
+Barra en forma de T tumbado	0	0.4	2
+Barra en forma de T inclinado	0.2	0.4	2
+Flexión/extensión del cuello tumbado	0.05 	0.15	2
+Subir la spiernas rectas (cualquire)	0.4	1	3
+Subir las piernas dobladas (cualquiera)	0.4	0.5	3
+Torcer (amplitud completa)	0.6 	0.6	3
+Torcer (amplitud parcial)	0.6 	0.3	3
+Torcer con el bloque superior	0	0.3	3
+Torcer en la máquina	0	0.3	3
+Inclinaciones laterales a través de un equipo deportivo	0.5	0.3	3
+Girar el cuerpo con un palo	0.1	0.2	3
+Inclinaciones laterales con pesas de pie	0.1	0.3	3
+Doblado (cualquiera)	0.5	0.7	3
+Peso horizontal tumbado (cualquiera)	0	0.5	4
+Peso tumbado con un ángulo (cualquiera)	0	0.5	4
+Flexiones de suelo manos distanciadas	0.6 	0.4	4
+Flexiones de banquillo manos distanciadas	0.4	0.3	4
+Separara los brazos con pesas tumbado	0.1	0.6	4
+Peso en la máquina de pecho sentado	0	0.5	4
+Juntar las manos en la máquina	0	0.6	4
+Juntar las manos en crossover (cualquiera)	0	0.6	4
+Peso de pie o sentado con manos medio distanciadas	0	0.5	5
+Peso de pie o sentado con manos distanciadas	0	0.4	5
+Avanzar hasta la barbilla	0.1	0.6	5
+Movimientos de piernas adelante (cualquiera)	0.05 	0.8	5
+Movimientos con  las piernas laterales de pie(cualquiera)	0.05 	0.7	5
+Movimientos con las piernas laterales inclinado (cualquiera)	0.05 	0.7	5
+Peso arriba en la máquina sentado	0	0.5	5
+Separar los brazos atrás en la máquina	0	0.5	5
+Flexiones de barra 1	0.5	6
+Barra con manos cerca	0	0.5	6
+Barra francesa (cualquiera)	0	0.4	6
+Extención de brazos con el bloque superior	0.75	0.4	6
+Flexiones del suelo manos cerca	0.6 	0.5	6
+Flexiones del banquillo manos detrás	0.5	0.5	6
+Extensión de brazos con pesas inclinado	0.2	0.4	6
+Flexión de los brazos de pie (cualquiera)	0	0.4	6
+Flexión de los brazos sentado (cualquiera)0	0.4	6
+Flexión/extensión de articulación de muñeca	0	0.1	6
+Tiro de barra clásicoРывок штанги классический	0.75	1.8	7
+Empuje de barra clásico 0.75	2	7
+Barra en el pecho 	0.75	1.5	7
+Tiro de los bastidores y shvung	0.75	0.6	7
+Peso de tiro	0.75	0.5	7
+Peso de empuje	0.75	0.6	7
+Tiro de peso 	0.3	2	7
+Empuje de pesoТолчок гирь	0	0.6	7
+Empuje de peso (ciclo largo)	0.3	2	7
+Pesos sobre cabeza	0.3	2	7

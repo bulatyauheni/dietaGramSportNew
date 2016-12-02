@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/main_color"
+    android:keepScreenOn="true"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/title_color" >
+
+        <LinearLayout
+            android:id="@+id/relativeLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" >
+
+            <LinearLayout
+                android:id="@+id/relativeLayoutHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="3"
+                android:background="@drawable/header_bg"
+                android:gravity="center_vertical" >
+
+                <Button
+                    android:id="@+id/buttonBack"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:layout_margin="5dip"
+                    android:background="@drawable/back_button_xml"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:textSize="12dip" >
+                </Button>
+
+                <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.18"
+                    android:ellipsize="end"
+                    android:shadowColor="#000000"
+                    android:shadowDx="1.2"
+                    android:shadowDy="1.2"
+                    android:shadowRadius="1.2"
+                    android:text="Test June 123"
+                    android:textColor="@color/white"
+                    android:textSize="20dip"
+                    android:textStyle="bold" >
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonYes"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dip"
+            android:background="@drawable/ok_button_xml"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textSize="12dip" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:isScrollContainer="true"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/main_color"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/relativeLayoutBar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/textViewBarLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_marginTop="5dip"
+                    android:paddingRight="10dip"
+                    android:text="@string/barcode"
+                    android:textColor="@color/text_color"
+                    android:textSize="17dip" />
+
+                <EditText
+                    android:id="@+id/dihsBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="5dip"
+                    android:numeric="integer" >
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/textViewLoading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="10dip"
+                    android:paddingRight="10dip"
+                    android:text="@string/category"
+                    android:textColor="@color/text_color"
+                    android:textSize="17dip" />
+
+                <Spinner
+                    android:id="@+id/dihs_type_spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="5dip" >
+                </Spinner>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutDishName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutDishName2"
+                        android:layout_width="0px"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textViewDishName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_margin="5dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/name"
+                            android:textColor="@color/text_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutDishName23"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/editTextDishName"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:inputType="text"
+                            android:maxLength="40"
+                            android:singleLine="true"
+                            android:textColor="@color/text_color" >
+                        </EditText>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="3"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textViewDishCaloricity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_margin="5dp"
+                            android:gravity="center_vertical"
+                            android:maxLines="1"
+                            android:text="@string/caloricity"
+                            android:textColor="@color/text_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/editTextDishCaloricity"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dip"
+                            android:maxLength="4"
+                            android:maxLines="1"
+                            android:numeric="integer"
+                            android:textColor="@color/text_color" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textViewDishName4"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_margin="5dp"
+                            android:gravity="center_horizontal"
+                            android:text="@string/protein"
+                            android:textColor="@color/text_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textViewDishName6"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_margin="5dp"
+                            android:gravity="center_horizontal"
+                            android:text="@string/fat"
+                            android:textColor="@color/text_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textViewDishName8"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_margin="5dp"
+                            android:gravity="center_horizontal"
+                            android:text="@string/carbon"
+                            android:textColor="@color/text_color" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" >
+
+                        <bulat.diet.helper_sport.component.PrefixedEditText
+                            android:id="@+id/editTextProtein"
+                            style="?android:attr/textAppearanceLargeInverse"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dip"
+                            android:inputType="numberDecimal"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="0"
+                            android:textColor="@color/text_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" >
+
+                        <bulat.diet.helper_sport.component.PrefixedEditText
+                            android:id="@+id/editTextFat"
+                            style="?android:attr/textAppearanceLargeInverse"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dip"
+                            android:inputType="numberDecimal"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="0"
+                            android:textColor="@color/text_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" >
+
+                        <bulat.diet.helper_sport.component.PrefixedEditText
+                            android:id="@+id/editTextCarbon"
+                            style="?android:attr/textAppearanceLargeInverse"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dip"
+                            android:inputType="numberDecimal"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="0"
+                            android:textColor="@color/text_color" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/typeLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/textViewLoading11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="10dip"
+                        android:layout_marginTop="10dip"
+                        android:paddingRight="20dip"
+                        android:text="@string/type"
+                        android:textColor="@color/text_color"
+                        android:textSize="17dip" />
+
+                    <Spinner
+                        android:id="@+id/balance_type_spinner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_margin="5dip" >
+                    </Spinner>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

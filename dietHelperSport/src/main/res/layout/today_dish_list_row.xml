@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="60dip"
+    android:cacheColorHint="#00000000"
+    android:orientation="horizontal"
+    android:longClickable="true" >
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutDishWeight"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/linearLayoutDishWeight2"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="4"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/linearLayoutDishWeight1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutDishCall"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.5"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutDishCall2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textViewAbsCaloricity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="5dip"
+                            android:gravity="left|center_vertical"
+                            android:maxLines="1"
+                            android:text="TextView"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="10dip" />
+
+                        <TextView
+                            android:id="@+id/textViewAbsCaloricity2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="5dip"
+                            android:gravity="right|center_vertical"
+                            android:maxLines="1"
+                            android:text="@string/kcal"
+                            android:textColor="@color/text_color"
+                            android:textSize="10dip" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutWeightValue"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/textViewWeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="5dip"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/dark_grey"
+                            android:textSize="10dip" />
+
+                        <TextView
+                            android:id="@+id/textViewAbsCaloricity1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="5dip"
+                            android:gravity="center_vertical"
+                            android:maxLines="1"
+                            android:text="@string/gram"
+                            android:textColor="@color/text_color"
+                            android:textSize="10dip" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutDishName"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical" 
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textViewDishName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="center_vertical"
+                        android:inputType="textMultiLine"
+                        android:text="TextView"
+                        android:textColor="@color/text_color"
+                        android:textSize="13dip"
+                        android:textStyle="bold" />
+                     <TextView
+                        android:id="@+id/textViewWayAdneWeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="center_vertical"
+                        android:maxLines="3"
+                        android:text="tw"
+                        android:textColor="@color/text_color"
+                        android:textSize="10dip"
+                        android:textStyle="bold" 
+                        />
+                   
+                    <TextView
+                        android:id="@+id/textViewDishDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"                        
+                        android:text="0"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/textViewCaloricity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:textSize="15dip"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/textViewFatTrue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:textSize="15dip"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/textViewCarbonTrue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:textSize="15dip"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/textViewProteinTrue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:textSize="15dip"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutFCP"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal" 
+                android:visibility="gone">
+ 					<LinearLayout
+                    android:id="@+id/linearLayoutDishCall3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textViewProteinLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="7dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text="@string/protein"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+
+                    <TextView
+                        android:id="@+id/textViewProtein"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="5dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linearLayoutDishCall4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textViewFatLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="7dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text="@string/fat"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+
+                    <TextView
+                        android:id="@+id/textViewFat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="5dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutDishCall5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textViewCarbonLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="7dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text="@string/carbon"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+
+                    <TextView
+                        android:id="@+id/textViewCarbon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="5dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+                </LinearLayout>
+
+               
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textSize="15dip"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/buttonDell"
+                android:layout_width="30dip"
+                android:layout_height="30dip"
+                android:background="@drawable/dell_button_xml"
+                android:clickable="true"
+                android:layout_marginTop="15dip"
+                android:focusable="false"
+                android:gravity="center_horizontal|center_vertical"
+                android:maxLines="1"
+                android:textSize="12dip" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical|bottom"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textViewTimeHH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12"
+                    android:textSize="12dip" />
+
+                <TextView
+                    android:id="@+id/textViewTimeBorder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:textSize="12dip" />
+
+                <TextView
+                    android:id="@+id/textViewTimeMM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30"
+                    android:textSize="12dip" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>

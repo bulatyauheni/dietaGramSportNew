@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:isScrollContainer="true"
+    android:scrollbars="vertical" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/light_broun"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textViewSerchActivityLevelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="5dip"
+                android:gravity="center_vertical"
+                android:text="@string/update_weight_label"
+                android:textColor="@color/white"
+                android:textSize="14dip"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:id="@+id/linearLayoutActivityLabel"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutWeight"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <LinearLayout
+
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/weight"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="right"
+                            android:orientation="horizontal" >
+
+                            <Spinner
+                                android:id="@+id/search_weight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#ABABAB" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_alignParentLeft="true"
+                                android:gravity="bottom"
+                                android:text=","
+                                android:textColor="@color/text_color" />
+
+                            <Spinner
+                                android:id="@+id/search_weight_decimal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dip"
+                                android:textColor="#ABABAB" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutChest"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone" >
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutMode"
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/volume_chest"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutCaloricity"
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="right"
+                            android:orientation="horizontal" >
+
+                            <Spinner
+                                android:id="@+id/SpinnerChest"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:textColor="@color/text_color" />
+
+                            <TextView
+                                android:id="@+id/textViewSex"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_alignParentLeft="true"
+                                android:gravity="bottom"
+                                android:text=","
+                                android:textColor="@color/text_color" />
+
+                            <Spinner
+                                android:id="@+id/SpinnerChestDecimal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dip"
+                                android:textColor="@color/text_color" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutNeck"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone" >
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/volume_neck"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="right"
+                            android:orientation="horizontal" >
+
+                            <Spinner
+                                android:id="@+id/SpinnerNeck"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:textColor="@color/text_color" />
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_alignParentLeft="true"
+                                android:gravity="bottom"
+                                android:text=","
+                                android:textColor="@color/text_color" />
+
+                            <Spinner
+                                android:id="@+id/SpinnerNeckDecimal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dip"
+                                android:textColor="@color/text_color" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutBiceps"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone" >
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/volume_biceps"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="right"
+                            android:orientation="horizontal" >
+
+                            <Spinner
+                                android:id="@+id/SpinnerBiceps"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:textColor="@color/text_color" />
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_alignParentLeft="true"
+                                android:gravity="bottom"
+                                android:text=","
+                                android:textColor="@color/text_color" />
+
+                            <Spinner
+                                android:id="@+id/SpinnerBicepsDecimal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dip"
+                                android:textColor="@color/text_color" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutForearm"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone" >
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/volume_forearm"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="right"
+                            android:orientation="horizontal" >
+
+                            <Spinner
+                                android:id="@+id/SpinnerForearm"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:textColor="@color/text_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_alignParentLeft="true"
+                                android:gravity="bottom"
+                                android:text=","
+                                android:textColor="@color/text_color" />
+
+                            <Spinner
+                                android:id="@+id/SpinnerForearmDecimal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dip"
+                                android:textColor="@color/text_color" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutWaist"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone" >
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/volume_waist"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="right"
+                            android:orientation="horizontal" >
+
+                            <Spinner
+                                android:id="@+id/SpinnerWaist"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:textColor="@color/text_color" />
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_alignParentLeft="true"
+                                android:gravity="bottom"
+                                android:text=","
+                                android:textColor="@color/text_color" />
+
+                            <Spinner
+                                android:id="@+id/SpinnerWaistDecimal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dip"
+                                android:textColor="@color/text_color" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutPelvis"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone" >
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/volume_pelvis"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="right"
+                            android:orientation="horizontal" >
+
+                            <Spinner
+                                android:id="@+id/SpinnerPelvis"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:textColor="@color/text_color" />
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_alignParentLeft="true"
+                                android:gravity="bottom"
+                                android:text=","
+                                android:textColor="@color/text_color" />
+
+                            <Spinner
+                                android:id="@+id/SpinnerPelvisDecimal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dip"
+                                android:textColor="@color/text_color" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutHip"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone" >
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/volume_hip"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="right"
+                            android:orientation="horizontal" >
+
+                            <Spinner
+                                android:id="@+id/SpinnerHip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:textColor="@color/text_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_alignParentLeft="true"
+                                android:gravity="bottom"
+                                android:text=","
+                                android:textColor="@color/text_color" />
+
+                            <Spinner
+                                android:id="@+id/SpinnerHipDecimal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dip"
+                                android:textColor="@color/text_color" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutShin"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone" >
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/textViewWeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/volume_shin"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="right"
+                            android:orientation="horizontal" >
+
+                            <Spinner
+                                android:id="@+id/SpinnerShin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dip"
+                                android:textColor="@color/text_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="fill_parent"
+                                android:layout_alignParentLeft="true"
+                                android:gravity="bottom"
+                                android:text=","
+                                android:textColor="@color/text_color" />
+
+                            <Spinner
+                                android:id="@+id/SpinnerShinDecimal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dip"
+                                android:textColor="@color/text_color" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="vertical" >
+
+                    <Button
+                        android:id="@+id/buttonNo"
+                        android:layout_width="70dip"
+                        android:layout_height="70dip"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/no_button_xml"
+                        android:clickable="true"
+                        android:gravity="center_horizontal"
+                        android:maxLines="1"
+                        android:textSize="12dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutSpiner"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="vertical" >
+
+                    <Button
+                        android:id="@+id/buttonYes"
+                        android:layout_width="70dip"
+                        android:layout_height="70dip"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/ok_button_xml"
+                        android:clickable="true"
+                        android:gravity="right"
+                        android:maxLines="1"
+                        android:textSize="12dip" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

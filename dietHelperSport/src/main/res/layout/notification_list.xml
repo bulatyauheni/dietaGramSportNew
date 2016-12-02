@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/main_color"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/title_color" >
+
+        <LinearLayout
+            android:id="@+id/linearLayoutHeader"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/relativeLayout4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+			<LinearLayout
+                android:id="@+id/relativeLayoutHeader"
+                android:layout_width="0px"
+                android:layout_height="fill_parent"
+                android:layout_weight="3"  
+                android:gravity="center_vertical"              
+                android:background="@drawable/header_bg" >
+                <Button
+		            android:id="@+id/buttonBack"
+		            android:layout_width="35dip"
+		            android:layout_height="35dip"
+		            android:layout_margin="5dip"
+		            android:background="@drawable/back_button_xml"
+		            android:clickable="true"
+		            android:gravity="center_vertical"
+		            android:maxLines="1"
+		            android:textSize="12dip" >
+        		</Button>
+                <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.18"
+                    android:ellipsize="end"
+                    android:shadowColor="#000000"
+                    android:shadowDx="1.2"
+                    android:shadowDy="1.2"
+                    android:shadowRadius="1.2"
+                    android:text="@string/set_notif_title"
+                    android:textColor="@color/white"
+                    android:textSize="18dip"
+                    android:textStyle="bold" >
+                </TextView>
+                </LinearLayout>
+                
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutAVG"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" 
+        android:orientation="vertical">
+    </LinearLayout>
+    
+	<LinearLayout
+        android:id="@+id/linearLayoutChart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/textViewTotalLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:maxLines="3"
+            android:text="@string/user_weight_history"
+            android:textColor="@color/text_color"
+            android:textSize="12dip"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <ListView
+        android:id="@+id/listViewNotifications"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayoutAVG"
+        android:layout_below="@+id/relativeLayout1"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/grey_divider"
+        android:dividerHeight="1dip" >
+    </ListView>
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_below="@+id/relativeLayout1"
+        android:text="" />
+
+</RelativeLayout>

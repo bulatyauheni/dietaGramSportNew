@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_group_item_height"
+    android:background="@color/divider"
+    android:clickable="true">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true">
+
+        <!-- NOTE: the drag handle should set android:clickable=true not to propagate click events to the parent views -->
+
+        <View
+            android:id="@+id/drag_handle"
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|left"
+            android:background="#20000000"
+            android:clickable="true" />
+
+        <bulat.diet.helper_sport.common.widget.ExpandableItemIndicator
+            android:id="@+id/indicator"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="16dp" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="left|fill_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textViewCalory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="159"
+                    android:textColor="@color/text_color_blue"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewCaloryLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/kcal"
+                    android:textColor="@color/text_color_blue"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dishType"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Завтрак"
+                android:textColor="@color/text_color_blue"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutFCP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutDishCall3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewProteinLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="7dip"
+                        android:gravity="bottom"
+                        android:maxLines="2"
+                        android:text="@string/protein"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+
+                    <TextView
+                        android:id="@+id/textViewProtein"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="5dip"
+                        android:gravity="bottom"
+                        android:maxLines="2"
+                        android:text="0"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutDishCall4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewFatLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="7dip"
+                        android:gravity="bottom"
+                        android:maxLines="2"
+                        android:text="@string/fat"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+
+                    <TextView
+                        android:id="@+id/textViewFat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="5dip"
+                        android:gravity="bottom"
+                        android:maxLines="2"
+                        android:text="0"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutDishCall5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewCarbonLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="7dip"
+                        android:gravity="bottom"
+                        android:maxLines="2"
+                        android:text="@string/carbon"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+
+                    <TextView
+                        android:id="@+id/textViewCarbon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="5dip"
+                        android:gravity="bottom"
+                        android:maxLines="2"
+                        android:text="0"
+                        android:textColor="@color/subtext"
+                        android:textSize="10dip" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/addDishButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_add_food"
+                android:clickable="true" />
+        </FrameLayout>
+    </FrameLayout>
+</FrameLayout>

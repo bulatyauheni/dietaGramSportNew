@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/main_color"
+    android:isScrollContainer="true"
+    android:scrollbars="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/main_color"
+        android:orientation="vertical" >
+ 		
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/header_color" >
+
+            <LinearLayout
+                android:id="@+id/relativeLayoutHeader"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/buttonBack"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:layout_margin="5dip"
+                    android:background="@drawable/back_button_xml"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:textSize="12dip" >
+                </Button>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:paddingRight="20dip"
+                android:text="@string/statistic_food"
+                android:textColor="@color/text_color"
+                android:textSize="17dip" >
+            </TextView>
+            
+            <Button
+                android:id="@+id/buttonVKChart"
+                android:layout_width="45dip"
+                android:layout_height="45dip"
+                android:background="@drawable/vk_button_xml"
+                android:clickable="true"
+                 android:gravity="center_vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/spinerLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Spinner
+                android:id="@+id/diet_type_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/chartsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="180dip"
+            android:orientation="horizontal" >
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/chart1"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/chart2"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+		<TextView 
+		    android:id="@+id/successInPercentageTV"
+		    android:layout_height="wrap_content"
+		    android:layout_width="match_parent"
+		    android:text="asdasd"
+		    android:textColor="@color/header_color"
+		    android:gravity="center_horizontal"/>"
+        <bulat.diet.helper_sport.controls.SegmentedGroup
+            android:id="@+id/segmented2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            segmentedgroup:sc_border_width="2dp"
+            segmentedgroup:sc_corner_radius="5dp" >
+
+            <RadioButton
+                android:id="@+id/today"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today" />
+
+            <RadioButton
+                android:id="@+id/yesterday"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yesterday" />
+            
+            <RadioButton
+                android:id="@+id/lastweek"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lastweek" />
+            
+            <RadioButton
+                android:id="@+id/lastmonth"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lastmonth" />
+        </bulat.diet.helper_sport.controls.SegmentedGroup>
+    </LinearLayout>
+
+</ScrollView>

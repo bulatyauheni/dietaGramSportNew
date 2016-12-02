@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="light_grey">#e8e7e6</color>
+    <color name="grey">#afafaf</color>
+    <color name="grey_divider">#e6ddd5</color>
+    <color name="dark_grey">#474747</color>
+    <color name="red">#d11111</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="green">#4981A0</color>
+    <color name="light_broun">#977b5d</color>
+	<color name="light_green">#7DB8D4</color>
+	<color name="light_red">#FFB5B5</color>
+	<color name="header_color">#D39A6F</color>
+	<color name="main_color">#ffffff</color> <!-- FFF0E5 -->
+	<color name="title_color">#4A829E</color>
+	<color name="tab_color">#F8F8F8</color>
+	<color name="tab_selected_color">#D39A6F</color>
+	<color name="light_orange_color">#F9C89A</color>
+	<color name="sec_tab_color">#FF0000</color>
+	<color name="text_color">#512F10</color>
+	<color name="yelow">#D39A6F</color>
+	<color name="search">#ff5392B1</color>
+	
+	<color name="cyan">#ff00ffff</color>
+	<color name="user_list">#7F0000</color>
+	<color name="user_name">#55587A</color>
+	<color name="contact_color">#FFA444</color>
+	<color name="newmessage_color">#527F3F</color>
+	<color name="day_time">#82644B</color>
+	<color name="very_LGreen">#9DCC90</color>
+
+
+    <color name="subtext">#808080</color>
+	<color name="fat">#FFD08C</color>
+	<color name="carbon">#FFF78C</color>
+	<color name="protein">#C0FF8C</color>
+	<color name="widget_green">#ff00ff00</color>
+    <color name="today_green">#ff00C871</color>
+	<color name="radio_button_selected_color">#4981A0</color>
+    <color name="radio_button_unselected_color">#e0e0e0</color>
+    <color name="text_color_blue">#2097EB</color>
+    <color name="divider">#E1E1E1</color>
+    
+<!--
+       Copyright (C) 2015 Haruki Hasegawa
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+           http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+-->
+
+    <color name="bg_item_normal_state">#4E90CA</color>
+    <color name="bg_item_dragging_state">#ffffdddd</color>
+    <color name="bg_item_dragging_active_state">#ffff9999</color>
+    <color name="bg_item_swiping_state">#ffB3C9D3</color>
+    <color name="bg_item_swiping_active_state">#ff479ED3</color>
+
+    <color name="bg_group_item_normal_state">#ffB3C9D3</color>
+    <color name="bg_group_item_normal_pressed_state">#ffB3C9D3</color>
+    <color name="bg_group_item_expanded_state">#ff479ED3</color>
+    <color name="bg_group_item_expanded_pressed_state">#ff479ED3</color>
+    <color name="bg_group_item_dragging_state">#ffB3C9D3</color>
+    <color name="bg_group_item_dragging_active_state">#ffB3C9D3</color>
+    <color name="bg_group_item_swiping_state">#ffB3C9D3</color>
+    <color name="bg_group_item_swiping_active_state">#ffB3C9D3</color>
+
+    <color name="bg_swipe_item_neutral">@android:color/transparent</color>
+    <color name="bg_swipe_item_pinned">#fff9930d</color>
+    <color name="bg_swipe_item_dismiss">#ff2f8b2a</color>
+    <color name="bg_swipe_group_item_pinned">#fff45f30</color>
+    <color name="bg_swipe_group_item_dismiss">#ff295db3</color>
+
+    <color name="snackbar_action_color_done">#ffccccff</color>
+
+    <color name="expandable_item_indicator_color">#42000000</color>
+
+</resources>

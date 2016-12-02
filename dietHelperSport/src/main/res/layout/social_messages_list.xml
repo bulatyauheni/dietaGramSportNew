@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/main_color"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/title_color" >
+
+        <LinearLayout
+            android:id="@+id/linearLayoutHeader"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/relativeLayout4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/buttonBack"
+                    android:background="@drawable/header_bg"
+                    android:gravity="center_vertical" >
+
+                    <Button
+                        android:id="@+id/buttonBack"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/back_button_xml"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textSize="12dip"
+                        android:visibility="visible" >
+                    </Button>
+
+                    <TextView
+                        android:id="@+id/textViewTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="5dp"
+                        android:layout_weight="0.18"
+                        android:ellipsize="end"
+                        android:shadowColor="#000000"
+                        android:shadowDx="1.2"
+                        android:shadowDy="1.2"
+                        android:shadowRadius="1.2"
+                        android:text="@string/conversation"
+                        android:textColor="@color/white"
+                        android:textSize="20dip"
+                        android:textStyle="bold" >
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/relativeLayout5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/buttonAddLayout"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical" >
+
+                    <Button
+                        android:id="@+id/buttonRemove"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/chat_remove_button_xml"
+                        android:clickable="true"
+                        android:maxLines="1"
+                        android:textSize="12dip"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/header_color" >
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout01"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/header_color"
+                    android:gravity="center_vertical" >
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout02"
+                        android:layout_width="0px"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/EditTextMessage"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="3dip"
+                            android:layout_marginLeft="5dip"
+                            android:background="@drawable/edittext_rounded_corners"
+                            android:gravity="center_vertical"
+                            android:hint="@string/enter_message"
+                            android:textColor="@color/text_color"
+                            android:textSize="12dip"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/buttonSendMessage"
+                        android:layout_width="45dip"
+                        android:layout_height="45dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/message_button_xml"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textSize="12dip"
+                        android:visibility="visible" >
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/header_color" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@color/header_color" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="2"
+                        android:orientation="horizontal" >
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutDishCall"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textViewNameLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="5dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="3"
+                        android:text="@string/sex"
+                        android:textColor="@color/text_color"
+                        android:textSize="12dip"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="5dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="3"
+                        android:text="женский"
+                        android:textColor="@color/text_color"
+                        android:textSize="12dip"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="10dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="3"
+                        android:text="@string/weight"
+                        android:textColor="@color/text_color"
+                        android:textSize="12dip"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="10dip"
+                        android:gravity="center_vertical"
+                        android:maxLines="3"
+                        android:text="55кг"
+                        android:textColor="@color/text_color"
+                        android:textSize="12dip"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/emptyLayoutCalendar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textViewLoading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="10dip"
+                    android:gravity="center_horizontal"
+                    android:paddingRight="20dip"
+                    android:text="@string/loading_social"
+                    android:textSize="17dip"
+                    android:visibility="gone" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/textViewBadSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="10dip"
+                    android:gravity="center_horizontal"
+                    android:paddingRight="20dip"
+                    android:text="@string/bad_search"
+                    android:textSize="17dip"
+                    android:visibility="gone" >
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listViewMessages"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayoutAVG"
+        android:layout_below="@+id/relativeLayout1"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/grey_divider"
+        android:dividerHeight="1dip" >
+    </ListView>
+
+</RelativeLayout>

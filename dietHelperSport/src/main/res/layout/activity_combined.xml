@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/linearLayoutCastomLimit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal" 
+        android:background="@color/main_color">
+		
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:orientation="vertical" >
+
+            <Spinner
+                android:id="@+id/spinnerChartType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:paddingLeft="2dip"
+                android:textColor="@color/text_color" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textViewLoading"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:text="@string/ideal"
+                android:textColor="@color/text_color" />
+
+            <EditText
+                android:id="@+id/editTextLimitValue"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:text="0"
+                android:inputType="number|numberDecimal"
+                android:maxLength="4"
+                android:maxLines="1"
+                android:textColor="@color/text_color" />
+
+            <Button
+                android:id="@+id/buttonSetGoal"
+                android:layout_width="30dip"
+                android:layout_height="30dip"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:background="@drawable/ok_button_xml"
+                android:clickable="true"
+                android:gravity="right"
+                android:maxLines="1"
+                android:textSize="12dip" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.github.mikephil.charting.charts.CombinedChart
+        android:id="@+id/chart1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp"
+        android:layout_below="@+id/linearLayoutCastomLimit"
+        android:layout_above="@+id/weightChartTimeSegments"  />
+    
+    <bulat.diet.helper_sport.controls.SegmentedGroup
+            android:id="@+id/weightChartTimeSegments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:background="@color/main_color"
+            android:layout_alignParentBottom="true"
+            segmentedgroup:sc_border_width="2dp"
+            segmentedgroup:sc_corner_radius="5dp" >
+
+
+            
+            <RadioButton
+                android:id="@+id/lastweek"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lastweek"/>
+            
+            <RadioButton
+                android:id="@+id/lastmonth"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lastmonth" />
+            
+              <RadioButton
+                android:id="@+id/alltime"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/allTime" />
+        </bulat.diet.helper_sport.controls.SegmentedGroup>
+        <Button
+                android:id="@+id/buttonVKChart"
+                android:layout_width="45dip"
+                android:layout_height="45dip"
+                android:background="@drawable/vk_button_xml"
+                android:clickable="true"
+                android:layout_margin="16dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+</RelativeLayout>

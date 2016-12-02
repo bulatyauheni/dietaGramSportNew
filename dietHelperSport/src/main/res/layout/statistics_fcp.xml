@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:isScrollContainer="true"
+		android:background="@color/main_color"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/main_color"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/header_color" >
+
+                <LinearLayout
+                    android:id="@+id/relativeLayoutHeader"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/buttonBack"
+                        android:layout_width="35dip"
+                        android:layout_height="35dip"
+                        android:layout_margin="5dip"
+                        android:background="@drawable/back_button_xml"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:textSize="12dip" >
+                    </Button>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textViewLoading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="10dip"
+                    android:paddingRight="20dip"
+                    android:text="@string/statistic_food"
+                    android:textColor="@color/text_color"
+                    android:textSize="17dip" >
+                </TextView>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/spinerLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <Spinner
+                    android:id="@+id/diet_type_spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutCharts"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutChartText"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="5dip"
+                        android:text="@string/idealCheet"
+                        android:textColor="@color/text_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutChart2Text"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="5dip"
+                        android:text="@string/yourCheet"
+                        android:textColor="@color/text_color" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutCharts2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutChart"
+                    android:layout_width="0px"
+                    android:layout_height="180dip"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutChart2"
+                    android:layout_width="0px"
+                    android:layout_height="180dip"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayoutChartsMap"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+            <LinearLayout
+                android:id="@+id/linearLayoutChartsMapLabels"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:baselineAligned="false"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+					<LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:baselineAligned="false"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/twproteinIdeal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dip"
+                        android:background="@color/protein"
+                        android:text="0%"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/protein"
+                        android:textColor="@color/text_color"
+                        android:textSize="10dip" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:baselineAligned="false"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/twfatIdeal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dip"
+                        android:background="@color/red"
+                        android:text="0%"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fat"
+                        android:textColor="@color/text_color"
+                        android:textSize="10dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:baselineAligned="false"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/twcarbonIdeal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dip"
+                        android:background="@color/green"
+                        android:baselineAligned="false"
+                        android:text="0%"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/carbon"
+                        android:textColor="@color/text_color"
+                        android:textSize="10dip" />
+                </LinearLayout>
+            </LinearLayout>
+            
+            
+            <LinearLayout
+                android:id="@+id/linearLayoutChartsMapIdeal"
+                    android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:baselineAligned="false"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+					<LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:baselineAligned="false"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/twproteinUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dip"
+                        android:background="@color/protein"
+                        android:baselineAligned="false"
+                        android:text="0%"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/protein"
+                        android:textColor="@color/text_color"
+                        android:textSize="10dip" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:baselineAligned="false"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/twfatUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dip"
+                        android:background="@color/red"
+                        android:text="0%"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fat"
+                        android:textColor="@color/text_color"
+                        android:textSize="10dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:baselineAligned="false"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/twcarbonUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dip"
+                        android:background="@color/green"
+                        android:text="0%"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/carbon"
+                        android:textColor="@color/text_color"
+                        android:textSize="10dip" />
+                </LinearLayout>
+            </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutChartText2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" 
+                android:layout_marginTop="5dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="5dip"
+                    android:text="@string/balanse_data"
+                    android:textColor="@color/text_color" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
