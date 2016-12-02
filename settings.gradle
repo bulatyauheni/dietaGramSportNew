@@ -1,0 +1,3 @@
+include ':zBarScannerActivity'
+include ':recyclerview'
+include ':dietHelperSport'
