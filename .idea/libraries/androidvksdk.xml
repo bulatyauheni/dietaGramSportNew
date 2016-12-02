@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="androidvksdk">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dietHelperSport/libs/androidvksdk.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

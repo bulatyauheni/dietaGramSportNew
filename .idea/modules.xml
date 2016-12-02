@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dgr.iml" filepath="$PROJECT_DIR$/dgr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dietHelperSport/dietHelperSport.iml" filepath="$PROJECT_DIR$/dietHelperSport/dietHelperSport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recyclerview/recyclerview.iml" filepath="$PROJECT_DIR$/recyclerview/recyclerview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zBarScannerActivity/zBarScannerActivity.iml" filepath="$PROJECT_DIR$/zBarScannerActivity/zBarScannerActivity.iml" />
+    </modules>
+  </component>
+</project>
