@@ -59,25 +59,33 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="0px"
-                android:layout_weight="4"
+                android:layout_weight="1"
                 android:orientation="horizontal" >
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="0px"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1.8"
+                    android:layout_weight="2"
+
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
-
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:paddingTop="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_weight="2"
+                        android:src="@drawable/water_icon"/>
 
                     <LinearLayout
                         android:id="@+id/relativeLayout3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="bottom"
-                        android:visibility="gone"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
                         android:orientation="horizontal" >
 
                         <TextView
@@ -87,7 +95,7 @@
                             android:text="@string/water_label"
                             android:textColor="@color/text_color_blue"
                             android:layout_marginLeft="5dip"
-                            android:textSize="11dip"
+                            android:textSize="13dip"
                             android:textStyle="bold" />
 
                         <TextView
@@ -95,10 +103,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/text_color_blue"
-                            android:textSize="11dip"
+                            android:textSize="13dip"
                             android:textStyle="bold" />
                     </LinearLayout>
-                </LinearLayout>
+                </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/layoutEmpty"
@@ -329,7 +337,7 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        
+
         <LinearLayout
             android:layout_width="0px"
             android:layout_height="fill_parent"

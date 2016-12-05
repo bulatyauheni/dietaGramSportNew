@@ -349,7 +349,8 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <Button
                     android:id="@+id/buttonNo"
@@ -376,7 +377,7 @@
                     android:layout_width="70dip"
                     android:layout_height="70dip"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/ok_button_xml"
+                    android:background="@drawable/ok_button_blue_xml"
                     android:clickable="true"
                     android:gravity="right"
                     android:maxLines="1"

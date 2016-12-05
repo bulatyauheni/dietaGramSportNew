@@ -308,7 +308,7 @@ public class AddTodayFitnesActivity extends BaseActivity {
 									"", 
 									Integer.parseInt(weightView.getText()
 											.toString()), 
-									Integer.valueOf(dishCaloricityVTW.getText().toString())>0?-Integer.valueOf(dishCaloricityVTW.getText().toString()): -1,
+									Integer.valueOf(dishCaloricityVTW.getText().toString()) < 0? Integer.valueOf(dishCaloricityVTW.getText().toString()): -1,
 									currDate,Float.parseFloat(fitnesWeight),
 									fitCountSpinner.getSelectedItemId()>=0?fitCountSpinner.getSelectedItemId():0,
 									Float.parseFloat(fitnesWay),

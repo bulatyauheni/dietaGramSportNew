@@ -401,7 +401,7 @@
 		                        android:layout_width="30dip"
 		                        android:layout_height="30dip"	
 		                        android:layout_gravity="center_horizontal"	                        
-		                        android:background="@drawable/ok_button_xml"
+		                        android:background="@drawable/ok_button_blue_xml"
 		                        android:clickable="true"
 		                        android:gravity="right"
 		                        android:maxLines="1"

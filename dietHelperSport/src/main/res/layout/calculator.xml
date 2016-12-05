@@ -361,7 +361,7 @@
                     android:id="@+id/buttonSave"
                     android:layout_width="50dip"
                     android:layout_height="50dip"
-                    android:background="@drawable/ok_button_xml"
+                    android:background="@drawable/ok_button_blue_xml"
                     android:clickable="true"
                     android:gravity="center_horizontal"
                     android:maxLines="1"
