@@ -59,6 +59,7 @@ public class SaveUtils {
 	private static final String RESET = "RESET";
 	public static final String LIMIT = "LIMIT";
 	private static final String NOTIF = "NOTIF";
+	private static final String NOTIF_WATER = "NOTIF_WATER";
 	private static final String CHESTDEC = "CHESTDEC";
 	private static final String CHEST = "CHEST";
 	private static final String SHINDEC = "SHINDEC";
@@ -834,6 +835,23 @@ public class SaveUtils {
 		
 		return preferences.getBoolean(NOTIF, false);
 	}
+
+
+	public static void setWaterNotificationLoded(Boolean flg, Context context) {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		Editor editor = preferences.edit();
+
+		editor.putBoolean(NOTIF_WATER, flg);
+		editor.commit();
+	}
+	public static Boolean getWaterNotificationLoded(Context context){
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+
+		return preferences.getBoolean(NOTIF_WATER, false);
+	}
+
 	public static int getChest(Context context) {
 		// TODO Auto-generated method stub
 		SharedPreferences preferences = PreferenceManager

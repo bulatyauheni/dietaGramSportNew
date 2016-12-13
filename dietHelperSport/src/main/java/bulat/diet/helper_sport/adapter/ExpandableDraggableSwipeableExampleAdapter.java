@@ -21,6 +21,7 @@ import java.text.DecimalFormat;
 import android.preference.PreferenceManager;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -99,6 +100,7 @@ public class ExpandableDraggableSwipeableExampleAdapter
     }
 
     public static abstract class DishItemViewHolder extends AbstractDraggableSwipeableItemViewHolder implements ExpandableItemViewHolder {
+
         public FrameLayout mContainer;
         public FrameLayout mMainContainer;
         public View mDragHandle;
@@ -114,8 +116,10 @@ public class ExpandableDraggableSwipeableExampleAdapter
         public TextView mFat;
         public TextView mProtein;
         public TextView mCalory;
+        public TextView mTime;
         public TextView mDishWeight;
         public LinearLayout mLinearLayoutFCP;
+
         public LinearLayout mDdishWeightLayout;
 
         private int mExpandStateFlags;
@@ -132,6 +136,8 @@ public class ExpandableDraggableSwipeableExampleAdapter
             mProtein = (TextView) v.findViewById(R.id.textViewProtein);
             mCalory = (TextView) v.findViewById(R.id.textViewDishCalorie);
             mDishWeight = (TextView) v.findViewById(R.id.textViewDishWeight);
+            mTime = (TextView) v.findViewById(R.id.textViewTime);
+
             mLinearLayoutFCP = (LinearLayout) v.findViewById(R.id.linearLayoutFCP);
             mDdishWeightLayout = (LinearLayout) v.findViewById(R.id.dishWeightLayout);
         }
@@ -159,7 +165,9 @@ public class ExpandableDraggableSwipeableExampleAdapter
         public TextView fatSubTotal;
         public TextView proteinSubTotal;
 		public TextView calorySubTotal;
-        
+        public LinearLayout mGroupDishWeight;
+        public LinearLayout mGroupDishCalorisity;
+
         public DayTimeViewHolder(View v) {
             super(v);
             mNameTextView = (TextView) v.findViewById(R.id.dishType);
@@ -169,6 +177,9 @@ public class ExpandableDraggableSwipeableExampleAdapter
             proteinSubTotal = (TextView) v.findViewById(R.id.textViewProtein);
             calorySubTotal = (TextView) v.findViewById(R.id.textViewCalory);
             addDishButton = (ImageButton) v.findViewById(R.id.addDishButton);
+            mGroupDishWeight = (LinearLayout) v.findViewById(R.id.group_dish_weight);
+            mGroupDishCalorisity = (LinearLayout) v.findViewById(R.id.group_dish_caloricity);
+
         }
     }
 
@@ -282,6 +293,7 @@ public class ExpandableDraggableSwipeableExampleAdapter
         holder.fatSubTotal.setText(df.format( item.getFat()));
         holder.proteinSubTotal.setText(df.format( item.getProtein()));
         holder.calorySubTotal.setText("" + item.getCalory());
+        holder.mDishWeight.setText("" + item.getWeight());
         holder.addDishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -289,7 +301,11 @@ public class ExpandableDraggableSwipeableExampleAdapter
             }
         });
 
-        if (item.getGroupId() != getGroupCount()-1) {
+        if (!TextUtils.isEmpty(holder.mNameTextView.getText()) && holder.mNameTextView.getText().toString().equals(holder.mNameTextView.getContext().getString(R.string.water_name)))  {
+            holder.mLinearLayoutFCP.setVisibility(View.GONE);
+            holder.mGroupDishCalorisity.setVisibility(View.GONE);
+            holder.mGroupDishWeight.setVisibility(View.VISIBLE);
+        } else if (item.getGroupId() != getGroupCount()-1) {
             holder.mLinearLayoutFCP.setVisibility(View.VISIBLE);
         } else {
             holder.mLinearLayoutFCP.setVisibility(View.GONE);
@@ -365,6 +381,7 @@ public class ExpandableDraggableSwipeableExampleAdapter
         holder.mCarbon.setText("" + item.getDishInfo().getCarbon());
         if  (holder.mAbsProtein != null) holder.mAbsProtein.setText("" + (item.getDishInfo().getCarbon() + item.getDishInfo().getAbsProtein()/10));
         holder.mDishWeight.setText("" + item.getDishInfo().getWeight());
+        holder.mTime.setText("" + item.getDishInfo().getDateTimeHH() +  ":" + ((item.getDishInfo().getDateTimeMM() > 9) ? item.getDishInfo().getDateTimeMM() : "0" +item.getDishInfo().getDateTimeMM()) );
 
         if (holder.mDdishWeightLayout != null) {
             if (item.getDishInfo().getAbsCarbon() > 0) {

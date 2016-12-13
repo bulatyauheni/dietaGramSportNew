@@ -680,6 +680,18 @@ public class IabHelper {
 								PaymentsListActivity.SKU_MUUNTH_NEW)) {
 							SaveUtils.setEndPDate(purchase.getPurchaseTime() + 32
 									* DateUtils.DAY_IN_MILLIS, mContext);
+						} else if (sku.equals(
+								PaymentsListActivity.SKU_HALFYEAR_2017)) {
+							SaveUtils.setEndPDate(purchase.getPurchaseTime() + 190
+									* DateUtils.DAY_IN_MILLIS, mContext);
+						} else if (sku.equals(
+								PaymentsListActivity.SKU_MUUNTH_2017)) {
+							SaveUtils.setEndPDate(purchase.getPurchaseTime() + 32
+									* DateUtils.DAY_IN_MILLIS, mContext);
+						} else if (sku.equals(
+								PaymentsListActivity.SKU_YEAR_2017)) {
+							SaveUtils.setEndPDate(purchase.getPurchaseTime() + 367
+									* DateUtils.DAY_IN_MILLIS, mContext);
 						}
 					}
 
@@ -1155,6 +1167,18 @@ public class IabHelper {
 										* DateUtils.DAY_IN_MILLIS, mContext);
 							} else if (sku.equals(
 									PaymentsListActivity.SKU_MUUNTH_NEW)) {
+								SaveUtils.setEndPDate(currDate.getTime() + 32
+										* DateUtils.DAY_IN_MILLIS, mContext);
+							}else if (sku.equals(
+									PaymentsListActivity.SKU_YEAR_2017)) {
+								SaveUtils.setEndPDate(currDate.getTime() + 367
+										* DateUtils.DAY_IN_MILLIS, mContext);
+							} else if (sku.equals(
+									PaymentsListActivity.SKU_HALFYEAR_2017)) {
+								SaveUtils.setEndPDate(currDate.getTime() + 190
+										* DateUtils.DAY_IN_MILLIS, mContext);
+							} else if (sku.equals(
+									PaymentsListActivity.SKU_MUUNTH_2017)) {
 								SaveUtils.setEndPDate(currDate.getTime() + 32
 										* DateUtils.DAY_IN_MILLIS, mContext);
 							}

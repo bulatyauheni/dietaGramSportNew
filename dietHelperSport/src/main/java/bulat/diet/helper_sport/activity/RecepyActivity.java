@@ -126,6 +126,10 @@ public class RecepyActivity extends BaseActivity {
 		//title FFF6EF
 		// TODO Auto-generated method stub
 		super.onResume();
+		sum = 0;
+		sumF = 0;
+		sumC = 0;
+		sumP = 0;
 		templateSpinner = (Spinner) findViewById(R.id.template_spinner);
 		loadTemplates();
 	

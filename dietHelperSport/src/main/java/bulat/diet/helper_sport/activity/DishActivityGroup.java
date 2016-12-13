@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 import com.dm.zbar.android.scanner.ZBarConstants;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import android.app.Activity;
 import android.app.ActivityGroup;
@@ -13,25 +16,43 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Window;
 import android.widget.Toast;
+
+import bulat.diet.helper_sport.R;
+import bulat.diet.helper_sport.db.NotificationDishHelper;
+import bulat.diet.helper_sport.item.NotificationDish;
 import bulat.diet.helper_sport.utils.Constants;
 import bulat.diet.helper_sport.utils.Consts;
 import bulat.diet.helper_sport.utils.Consts.PurchaseState;
 import bulat.diet.helper_sport.utils.Consts.ResponseCode;
+import bulat.diet.helper_sport.utils.SaveUtils;
 
 
-public class DishActivityGroup extends ActivityGroup{
+public class DishActivityGroup extends ActivityGroup implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
 
 	private Stack<String> stack;
 	private boolean flag=true;
-	
+
+	private void addWaterNotification() {
+		String name = null;
+		int enabled = 1;
+		name = getString(R.string.water_name);
+		String id = NotificationDishHelper.addNewNotification(new NotificationDish("50", name, "0", "0", enabled, 0), this);
+		Log.d("NOTIF", id + " water");
+		SaveUtils.setWaterNotificationLoded(true, this);
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);		
 		
 		if (stack == null) {
 			stack = new Stack<String>();
+		}
+		if(!SaveUtils.getWaterNotificationLoded(DishActivityGroup.this)){
+			addWaterNotification();
 		}
 		//String lastLoadDate = SaveUtils.loadLastLoadDate(this);
 		//if (lastLoadDate.length() == 0){
@@ -175,5 +196,14 @@ public class DishActivityGroup extends ActivityGroup{
 	        super.onStop();
 	        //ResponseHandler.unregister(mDungeonsPurchaseObserver);
 	}
-		
+
+	@Override
+	public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+
+	}
+
+	@Override
+	public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+
+	}
 }

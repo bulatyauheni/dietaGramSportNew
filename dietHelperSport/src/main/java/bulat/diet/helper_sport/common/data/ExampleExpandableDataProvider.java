@@ -261,7 +261,17 @@ public class ExampleExpandableDataProvider extends AbstractExpandableDataProvide
         private float fat;
         private float protein;
         private int calory;
- 		
+
+        private int weight;
+
+        public int getWeight() {
+            return weight;
+        }
+
+        public void setWeight(int weight) {
+            this.weight = weight;
+        }
+
         public int getCalory() {
 			return calory;
 		}

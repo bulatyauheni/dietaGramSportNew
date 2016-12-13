@@ -475,7 +475,9 @@ public static float getBodyWeightByDate(long date, Context context) {
 				d.setAbsProtein(Float.parseFloat(c.getString(c.getColumnIndex(DishProvider.TODAY_PROTEIN))));
 				d.setAbsFat(Float.parseFloat(c.getString(c.getColumnIndex(DishProvider.TODAY_FAT))));
 				d.setCaloricity(Integer.parseInt(c.getString(c.getColumnIndex(DishProvider.TODAY_DISH_CALORICITY))));
-				d.setWeight(Integer.parseInt(c.getString(c.getColumnIndex(DishProvider.TODAY_DISH_WEIGHT))));	
+				d.setWeight(Integer.parseInt(c.getString(c.getColumnIndex(DishProvider.TODAY_DISH_WEIGHT))));
+				d.setDateTimeHH(c.getInt(c.getColumnIndex(DishProvider.TODAY_DISH_TIME_HH)));
+				d.setDateTimeMM(c.getInt(c.getColumnIndex(DishProvider.TODAY_DISH_TIME_MM)));
 				dayList.add(d);
 	        }
 		}catch (Exception e) {

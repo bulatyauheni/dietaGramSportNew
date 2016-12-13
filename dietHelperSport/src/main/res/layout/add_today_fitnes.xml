@@ -106,7 +106,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:isScrollContainer="true"
-        android:scrollbarStyle="outsideInset"
+
         android:scrollbars="vertical" >
 
         <LinearLayout
@@ -125,12 +125,14 @@
                     android:id="@+id/linearLayoutPartOfDay"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/bg_group_item_dragging_active_state"
                     android:orientation="horizontal" >
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0px"
                         android:layout_height="fill_parent"
-                        android:layout_marginRight="10dp"
+
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:orientation="vertical" >
 
@@ -141,26 +143,23 @@
                             android:layout_marginLeft="10dp"
                             android:text="@string/timeHHMMFitnes"
                             android:textColor="@color/text_color"
-                            android:textSize="15dip" />
+                            android:textSize="19dip" />
                     </LinearLayout>
 
-                    <Spinner
-                        android:id="@+id/SpinnerHour"
-                        android:layout_width="fill_parent"
+                    <TextView
+                        android:id="@+id/textViewTime"
+                        android:layout_width="0px"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:textColor="@color/text_color" />
-
-                    <Spinner
-                        android:id="@+id/SpinnerMin"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:textColor="@color/text_color" />
+                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="0dip"
+                        android:text=""
+                        android:textColor="@color/text_color_blue"
+                        android:drawableRight="@drawable/ic_item_swipe_pinned"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:textSize="22dip" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -339,7 +338,7 @@
                         android:layout_marginTop="5dip"
                         android:text="@string/amoutnt_of_burn_calory"
                         android:textColor="@color/text_color"
-                        android:textSize="17dip" />
+                        android:textSize="19dip" />
 
                     <TextView
                         android:id="@+id/textCaloricityValue"

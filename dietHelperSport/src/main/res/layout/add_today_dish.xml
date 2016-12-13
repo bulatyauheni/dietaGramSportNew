@@ -83,52 +83,11 @@
         </LinearLayout>
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/light_green">
-
-        <TextView
-            android:id="@+id/textViewLoading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="10dip"
-            android:paddingRight="20dip"
-            android:textSize="19dip"></TextView>
-
-        <TextView
-            android:id="@+id/textViewDishName"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_alignBottom="@+id/textViewLoading"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dip"
-            android:layout_marginRight="5dip"
-            android:gravity="center_vertical"
-            android:text="TextView"
-            android:textColor="@color/text_color"
-            android:textSize="16dip" />
-
-        <Button
-            android:id="@+id/buttonChangeDish"
-            android:layout_width="35dip"
-            android:layout_height="35dip"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="5dip"
-            android:layout_marginRight="18dp"
-            android:background="@drawable/change_button_xml"
-            android:text="" />
-    </RelativeLayout>
-
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:isScrollContainer="true"
-        android:scrollbarStyle="outsideInset"
+
         android:scrollbars="vertical">
 
         <LinearLayout
@@ -157,9 +116,10 @@
 
                         <LinearLayout
                             android:id="@+id/linearLayoutPartOfDay4"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0px"
                             android:layout_height="fill_parent"
                             android:layout_marginRight="10dp"
+                            android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:orientation="vertical">
 
@@ -168,14 +128,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:text="@string/time"
+                                android:text="@string/day_time"
                                 android:textColor="@color/text_color"
                                 android:textSize="19dip" />
                         </LinearLayout>
 
                         <Spinner
                             android:id="@+id/SpinnerPartOfDay"
-                            android:layout_width="fill_parent"
+                            android:layout_width="0px"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="0dp"
@@ -188,13 +148,15 @@
                         android:id="@+id/linearLayoutPartOfDay3"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/bg_group_item_dragging_active_state"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:id="@+id/linearLayoutPartOfDay2"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0px"
                             android:layout_height="fill_parent"
                             android:layout_marginRight="10dp"
+                            android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:orientation="vertical">
 
@@ -205,26 +167,23 @@
                                 android:layout_marginLeft="10dp"
                                 android:text="@string/timeHHMM"
                                 android:textColor="@color/text_color"
-                                android:textSize="15dip" />
+                                android:textSize="19dip" />
                         </LinearLayout>
 
-                        <Spinner
-                            android:id="@+id/SpinnerHour"
-                            android:layout_width="fill_parent"
+                        <TextView
+                            android:id="@+id/textViewTime"
+                            android:layout_width="0px"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="0dp"
                             android:layout_weight="1"
-                            android:textColor="@color/text_color" />
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="0dip"
+                            android:text=""
+                            android:textColor="@color/text_color_blue"
+                            android:drawableRight="@drawable/ic_item_swipe_pinned"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:textSize="22dip" />
 
-                        <Spinner
-                            android:id="@+id/SpinnerMin"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="0dp"
-                            android:layout_weight="1"
-                            android:textColor="@color/text_color" />
+
 
                     </LinearLayout>
                 </LinearLayout>
@@ -245,7 +204,7 @@
                         android:layout_marginTop="0dip"
                         android:text="@string/amoutnt_of_calory"
                         android:textColor="@color/text_color"
-                        android:textSize="16dip" />
+                        android:textSize="19dip" />
 
                     <TextView
                         android:id="@+id/textCaloricityValue"
@@ -257,7 +216,7 @@
                         android:layout_marginTop="0dip"
                         android:text="0"
                         android:textColor="@color/text_color"
-                        android:textSize="17dip" />
+                        android:textSize="19dip" />
 
                     <TextView
                         android:id="@+id/textCaloricityValueLabel"
@@ -283,6 +242,7 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="center_horizontal"
                         android:background="@color/light_green"
                         android:orientation="horizontal">
 
@@ -317,6 +277,7 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="center_horizontal"
                         android:background="@color/light_green"
                         android:orientation="horizontal">
 
@@ -350,6 +311,7 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="center_horizontal"
                         android:background="@color/light_green"
                         android:orientation="horizontal">
 
@@ -387,7 +349,7 @@
                     android:layout_marginTop="2dp"
                     android:text="@string/portion_size"
                     android:textColor="@color/text_color"
-                    android:textSize="16dip" />
+                    android:textSize="19dip" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -423,5 +385,45 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green">
+
+        <TextView
+            android:id="@+id/textViewLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dip"
+            android:layout_marginTop="10dip"
+            android:paddingRight="20dip"
+            android:textSize="19dip"></TextView>
+
+        <TextView
+            android:id="@+id/textViewDishName"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignBottom="@+id/textViewLoading"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="5dip"
+            android:gravity="center_vertical|center_horizontal"
+            style="@style/textBig" />
+
+        <Button
+            android:id="@+id/buttonChangeDish"
+            android:layout_width="35dip"
+            android:layout_height="35dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dip"
+            android:layout_marginRight="18dp"
+            android:background="@drawable/change_button_xml"
+            android:text=""
+            android:visibility="gone"/>
+    </RelativeLayout>
 
 </LinearLayout>

@@ -258,6 +258,17 @@ public class BasePayActivity extends Activity {
 							BasePayActivity.this);
 
 				}
+
+				// Do we have the manth plan?
+				Purchase yearPlanPurchase2017 = inventory
+						.getPurchase(PaymentsListActivity.SKU_YEAR_2017);
+				if (yearPlanPurchase2017 != null
+						&& verifyDeveloperPayload(yearPlanPurchase2017)) {
+					SaveUtils.setEndPDate(yearPlanPurchase2017.getPurchaseTime()
+									+ 367 * DateUtils.DAY_IN_MILLIS,
+							BasePayActivity.this);
+
+				}
 				
 				// Do we have the manth plan?
 				Purchase yearPlanPurchaseVIP = inventory
@@ -280,6 +291,17 @@ public class BasePayActivity extends Activity {
 							BasePayActivity.this);
 
 				}
+
+				// Do we have the manth plan?
+				Purchase halfYearPlanPurchase2017 = inventory
+						.getPurchase(PaymentsListActivity.SKU_HALFYEAR_2017);
+				if (halfYearPlanPurchase2017 != null
+						&& verifyDeveloperPayload(halfYearPlanPurchase2017)) {
+					SaveUtils.setEndPDate(halfYearPlanPurchase2017.getPurchaseTime()
+									+ 190 * DateUtils.DAY_IN_MILLIS,
+							BasePayActivity.this);
+
+				}
 				
 				// Do we have the manth plan?
 				Purchase munthPlanPurchasenew = inventory
@@ -288,6 +310,16 @@ public class BasePayActivity extends Activity {
 						&& verifyDeveloperPayload(munthPlanPurchasenew)) {
 					SaveUtils.setEndPDate(munthPlanPurchasenew.getPurchaseTime()
 							+ 32 * DateUtils.DAY_IN_MILLIS,
+							BasePayActivity.this);
+
+				}
+
+				Purchase munthPlanPurchase2017 = inventory
+						.getPurchase(PaymentsListActivity.SKU_MUUNTH_2017);
+				if (munthPlanPurchase2017 != null
+						&& verifyDeveloperPayload(munthPlanPurchase2017)) {
+					SaveUtils.setEndPDate(munthPlanPurchase2017.getPurchaseTime()
+									+ 32 * DateUtils.DAY_IN_MILLIS,
 							BasePayActivity.this);
 
 				}

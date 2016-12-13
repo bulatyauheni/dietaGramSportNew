@@ -63,6 +63,11 @@ import bulat.diet.helper_sport.utils.SaveUtils;
 public class PaymentsListActivity extends BasePayActivity {
 	
 	public static final String SKU_YEAR_VIP = "vip_abonement";
+
+	public static final String SKU_YEAR_2017 = "dg_sport_1year_2017";
+	public static final String SKU_HALFYEAR_2017 = "dg_sport_halfyear_2017";
+	public static final String SKU_MUUNTH_2017 = "dg_sport_month_2017";
+
 	public static final String SKU_YEAR_NEW = "2016_year_ordinary";
 	public static final String SKU_HALFYEAR = "2016_halfyear_ordinary";
 	public static final String SKU_MUUNTH_NEW = "2016_month_ordinary";
@@ -118,12 +123,15 @@ public class PaymentsListActivity extends BasePayActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		String[] list = { getString(R.string.paymentvipy), getString(R.string.paymenty), getString(R.string.paymenthy),
-				getString(R.string.paymentm), getString(R.string.paymentspec), getString(R.string.paymenterror) };
+		String[] list = { getString(R.string.paymentvipy),
+				getString(R.string.paymenty)+ " " + String.format(getString(R.string.paymentbenefit), "70%"),
+				getString(R.string.paymenthy)+ " " + String.format(getString(R.string.paymentbenefit), "58%"),
+				getString(R.string.paymentm),
+				getString(R.string.paymentspec),
+				getString(R.string.paymenterror) };
 
 		ListView listView = (ListView) findViewById(R.id.listViewStatistics);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_single_choice, list) {
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.payment_row, list) {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
 				View view = super.getView(position, convertView, parent);
@@ -146,9 +154,6 @@ public class PaymentsListActivity extends BasePayActivity {
 
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				// TODO Auto-generated method stub
-				// selectedInemId = arg1
-				CheckedTextView textView = (CheckedTextView) arg1;
 				selectedInemId = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						PaymentsListActivity.this.getParent().getParent());
@@ -254,7 +259,7 @@ public class PaymentsListActivity extends BasePayActivity {
 						Log.d(TAG,
 								"Launching purchase flow for infinite gas subscription.");
 						mHelper.launchPurchaseFlow(PaymentsListActivity.this,
-								SKU_YEAR_NEW, IabHelper.ITEM_TYPE_SUBS,
+								SKU_YEAR_2017, IabHelper.ITEM_TYPE_SUBS,
 								RC_REQUEST, mPurchaseFinishedListener, payload);
 					} else if (selectedInemId == 2) {
 						if (!mHelper.subscriptionsSupported()) {
@@ -269,7 +274,7 @@ public class PaymentsListActivity extends BasePayActivity {
 						Log.d(TAG,
 								"Launching purchase flow for infinite gas subscription.");
 						mHelper.launchPurchaseFlow(PaymentsListActivity.this,
-								SKU_HALFYEAR, IabHelper.ITEM_TYPE_SUBS,
+								SKU_HALFYEAR_2017, IabHelper.ITEM_TYPE_SUBS,
 								RC_REQUEST, mPurchaseFinishedListener, payload);
 					} else if (selectedInemId == 3) {
 						if (!mHelper.subscriptionsSupported()) {
@@ -284,7 +289,7 @@ public class PaymentsListActivity extends BasePayActivity {
 						Log.d(TAG,
 								"Launching purchase flow for infinite gas subscription.");
 						mHelper.launchPurchaseFlow(PaymentsListActivity.this,
-								SKU_MUUNTH_NEW, IabHelper.ITEM_TYPE_SUBS,
+								SKU_MUUNTH_2017, IabHelper.ITEM_TYPE_SUBS,
 								RC_REQUEST, mPurchaseFinishedListener, payload);
 					}
 
@@ -451,6 +456,18 @@ public class PaymentsListActivity extends BasePayActivity {
 					SaveUtils.setEndPDate(date.getTime() + 32
 							* DateUtils.DAY_IN_MILLIS, PaymentsListActivity.this);
 				}
+				 if (sku.equals(SKU_YEAR_2017)) {
+					 SaveUtils.setEndPDate(date.getTime() + 367
+							 * DateUtils.DAY_IN_MILLIS, PaymentsListActivity.this);
+				 }
+				 if (sku.equals(SKU_HALFYEAR_2017)) {
+					 SaveUtils.setEndPDate(date.getTime() + 190
+							 * DateUtils.DAY_IN_MILLIS, PaymentsListActivity.this);
+				 }
+				 if (sku.equals(SKU_MUUNTH_2017)) {
+					 SaveUtils.setEndPDate(date.getTime() + 32
+							 * DateUtils.DAY_IN_MILLIS, PaymentsListActivity.this);
+				 }
 	            //alert("You have bought the " + sku + ". Excellent choice, adventurer!");
 	          }
 	          catch (JSONException e) {

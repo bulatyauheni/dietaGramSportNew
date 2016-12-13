@@ -9,8 +9,12 @@ import java.util.Date;
 import java.util.Locale;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -28,6 +32,10 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.db.DishListHelper;
 import bulat.diet.helper_sport.db.NotificationDishHelper;
@@ -39,7 +47,7 @@ import bulat.diet.helper_sport.item.TodayDish;
 import bulat.diet.helper_sport.utils.SaveUtils;
 import bulat.diet.helper_sport.utils.SocialUpdater;
 
-public class AddTodayDishActivity extends BaseActivity {
+public class AddTodayDishActivity extends BaseAddActivity implements TimePickerDialog.OnTimeSetListener {
 	public static final String DISH_NAME = "dish_name";
 	public static final String DISH_CALORISITY = "dish_calorisity";
 	public static final String DISH_CATEGORY = "dish_category";
@@ -79,10 +87,8 @@ public class AddTodayDishActivity extends BaseActivity {
 	private TextView dishFatVTW;
 	private TextView dishCarbonVTW;
 	private TextView dishProteinVTW;
-	private Spinner spinnerTimeHH;
-	private Spinner spinnerTimeMM;
-	private String timeMMValue;
-	private String timeHHValue;
+	private TextView timeTW;
+
 	private String recepyId;
 	private boolean edit = true;
 	private String dayTimeId;
@@ -114,8 +120,8 @@ public class AddTodayDishActivity extends BaseActivity {
 		//get time value if user clic edit today dish
 		timeValue = extras.getString(DISH_TIME);
 		typeValue = extras.getString(DISH_STAT_TYPE);
-		timeHHValue = extras.getString(DISH_TIME_HH);
-		timeMMValue = extras.getString(DISH_TIME_MM);
+		timeHHValue = Integer.getInteger(extras.getString(DISH_TIME_HH));
+		timeMMValue = Integer.getInteger(extras.getString(DISH_TIME_MM));
 		currDate = extras.getString(DishActivity.DATE);
 
 		if (id != null) {
@@ -130,8 +136,8 @@ public class AddTodayDishActivity extends BaseActivity {
 			proteinValue = "" + dish.getProtein();
 			timeValue = dish.getDayTyme();
 			typeValue = dish.getType();
-			timeHHValue = "" + dish.getDateTimeHH();
-			timeMMValue = "" + dish.getDateTimeMM();
+			timeHHValue = dish.getDateTimeHH();
+			timeMMValue = dish.getDateTimeMM();
 			currDate = dish.getDate();
 		} else {
 			TodayDish dish = TodayDishHelper.getDishByName(dishName, this);
@@ -143,7 +149,12 @@ public class AddTodayDishActivity extends BaseActivity {
 		if (weight == 0) {
 			edit = false;
 		}
+
+		Calendar now = Calendar.getInstance();
+		timeHHValue = timeHHValue != null ? timeHHValue : now.getTime().getHours();
+		timeMMValue = timeMMValue != null ? timeMMValue : now.getTime().getMinutes();
 	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -207,7 +218,7 @@ public class AddTodayDishActivity extends BaseActivity {
 
 			try {
 				if (notif.getName().equals(dayTimeId)) {
-					SaveUtils.saveLastTime(num, AddTodayDishActivity.this);
+					SaveUtils.saveLastTime(num, this);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -225,9 +236,6 @@ public class AddTodayDishActivity extends BaseActivity {
 		} else {
 			spinnerTime.setSelection(0);
 		}
-		
-		spinnerTime.setOnItemSelectedListener(spinnerListener);
-		
 
 		if (timeValue != null) {
 			try {
@@ -240,59 +248,52 @@ public class AddTodayDishActivity extends BaseActivity {
 			}
 		}
 
-		spinnerTimeHH = (Spinner) viewToLoad.findViewById(R.id.SpinnerHour);
-		
+		timeTW = (TextView) viewToLoad.findViewById(R.id.textViewTime);
+		setTime(timeTW);
+		timeTW.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+
+				TimePickerDialog tpd = TimePickerDialog.newInstance(
+						(TimePickerDialog.OnTimeSetListener) AddTodayDishActivity.this,
+						timeHHValue,
+						timeMMValue,
+						true
+				);
+
+				tpd.setThemeDark(true);
+				tpd.vibrate(true);
+				tpd.dismissOnPause(true);
+				tpd.enableSeconds(false);
+				tpd.setVersion(TimePickerDialog.Version.VERSION_2 );// TimePickerDialog.Version.VERSION_1
+				tpd.setAccentColor(Color.parseColor("#4981A0"));
+				tpd.setTitle("TimePicker Title");
+				tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+					@Override
+					public void onCancel(DialogInterface dialogInterface) {
+
+					}
+				});
+				tpd.show(AddTodayDishActivity.this.getParent().getFragmentManager(), "Datepickerdialog");
+			}
+		});
+
 		ArrayList<DishType> hours = new ArrayList<DishType>();
 		for (int i = 0; i < 24; i++) {
 			hours.add(new DishType(i, String.valueOf(i)));
 		}
 		ArrayAdapter<DishType> adapterHH = new ArrayAdapter<DishType>(this,
 				android.R.layout.simple_spinner_item, hours);
-		Calendar c = Calendar.getInstance(); 
-		
+		Calendar c = Calendar.getInstance();
+
 		adapterHH
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerTimeHH.setAdapter(adapterHH);
-		spinnerTimeHH.setSelection(c.getTime().getHours());
-		spinnerTimeHH.setOnItemSelectedListener(spinnerListener);
 
-		if (timeHHValue != null) {
-			try {
-				int timeValueint = Integer.valueOf(timeHHValue);
-				spinnerTimeHH.setSelection(timeValueint);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		//spinnerTimeMM.setOnItemSelectedListener(spinnerListener);
 
-		spinnerTimeMM = (Spinner) viewToLoad.findViewById(R.id.SpinnerMin);
-		if(recepyId!=null){
-			LinearLayout linearLayout = (LinearLayout) viewToLoad.findViewById(R.id.linearLayoutTime);
-			linearLayout.setVisibility(View.GONE);
-		}
-		ArrayList<DishType> min = new ArrayList<DishType>();
-		for (int i = 0; i < 60; i++) {
-			min.add(new DishType(i, String.valueOf(i)));
-		}
-		ArrayAdapter<DishType> adapterMM = new ArrayAdapter<DishType>(this,
-				android.R.layout.simple_spinner_item, min);
-		adapterMM
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerTimeMM.setAdapter(adapterMM);
-		spinnerTimeMM.setSelection(c.getTime().getMinutes());
-		spinnerTimeMM.setOnItemSelectedListener(spinnerListener);
-
-
-		if (timeMMValue != null) {
-			try {
-				int timeValueint = Integer.valueOf(timeMMValue);
-				spinnerTimeMM.setSelection(timeValueint);
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-
-		}
 
 		// set weight
 		weightView.addTextChangedListener(searchEditTextWatcher);
@@ -403,25 +404,7 @@ public class AddTodayDishActivity extends BaseActivity {
 			spinnerTime.setSelection(SaveUtils.getLastTime(this));
 		}
 		
-		/*if(recepyId == null && !edit){
-			spinnerTime.performClick();
-		}*/
-		if (timeMMValue != null) {
-			try {
-				int timeValueint = Integer.valueOf(timeMMValue);
-				spinnerTimeMM.setSelection(timeValueint);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		if (timeHHValue != null) {
-			try {
-				int timeValueint = Integer.valueOf(timeHHValue);
-				spinnerTimeHH.setSelection(timeValueint);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+
 		if (timeValue != null) {
 			try {
 				int timeValueint = Integer.valueOf(timeValue);
@@ -503,29 +486,11 @@ public class AddTodayDishActivity extends BaseActivity {
 			}
 		}
 	};
-	private OnItemSelectedListener spinnerListener = new OnItemSelectedListener() {
-
-		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-				long arg3) {
-			try{
-				SaveUtils.saveLastTime((int) (spinnerTime
-					.getSelectedItemId()),
-					AddTodayDishActivity.this);
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-
-		}
-
-		public void onNothingSelected(AdapterView<?> arg0) {
-			// TODO Auto-generated method stub
-
-		}
-	};
 
 	private OnClickListener addDishClickListener = new OnClickListener() {
 
 		public void onClick(View v) {
+
 			StartActivity.checkCalendar(AddTodayDishActivity.this);
 			if (!"".endsWith(weightView.getText().toString())) {
 				if (flag_add == 1) {
@@ -565,8 +530,8 @@ public class AddTodayDishActivity extends BaseActivity {
 							Float.parseFloat(dishCarbonVTW.getText().toString().trim().replace(',', '.')),
 							Float.parseFloat(proteinValue.trim().replace(',', '.')),
 							Float.parseFloat(dishProteinVTW.getText().toString().trim().replace(',', '.')),
-							(int) spinnerTimeHH.getSelectedItemId(),
-							(int) spinnerTimeMM.getSelectedItemId());
+							timeHHValue,
+							timeMMValue);
 					if (templateFlag) {
 						if(recepyId != null){
 							td.setDateTime(0);
@@ -601,8 +566,8 @@ public class AddTodayDishActivity extends BaseActivity {
 								Float.parseFloat(dishCarbonVTW.getText().toString().trim().replace(',', '.')),
 								Float.parseFloat(proteinValue),
 								Float.parseFloat(dishProteinVTW.getText().toString().trim().replace(',', '.')),
-								(int) spinnerTimeHH.getSelectedItemId(),
-								(int) spinnerTimeMM.getSelectedItemId());
+								timeHHValue,
+								timeMMValue);
 						if (templateFlag) {
 							TemplateDishHelper.updateDish(td,
 									AddTodayDishActivity.this);
@@ -646,4 +611,12 @@ public class AddTodayDishActivity extends BaseActivity {
 			AddTodayDishActivity.this.sendBroadcast(i);
 		}
 	};
+
+
+	@Override
+	public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+		timeHHValue = hourOfDay;
+		timeMMValue = minute;
+		setTime(timeTW);
+	}
 }

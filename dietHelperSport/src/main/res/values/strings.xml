@@ -7,7 +7,7 @@
     <string name="localeen">en</string>
     <string name="localeby">by</string>
     <string name="localees">es</string>
-    <string name="app_name">DietaGram Sport</string>
+    <string name="app_name">DietaGram</string>
     <string name="tab_dish">Сегодня</string>
     <string name="tab_calendar">История</string>
     <string name="tab_dishlist">Список</string>
@@ -257,6 +257,7 @@
     <string name="set_notiftime_label">напоминание в: </string>
     <string name="set_notiftime_label_off">напоминание выключено</string>
     <string name="set_notif_title">Настройка приёмов пищи</string>
+    <string name="day_time">Приём пищи:</string>
     <string name="set_notiftime_toast_on">напоминание включено</string>
 
     <string name="advlabel">Калькулятор предоставлен сайтом</string>
@@ -291,6 +292,7 @@
     <string name="paymenty">Абонемент на год</string>
     <string name="paymenthy">Абонемент на полгода</string>
     <string name="paymentvipy">VIP Абонемент</string>
+    <string name="paymentbenefit">(выгода: %1$s)</string>
     <string name="payment_dialog_month">Оплатив абонемент на месяц вы сможете 30 дней пользоваться всем функционалом приложения. Вы согласны оплатить? </string>
     <string name="payment_dialog_halfyear">Оплатив абонемент на полгода вы сможете 190 дней пользоваться всем функционалом приложения. Вы согласны оплатить? </string>
     <string name="payment_dialog_year">Оплатив абонемент на год вы сможете 365 дней пользоваться всем функционалом приложения. Вы согласны оплатить? </string>
@@ -301,7 +303,7 @@
     <string name="water_name">Вода</string>
 
     <string name="user_email_label">Введите ваш email (для получения рациона от диетолога)</string>
-    <string name="user_abonement_label">Введите ваш email (для получения абонемента по акции)</string>
+    <string name="user_abonement_label">Введите код (для получения абонемента по акции)</string>
     <string name="user_email_hint">Ваш email</string>
     <string name="user_email_title">Получение рациона</string>
     <string name="user_abonement_title">Получение абонемента</string>

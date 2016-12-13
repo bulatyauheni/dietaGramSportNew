@@ -36,6 +36,7 @@
             android:background="@color/white">
 
             <LinearLayout
+                android:id="@+id/group_dish_caloricity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -56,6 +57,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/kcal"
+                    android:textColor="@color/text_color_blue"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/group_dish_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="left|fill_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textViewDishWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="159"
+                    android:textColor="@color/text_color_blue"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/gram"
                     android:textColor="@color/text_color_blue"
                     android:textSize="13sp" />
             </LinearLayout>

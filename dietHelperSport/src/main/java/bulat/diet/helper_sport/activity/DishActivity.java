@@ -299,12 +299,17 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         float sumC = 0;
         float sumP = 0;
         int sum = 0;
+        int sumMinus = 0;
 
         for (TodayDish dish : baseData) {
-            sumC = sumC + dish.getCarbon();
-            sumF = sumF + dish.getFat();
-            sumP = sumP + dish.getProtein();
-            sum = sum + dish.getCaloricity();
+            if (dish.getCaloricity()>=0) {
+                sumC = sumC + dish.getCarbon();
+                sumF = sumF + dish.getFat();
+                sumP = sumP + dish.getProtein();
+                sum = sum + dish.getCaloricity();
+            } else {
+                sumMinus = sumMinus + dish.getCaloricity();
+            }
         }
 
         TextView tvTotalCalorie = (TextView) findViewById(R.id.textViewTotalValue);
@@ -315,7 +320,7 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         TextView tvFp = (TextView) findViewById(R.id.textViewFatPercent);
         TextView tvCp = (TextView) findViewById(R.id.textViewCarbonPercent);
         TextView tvPp = (TextView) findViewById(R.id.textViewProteinPercent);
-        tvTotalCalorie.setText(String.valueOf(sum));
+        tvTotalCalorie.setText(String.valueOf(sum + sumMinus));
         //tvLoose.setText(String.valueOf(sumLoose));
         DecimalFormat df = new DecimalFormat("###.#");
         tvF.setText(df.format(Float.valueOf(sumF)));
@@ -605,7 +610,43 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
                 DishActivityGroup activityStack = (DishActivityGroup) getParent();
                 activityStack.push("FitnesActivity", intent);
             }
-        } else {
+        } else if (getString(R.string.water_name).equals(groupId)) {
+            Intent intent = new Intent();
+            try {
+                intent.setClass(getParent(), AddTodayDishActivity.class);
+                intent.putExtra(AddTodayDishActivity.TITLE,
+                        getString(R.string.add_today_dish));
+                intent.putExtra(AddTodayDishActivity.ADD, 1);
+                intent.putExtra(DishActivity.DATE, curentDateandTime);
+                intent.putExtra(AddTodayDishActivity.DISH_NAME,
+                        getString(R.string.water_name));
+                intent.putExtra(AddTodayDishActivity.DISH_CALORISITY, 0);
+                intent.putExtra(AddTodayDishActivity.DISH_FAT, "0");
+                intent.putExtra(AddTodayDishActivity.DISH_CARBON, "0");
+                intent.putExtra(AddTodayDishActivity.DISH_PROTEIN, "0");
+                intent.putExtra(AddTodayDishActivity.DISH_ABSOLUTE_CALORISITY,
+                        0);
+                intent.putExtra(DAY_TIME_ID, groupId);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            // TODO Auto-generated method stub
+            // ((TextView)arg1.findViewById(R.id.textViewDishName)).getText()
+
+            if (CalendarActivityGroup.class.toString().equals(parentName)) {
+                CalendarActivityGroup activityStack = (CalendarActivityGroup) DishActivity.this
+                        .getParent();
+                activityStack.push("AddTodayDishActivityCalendar", intent);
+            } else {
+                DishActivityGroup activityStack = (DishActivityGroup) DishActivity.this
+                        .getParent();
+                activityStack.push("AddTodayDishActivity", intent);
+            }
+        }
+        else {
             Intent intent = new Intent();
             intent.putExtra(DishActivity.DATE, curentDateandTime);
             intent.putExtra(PARENT_NAME, parentName);
@@ -886,6 +927,7 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
             float tempCarbon = 0;
             float tempProtein = 0;
             int tempCalory = 0;
+            int tempWeight = 0;
             for (TodayDish dish : baseData) {
                 final long childId = Long.parseLong(dish.getId());
                 final String childText = dish.getName();
@@ -895,12 +937,15 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
                     tempFat = tempFat + dish.getFat();
                     tempProtein = tempProtein + dish.getProtein();
                     tempCalory = tempCalory + dish.getCaloricity();
+                    tempWeight = tempWeight + dish.getWeight();
                 }
             }
             group.setFat(tempFat);
             group.setCarbon(tempCarbon);
             group.setProtein(tempProtein);
             group.setCalory(tempCalory);
+            group.setWeight(tempWeight);
+
             mData.add(new Pair<ExampleExpandableDataProvider.DayTimeGroupData, List<ExampleExpandableDataProvider.DishItemData>>(group, children));
             i++;
         }

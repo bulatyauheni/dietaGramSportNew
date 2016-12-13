@@ -176,6 +176,8 @@ public class StartActivity extends BasePayActivity{
 		SaveUtils.setNotificationLoded(true, this);
 	}
 
+
+
 	@Override
 	    protected Dialog onCreateDialog(int id) {
 	        switch (id) {
@@ -415,6 +417,7 @@ public class StartActivity extends BasePayActivity{
 					if(!SaveUtils.getNotificationLoded(StartActivity.this)){
 						createNotifications();
 					}
+
 					sliptask = new SleepTask();	
 					sliptask.execute();
 					

@@ -4,11 +4,14 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -27,6 +30,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.db.DishListHelper;
 import bulat.diet.helper_sport.db.TemplateDishHelper;
@@ -39,7 +45,7 @@ import bulat.diet.helper_sport.utils.DialogUtils;
 import bulat.diet.helper_sport.utils.SaveUtils;
 import bulat.diet.helper_sport.utils.SocialUpdater;
 
-public class AddTodayFitnesActivity extends BaseActivity {
+public class AddTodayFitnesActivity extends BaseAddActivity implements TimePickerDialog.OnTimeSetListener{
 	public static final String DISH_NAME = "dish_name";
 	public static final String CALORYBURN = "CALORYBURN";
 	public static final String DISH_CALORISITY = "dish_calorisity";
@@ -66,10 +72,6 @@ public class AddTodayFitnesActivity extends BaseActivity {
 	Spinner weightSpinner;
 	private String activitiName;
 	private int selection;
-	private Spinner spinnerTimeHH;
-	private Spinner spinnerTimeMM;
-	private String timeHHValue;
-	private String timeMMValue;
 	private String sportName;
 	private String calotyBurn="0";
 	private String fitnesWay;
@@ -83,6 +85,7 @@ public class AddTodayFitnesActivity extends BaseActivity {
 	private int fitnesWeightSelection;
 	private int fitnesWeightDecSelection;
 	private int weight;
+	private TextView timeTW;
 
 	private void initData(Bundle extras) {
 
@@ -101,8 +104,8 @@ public class AddTodayFitnesActivity extends BaseActivity {
 		templateFlag = extras.getBoolean(NewTemplateActivity.TEMPLATE);
 		category = extras.getInt(DISH_CATEGORY);
 		flag_add = extras.getInt(ADD);
-		timeHHValue = extras.getString(AddTodayDishActivity.DISH_TIME_HH);
-		timeMMValue = extras.getString(AddTodayDishActivity.DISH_TIME_MM);
+		timeHHValue = Integer.getInteger(extras.getString(AddTodayDishActivity.DISH_TIME_HH));
+		timeMMValue = Integer.getInteger(extras.getString(AddTodayDishActivity.DISH_TIME_MM));
 		//
 		parentName = extras.getString(DishActivity.PARENT_NAME);
 		templateFlag = extras.getBoolean(NewTemplateActivity.TEMPLATE);
@@ -134,13 +137,16 @@ public class AddTodayFitnesActivity extends BaseActivity {
 			calotyBurn = "0";
 			sportName = dish.getName();
 			weight = dish.getWeight();
-			timeHHValue = "" + dish.getDateTimeHH();
-			timeMMValue = "" + dish.getDateTimeMM();
+			timeHHValue = dish.getDateTimeHH();
+			timeMMValue = dish.getDateTimeMM();
 			currDate = dish.getDate();
 
 			activitiName = dish.getName();
 		}
 
+		Calendar now = Calendar.getInstance();
+		timeHHValue = timeHHValue != null ? timeHHValue : now.getTime().getHours();
+		timeMMValue = timeMMValue != null ? timeMMValue : now.getTime().getMinutes();
 	}
 
 	// public static final String DISH_NAME = "dish_name";
@@ -157,52 +163,39 @@ public class AddTodayFitnesActivity extends BaseActivity {
 		initData(getIntent().getExtras());
 		activitiName = "";
 
-		// time
-		spinnerTimeHH = (Spinner) viewToLoad.findViewById(R.id.SpinnerHour);
-		ArrayList<DishType> hours = new ArrayList<DishType>();
-		for (int i = 0; i < 24; i++) {
-			hours.add(new DishType(i, String.valueOf(i)));
-		}
-		ArrayAdapter<DishType> adapterHH = new ArrayAdapter<DishType>(this,
-				android.R.layout.simple_spinner_item, hours);
-		adapterHH
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerTimeHH.setAdapter(adapterHH);
-		spinnerTimeHH.setSelection(12);
-		spinnerTimeHH.setOnItemSelectedListener(spinnerListener);
 
+		timeTW = (TextView) viewToLoad.findViewById(R.id.textViewTime);
+		setTime(timeTW);
+		timeTW.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
 
-		if (timeHHValue != null) {
-			try {
-				int timeValueint = Integer.valueOf(timeHHValue);
-				spinnerTimeHH.setSelection(timeValueint);
-			} catch (Exception e) {
-				e.printStackTrace();
+				TimePickerDialog tpd = TimePickerDialog.newInstance(
+						(TimePickerDialog.OnTimeSetListener) AddTodayFitnesActivity.this,
+						timeHHValue,
+						timeMMValue,
+						true
+				);
+
+				tpd.setThemeDark(true);
+				tpd.vibrate(true);
+				tpd.dismissOnPause(true);
+				tpd.enableSeconds(false);
+				tpd.setVersion(TimePickerDialog.Version.VERSION_2 );// TimePickerDialog.Version.VERSION_1
+				tpd.setAccentColor(Color.parseColor("#4981A0"));
+				tpd.setTitle("TimePicker Title");
+				tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+					@Override
+					public void onCancel(DialogInterface dialogInterface) {
+
+					}
+				});
+				tpd.show(AddTodayFitnesActivity.this.getParent().getFragmentManager(), "Datepickerdialog");
 			}
-		}
-
-		spinnerTimeMM = (Spinner) viewToLoad.findViewById(R.id.SpinnerMin);
-		ArrayList<DishType> min = new ArrayList<DishType>();
-		for (int i = 0; i < 60; i++) {
-			min.add(new DishType(i, String.valueOf(i)));
-		}
-		ArrayAdapter<DishType> adapterMM = new ArrayAdapter<DishType>(this,
-				android.R.layout.simple_spinner_item, min);
-		adapterMM
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerTimeMM.setAdapter(adapterMM);
-		spinnerTimeMM.setSelection(30);
-		spinnerTimeMM.setOnItemSelectedListener(spinnerListener);
+		});
 
 
-		if (timeMMValue != null) {
-			try {
-				int timeValueint = Integer.valueOf(timeMMValue);
-				spinnerTimeMM.setSelection(timeValueint);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		//spinnerTimeMM.setOnItemSelectedListener(spinnerListener);
 
 		if (flag_add == 0) {
 			header.setText(getString(R.string.edit_today_fitnes));
@@ -284,8 +277,8 @@ public class AddTodayFitnesActivity extends BaseActivity {
 										fitWeightSpinner.getSelectedItemId()>=0?fitWeightSpinner.getSelectedItemId():0,
 										fitWeightDecSpinner.getSelectedItemId()>=0?fitWeightDecSpinner.getSelectedItemId():0,
 										0,
-										(int) spinnerTimeHH.getSelectedItemId(),
-										(int) spinnerTimeMM.getSelectedItemId());
+										timeHHValue,
+										timeMMValue);
 						if (templateFlag) {
 							td.setId(TemplateDishHelper.addNewDish(td,
 									AddTodayFitnesActivity.this));
@@ -315,8 +308,8 @@ public class AddTodayFitnesActivity extends BaseActivity {
 									fitWeightSpinner.getSelectedItemId()>=0?fitWeightSpinner.getSelectedItemId():0,
 									fitWeightDecSpinner.getSelectedItemId()>=0?fitWeightDecSpinner.getSelectedItemId():0,
 									0,
-									(int) spinnerTimeHH.getSelectedItemId(),
-									(int) spinnerTimeMM.getSelectedItemId());
+									timeHHValue,
+									timeMMValue);
 
 							if (templateFlag) {
 								TemplateDishHelper.updateDish(td,
@@ -415,30 +408,7 @@ public class AddTodayFitnesActivity extends BaseActivity {
 				selection = types.indexOf(fitnesType);
 			}
 		}
-		// TODO Auto-generated method stub
-		// Need to get number or smth else of activity to show current activity
-		// in editing window.
 
-		ArrayAdapter<FitnesType> adapter = new ArrayAdapter<FitnesType>(this,
-				android.R.layout.simple_spinner_item, types);
-		if (timeMMValue != null) {
-			try {
-				int timeValueint = Integer.valueOf(timeMMValue);
-				spinnerTimeMM.setSelection(timeValueint);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		if (timeHHValue != null) {
-			try {
-				int timeValueint = Integer.valueOf(timeHHValue);
-				spinnerTimeHH.setSelection(timeValueint);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		
 		imm = (InputMethodManager) AddTodayFitnesActivity.this
 				.getSystemService(Context.INPUT_METHOD_SERVICE);
 		setCaloryLoosingView();
@@ -547,6 +517,13 @@ public class AddTodayFitnesActivity extends BaseActivity {
 			e.printStackTrace();			
 		}
 			
-		}	
+		}
+
+	@Override
+	public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+		timeHHValue = hourOfDay;
+		timeMMValue = minute;
+		setTime(timeTW);
+	}
 
 }
