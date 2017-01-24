@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="facebook_app_id">1327703357302523</string>
     <string name="lkey">75v4pULHaT4yiBjRhBq0K5g5cBMzAFL33fyQAd3Up92mR97EJcLmXIX8odEfmSCER9YwNy8FhuVusxg3tkpvRFMEgaRDITzjDA8k3XoumEt3Kwzx1Vi0hWP7bT4znBgwIDAQAB</string>
     <string name="locale">ru</string>
     <string name="localebg">bg</string>
@@ -7,6 +8,7 @@
     <string name="localeen">en</string>
     <string name="localeby">by</string>
     <string name="localees">es</string>
+    <string name="localede">de</string>
     <string name="app_name">DietaGram</string>
     <string name="tab_dish">Сегодня</string>
     <string name="tab_calendar">История</string>
@@ -212,6 +214,7 @@
     <string name="english">English</string>
     <string name="belarusian">Беларуская</string>
     <string name="espanol">Español</string>
+    <string name="deutsche">Deutsch</string>
     <string name="water_label">Вода:</string>
 
     <string name="widjet_prot">Б:</string>
@@ -230,7 +233,7 @@
 
     <string name="complex_list">Рецепты</string>
 
-    <string name="castom_limit">Задать лимиты вручную (в граммах)</string>
+    <string name="castom_limit">Задать лимиты вручную</string>
     <string name="save_limit">Лимит сохранён</string>
     <string name="surplus">Остаток:</string>
 
@@ -298,7 +301,7 @@
     <string name="payment_dialog_year">Оплатив абонемент на год вы сможете 365 дней пользоваться всем функционалом приложения. Вы согласны оплатить? </string>
     <string name="payment_dialog_vipyear">Оплатив VIP абонемент вы сможете получать круглосуточную поддержку и заказывать новый функционал. Вы согласны оплатить? </string>
 
-    <string name="payment_dialog_alert">Что бы продолжить использование Калькулятора Калорий SPORT вам необходимо купить абонемент. </string>
+    <string name="payment_dialog_alert">Что бы продолжить использование Калькулятора Калорий DietaGram вам необходимо купить абонемент. </string>
     <string name="last_notif_alert">Должен остаться хотя бы один приём пищи</string>
     <string name="water_name">Вода</string>
 
@@ -342,7 +345,7 @@
     <string name="ok">Ок</string>
     <string name="success_in_percantage_text" formatted="false">Мой пищевой баланс на %.2f%% идеален</string>
 
-    <string name="free_abonement_offer_text">Разместите ваши результаты на стене в ВКонтакте и получите бесплатный абонемент на месяц.</string>
+    <string name="free_abonement_offer_text">Разместите ваши результаты на стене в ВКонтакте или Facebook и получите бесплатный абонемент на неделю.</string>
     <string name="get_abonement_title">Получение абонемента</string>
 
     <string name="need_to_consume">Можно добавить:</string>

@@ -19,9 +19,7 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
+
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.h6ah4i.android.widget.advrecyclerview.animator.GeneralItemAnimator;
 import com.h6ah4i.android.widget.advrecyclerview.animator.SwipeDismissItemAnimator;
@@ -65,6 +63,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import bulat.diet.helper_sport.R;
+import bulat.diet.helper_sport.adapter.DaysAdapter;
 import bulat.diet.helper_sport.adapter.ExpandableDraggableSwipeableExampleAdapter;
 import bulat.diet.helper_sport.common.data.AbstractExpandableDataProvider;
 import bulat.diet.helper_sport.common.data.ExampleExpandableDataProvider;
@@ -79,6 +78,7 @@ import bulat.diet.helper_sport.item.NotificationDish;
 import bulat.diet.helper_sport.item.TodayDish;
 import bulat.diet.helper_sport.utils.CustomAlertDialogBuilder;
 import bulat.diet.helper_sport.utils.DialogUtils;
+import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.SaveUtils;
 import bulat.diet.helper_sport.utils.SocialUpdater;
 import bulat.diet.helper_sport.utils.StringUtils;
@@ -93,6 +93,9 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
     private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.9f;
     private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS = 0.3f;
     private static final int ALPHA_ANIMATIONS_DURATION = 200;
+    private static final String TODAT_WEIGHT_BUTTON_CLICK = "TODAT_WEIGHT_BUTTON_CLICK";
+    private static final String FCP_CHART_TODAY = "FCP_CHART_TODAY";
+    private static final String OPEN_FCP_FROM_TODAY = "OPEN_FCP_FROM_TODAY";
     private boolean mIsTheTitleVisible = false;
     private boolean mIsTheTitleContainerVisible = true;
 
@@ -122,7 +125,7 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
     private OnClickListener changeWeightClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            GATraker.sendEvent(DaysAdapter.WEIGHT_BTN, TODAT_WEIGHT_BUTTON_CLICK);
             final Dialog dialog = new Dialog(DishActivity.this.getParent());
             dialog.setContentView(R.layout.update_weight_dialog);
             dialog.setTitle(R.string.change_weight_dialog_title);
@@ -282,7 +285,7 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         mWeightButton.setOnClickListener(changeWeightClickListener);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        //client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void initDishTable() {
@@ -379,6 +382,7 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
+                GATraker.sendEvent(FCP_CHART_TODAY, OPEN_FCP_FROM_TODAY);
                 intent.setClass(getParent(), StatisticFCPActivity.class);
                 if (CalendarActivityGroup.class.toString().equals(parentName)) {
                     CalendarActivityGroup activityStack = (CalendarActivityGroup) getParent();
@@ -1268,7 +1272,7 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    public Action getIndexApiAction() {
+    /*public Action getIndexApiAction() {
         Thing object = new Thing.Builder()
                 .setName("Dish Page") // TODO: Define a title for the content shown.
                 // TODO: Make sure this auto-generated URL is correct.
@@ -1278,7 +1282,7 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
                 .setObject(object)
                 .setActionStatus(Action.STATUS_TYPE_COMPLETED)
                 .build();
-    }
+    }*/
 
     @Override
     public void onStart() {
@@ -1286,8 +1290,8 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+        //client.connect();
+        //AppIndex.AppIndexApi.start(client, getIndexApiAction());
     }
 
     @Override
@@ -1296,8 +1300,8 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
+        //AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        //client.disconnect();
     }
 
     @Override

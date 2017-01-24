@@ -238,7 +238,7 @@ public class SaveUtils {
 		SharedPreferences preferences = PreferenceManager
 		.getDefaultSharedPreferences(context);
 		
-		return preferences.getString(META, "");
+		return preferences.getString(META, "0");
 	}
 	
 	public static void saveHeight(int text, Context context){

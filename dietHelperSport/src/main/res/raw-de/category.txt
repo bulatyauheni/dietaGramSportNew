@@ -1,0 +1,20 @@
+Beliebt	0
+Brotaufstrich	1	s
+Fast Food	2	s
+Fisch	3	m
+Fleisch	4	m
+Gemüse	5	f
+Gerichte	6	s
+Getränke	7	s
+Getreideprodukte	8	b
+Gewürze	9	s
+Kartoffelprodukte	10	f
+Käse	11	d
+Milch, Milcherzeugnisse	12	d
+Nahrungsergänzung	13	b
+Nüsse, Hülsenfrüchte	14	f
+Obst, Obstprodukte	15	f
+Öle und Fette	16	s
+Sonstiges	17	s
+Süsswaren	18	s
+Tiefkühlprodukte	19	f

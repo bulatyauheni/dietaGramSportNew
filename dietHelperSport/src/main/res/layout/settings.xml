@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/main_color"
@@ -261,7 +262,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
 
-                    <LinearLayout                        
+                    <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -279,6 +280,8 @@
                             android:textSize="14dip"
                             android:textStyle="bold" />
                     </LinearLayout>
+
+
                 </LinearLayout>
 				<LinearLayout
 				    android:id="@+id/linearLayoutCastomLimitBSU"
@@ -291,7 +294,31 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:orientation="horizontal" >
+                        android:orientation="vertical" >
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/widjet_prot"
+                            android:textColor="@color/black"
+                            android:gravity="center_horizontal"
+                            android:labelFor="@id/editTextProtein"/>
+
+                        <TextView
+                            android:id="@+id/textViewProtein"
+                            style="?android:attr/textAppearanceLargeInverse"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dip"
+                            android:inputType="numberDecimal"
+                            android:drawableRight="@drawable/percent"
+                            android:enabled="false"
+                            android:focusable="false"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:gravity="right"
+                            android:singleLine="true"
+                            android:text="0"
+                            android:textColor="@color/text_color" />
 
                         <bulat.diet.helper_sport.component.PrefixedEditText
                             android:id="@+id/editTextProtein"
@@ -311,8 +338,33 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:orientation="horizontal" >
+                        android:orientation="vertical" >
 
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:labelFor="@id/editTextFat"
+                            android:text="@string/widjet_fat"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/textViewFat"
+                            style="?android:attr/textAppearanceLargeInverse"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dip"
+                            android:inputType="numberDecimal"
+                            android:drawableRight="@drawable/percent"
+                            android:focusable="false"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:enabled="false"
+                            android:gravity="right"
+                            android:singleLine="true"
+                            android:text="0"
+                            android:textColor="@color/text_color" />
                         <bulat.diet.helper_sport.component.PrefixedEditText
                             android:id="@+id/editTextFat"
                             style="?android:attr/textAppearanceLargeInverse"
@@ -331,8 +383,31 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:orientation="horizontal" >
+                        android:orientation="vertical" >
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/widjet_carb"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/black"
+                            android:labelFor="@id/editTextCarbon"/>
 
+                        <TextView
+                            android:id="@+id/textViewCarbon"
+                            style="?android:attr/textAppearanceLargeInverse"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dip"
+                            android:inputType="numberDecimal"
+                            android:drawableRight="@drawable/percent"
+                            android:focusable="false"
+                            android:enabled="false"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:gravity="right"
+                            android:text="0"
+                            android:textColor="@color/text_color" />
                         <bulat.diet.helper_sport.component.PrefixedEditText
                             android:id="@+id/editTextCarbon"
                             style="?android:attr/textAppearanceLargeInverse"
@@ -346,14 +421,30 @@
                             android:text="0"
                             android:textColor="@color/text_color" />
                     </LinearLayout>
+
                 </LinearLayout>
-                
+
+                <io.apptik.widget.MultiSlider
+                    android:id="@+id/range_slider5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:thumbNumber="2"
+
+                    app:range1="@drawable/example_scrubber_primary_holo"
+                    app:range2="@drawable/example_scrubber_secondary_holo"
+                    app:trackColor="@color/today_green"
+                    app:stepsThumbsApart="0"
+                    app:drawThumbsApart="false"
+                    android:visibility="gone"
+                    />
+
+
                 <LinearLayout
                         android:id="@+id/linearLayoutCastomLimit"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:visibility="gone" >
+                        android:visibility= "gone" >
 
                         <LinearLayout
                             android:layout_width="fill_parent"
@@ -378,7 +469,7 @@
                             android:layout_weight="0.8"
                             android:orientation="vertical" >
 
-                            <EditText
+                            <bulat.diet.helper_sport.component.PrefixedEditText
                                 android:id="@+id/editTextLimitValue"
                                 android:layout_width="fill_parent"
 	                            android:layout_height="wrap_content"
@@ -387,6 +478,7 @@
 	                            android:maxLines="1"
 	                            android:numeric="integer"
 	                            android:textColor="@color/text_color" />
+
                         </LinearLayout>
                         <LinearLayout
                             android:id="@+id/linearLayoutBtnOk"

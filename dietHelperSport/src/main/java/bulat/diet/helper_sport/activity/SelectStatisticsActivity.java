@@ -149,7 +149,7 @@ public class SelectStatisticsActivity extends Activity {
 			})
 			.setNegativeButtonText(R.string.get_free_time);
 			bld.show();		
-		}	
+		}
 	
 	}
 

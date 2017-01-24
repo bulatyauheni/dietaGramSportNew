@@ -533,6 +533,7 @@ public class DishListActivity extends BaseActivity {
 			if (CalendarActivityGroup.class.getName().equals(
 					getParent().getClass().getName())) {
 				intent.putExtra(NewTemplateActivity.TEMPLATE, templateFlag);
+				intent.putExtra(DishActivity.DAY_TIME_ID, dayTimeId);
 				intent.setClass(getParent(), AddTodayDishActivity.class);
 				CalendarActivityGroup activityStack = (CalendarActivityGroup) getParent();
 				activityStack.push("AddTodayDishActivityCalendar", intent);

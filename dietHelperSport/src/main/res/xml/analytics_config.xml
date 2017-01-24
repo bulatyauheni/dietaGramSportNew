@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools"
+	tools:ignore="TypographyDashes">
+	<!-- 
+		General settings 
+	-->
+	<!--Replace placeholder ID with your tracking ID-->
+	<string name="ga_trackingId">UA-56796846-7</string>
+
+	<!-- 
+		Automatic activity tracking settings
+		- Screens report;
+		- Engagement Flow.
+	-->
+	<!--Enable automatic activity tracking-->
+	<bool name="ga_autoActivityTracking">true</bool>
+
+	<!-- 
+		Error and exception tracking
+	-->
+	<!--Enable automatic exception tracking-->
+	<bool name="ga_reportUncaughtExceptions">true</bool>
+	
+	<!-- 
+		Data dispatching parameters
+	-->
+	<!-- The amount of time (in seconds) your application can stay in the 
+	background before the session is ended. Default is 30 seconds. Negative 
+	value disables EasyTracker session management. -->
+	<!-- Get this time out from the user settings, inactivity timeout -->
+	<integer name="ga_sessionTimeout">-1</integer>
+
+</resources>

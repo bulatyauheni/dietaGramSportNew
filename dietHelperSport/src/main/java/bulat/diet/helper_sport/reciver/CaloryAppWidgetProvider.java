@@ -12,6 +12,7 @@ import bulat.diet.helper_sport.activity.StartActivity;
 import bulat.diet.helper_sport.db.DishProvider;
 import bulat.diet.helper_sport.db.TodayDishHelper;
 import bulat.diet.helper_sport.item.Day;
+import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.SaveUtils;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -35,6 +36,8 @@ public class CaloryAppWidgetProvider extends AppWidgetProvider {
 		
 		Locale locale = new Locale(SaveUtils.getLang(context));
 		Locale.setDefault(locale);
+		GATraker.initialize(context.getApplicationContext());
+		GATraker.sendEvent("WIDGET", "SMALL_WIDGET_UPDATE");
 		Configuration config = new Configuration();
 		config.locale = locale;
 		context.getResources().updateConfiguration(config,

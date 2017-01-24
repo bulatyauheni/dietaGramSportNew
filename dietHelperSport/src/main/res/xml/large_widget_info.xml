@@ -1,7 +1,7 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="350dp"
-    android:minResizeWidth="350dp"
-    android:minHeight="350dp"
+    android:minWidth="294dp"
+    android:minResizeWidth="294dp"
+    android:minHeight="294dp"
     android:initialLayout="@layout/widjet_xxl"
     android:widgetCategory="home_screen">
 </appwidget-provider>

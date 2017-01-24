@@ -59,12 +59,28 @@ public class FreeAbonementActivity extends StatisticFCPActivity {
 				
 		initDietTypeSpinner();
 		chartsLayout = (LinearLayout) 	findViewById (R.id.chartsLayout);
-		
+
 		ImageButton vkButton = (ImageButton) findViewById(R.id.buttonVKChart);
 		vkButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {						
-				Intent i = new Intent(getApplicationContext(), VkActivity.class);				
+				Intent i = new Intent(getApplicationContext(), VkActivity.class);
+				i.putExtra(VkActivity.IMAGE_PATH, getBitmapFromView(chartsLayout));
+				i.putExtra(VkActivity.IMAGE_DESK, successInPercentageTV.getText().toString());
+				startActivityForResult(i, 1);
+
+			}
+		});
+		if (!getString(R.string.locale).equals("ru")){
+			vkButton.setVisibility(View.GONE);
+		}
+
+		ImageButton fbButton = (ImageButton) findViewById(R.id.buttonFBChart);
+		fbButton.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+
+				Intent i = new Intent(getApplicationContext(), SharingActivity.class);
 				i.putExtra(VkActivity.IMAGE_PATH, getBitmapFromView(chartsLayout));
 				i.putExtra(VkActivity.IMAGE_DESK, successInPercentageTV.getText().toString());
 				startActivityForResult(i, 1);

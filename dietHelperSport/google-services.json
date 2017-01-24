@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "1028291743073",
+    "project_id": "single-cycling-698"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028291743073:android:17bba8fa295fd155",
+        "android_client_info": {
+          "package_name": "bulat.diet.helper_sport"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOytQ7KMXrvV6MiR38HfFrd7cenjqeVU4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-56796846-7"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

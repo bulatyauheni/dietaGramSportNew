@@ -34,6 +34,7 @@ import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.controls.SegmentedGroup;
 import bulat.diet.helper_sport.db.TodayDishHelper;
 import bulat.diet.helper_sport.item.DishType;
+import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.SaveUtils;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -54,6 +55,14 @@ public class StatisticFCPActivity extends Activity implements
 	protected static final String Fat = "f";
 	protected static final String Carbon = "c";
 	protected static final String Protein = "p";
+	private static final String FCP_MODE_TODAY = "FCP_MODE_TODAY";
+	private static final String FCP_MODE_YESTERDAY = "FCP_MODE_YESTERDAY";
+	private static final String FCP_MODE_LASTMONTH = "FCP_MODE_LASTMONTH";
+	private static final String FCP_MODE_LASTWEEK = "FCP_MODE_LASTWEEK";
+	private static final String FCP_MODE_CHANGE = "FCP_MODE_CHANGE";
+	private static final String FCP_MODE = "FCP_MODE";
+
+
 	protected int lifestyle = 0;
 	protected float valuesNormal[] = { 1, 4, 1 };
 	protected float valuesFith[] = { 1, 5, 1 };
@@ -102,8 +111,19 @@ public class StatisticFCPActivity extends Activity implements
 		Button vkButton = (Button) findViewById(R.id.buttonVKChart);
 		vkButton.setOnClickListener(new OnClickListener() {
 
-			public void onClick(View v) {						
+			public void onClick(View v) {
 				Intent i = new Intent(getApplicationContext(), VkActivity.class);				
+				i.putExtra(VkActivity.IMAGE_PATH, getBitmapFromView(chartsLayout));
+				i.putExtra(VkActivity.IMAGE_DESK, successInPercentageTV.getText().toString());
+				startActivity(i);
+			}
+		});
+
+		Button fbButton = (Button) findViewById(R.id.buttonFBChart);
+		fbButton.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), SharingActivity.class);
 				i.putExtra(VkActivity.IMAGE_PATH, getBitmapFromView(chartsLayout));
 				i.putExtra(VkActivity.IMAGE_DESK, successInPercentageTV.getText().toString());
 				startActivity(i);
@@ -121,7 +141,7 @@ public class StatisticFCPActivity extends Activity implements
 		initTimeIntervalSelector();
 
 		successInPercentageTV = (TextView) findViewById(R.id.successInPercentageTV);
-		
+		GATraker.sendScreen(this);
 	}
 	
 	private float calculateSuccess() {
@@ -314,7 +334,7 @@ public class StatisticFCPActivity extends Activity implements
 		for (int c : ColorTemplate.VORDIPLOM_COLORS)
 			colors.add(c);
 
-		for (int c : ColorTemplate.JOYFUL_COLORS)
+		/*for (int c : ColorTemplate.JOYFUL_COLORS)
 			colors.add(c);
 
 		for (int c : ColorTemplate.COLORFUL_COLORS)
@@ -324,7 +344,7 @@ public class StatisticFCPActivity extends Activity implements
 			colors.add(c);
 
 		for (int c : ColorTemplate.PASTEL_COLORS)
-			colors.add(c);
+			colors.add(c);*/
 
 		colors.add(ColorTemplate.getHoloBlue());
 
@@ -423,15 +443,19 @@ public class StatisticFCPActivity extends Activity implements
 		switch (checkedId) {
 		case R.id.today:
 			values2 = getValues(TodayDishHelper.getStatisticFCP(this, 1));
+			GATraker.sendEvent(FCP_MODE, FCP_MODE_CHANGE, FCP_MODE_TODAY, 1L);
 			break;
 		case R.id.yesterday:
 			values2 = getValues(TodayDishHelper.getStatisticFCP(this, 1, 2));
+			GATraker.sendEvent(FCP_MODE, FCP_MODE_CHANGE, FCP_MODE_YESTERDAY, 1L);
 			break;
 		case R.id.lastweek:
 			values2 = getValues(TodayDishHelper.getStatisticFCP(this, 7));
+			GATraker.sendEvent(FCP_MODE, FCP_MODE_CHANGE, FCP_MODE_LASTWEEK, 1L);
 			break;
 		case R.id.lastmonth:
 			values2 = getValues(TodayDishHelper.getStatisticFCP(this, 30));
+			GATraker.sendEvent(FCP_MODE, FCP_MODE_CHANGE, FCP_MODE_LASTMONTH, 1L);
 			break;
 		default:
 			// Nothing to do

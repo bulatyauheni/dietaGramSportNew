@@ -41,12 +41,15 @@ import bulat.diet.helper_sport.db.DishProvider;
 import bulat.diet.helper_sport.db.TodayDishHelper;
 import bulat.diet.helper_sport.item.BodyParams;
 import bulat.diet.helper_sport.utils.DialogUtils;
+import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.SaveUtils;
 import bulat.diet.helper_sport.utils.SocialUpdater;
 import bulat.diet.helper_sport.utils.StringUtils;
 
 
 public class DaysAdapter extends CursorAdapter {
+	private static final String CALENDAR_WEIGHT_BUTTON_CLICK = "CALENDAR_WEIGHT_BUTTON_CLICK";
+	public static final String WEIGHT_BTN = "WEIGHT_BTN";
 	DecimalFormat df = new DecimalFormat("###.#");
 	private Context ctx;
 	private CalendarActivityGroup parent;
@@ -121,7 +124,8 @@ public class DaysAdapter extends CursorAdapter {
 
 		dateTextView.setText(dayDate.split(" ")[1]);
 		dateTextView.setTag(dayDate);
-
+		SimpleDateFormat dayOfWeek = new SimpleDateFormat("EEE", new Locale(
+				SaveUtils.getLang(context)));
 		SimpleDateFormat month = new SimpleDateFormat("MMM", new Locale(
 				SaveUtils.getLang(context)));
 		SimpleDateFormat sdf = new SimpleDateFormat("EEE dd MMMM", new Locale(
@@ -133,6 +137,9 @@ public class DaysAdapter extends CursorAdapter {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+
+		TextView dayOfWeekTextView = (TextView) v.findViewById(R.id.textViewDayOFWeek);
+		dayOfWeekTextView.setText(dayDate.split(" ")[0]);
 
 		View iv = (View) v.findViewById(R.id.imageViewDay);
 		int flag = checkLimit(Integer.parseInt(itemCaloricity), Float.valueOf(itemBodyWeight));
@@ -236,6 +243,7 @@ public class DaysAdapter extends CursorAdapter {
 
 				public void onClick(View v) {
 					Button mbut = (Button) v;
+					GATraker.sendEvent(WEIGHT_BTN, CALENDAR_WEIGHT_BUTTON_CLICK);
 					final TextView tvi2 = (TextView) ((View) mbut.getParent())
 							.findViewById(R.id.textViewId);
 					final Dialog dialog = new Dialog(parent);

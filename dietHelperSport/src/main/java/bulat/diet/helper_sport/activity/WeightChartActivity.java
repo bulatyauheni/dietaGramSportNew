@@ -46,6 +46,7 @@ import bulat.diet.helper_sport.db.TodayDishHelper;
 import bulat.diet.helper_sport.item.Day;
 import bulat.diet.helper_sport.item.DishType;
 import bulat.diet.helper_sport.utils.CustomAlertDialogBuilder;
+import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.SaveUtils;
 
 import com.github.mikephil.charting.charts.CombinedChart;
@@ -89,13 +90,24 @@ public class WeightChartActivity extends Activity implements
 		View viewToLoad = LayoutInflater.from(this.getParent().getParent())
 				.inflate(R.layout.activity_combined, null);
 		this.setContentView(viewToLoad);
-		
+		GATraker.sendScreen(this);
 		
 		Button vkButton = (Button) findViewById(R.id.buttonVKChart);
 		vkButton.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {						
 				Intent i = new Intent(getApplicationContext(), VkActivity.class);				
+				i.putExtra(VkActivity.IMAGE_PATH, getBitmapFromView(mChart));
+				i.putExtra(VkActivity.IMAGE_DESK, ((DishType)chartTypeSpiner.getSelectedItem()).getDescription());
+				startActivity(i);
+			}
+		});
+
+		Button fbButton = (Button) findViewById(R.id.buttonFBChart);
+		fbButton.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), SharingActivity.class);
 				i.putExtra(VkActivity.IMAGE_PATH, getBitmapFromView(mChart));
 				i.putExtra(VkActivity.IMAGE_DESK, ((DishType)chartTypeSpiner.getSelectedItem()).getDescription());
 				startActivity(i);

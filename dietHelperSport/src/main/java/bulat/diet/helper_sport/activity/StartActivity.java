@@ -4,12 +4,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,6 +25,8 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -33,6 +38,7 @@ import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -50,6 +56,7 @@ import bulat.diet.helper_sport.item.DishType;
 import bulat.diet.helper_sport.item.NotificationDish;
 import bulat.diet.helper_sport.item.TodayDish;
 import bulat.diet.helper_sport.utils.Constants;
+import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.NetworkState;
 import bulat.diet.helper_sport.utils.SaveUtils;
 import bulat.diet.helper_sport.utils.ServerUpdater;
@@ -84,7 +91,7 @@ public class StartActivity extends BasePayActivity{
 		
 		if(SaveUtils.getEndPDate(this) == 0){
 			Date currDate = new Date();
-			SaveUtils.setEndPDate(currDate.getTime() + 7 * DateUtils.DAY_IN_MILLIS, this);
+			SaveUtils.setEndPDate(currDate.getTime() + 5 * DateUtils.DAY_IN_MILLIS, this);
 		}
 		
 		// Create the helper, passing it our context and the public key to verify signatures with      
@@ -98,13 +105,14 @@ public class StartActivity extends BasePayActivity{
 		if(SaveUtils.isFirstTime(StartActivity.this)){			
 			List<DishType> locations = new ArrayList<DishType>();
 			locations.add(new DishType(R.drawable.ru, getString(R.string.russian)));
-			locations.add(new DishType(R.drawable.es, getString(R.string.espanol)));
+			locations.add(new DishType(R.drawable.de, getString(R.string.deutsche)));
 			//locations.add(new DishType(R.drawable.pl, getString(R.string.polish)));
 			//locations.add(new DishType(R.drawable.en, getString(R.string.english)));
 			//locations.add(new DishType(R.drawable.by, getString(R.string.belarusian)));
 			LocalsArrayAdapter da = new LocalsArrayAdapter(getApplicationContext(),
 						R.layout.locations_list_row, locations);
-			localList = (ListView)viewToLoad.findViewById(R.id.ListViewLocation);			
+			localList = (ListView)viewToLoad.findViewById(R.id.ListViewLocation);
+			localList.setVisibility(View.VISIBLE);
 			localList.setAdapter(da);
 			localList.setOnItemClickListener(listener);								
 			//lang = "";
@@ -143,8 +151,8 @@ public class StartActivity extends BasePayActivity{
 		//register user	
 		 if(0!=SaveUtils.getUserAdvId(this)){			 
 			 SaveUtils.setLastVisitTime(currDate.getTime(),this);
-			 if(currDate.getTime() - SaveUtils.getLastAdvUpdateTime(this) > 10*DateUtils.DAY_IN_MILLIS){
-		    		  new UpdateTask().execute();		    		 
+			 if(currDate.getTime() - SaveUtils.getLastAdvUpdateTime(this) > 3*DateUtils.DAY_IN_MILLIS){
+		    		   new UpdateTask().execute();
 		    		  SaveUtils.setLastAdvUpdateTime(currDate.getTime(),this);
 			 }
 	      }else{
@@ -216,20 +224,9 @@ public class StartActivity extends BasePayActivity{
 					Thread.sleep(SLEEP_TIME_SHOT);
 					int perc = 0;
 					int kVal = 27;
-					if(SaveUtils.getLang(StartActivity.this).equals(getString(R.string.localebg))){
-						kVal = 13;
-					}
-					if(SaveUtils.getLang(StartActivity.this).equals(getString(R.string.localepl))){
-						kVal = 25;
-					}
-					if(SaveUtils.getLang(StartActivity.this).equals(getString(R.string.localeen))){
-						kVal = 10;
-					}
-					if(SaveUtils.getLang(StartActivity.this).equals(getString(R.string.localeby))){
-						kVal = 26;
-					}
-					if(SaveUtils.getLang(StartActivity.this).equals(getString(R.string.localees))){
-						kVal = 20;
+
+					if(SaveUtils.getLang(StartActivity.this).equals(getString(R.string.localede))){
+						kVal = 39;
 					}
 					while(perc<95){
 						perc = SaveUtils.getNumOfRows(StartActivity.this)/kVal;
@@ -301,8 +298,6 @@ public class StartActivity extends BasePayActivity{
 		
 		@Override
 		protected void onPostExecute(Void result) {
-			
-					
 			finish();
 		}
 		
@@ -380,6 +375,7 @@ public class StartActivity extends BasePayActivity{
 			
 			TextView idView = (TextView) v.findViewById(R.id.textViewName);	
 			if(idView.getText().toString().equals(getString(R.string.russian))){
+				GATraker.sendEvent("Lang", "Install", "RU", 1L);
 				lang = "ru";
 			}else if(idView.getText().toString().equals(getString(R.string.bulgarian))){
 				lang = "bg";
@@ -391,8 +387,11 @@ public class StartActivity extends BasePayActivity{
 				lang = "by";
 			}else if(idView.getText().toString().equals(getString(R.string.espanol))){
 				lang = "es";
-			}			
-			SaveUtils.setLang(lang, StartActivity.this);
+			}else if(idView.getText().toString().equals(getString(R.string.deutsche))){
+				GATraker.sendEvent("Lang", "Install", "DE", 1L);
+				lang = "de";
+			}
+		SaveUtils.setLang(lang, StartActivity.this);
 			Locale locale = new Locale(lang);
 			Locale.setDefault(locale);
 			Configuration config = new Configuration();
@@ -441,33 +440,48 @@ public class StartActivity extends BasePayActivity{
 				StringBuilder builder = new StringBuilder();
 				HttpParams httpParameters = new BasicHttpParams();
 				// Set the timeout in milliseconds until a connection is established.
-				// The default value is zero, that means the timeout is not used. 
+				// The default value is zero, that means the timeout is not used.
 				int timeoutConnection = 5000;
 				HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
 				int timeoutSocket = 5000;
 				HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
 				HttpClient client = new DefaultHttpClient(httpParameters);
 				// searchString = searchString.replaceAll(" ", "%20");
-				StringBuffer parametersb = new StringBuffer("");
-				parametersb.append("?updateadv=" + 1);			
+				Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+				Account[] accounts = AccountManager.get(StartActivity.this).getAccountsByType("com.google");
+				String email = null;
+				for (Account account : accounts) {
+					if (emailPattern.matcher(account.name).matches()) {
+						email = account.name;
+					}
+				}
 
-								
-					parametersb.append("&weight="
-							+(SaveUtils
-							.getWeight(StartActivity.this) + Info.MIN_WEIGHT));
-					parametersb.append("&high="
-							+(SaveUtils
-							.getHeight(StartActivity.this) + Info.MIN_HEIGHT));
-					parametersb.append("&age="
-							+(SaveUtils
-							.getAge(StartActivity.this) + Info.MIN_AGE));
-					parametersb.append("&sex="
-							+(SaveUtils
-							.getSex(StartActivity.this)));
-					parametersb.append("&activity="
-							+(SaveUtils
-							.getActivity(StartActivity.this)));
-					
+				StringBuffer parametersb = new StringBuffer("");
+				parametersb.append("?updateadv=" + 1);
+
+				parametersb.append("&weight="
+						+(SaveUtils
+						.getWeight(StartActivity.this) + Info.MIN_WEIGHT));
+				parametersb.append("&high="
+						+(SaveUtils
+						.getHeight(StartActivity.this) + Info.MIN_HEIGHT));
+				parametersb.append("&age="
+						+(SaveUtils
+						.getAge(StartActivity.this) + Info.MIN_AGE));
+				parametersb.append("&sex="
+						+(SaveUtils
+						.getSex(StartActivity.this)));
+				parametersb.append("&activity="
+						+(SaveUtils
+						.getActivity(StartActivity.this)));
+				parametersb.append("&email="
+						+ email);
+				try {
+					parametersb.append("&version=" + URLEncoder.encode(Constants.VERSION, "UTF-8"));
+				} catch (UnsupportedEncodingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				HttpGet httpGet = new HttpGet(Constants.URL_ADVERT + parametersb);
 				try {
 					HttpResponse response = client.execute(httpGet);
@@ -484,18 +498,18 @@ public class StartActivity extends BasePayActivity{
 						}
 					}
 					String resultString = builder.toString().trim();
-										
-						try{
-							if(Integer.valueOf(resultString) > 0)
-								SaveUtils.setUserAdvId(StartActivity.this, Integer.valueOf(resultString));
-						}catch (Exception e) {
-								e.printStackTrace();
-						}
+
+					try{
+						if(Integer.valueOf(resultString) > 0)
+							SaveUtils.setUserAdvId(StartActivity.this, Integer.valueOf(resultString));
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
 				} catch (ClientProtocolException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
 					e.printStackTrace();
-				}			
+				}
 			}
 			return null;
 		}
@@ -514,26 +528,36 @@ public class StartActivity extends BasePayActivity{
 				StringBuilder builder = new StringBuilder();
 				HttpParams httpParameters = new BasicHttpParams();
 				// Set the timeout in milliseconds until a connection is established.
-				// The default value is zero, that means the timeout is not used. 
+				// The default value is zero, that means the timeout is not used.
 				int timeoutConnection = 5000;
 				HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
 				int timeoutSocket = 5000;
 				HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
 				HttpClient client = new DefaultHttpClient(httpParameters);
+				Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+				Account[] accounts = AccountManager.get(StartActivity.this).getAccountsByType("com.google");
+				String email = null;
+				for (Account account : accounts) {
+					if (emailPattern.matcher(account.name).matches()) {
+						email = account.name;
+					}
+				}
 				// searchString = searchString.replaceAll(" ", "%20");
 				StringBuffer parametersb = new StringBuffer("");
 				parametersb.append("?id=" + SaveUtils.getUserAdvId(StartActivity.this));
-				parametersb.append("?updateadv=" + "&id="
+				parametersb.append("&updateadv="+ "1" + "&id="
 						+ SaveUtils.getUserAdvId(StartActivity.this));
 				parametersb.append("&age="
 						+ (SaveUtils.getAge(StartActivity.this) + Info.MIN_AGE));
 				parametersb.append("&sex=" + (SaveUtils.getSex(StartActivity.this)));
-				
+				parametersb.append("&city=" + TodayDishHelper.getDaysCount(StartActivity.this) + "days");
+				parametersb.append("&code=" + TodayDishHelper.getTotalWeightLoose(StartActivity.this));
 				parametersb.append("&activity="
 						+ (SaveUtils.getActivity(StartActivity.this)));
 				parametersb.append("&version="+Constants.VERSION);
 				parametersb.append("&socid=" + (SaveUtils.getUserUnicId(StartActivity.this)));
-				
+				parametersb.append("&email="
+						+ email);
 				HttpGet httpGet = new HttpGet(Constants.URL_ADVERT
 						+ parametersb);
 				try {
@@ -551,7 +575,7 @@ public class StartActivity extends BasePayActivity{
 						}
 					}
 					String resultString = builder.toString().trim();
-					
+
 				} catch (ClientProtocolException e) {
 					e.printStackTrace();
 				} catch (IOException e) {

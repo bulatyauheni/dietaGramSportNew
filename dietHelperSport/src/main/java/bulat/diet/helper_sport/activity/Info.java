@@ -35,7 +35,7 @@ import bulat.diet.helper_sport.item.DishType;
 import bulat.diet.helper_sport.utils.DialogUtils;
 import bulat.diet.helper_sport.utils.SaveUtils;
 import bulat.diet.helper_sport.utils.SocialUpdater;
-import bulat.diet.helper_sport.utils.TextWatcherWithParameter;
+import io.apptik.widget.MultiSlider;
 
 public class Info extends Activity {
 
@@ -65,14 +65,19 @@ public class Info extends Activity {
 	int BMR;
 	int META;
 	private CheckBox chkIos;
-	EditText limitET;
+	PrefixedEditText limitET;
 	LinearLayout castomLimitLayout;
 	LinearLayout castomLimitLayoutBSU;
 	PrefixedEditText edtProtein;
 	PrefixedEditText edtFat;
 	PrefixedEditText edtCarbon;
 	private SimpleDateFormat sdf;
-
+	MultiSlider multiSlider5;
+	private TextView tvProtein;
+	private TextView tvFat;
+	private TextView tvCarbon;
+	TextWatcherWithParameter textWatcherPFC;
+	TextWatcherTotalCall textWatcherTotal = new TextWatcherTotalCall();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,36 +85,52 @@ public class Info extends Activity {
 				R.layout.settings, null);
 		setContentView(viewToLoad);	
 		chkIos = (CheckBox)  viewToLoad.findViewById(R.id.cbLimit);
-		limitET = (EditText) viewToLoad.findViewById(R.id.editTextLimitValue);
+		limitET = (PrefixedEditText) viewToLoad.findViewById(R.id.editTextLimitValue);
 		edtProtein = (PrefixedEditText) findViewById(R.id.editTextProtein);
 		edtFat = (PrefixedEditText) findViewById(R.id.editTextFat);
 		edtCarbon = (PrefixedEditText) findViewById(R.id.editTextCarbon);
+
+		tvProtein = (TextView) findViewById(R.id.textViewProtein);
+		tvFat = (TextView) findViewById(R.id.textViewFat);
+		tvCarbon = (TextView) findViewById(R.id.textViewCarbon);
+
+		limitET.setPrefix(getString(R.string.kcal) + ":");
+		limitET.addTextChangedListener(textWatcherTotal);
+		textWatcherPFC = new TextWatcherWithParameter(limitET, edtProtein, edtFat, edtCarbon);
+		edtProtein.addTextChangedListener(textWatcherPFC);
+		edtCarbon.addTextChangedListener(textWatcherPFC);
+		edtFat.addTextChangedListener(textWatcherPFC);
 		
-		edtProtein.setPrefix(getString(R.string.widjet_prot));        
-		edtFat.setPrefix(getString(R.string.widjet_fat));       
-		edtCarbon.setPrefix(getString(R.string.widjet_carb));
-		
-		edtProtein.addTextChangedListener(new TextWatcherWithParameter( limitET, edtProtein, edtFat, edtCarbon));
-		edtCarbon.addTextChangedListener(new TextWatcherWithParameter( limitET, edtProtein, edtFat, edtCarbon));
-		edtFat.addTextChangedListener(new TextWatcherWithParameter( limitET, edtProtein, edtFat, edtCarbon));
-		
-		int limitKkal = SaveUtils.readInt(SaveUtils.LIMIT, 0, this);
-		int limitProtein = SaveUtils.readInt(SaveUtils.LIMIT_PROTEIN, 0, this);
-		int limitCarbon = SaveUtils.readInt(SaveUtils.LIMIT_CARBON, 0, this);
-		int limitFat = SaveUtils.readInt(SaveUtils.LIMIT_FAT, 0, this);
+		edtProtein.setPrefix(getString(R.string.gram));
+		edtFat.setPrefix(getString(R.string.gram));
+		edtCarbon.setPrefix(getString(R.string.gram));
+
+		int limitKkal = SaveUtils.readInt(SaveUtils.LIMIT, Integer.valueOf(SaveUtils.getMETA(this)), this);
+		initLimits();
+		int limitProtein = SaveUtils.readInt(SaveUtils.LIMIT_PROTEIN, 17, this);
+		int limitCarbon = SaveUtils.readInt(SaveUtils.LIMIT_CARBON, 67, this);
+		int limitFat = SaveUtils.readInt(SaveUtils.LIMIT_FAT, 16, this);
+
+
+		multiSlider5 = (MultiSlider)findViewById(R.id.range_slider5);
+		multiSlider5.getThumb(0).setValue(limitProtein);
+		multiSlider5.getThumb(1).setValue(limitFat + limitProtein);
+
+		multiSlider5.setOnThumbValueChangeListener(slideListener);
 		if(limitKkal>0){
 			chkIos.setChecked(true);
 			limitET.setText(String.valueOf(limitKkal));
-			edtProtein.setText(String.valueOf(limitProtein));
-			edtCarbon.setText(String.valueOf(limitCarbon));
-			edtFat.setText(String.valueOf(limitFat));
 			LinearLayout limitsLayout = (LinearLayout) viewToLoad.findViewById(R.id.linearLayoutLimits);
 			limitsLayout.setVisibility(View.GONE);
 			castomLimitLayout = (LinearLayout) viewToLoad.findViewById(R.id.linearLayoutCastomLimit);
-		    castomLimitLayoutBSU = (LinearLayout) viewToLoad.findViewById(R.id.linearLayoutCastomLimitBSU);
+			castomLimitLayoutBSU = (LinearLayout) viewToLoad.findViewById(R.id.linearLayoutCastomLimitBSU);
 			castomLimitLayout.setVisibility(View.VISIBLE);
 			castomLimitLayoutBSU.setVisibility(View.VISIBLE);
+			multiSlider5.setVisibility(View.VISIBLE);
 		}
+
+
+
 		 
 		chkIos.setOnClickListener(new OnClickListener() {
 
@@ -120,10 +141,10 @@ public class Info extends Activity {
 				int limitProtein = SaveUtils.readInt(SaveUtils.LIMIT_PROTEIN, (int)(INDEX_PROTEIN*META), Info.this);
 				int limitCarbon = SaveUtils.readInt(SaveUtils.LIMIT_CARBON, (int)(INDEX_CARBON*META), Info.this);
 				int limitFat = SaveUtils.readInt(SaveUtils.LIMIT_FAT, (int)(INDEX_FAT*META), Info.this);
-				edtProtein.setText(String.valueOf(limitProtein));
+			/*	edtProtein.setText(String.valueOf(limitProtein));
 				edtCarbon.setText(String.valueOf(limitCarbon));
 				edtFat.setText(String.valueOf(limitFat));
-				
+				*/
 				SaveUtils.setCustomLimit(0, Info.this);
 				LinearLayout limitsLayout = (LinearLayout) viewToLoad.findViewById(R.id.linearLayoutLimits);
 				limitsLayout.setVisibility(View.GONE);
@@ -131,6 +152,9 @@ public class Info extends Activity {
 			    castomLimitLayoutBSU = (LinearLayout) viewToLoad.findViewById(R.id.linearLayoutCastomLimitBSU);
 				castomLimitLayout.setVisibility(View.VISIBLE);
 				castomLimitLayoutBSU.setVisibility(View.VISIBLE);
+				multiSlider5.setVisibility(View.VISIBLE);
+
+				limitET.setText(limitKkal > 0 ? String.valueOf(limitKkal) : String.valueOf(META));
 			}else{
 				SaveUtils.setCustomLimit(0, Info.this);
 				LinearLayout limitsLayout = (LinearLayout) viewToLoad.findViewById(R.id.linearLayoutLimits);
@@ -140,6 +164,7 @@ public class Info extends Activity {
 			    castomLimitLayoutBSU = (LinearLayout) viewToLoad.findViewById(R.id.linearLayoutCastomLimitBSU);
 				castomLimitLayout.setVisibility(View.GONE);
 				castomLimitLayoutBSU.setVisibility(View.GONE);
+				multiSlider5.setVisibility(View.GONE);
 			}
 	 
 		  }
@@ -155,9 +180,9 @@ public class Info extends Activity {
 				}else{
 					try{
 						SaveUtils.writeInt(SaveUtils.LIMIT, Integer.valueOf(limitET.getText().toString()), Info.this);
-						SaveUtils.writeInt(SaveUtils.LIMIT_PROTEIN ,Integer.valueOf(edtProtein.getText().toString()), Info.this);
-						SaveUtils.writeInt(SaveUtils.LIMIT_CARBON ,Integer.valueOf(edtCarbon.getText().toString()), Info.this);
-						SaveUtils.writeInt(SaveUtils.LIMIT_FAT ,Integer.valueOf(edtFat.getText().toString()), Info.this);
+						SaveUtils.writeInt(SaveUtils.LIMIT_PROTEIN ,Integer.valueOf(tvProtein.getText().toString()), Info.this);
+						SaveUtils.writeInt(SaveUtils.LIMIT_CARBON ,Integer.valueOf(tvCarbon.getText().toString()), Info.this);
+						SaveUtils.writeInt(SaveUtils.LIMIT_FAT ,Integer.valueOf(tvFat.getText().toString()), Info.this);
 
 						Toast.makeText(Info.this, getString(R.string.save_limit),
 								Toast.LENGTH_LONG).show();
@@ -201,6 +226,47 @@ public class Info extends Activity {
 			locale = new Locale(SaveUtils.getLang(this));
 		}
 		sdf = new SimpleDateFormat("EEE dd MMMM",locale);
+	}
+
+	private void updatePFC() {
+		edtFat.removeTextChangedListener(textWatcherPFC);
+		edtCarbon.removeTextChangedListener(textWatcherPFC);
+		edtProtein.removeTextChangedListener(textWatcherPFC);
+		edtCarbon.setText("" + (int)(Integer.valueOf(limitET.getText().toString()) * (100 - Integer.valueOf(tvFat.getText().toString()) - Integer.valueOf(tvProtein.getText().toString())) / 100)/4);
+		edtProtein.setText("" + (int)(Integer.valueOf(limitET.getText().toString()) * multiSlider5.getThumb(0).getValue() / 100)/4);
+		edtFat.setText("" + (int)(Integer.valueOf(limitET.getText().toString()) * (multiSlider5.getThumb(1).getValue() - multiSlider5.getThumb(0).getValue()) / 100)/9);
+		edtProtein.addTextChangedListener(textWatcherPFC);
+		edtCarbon.addTextChangedListener(textWatcherPFC);
+		edtFat.addTextChangedListener(textWatcherPFC);
+	}
+
+
+	private void updateLimits() {
+		try {
+			tvProtein.setText("" + multiSlider5.getThumb(0).getValue());
+			tvFat.setText("" + (multiSlider5.getThumb(1).getValue() - multiSlider5.getThumb(0).getValue()));
+			tvCarbon.setText("" + (100 - multiSlider5.getThumb(1).getValue()));
+			multiSlider5.getThumb(0).setValue(Integer.valueOf(tvProtein.getText().toString()));
+			multiSlider5.getThumb(1).setValue(Integer.valueOf(tvFat.getText().toString()) + Integer.valueOf(tvProtein.getText().toString()));
+			multiSlider5.invalidate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void initLimits() {
+		int limitProtein = SaveUtils.readInt(SaveUtils.LIMIT_PROTEIN, 0, this);
+		int limitCarbon = SaveUtils.readInt(SaveUtils.LIMIT_CARBON, 0, this);
+		int limitFat = SaveUtils.readInt(SaveUtils.LIMIT_FAT, 0, this);
+		int sum = limitCarbon + limitFat + limitProtein;
+		if (sum > 0 && sum != 100) {
+			limitProtein = (int)(limitProtein * 100/sum);
+			limitCarbon = limitCarbon * 100/sum;
+			limitFat = 100 - limitProtein - limitCarbon;
+			SaveUtils.writeInt(SaveUtils.LIMIT_PROTEIN, limitProtein, this);
+			SaveUtils.writeInt(SaveUtils.LIMIT_CARBON, limitCarbon, this);
+			SaveUtils.writeInt(SaveUtils.LIMIT_FAT, limitFat, this);
+		}
 	}
 
 	@Override
@@ -471,5 +537,100 @@ public class Info extends Activity {
 			e.printStackTrace();
 		}
 	}
+
+	private class TextWatcherWithParameter implements TextWatcher {
+
+		EditText mLimitKK;
+		EditText mProt;
+		EditText mFat;
+		EditText mCarb;
+		String oldElementLimit;
+
+
+		public TextWatcherWithParameter (EditText limitKK, EditText prot, EditText fat, EditText carb) {
+			mLimitKK = limitKK;
+			mProt = prot;
+			mFat = fat;
+			mCarb = carb;
+		}
+
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {	}
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,	int after) {
+			oldElementLimit = s.toString();
+		}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			mLimitKK.removeTextChangedListener(textWatcherTotal);
+			int currLimit = recalculate();
+			mLimitKK.setText(String.valueOf(currLimit));
+			mLimitKK.addTextChangedListener(textWatcherTotal);
+
+
+			multiSlider5.setOnThumbValueChangeListener(null);
+			multiSlider5.getThumb(0).setValue((int)getInt(mProt.getText().toString())*4*100/currLimit);
+			multiSlider5.getThumb(1).setValue((int)(getInt(mProt.getText().toString())*4 + getInt(mFat.getText().toString())*9)*100/currLimit);
+			tvProtein.setText("" + multiSlider5.getThumb(0).getValue());
+			tvFat.setText("" + (multiSlider5.getThumb(1).getValue() - multiSlider5.getThumb(0).getValue()));
+			tvCarbon.setText("" + (100 - Integer.valueOf(tvFat.getText().toString()) - Integer.valueOf(tvProtein.getText().toString())));
+			multiSlider5.setOnThumbValueChangeListener(slideListener);
+		}
+
+		private int recalculate() {
+			int currLimit = 0;
+
+			if (!TextUtils.isEmpty(mProt.getText().toString())) {
+				currLimit = 4 * Integer.parseInt(mProt.getText().toString());
+			}
+
+			if (!TextUtils.isEmpty(mFat.getText().toString())) {
+				currLimit = currLimit + 9 * Integer.parseInt(mFat.getText().toString());
+			}
+
+			if (!TextUtils.isEmpty(mCarb.getText().toString())) {
+				currLimit = currLimit + 4 * Integer.parseInt(mCarb.getText().toString());
+			}
+			return currLimit;
+		}
+	}
+
+	private int getInt(String s) {
+		try {
+			return Integer.parseInt(s);
+		}catch (Exception e) {
+			return 0;
+		}
+	}
+
+	private class TextWatcherTotalCall implements TextWatcher {
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,	int after) {}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			updateLimits();
+		}
+	}
+	private MultiSlider.OnThumbValueChangeListener slideListener = new MultiSlider.OnThumbValueChangeListener() {
+		@Override
+		public void onValueChanged(MultiSlider multiSlider, MultiSlider.Thumb thumb, int thumbIndex, int value) {
+
+			tvProtein.setText("" + multiSlider5.getThumb(0).getValue());
+
+			tvFat.setText("" + (multiSlider5.getThumb(1).getValue() - multiSlider5.getThumb(0).getValue()));
+
+			tvCarbon.setText("" + (100 - Integer.valueOf(tvFat.getText().toString()) - Integer.valueOf(tvProtein.getText().toString())));
+
+			updatePFC();
+
+		}
+	};
 
 }

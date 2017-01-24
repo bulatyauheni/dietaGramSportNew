@@ -150,14 +150,27 @@
                 android:text="@string/free_abonement_offer_text"
                 android:textColor="@color/light_red"
                 android:textSize="18dp" />
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <ImageButton
+                android:layout_weight="1"
                 android:id="@+id/buttonVKChart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/vkbig_button_xml"
                 android:clickable="true" />
+            <ImageButton
+                android:id="@+id/buttonFBChart"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/fbbig_button_xml"
+                android:clickable="true" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

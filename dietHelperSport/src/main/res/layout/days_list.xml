@@ -190,7 +190,7 @@
                         android:maxLines="2"
                         android:text=""
                         android:textColor="@color/text_color"
-                        android:textSize="12dip"
+                        android:textSize="11dip"
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/textViewProteinPercent"
@@ -231,7 +231,7 @@
                         android:maxLines="2"
                         android:text=""
                         android:textColor="@color/text_color"
-                        android:textSize="12dip"
+                        android:textSize="11dip"
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/textViewFatPercent"
@@ -272,7 +272,7 @@
                         android:maxLines="2"
                         android:text=""
                         android:textColor="@color/text_color"
-                        android:textSize="12dip"
+                        android:textSize="11dip"
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/textViewCarbonPercent"

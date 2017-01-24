@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+    <string name="locale">de</string>
+    <string name="tab_dish">Heute</string>
+    <string name="tab_calendar">Verlauf</string>
+    <string name="tab_dishlist">Liste</string>
+    <string name="tab_calc">Netzwerk</string>
+    <string name="tab_setting">Info</string>
+    <string name="tab_mode">Daten</string>
+    <string name="tab_statistic">Statistik</string>
+    <string name="tab_about">Vom Autor</string>
+    <string name="add_today_dish">Gericht hinzufügen</string>
+    <string name="edit_today_dish">Gericht bearbeiten</string>
+    <string name="add_dish">Gericht hinzufügen</string>
+    <string name="edit_dish">Gericht bearbeiten</string>
+    <string name="tab_calendar_header">Mein Kalender</string>
+
+    <!-- Dish list  -->
+    <string name="loading">Suche läuft...</string>
+    <string name="loading_base">Einrichtung der Produktbasis...</string>
+    <string name="update_base">Aktualisierung der Produktbasis</string>
+    <string name="bad_search">Nichts gefunden :(</string>
+
+    <string name="idealCheet">Perfekte Balance</string>
+    <string name="yourCheet">Meine Balance</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="dish_list">Liste der Gerichte</string>
+    <string name="avg_label">Durchschnittliche tägliche Kalorienaufnahme:</string>
+    <string name="parameters_header">Geben Sie Ihre Daten ein</string>
+    <string name="total">Gesamt:</string>
+    <string name="limit">Limit:</string>
+    <string name="dish_name">Bezeichnung:</string>
+    <string name="name">Benennung:</string>
+    <string name="indicator">Wirkung</string>
+    <string name="portion_size">Gewicht der Portion (in Gramm):</string>
+    <string name="fitnes_time">Trainingszeit (in Minuten):</string>
+    <string name="kcal_day">kcal/Tag</string>
+    <string name="caloricity">Kalorien (kcal/100 g):</string>
+    <string name="date">Datum</string>
+    <string name="information">Informationen</string>
+    <string name="gram">gr</string>
+    <string name="gram_full">Gramm</string>
+    <string name="santimetr">cm</string>
+    <string name="kcal">kcal</string>
+    <string name="maintain">Zur Gewichtserhaltung:</string>
+    <string name="losing">Zur Gewichtsabnahme:</string>
+    <string name="age">Alter</string>
+    <string name="age_colon">Alter:</string>
+    <string name="sex">Geschlecht</string>
+    <string name="weight">Gewicht (kg)</string>
+    <string name="weight_fitnes">Ihr Gewicht (kg)</string>
+    <string name="high">Größe (cm)</string>
+    <string name="weight_colon">Ihr Gewicht (kg):</string>
+    <string name="high_colon">Größe (cm):</string>
+    <string name="activity">Aktivitätsniveau</string>
+    <string name="amoutnt_of_calory">Die Anzahl der Kalorien</string>
+    <string name="amoutnt_of_burn_calory">Verbrannte Kalorien</string>
+    <!-- dialogs -->
+    <string name="remove_dialog">Sind sie sicher?</string>
+    <string name="save_prove">Einstellungen erfolgreich gespeichert</string>
+    <string name="welcome">Der Kalorienzähler heisst Sie willkommen. Diese Anwendung ermöglicht es ihnen Ihre optimale tägliche Aufnahme von Kalorien zu berechnen und Ihren täglichen Speiseplan zu überwachen. Bitte geben Sie Ihre Daten ein.</string>
+    <string name="tip">Bitte geben Sie zunächst Ihre Daten ein und drücken Sie auf die Schaltfläche OK an unteren Rand der Seite.</string>
+    <string name="culculated_parameters">Geben Sie Ihre Werte ein</string>
+    <string name="qutstion">Was fehlt Ihnen in der App?</string>
+
+    <string name="statistics_parameters">Statistische Daten</string>
+    <string name="target_settings">Auswahl der Diät:</string>
+    <string name="mode">Diät:</string>
+    <string name="underweight">Untergewicht</string>
+    <string name="normal_weight">Normalgewicht</string>
+    <string name="overweight">Übergewicht</string>
+    <string name="obese">Fettleibigkeit</string>
+    <string name="losing_weight">Gewichtsverlust</string>
+    <string name="keeping_weight">Erhaltung des Gewichts</string>
+    <string name="gaining_weight">Gewichtszunahme</string>
+    <string name="empty_list_label">Klicken Sie hier, um mit dem Ausfüllen zu beginnen...</string>
+    <string name="total_caloricity">Verbrauch:</string>
+    <string name="total_weight">Mahlzeit:</string>
+    <string name="level_1">Bewegungsarme Lebensweise</string>
+    <string name="level_2">Sport Aktivitäten 1-3 mal pro Woche</string>
+    <string name="level_3">Sport Aktivitäten 3-5 mal pro Woche</string>
+    <string name="level_4">Sport Aktivitäten 6-7 mal pro Woche</string>
+    <string name="level_5">Sehr große tägliche körperliche Aktivität</string>
+    <string name="male">Mann</string>
+    <string name="female">Frau</string>
+    <string name="calorie_day">Kalorien / Tag</string>
+    <string name="search_in_all">Suche des Gerichts...</string>
+    <string name="disonect">Keine Internetverbindung</string>
+    <string name="today_fitnes">Aktivität</string>
+    <string name="edit_today_fitnes">Ändern der Aktivität</string>
+
+    <string name="body_weight">Ihr Gewicht:</string>
+    <string name="kgram">kg</string>
+
+    <!-- Social -->
+    <string name="tab_social_header">Gemeinschaft</string>
+    <string name="tab_social_calendar_header">Historie</string>
+    <string name="search_parameters_title">Suchoptionen</string>
+    <string name="any">Alle</string>
+    <string name="any_midle">Alle</string>
+    <string name="user_weight">Gewicht:</string>
+    <string name="loading_social">Wird geladen ...</string>
+    <string name="time">Zeit:</string>
+    <string name="time_1">Frühstück</string>
+    <string name="time_2">Brunch</string>
+    <string name="time_3">Mittagessen</string>
+    <string name="time_4">Zwischenmahlzeit</string>
+    <string name="time_5">Abendessen</string>
+    <string name="time_6">Zweites Abendessen</string>
+    <string name="time_active">Tagesaktivität</string>
+    <string name="header_in_label">Erhalten:</string>
+    <string name="header_out_label">Verbraucht:</string>
+    <string name="username_label">Geben Sie Ihr Pseudonym ein:</string>
+    <string name="username">Benutzername:</string>
+    <string name="first_name">Name</string>
+    <string name="username_hello_label">Hier können Sie die Diät anderer Leute einsehen. Möglicherweise finden Sie hierdurch Diät-Freunde. Geben Sie Ihren Namen oder Ihr Pseudonym ein, damit Sie die anderen Benutzer sehen können.</string>
+    <string name="username_dialog_title">Benutzerregistrierung</string>
+    <string name="username_change_dialog_title">Namen ändern</string>
+    <string name="change_weight_dialog_title">Gewichtsänderung</string>
+    <string name="change_weight_label">Hier können Sie die Daten zu Ihrem Gewicht aktualisieren.</string>
+    <string name="update_weight_label">Hier können Sie die Daten zu Ihrem Gewicht für einen konkreten Tag ändern.</string>
+
+    <string name="username_dialog_registred">Sie sind registriert</string>
+    <string name="username_dialog_notregistred">Fehlgeschlagen, versuchen Sie es später noch einmal</string>
+    <string name="contacts_list">Kontaktliste</string>
+    <string name="newContactMessage">Neuer Kontakt hergestellt</string>
+    <string name="enter_message">Geben Sie Ihre Nachricht ein</string>
+    <string name="sport_level">Sportlichkeit</string>
+    <string name="conversation">Kommunikation</string>
+    <string name="user_history">Benutzerhistorie</string>
+    <string name="user_weight_history">Diagramm der Gewichtsänderung ansehen</string>
+    <string name="user_new_messages_label">Neue Mitteilungen:</string>
+    <string name="users_notfound">Benutzer mit diesen Kenndaten konnten nicht gefunden werden. Klicken Sie hier, um die Suchparameter zu ändern</string>
+    <string name="statistic_food"> Ernährungsbilanz</string>
+    <string name="statistic_other">Anderes</string>
+    <string name="statistic_weight">Änderungsstatistik</string>
+    <string name="statistic_FCP">Bilanz der Proteine, Fette, Kohlenh.</string>
+    <string name="statistic_weight_empty">Der Parameter hat sich noch nicht geändert</string>
+    <string name="users_calendar_empty">Der Benutzerkalender ist leer</string>
+    <string name="user_chart_dialog">Änderungsgrafik</string>
+    <string name="contacts_header">Klicken Sie hier, um die Liste zu ergänzen</string>
+    <string name="new_message">Neue Beiträge</string>
+
+    <string name="balance_norm">Normaler Lebensstil</string>
+    <string name="balance_fith">Bei hohen körperlichen Belastungen</string>
+    <string name="balance_clever">Für Arbeiter von geistigen Tätigkeiten</string>
+    <string name="balance_custom">Meine Einstellungen</string>
+
+
+    <string name="fitnes_burn_label">Kalorienverbrauch pro Stunde (kcal/h):</string>
+    <string name="fitnes_list">Übungen</string>
+    <string name="fat">Fett</string>
+    <string name="carbon">Kohlenh</string>
+    <string name="protein">Prot</string>
+    <string name="energy">Kalorien</string>
+    <string name="reset_dialog">Gesamte Historie löschen und von vorne beginnen?</string>
+    <string name="remove_chat_dialog">Gesamte Korrespondenz mit diesem Benutzer löschen?</string>
+    <string name="empty_day">Leerer Tag</string>
+    <string name="balanse_data">Berechnung Ihrer Bilanz anhand der Daten der letzten 30 Tage.</string>
+    <string name="consumption">kcal/h</string>
+    <string name="add_fitnes">Aktivität hinzufügen</string>
+    <string name="add_today_fitnes">Aktivität hinzufügen</string>
+    <string name="days">Historie</string>
+    <string name="templates">Vorlagen</string>
+    <string name="save">Als Vorlage speichern</string>
+    <string name="load">Vorlage laden</string>
+    <string name="savetemplate">Die Vorlage gespeichert</string>
+    <string name="loadtemplate">Die Vorlage geladen</string>
+    <string name="loadtemplateempty">Heruntergeladene Vorlage ist leer</string>
+    <string name="templatesempty">Sie haben noch keine Vorlage</string>
+    <string name="template_download">Aktuelle Daten gehen verloren. Wollen Sie die Vorlage herunterladen?</string>
+    <string name="template_save">Sie können Ihre aktuellen Daten als Vorlage speichern, um sie später zu verwenden.</string>
+    <string name="template_name">die Vorlage Namen</string>
+    <string name="tab_template_header">Vorlagen</string>
+    <string name="new_template_header">Vorlage</string>
+    <string name="changename">Namen ändern</string>
+    <string name="choosetemplate">Vorlage auswählen</string>
+
+    <string name="type_save">Sie können Ihre Kategorie hinzufügen. Geben Sie den Namen der Kategorie vorsichtig ein, er kann im Nachhinein nicht bearbeitet werden.</string>
+    <string name="types">Kategorien</string>
+    <string name="type_name">die Kategorie Namen</string>
+
+    <string name="reminder">Sie haben den Kalorienzähler seit langem nicht mehr ausgefüllt</string>
+    <string name="reminder_title">Erinnerung</string>
+    <string name="newmessage">Neue Mitteilung des Kalorienzählers!</string>
+    <string name="newmessage_title">Neue Mitteilung</string>
+    <string name="timeHHMM">Zeit (h:min)</string>
+    <string name="timeHHMMFitnes">Startzeit:</string>
+    <string name="category">In der Kategorie:</string>
+    <string name="type">Typ:</string>
+    <string name="water_label">Wasser:</string>
+
+    <string name="widjet_prot">Prot:</string>
+    <string name="widjet_carb">Kohlenh:</string>
+    <string name="widjet_fat">Fette:</string>
+    <string name="statistic_export_save">Aufzeichnungen in einer Datei auf dem Telefon und in der Cloud speichern?</string>
+    <string name="statistic_export">Export</string>
+    <string name="statistic_import">Import</string>
+    <string name="statistic_export_base">Export von Produkten</string>
+    <string name="statistic_import_bases">Import von Produkten</string>
+    <string name="saved_history">Historie gespeichert</string>
+    <string name="history_download">Aktuelle Daten gehen verloren. Wollen Sie die Historie laden?</string>
+    <string name="empty_dish_search">Hier klicken, um ein Produkt hinzuzufügen ...</string>
+
+    <string name="popular">Beliebt</string>
+
+    <string name="complex_list">Rezepte</string>
+
+    <string name="castom_limit">Limits manuell eingeben</string>
+    <string name="save_limit">Limit gespeichert</string>
+    <string name="surplus">Rest:</string>
+
+
+    <string name="soc_tab_calendar">Benutzerkalender</string>
+    <string name="soc_tab_messages">Kontakte</string>
+    <string name="soc_tab_search">Suche</string>
+    <string name="soc_tab_news">Neuigkeiten</string>
+    <string name="soc_start_following">Sie haben sich für Neuigkeiten dieses Benutzers registriert</string>
+    <string name="soc_stop_following">Sie werden keine Neuigkeiten dieses Besitzers erhalten</string>
+    <string name="soc_button_favorite">Auswahl</string>
+    <string name="soc_button_conversation">Mitteilungen</string>
+    <string name="soc_button_folovers">Abonnenten</string>
+    <string name="soc_coment">Kommentar hinzufügen</string>
+    <string name="enter_news">Nachricht schreiben</string>
+    <string name="users_notfound2">Solche Benutzer gibt es noch nicht</string>
+    <string name="users_instruction">Sie haben noch keine Nachrichten anderer Benutzer abonniert. Um sich anzumelden, klicken Sie auf der Seite des Benutzers, der Sie interessiert, auf die Schaltfläche mit dem Sternchen.</string>
+    <string name="users_newslist_empty">Der Benutzer hat noch keine Nachrichten geschrieben</string>
+    <string name="real_weight">Gewicht des fertigen Gerichts (g):</string>
+    <string name="time_def">Mahlzeiteneinnahme</string>
+
+    <string name="set_notif_dialog_title">Einrichten von Erinnerungen</string>
+    <string name="set_notif_label">Um wieviel Uhr möchten Sie daran erinnert werden zu essen?</string>
+    <string name="set_notiftime_label">Erinnerung um:</string>
+    <string name="set_notiftime_label_off">Erinnerung ausgeschaltet</string>
+    <string name="set_notif_title">Einstellung der Mahlzeiten</string>
+    <string name="day_time">Mahlzeiteneinnahme:</string>
+    <string name="set_notiftime_toast_on">Erinnerung ist eingeschaltet</string>
+
+    <string name="advlabel">Der Rechner wird durch die Webseite zur Verfügung gestellt</string>
+    <string name="advlink">www.tvoytrener.com</string>
+    <string name="search_in_all_sport">Suche nach Tätigkeit ...</string>
+    <string name="additional_weight">Gewicht (kg):</string>
+    <string name="count">Anzahl der Wiederholungen:</string>
+    <string name="fitnes_help">Geben Sie das Gewicht der Geräte und die Anzahl der Wiederholungen ein</string>
+    <string name="volume_chest">Brustumfang</string>
+    <string name="volume_pelvis">Becken</string>
+    <string name="volume_neck">Hals</string>
+    <string name="volume_biceps">Bizeps</string>
+    <string name="volume_forearm">Unterarm</string>
+    <string name="volume_waist">Taille</string>
+    <string name="volume_hip">Hüften</string>
+    <string name="volume_shin">Unterschenkel</string>
+    <string name="activity_exp">Trainingserfahrung (Jahre):</string>
+    <string name="exp1">0</string>
+    <string name="exp2">1-2</string>
+    <string name="exp3">3</string>
+    <string name="exp4">4+</string>
+    <string name="copy_dialog">Aufnahme wiederholen?</string>
+    <string name="voice_error">Spracheingabe ist auf Ihrem Telefon nicht möglich.</string>
+    <string name="tab_add_params">Größen</string>
+    <string name="count_num">Mal</string>
+    <string name="statistic_top10">Top 10 in diesem Monat</string>
+    <string name="payment">Zahlung</string>
+    <string name="paymenterror">Problem mit der Zahlung</string>
+    <string name="paymentm">Abonnement für einen Monat</string>
+    <string name="paymentspec">Abonnement für eine Aktion</string>
+    <string name="payment3m">Abonnement für 3 Monate</string>
+    <string name="paymenty">Jahresabonnement</string>
+    <string name="paymenthy">Halbjahresabonnement</string>
+    <string name="paymentvipy">VIP-Abonnement</string>
+    <string name="paymentbenefit">(Vorteil: %1$s)</string>
+    <string name="payment_dialog_month">Bei Erwerb eines Monatsabonnements können Sie für 30 Tage alle Anwendungsfunktionen benutzen. Abonnement bezahlen?</string>
+    <string name="payment_dialog_halfyear">Bei Erwerb eines Halbjahresabonnements  können Sie 190 Tage alle Anwendungsfunktionen benutzen. Abonnement bezahlen?</string>
+    <string name="payment_dialog_year">Bei Erwerb eines Jahresabonnements können Sie 365 Tage alle Anwendungsfunktionen benutzen. Abonnement bezahlen?</string>
+    <string name="payment_dialog_vipyear">Bei Erwerb eines VIP-Tickets können Sie rund um die Uhr Unterstützung erhalten und neue Funktionen bestellen. VIP-Ticket bezahlen?</string>
+
+    <string name="payment_dialog_alert">Um mit der Nutzung des Kalorienzählers Dietagram fortzufahren, müssen Sie ein Abonnement abschließen.</string>
+    <string name="last_notif_alert">Es muss mindestens eine Mahlzeiteinnahme bestehen bleiben.</string>
+    <string name="water_name">Wasser</string>
+
+    <string name="user_email_label">Geben Sie Ihre E-Mail ein (zum Erhalt des Speiseplans vom Ernährungsberater)</string>
+    <string name="user_abonement_label">Geben Sie den Code ein (für die Erhaltung des Aktions-Abonnements)</string>
+    <string name="user_email_hint">Ihre E-Mail</string>
+    <string name="user_email_title">Erhalt des Speiseplans</string>
+    <string name="user_abonement_title">Erhalt des Abonnements</string>
+    <string name="user_ration_empty">Es sind keine neuen Speisepläne im Zusammenhang mit Ihrer E-Mail vorhanden. Kontaktieren Sie den Autor der Anwendung, um eine Lösung zu finden.</string>
+    <string name="user_ration_ok">Der Speiseplan wurde erfolgreich geladen</string>
+    <string name="user_abonement_empty">Das Abonnement ist abgelaufen, kontaktieren Sie den Autor oder erwerben Sie ein Abonnement</string>
+    <string name="user_abonement_ok">Das Abonnement wurde erfolgreich geladen</string>
+    <string name="days_limit">Tage</string>
+
+    <string name="barcode">Strichcode:</string>
+
+    <string name="download_backup">Möchten Sie nach gespeicherten Inhalten in der Cloud suchen?</string>
+
+    <string name="idealWeight">Ziel</string>
+    <string name="currentWeight">Aktuelle Wert</string>
+
+    <string name="ideal">Ziel</string>
+    <string name="today">Heute</string>
+    <string name="yesterday">Gestern</string>
+    <string name="lastweek">Woche</string>
+    <string name="lastmonth">Monat</string>
+    <string name="allTime">Ständig</string>
+    <string name="do_you_like">Gefällt Ihnen diese App?</string>
+    <string name="not_shure">Nicht besonders</string>
+    <string name="yes_shure">Ja!</string>
+
+    <string name="rating_plaese">Wie wäre es, wenn Sie sie auf Google Play bewerten?</string>
+    <string name="agree">Ja, natürlich</string>
+    <string name="disagree">Nicht jetzt</string>
+
+    <string name="complain_plaese">Könnten Sie uns mitteilen, was Ihnen nicht gefällt?</string>
+    <string name="complain_for_payment">Wenn es Ihnen nicht gelingt, das Abonnement zu zahlen, oder wenn Sie eine andere Frage haben - schreiben Sie mir einfach eine E-Mail, gemeinsam werden wir eine passende Lösung finden.</string>
+    <string name="vk_recomend">Ich kann es wirklich empfehlen! Der Kalorienzähler ist ein einfaches und effektives Programm.</string>
+    <string name="vk_toast">Die Notiz wurde Ihrer Wand Facebook hinzugefügt.</string>
+    <string name="get_free_time">Kaufe ich nicht</string>
+    <string name="ok">OK</string>
+    <string formatted="false" name="success_in_percantage_text">Mein Ernährungsgleichgewicht in %.2f %% ist ideal</string>
+
+    <string name="free_abonement_offer_text">Veröffentlichen Sie Ihre Ergebnisse an der Wand in Facebook und erhalten Sie ein kostenloses Woche.</string>
+    <string name="get_abonement_title">Erhalt des Abonnements</string>
+
+    <string name="need_to_consume">Können hinzufügen:</string>
+    <string name="need_to_luse">Zu verbrennen sind:</string>
+
+    <string name="weight_widget">Gewicht:</string>
+    <string name="forAllTime">während der gesamten Zeit</string>
+    <string name="norma">Norm:</string>
+
+    <string name="remove_item_dialog">Diese Notiz löschen?</string>
+    <string name="minutes">Min.</string>
+    <string name="activity_weight">Gewicht:</string>
+    <string name="amount">Mal</string>
+</resources>

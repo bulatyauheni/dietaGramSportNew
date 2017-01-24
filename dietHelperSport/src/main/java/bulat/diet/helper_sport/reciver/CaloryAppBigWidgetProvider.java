@@ -28,6 +28,7 @@ import bulat.diet.helper_sport.db.DishProvider;
 import bulat.diet.helper_sport.db.TodayDishHelper;
 import bulat.diet.helper_sport.item.Day;
 import bulat.diet.helper_sport.item.DishType;
+import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.SaveUtils;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -69,6 +70,8 @@ public class CaloryAppBigWidgetProvider extends AppWidgetProvider {
 				context.getString(R.string.carbon), context.getString(R.string.fat) };
 		Locale locale = new Locale(SaveUtils.getLang(context));
 		Locale.setDefault(locale);
+		GATraker.initialize(context.getApplicationContext());
+		GATraker.sendEvent("WIDGET", "BIG_WIDGET_UPDATE");
 		Configuration config = new Configuration();
 		config.locale = locale;
 		context.getResources().updateConfiguration(config,
@@ -143,7 +146,7 @@ public class CaloryAppBigWidgetProvider extends AppWidgetProvider {
 				mChart.setExtraOffsets(5, 10, 5, 5);
 
 				mChart.setDragDecelerationFrictionCoef(0.95f);
-				mChart.setCenterText(context.getString(R.string.yourCheet));
+				mChart.setCenterText("");
 				mChart.setBackgroundColor(Color.TRANSPARENT);
 				mChart.setExtraOffsets(10.f, 0.f, 10.f, 0.f);
 
@@ -293,6 +296,18 @@ public class CaloryAppBigWidgetProvider extends AppWidgetProvider {
 		remoteViews.setOnClickPendingIntent(R.id.buttonFitnes, pendingIntent);
 		remoteViews.setTextViewText(R.id.widget_inlabel, context.getString(R.string.header_in_label));
 		remoteViews.setTextViewText(R.id.widget_surpluslabel, context.getString(R.string.need_to_consume));
+
+		remoteViews.setTextViewText(R.id.widget_prot_norma_label, context.getString(R.string.norma));
+		remoteViews.setTextViewText(R.id.widget_fat_norma_label, context.getString(R.string.norma));
+		remoteViews.setTextViewText(R.id.widget_carbon_norma_label, context.getString(R.string.norma));
+
+		remoteViews.setTextViewText(R.id.widget_prot_gramm, context.getString(R.string.gram));
+		remoteViews.setTextViewText(R.id.widget_carb_gramm, context.getString(R.string.gram));
+		remoteViews.setTextViewText(R.id.widget_fat_gramm, context.getString(R.string.gram));
+
+		remoteViews.setTextViewText(R.id.widget_currentweightlabel, context.getString(R.string.weight_widget));
+		remoteViews.setTextViewText(R.id.widget_currentweight_kg, context.getString(R.string.kgram));
+
 		remoteViews.setTextViewText(R.id.widget_carbon_label, context.getString(R.string.carbon));
 		remoteViews.setTextViewText(R.id.widget_limitlabel, context.getString(R.string.limit));
 		remoteViews.setTextViewText(R.id.widget_prot_label, context.getString(R.string.protein));
@@ -450,7 +465,7 @@ public class CaloryAppBigWidgetProvider extends AppWidgetProvider {
 		}
 		
 		remoteViews.setTextViewText(R.id.widget_weight_dif, df.format(dif));
-		String totalDifstr = "";
+		String totalDifstr = "-0";
 		if(totalDif>0){
 			totalDifstr =" " + "+" + df.format(totalDif);
 			totalDifstr.trim();

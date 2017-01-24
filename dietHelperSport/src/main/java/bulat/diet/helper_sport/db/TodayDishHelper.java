@@ -597,6 +597,15 @@ public static float getBodyWeightByDate(long date, Context context) {
 	public static List<Day> getDaysStat(Context context) {
 		return getDaysStat (context, 30);
 	}
+
+	public static String getTotalWeightLoose(Context context) {
+		List<Day> weights = getDaysStat(context, 366);
+		if (weights != null && weights.size()>2){
+			return String.valueOf (weights.get(1).getBodyWeight() - weights.get(weights.size()-1).getBodyWeight());
+		} else {
+			return "";
+		}
+	}
 	
 	public static List<Day> getDaysStat(Context context, int days) {
 

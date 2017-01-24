@@ -98,7 +98,6 @@ public class AddTodayDishActivity extends BaseAddActivity implements TimePickerD
 	private Button okbutton2;
 
 	private void initData(Bundle extras) {
-
 		parentName = extras.getString(DishActivity.PARENT_NAME);
 		recepyId = extras.getString(RecepyActivity.ID);
 		templateFlag = extras.getBoolean(NewTemplateActivity.TEMPLATE);
@@ -230,7 +229,7 @@ public class AddTodayDishActivity extends BaseAddActivity implements TimePickerD
 				android.R.layout.simple_spinner_item, time);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerTime.setAdapter(adapter);
-		
+
 		if(SaveUtils.getLastTime(this) < spinnerTime.getCount()){
 			spinnerTime.setSelection(SaveUtils.getLastTime(this));
 		} else {
@@ -524,12 +523,12 @@ public class AddTodayDishActivity extends BaseAddActivity implements TimePickerD
 							curentDateandTime.getTime(),
 							0,
 							typeValue,
-							Float.parseFloat(fatValue.trim().replace(',','.')),
-							Float.parseFloat(dishFatVTW.getText().toString().trim().replace(',', '.')),
-							Float.parseFloat(carbonValue.trim().replace(',', '.')),
-							Float.parseFloat(dishCarbonVTW.getText().toString().trim().replace(',', '.')),
-							Float.parseFloat(proteinValue.trim().replace(',', '.')),
-							Float.parseFloat(dishProteinVTW.getText().toString().trim().replace(',', '.')),
+							getFloat(fatValue.trim().replace(',','.')),
+							getFloat(dishFatVTW.getText().toString().trim().replace(',', '.')),
+							getFloat(carbonValue.trim().replace(',', '.')),
+							getFloat(dishCarbonVTW.getText().toString().trim().replace(',', '.')),
+							getFloat(proteinValue.trim().replace(',', '.')),
+							getFloat(dishProteinVTW.getText().toString().trim().replace(',', '.')),
 							timeHHValue,
 							timeMMValue);
 					if (templateFlag) {
@@ -611,6 +610,14 @@ public class AddTodayDishActivity extends BaseAddActivity implements TimePickerD
 			AddTodayDishActivity.this.sendBroadcast(i);
 		}
 	};
+
+	private float getFloat(String s) {
+		try {
+			return Float.parseFloat(s);
+		} catch (Exception e) {
+			return Float.valueOf("0");
+		}
+	}
 
 
 	@Override

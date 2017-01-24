@@ -55,6 +55,7 @@ import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.item.Purchase;
 import bulat.diet.helper_sport.utils.Constants;
 import bulat.diet.helper_sport.utils.CustomAlertDialogBuilder;
+import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.IabHelper;
 import bulat.diet.helper_sport.utils.IabResult;
 import bulat.diet.helper_sport.utils.NetworkState;
@@ -79,6 +80,13 @@ public class PaymentsListActivity extends BasePayActivity {
 	// static final String SKU_HALFYEAR = "halfyearsubs_diethelper";
 	public static final String SKU_YEAR = "year_plan";
 	static final int RC_REQUEST = 10001;
+	private static final String PAYMENT_ERROR_REPORT = "PAYMENT_ERROR_REPORT";
+	private static final String ABONEMENT = "ABONEMENT";
+	private static final String ABONEMENT_VIP = "ABONEMENT_VIP";
+	private static final String ABONEMENT_YEAR = "ABONEMENT_YEAR";
+	private static final String ABONEMENT_HALFYEAR = "ABONEMENT_HALFYEAR";
+	private static final String ABONEMENT_MONTH = "ABONEMENT_MONTH";
+	private static final String ABONEMENT_FREE = "ABONEMENT_FREE";
 	Context ctx = null;
 	private int selectedInemId;
 	StatisticActivityGroup parent;
@@ -157,17 +165,28 @@ public class PaymentsListActivity extends BasePayActivity {
 				selectedInemId = arg2;
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						PaymentsListActivity.this.getParent().getParent());
-				if (arg2 == 0)
-					builder.setMessage(R.string.payment_dialog_vipyear);	
-				if (arg2 == 1)
-					builder.setMessage(R.string.payment_dialog_year);					
-				if (arg2 == 2)
+				if (arg2 == 0) {
+					GATraker.sendEvent(ABONEMENT, ABONEMENT_VIP);
+					builder.setMessage(R.string.payment_dialog_vipyear);
+				} else
+				if (arg2 == 1) {
+					GATraker.sendEvent(ABONEMENT, ABONEMENT_YEAR);
+					builder.setMessage(R.string.payment_dialog_year);
+				} else
+				if (arg2 == 2) {
+					GATraker.sendEvent(ABONEMENT, ABONEMENT_HALFYEAR);
 					builder.setMessage(R.string.payment_dialog_halfyear);
-				if (arg2 == 3)
+				} else
+				if (arg2 == 3) {
+					GATraker.sendEvent(ABONEMENT, ABONEMENT_MONTH);
 					builder.setMessage(R.string.payment_dialog_month);
-				if (arg2 == 4)
+				} else
+				if (arg2 == 4) {
+					GATraker.sendEvent(ABONEMENT, ABONEMENT_FREE);
 					PaymentsListActivity.this.showDialog(DIALOG_EMAIL);
+				} else
 				if (arg2 == 5) {
+					GATraker.sendEvent(ABONEMENT, PAYMENT_ERROR_REPORT);
 					CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(PaymentsListActivity.this.getParent().getParent());
 					bld.setLayout(R.layout.section_alert_dialog_two_buttons)
 					.setMessage(PaymentsListActivity.this.getParent().getString(R.string.complain_for_payment))			
@@ -193,7 +212,8 @@ public class PaymentsListActivity extends BasePayActivity {
 					})
 					.setNegativeButtonText(R.string.disagree);
 					bld.show();
-				} else if (arg2 != 4){
+				}
+				if (arg2 !=5 && arg2 != 4){
 					builder.setPositiveButton(getString(R.string.yes),
 							dialogClickListener)
 							.setNegativeButton(getString(R.string.no),

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bulat.diet.helper_sport"
-    android:installLocation="auto"
-    android:versionCode="103"
-    android:versionName="3.1.1" >
+    android:installLocation="internalOnly"
+    android:versionCode="110"
+    android:versionName="3.1.8" >
 
-    <uses-sdk android:minSdkVersion="14" />
+    <uses-sdk android:minSdkVersion="15" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,6 +15,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
+        android:name="DietaGramApplication"
         android:allowBackup="true"
         android:backupAgent="MyBackupAgent"
         android:icon="@drawable/icon_m"
@@ -55,6 +56,7 @@
         <activity
             android:name=".activity.StartActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/splashScreenTheme"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -326,6 +328,12 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".activity.SharingActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
 
         <service android:name="com.android.vending.billing.IInAppBillingService" />
 
@@ -336,6 +344,10 @@
             android:name=".db.SinchProvider"
             android:authorities="bulat.diet.helper_sport.db.SinchProvider" />
 
+        <provider android:authorities="com.facebook.app.FacebookContentProvider1327703357302523"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true" />
+
         <meta-data
             android:name="com.google.android.backup.api_key"
             android:value="AEdPqrEAAAAIchUQasR43H25eaZe1iuet9ovJ6DIX130meDO6w" /><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -343,6 +355,30 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <!-- Optionally, register AnalyticsReceiver and AnalyticsService to support background
+     dispatching on non-Google Play devices -->
+        <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false"/>
+
+        <!-- Optionally, register CampaignTrackingReceiver and CampaignTrackingService to enable
+             installation campaign reporting -->
+        <receiver android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
     </application>
 
 </manifest>

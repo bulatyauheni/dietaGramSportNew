@@ -52,6 +52,7 @@
                 android:text="35" />
 
             <TextView
+                android:id="@+id/widget_currentweight_kg"
                 style="@style/WidgetLabelSub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -81,10 +82,12 @@
                 android:text="@string/kgram" />
 
             <TextView
+
                 style="@style/WidgetLabelSub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/forAllTime" />
+                android:text="@string/forAllTime"
+                android:visibility="gone"/>
 
             <TextView
                 style="@style/WidgetLabelSub"
@@ -93,21 +96,47 @@
                 android:text=")" />
         </LinearLayout>
 
+
+        <TextView
+            style="@style/WidgetLabelSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="5dp"
+            android:text="@string/app_name" />
+
         <LinearLayout
             android:layout_width="240dp"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:orientation="vertical"
-            android:visibility="visible">
-
+            android:visibility="visible"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/graph"
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
                 android:background="@android:color/transparent" />
+
+                <Button
+                    android:id="@+id/buttonAdd"
+                    android:layout_width="55dip"
+                    android:layout_height="55dip"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btn_add_food"
+                    android:clickable="true"
+                    android:gravity="top"
+                    android:maxLines="1"
+                    android:textSize="12dip" />
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/infol"
@@ -137,7 +166,7 @@
 
                             <TextView
                                 android:id="@+id/widget_inlabel"
-                                style="@style/WidgetLabel"
+                                style="@style/textMiddle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/header_in_label" />
@@ -226,7 +255,7 @@
 
                             <TextView
                                 android:id="@+id/widget_surpluslabel"
-                                style="@style/WidgetLabel"
+                                style="@style/textMiddle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/need_to_consume" />
@@ -300,6 +329,7 @@
                             android:text="12.3" />
 
                         <TextView
+                            android:id="@+id/widget_prot_gramm"
                             style="@style/WidgetLabelSub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -315,7 +345,7 @@
 
                         <TextView
                             android:id="@+id/widget_prot_norma_label"
-                            style="@style/WidgetLabelValue"
+                            style="@style/WidgetLabelSub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/norma" />
@@ -371,6 +401,7 @@
                             android:text="12.3" />
 
                         <TextView
+                            android:id="@+id/widget_fat_gramm"
                             style="@style/WidgetLabelSub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -386,7 +417,7 @@
 
                         <TextView
                             android:id="@+id/widget_fat_norma_label"
-                            style="@style/WidgetLabelValue"
+                            style="@style/WidgetLabelSub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/norma" />
@@ -442,6 +473,7 @@
                             android:text="12.3" />
 
                         <TextView
+                            android:id="@+id/widget_carb_gramm"
                             style="@style/WidgetLabelSub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -457,7 +489,7 @@
 
                         <TextView
                             android:id="@+id/widget_carbon_norma_label"
-                            style="@style/WidgetLabelValue"
+                            style="@style/WidgetLabelSub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/norma" />
@@ -478,27 +510,6 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
-        <Button
-            android:id="@+id/buttonAdd"
-            android:layout_width="35dip"
-            android:layout_height="35dip"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="10dp"
-            android:background="@drawable/add_button_xml"
-            android:clickable="true"
-            android:gravity="top"
-            android:maxLines="1"
-            android:textSize="12dip" />
-
-        <TextView
-            style="@style/WidgetLabelSub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:paddingLeft="10dp"
-            android:text="@string/app_name" />
     </RelativeLayout>
 
 

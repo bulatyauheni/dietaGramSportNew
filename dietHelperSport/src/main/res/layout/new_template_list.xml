@@ -185,6 +185,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayoutTotal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -443,7 +444,7 @@
     <ListView
         android:id="@+id/listViewTodayDishes"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:layout_above="@+id/linearLayoutTotal"
         android:layout_below="@+id/relativeLayout1"
         android:cacheColorHint="#00000000"

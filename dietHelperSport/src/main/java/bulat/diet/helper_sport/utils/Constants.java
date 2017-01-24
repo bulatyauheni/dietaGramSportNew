@@ -19,7 +19,7 @@ public class Constants {
 	public static final  String URL_SOCIAL = "http://www.calorycman.net/";//StartActivity.URLSOCIAL;
 	
 	public static final  String URL_PAY = "http://www.calorycman.net/pay.php";//StartActivity.URLSOCIAL;
-	public static final  String VERSION = "1.1PODPISKA";
+	public static final  String VERSION = "DIETAGRAM_N";
 	public static final  String URL_SOCIAL_NEWS = "http://calorycman.net/news.php";//StartActivity.URLSOCIAL;
 	
 	public static final  String FOLLOWER = "follower";

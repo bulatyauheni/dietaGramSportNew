@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:background="@drawable/wall">
-   <LinearLayout
-     android:id="@+id/imageLayout1"
-     android:layout_width="fill_parent"
-     android:layout_height="fill_parent"
-     android:gravity="center_vertical" >
-		    <ListView
-		        android:id="@+id/ListViewLocation"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:cacheColorHint="#00000000"
-		        android:divider="@color/grey_divider"
-		        android:dividerHeight="1dip" >
-		    </ListView>
-    </LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent">
 
-</LinearLayout>
+
+        <ListView
+            android:id="@+id/ListViewLocation"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#00000000"
+            android:divider="@color/grey_divider"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:dividerHeight="1dip"
+            android:visibility="gone"></ListView>
+
+
+</RelativeLayout>

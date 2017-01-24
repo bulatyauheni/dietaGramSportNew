@@ -58,7 +58,7 @@
                         android:layout_marginLeft="5dip"
                         android:gravity="bottom"
                         android:layout_toRightOf="@+id/textViewProteinLabel"
-                        android:maxLines="2"
+                        android:maxLines="1"
                         android:text="0"
                         android:layout_marginBottom="8dp"
                         style="@style/textMiddle"
@@ -113,7 +113,7 @@
                         android:layout_marginLeft="5dip"
                         android:gravity="bottom"
                         android:layout_marginBottom="8dp"
-                        android:maxLines="2"
+                        android:maxLines="1"
                         android:layout_toRightOf="@+id/textViewFatLabel"
                         android:text="0"
                         style="@style/textMiddle"
@@ -145,7 +145,7 @@
                 <RelativeLayout
                     android:layout_width="0px"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.2"
                     android:orientation="horizontal">
 
                     <TextView
@@ -168,7 +168,7 @@
                         android:layout_marginLeft="5dip"
                         android:layout_toRightOf="@+id/textViewCarbonLabel"
                         android:gravity="bottom"
-                        android:maxLines="2"
+                        android:maxLines="1"
                         android:text="0"
                         android:layout_marginBottom="8dp"
                         style="@style/textMiddle"
@@ -200,7 +200,7 @@
                 <LinearLayout
                     android:layout_width="0px"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="0.8"
                     android:gravity="center_vertical|right"
                     android:orientation="horizontal">
 
@@ -256,9 +256,10 @@
 
                     <TextView
                         android:id="@+id/textViewLimitValue"
-                        android:layout_width="50dp"
+                        android:layout_width="55dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:maxLines="2"
                         android:gravity="top"
                         android:padding="3dp"
 

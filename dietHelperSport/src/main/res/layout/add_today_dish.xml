@@ -113,6 +113,48 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+                        <RelativeLayout
+                            android:id="@+id/relativeLayout3"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <TextView
+                                android:id="@+id/textViewLoading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_marginBottom="10dip"
+                                android:layout_marginTop="10dip"
+                                android:paddingRight="20dip"
+                                android:textSize="19dip"></TextView>
+
+                            <TextView
+                                android:id="@+id/textViewDishName"
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_alignBottom="@+id/textViewLoading"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginLeft="10dip"
+                                android:layout_marginRight="5dip"
+                                android:text="asdasdsd"
+                                android:gravity="center_vertical|left"
+                                style="@style/textBig"
+                                android:textColor="@color/bg_group_item_expanded_state"/>
+
+                            <Button
+                                android:id="@+id/buttonChangeDish"
+                                android:layout_width="35dip"
+                                android:layout_height="35dip"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_margin="5dip"
+                                android:layout_marginRight="18dp"
+                                android:background="@drawable/change_button_xml"
+                                android:text=""
+                                android:visibility="gone"/>
+                        </RelativeLayout>
+
 
                         <LinearLayout
                             android:id="@+id/linearLayoutPartOfDay4"
@@ -386,44 +428,5 @@
         </LinearLayout>
     </ScrollView>
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/green">
-
-        <TextView
-            android:id="@+id/textViewLoading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="10dip"
-            android:paddingRight="20dip"
-            android:textSize="19dip"></TextView>
-
-        <TextView
-            android:id="@+id/textViewDishName"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignBottom="@+id/textViewLoading"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dip"
-            android:layout_marginRight="5dip"
-            android:gravity="center_vertical|center_horizontal"
-            style="@style/textBig" />
-
-        <Button
-            android:id="@+id/buttonChangeDish"
-            android:layout_width="35dip"
-            android:layout_height="35dip"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="5dip"
-            android:layout_marginRight="18dp"
-            android:background="@drawable/change_button_xml"
-            android:text=""
-            android:visibility="gone"/>
-    </RelativeLayout>
 
 </LinearLayout>

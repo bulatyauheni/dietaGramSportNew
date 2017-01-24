@@ -1169,7 +1169,7 @@ public class IabHelper {
 									PaymentsListActivity.SKU_MUUNTH_NEW)) {
 								SaveUtils.setEndPDate(currDate.getTime() + 32
 										* DateUtils.DAY_IN_MILLIS, mContext);
-							}else if (sku.equals(
+							} else if (sku.equals(
 									PaymentsListActivity.SKU_YEAR_2017)) {
 								SaveUtils.setEndPDate(currDate.getTime() + 367
 										* DateUtils.DAY_IN_MILLIS, mContext);
