@@ -531,8 +531,8 @@ public abstract class Utils {
 
         float drawOffsetX = 0.f;
         float drawOffsetY = 0.f;
-
-        paint.getTextBounds(text, 0, text.length(), mDrawTextRectBuffer);
+        text = (text == null ? "" : text);
+        paint.getTextBounds(text, 0, text != null ? text.length() : 0, mDrawTextRectBuffer);
 
         final float lineHeight = mDrawTextRectBuffer.height();
 

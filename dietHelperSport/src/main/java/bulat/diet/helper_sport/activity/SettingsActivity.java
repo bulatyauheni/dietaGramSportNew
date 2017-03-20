@@ -158,5 +158,10 @@ public class SettingsActivity extends TabActivity implements OnTabChangeListener
 		}else{
 			return 7;
 		}
-	}	
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int responseCode, Intent data) {
+		super.onActivityResult(requestCode, responseCode, data);
+	}
 }

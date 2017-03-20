@@ -374,7 +374,7 @@ private class RecepyUpdateTask extends AsyncTask<Void, Void, Void> {
         	    version.put("lastid", SaveUtils.getLastRationId(context));
         	  
         	    HttpClient client = new DefaultHttpClient();
-        	    HttpGet get = new HttpGet("http://calorycman.net/recepy.php?"+"lastid="+SaveUtils.getLastRationId(context)+"&"+"email="+email);
+        	    HttpGet get = new HttpGet("http://old.dietagram.ru/recepy.php?"+"lastid="+SaveUtils.getLastRationId(context)+"&"+"email="+email);
         	    StringEntity se = new StringEntity(Parent.toString());  //new ByteArrayEntity(json.toString().getBytes(            "UTF8"))
         	    se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
         	    

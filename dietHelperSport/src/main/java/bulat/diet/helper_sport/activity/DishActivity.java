@@ -96,6 +96,8 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
     private static final String TODAT_WEIGHT_BUTTON_CLICK = "TODAT_WEIGHT_BUTTON_CLICK";
     private static final String FCP_CHART_TODAY = "FCP_CHART_TODAY";
     private static final String OPEN_FCP_FROM_TODAY = "OPEN_FCP_FROM_TODAY";
+    private static final String IS_EDIT_TIMES_TIP_SHOWN = "IS_EDIT_TIMES_TIP_SHOWN";
+    private static final String IS_REMOVE_DISH_TIP_SHOWN = "IS_REMOVE_DISH_TIP_SHOWN";
     private boolean mIsTheTitleVisible = false;
     private boolean mIsTheTitleContainerVisible = true;
 
@@ -283,9 +285,6 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         bindActivity();
         initRecyclerView(savedInstanceState);
         mWeightButton.setOnClickListener(changeWeightClickListener);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        //client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void initDishTable() {
@@ -710,14 +709,6 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
     }
 
     public void onGroupItemClicked(int groupPosition) {
-        /*final Fragment fragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_LIST_VIEW);
-        AbstractExpandableDataProvider.GroupData data = getDataProvider().getGroupItem(groupPosition);
-
-        if (data.isPinned()) {
-            // unpin if tapped the pinned item
-            data.setPinned(false);
-            ((ExpandableDraggableSwipeableExampleFragment) fragment).notifyGroupItemChanged(groupPosition);
-        }*/
     }
 
     public void onChildItemClicked(int groupPosition, int childPosition) {
@@ -846,6 +837,18 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         if (fromUser) {
             adjustScrollPositionOnGroupExpanded(groupPosition);
         }
+        if (!SaveUtils.readBoolean(IS_EDIT_TIMES_TIP_SHOWN, false, this)) {
+            if (getData().get(groupPosition).second.size() == 0) {
+                showTipsDialog(2);
+                SaveUtils.writeBoolean(IS_EDIT_TIMES_TIP_SHOWN, true, this);
+            }
+        }
+        if (!SaveUtils.readBoolean(IS_REMOVE_DISH_TIP_SHOWN, false, this)) {
+            if (getData().get(groupPosition).second.size() > 0) {
+                showTipsDialog(1);
+                SaveUtils.writeBoolean(IS_REMOVE_DISH_TIP_SHOWN, true, this);
+            }
+       }
     }
 
     private void adjustScrollPositionOnGroupExpanded(int groupPosition) {
@@ -1268,40 +1271,18 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         }
     };
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    /*public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Dish Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }*/
+ // dialogVariant - 1 (remove)  2 (edit)
+    public void showTipsDialog(int dialogVariant) {
+        final Dialog dialog2 = new Dialog(DishActivity.this.getParent());
+        dialog2.setContentView(R.layout.swipe_tip_dialog);
 
-    @Override
-    public void onStart() {
-        super.onStart();
+        dialog2.setCanceledOnTouchOutside(true);
+        switch (dialogVariant) {
+            case 1: dialog2.setTitle(R.string.removing); ((TextView)dialog2.findViewById(R.id.tip_text)).setText(R.string.info_swipe_remove); break;
+            case 2: dialog2.setTitle(R.string.set_notif_title); ((TextView)dialog2.findViewById(R.id.tip_text)).setText(R.string.info_swipe_edit); break;
+        }
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        //client.connect();
-        //AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        //AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        //client.disconnect();
+        dialog2.show();
     }
 
     @Override
@@ -1357,7 +1338,5 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
             }
             initDishTable();
         }
-    }
-
-    ;
+    } ;
 }

@@ -314,6 +314,7 @@
     <string name="complain_for_payment">Wenn es Ihnen nicht gelingt, das Abonnement zu zahlen, oder wenn Sie eine andere Frage haben - schreiben Sie mir einfach eine E-Mail, gemeinsam werden wir eine passende Lösung finden.</string>
     <string name="vk_recomend">Ich kann es wirklich empfehlen! Der Kalorienzähler ist ein einfaches und effektives Programm.</string>
     <string name="vk_toast">Die Notiz wurde Ihrer Wand Facebook hinzugefügt.</string>
+    <string name="fb_toast">Die Notiz wurde Ihrer Wand Facebook hinzugefügt.</string>
     <string name="get_free_time">Kaufe ich nicht</string>
     <string name="ok">OK</string>
     <string formatted="false" name="success_in_percantage_text">Mein Ernährungsgleichgewicht in %.2f %% ist ideal</string>
@@ -332,4 +333,13 @@
     <string name="minutes">Min.</string>
     <string name="activity_weight">Gewicht:</string>
     <string name="amount">Mal</string>
+
+
+    <string name="removing">Löschen</string>
+    <string name="info_swipe_edit">Um die Anzahl der Mahlzeiten und Erinnerungen zu zeigen, streichen Sie links oder rechts.</string>
+    <string name="info_swipe_remove">Um unnötige Einträge zu entfernen, wischen Sie ihn nach links oder rechts.</string>
+    <string name="info_pinch">Ziehen Sie die Finger auf und zu, um in den Chart rein oder raus zu zoomen.</string>
+    <string name="bulgarian" translatable="false"></string>
+    <string name="info_trial">Die ersten 5 Tage sind kostenlos. Wenn Sie die App weiterbenutzen möchten, sollen sie ein Abonnement kaufen. Alle ihre Daten werden gespeichert.</string>
+    <string name="info_install_fb">Sie müssen die Facebook-Anwendung installieren.</string>
 </resources>

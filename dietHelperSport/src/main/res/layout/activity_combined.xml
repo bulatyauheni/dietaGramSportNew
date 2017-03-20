@@ -122,7 +122,8 @@
                 android:layout_height="45dip"
                 android:background="@drawable/vk_button_xml"
                 android:clickable="true"
-                android:layout_margin="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="5dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"/>
         <Button

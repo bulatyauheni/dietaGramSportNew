@@ -1,6 +1,7 @@
 package bulat.diet.helper_sport.utils;
 
 
+import java.util.Date;
 import java.util.Random;
 
 import android.R.bool;
@@ -9,7 +10,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
+import android.text.format.DateUtils;
+
 import bulat.diet.helper_sport.activity.Info;
+import bulat.diet.helper_sport.activity.PaymentsListActivity;
 import bulat.diet.helper_sport.activity.VolumeInfo;
 
 public class SaveUtils {
@@ -107,8 +111,11 @@ public class SaveUtils {
 	public static final String USER_IDEAL_WAIST = "USER_IDEAL_WAIST";
 	private static final String USER_RATE_APP = "USER_RATE_APP";
 	private static final String USER_USE_FREE_ABONEMENT = "USER_USE_FREE_ABONEMENT";
+	private static final String RECEIVE_PAYMENT = "RECEIVE_PAYMENT_";
+	private static final String TRIAL_NOTIFIED = "TRIAL_NOTIFIED";
+	private static final String SKU_DETAILS = "SKU_DETAILS";
 
-	
+
 	public static void saveScrollPosition(int pos, Context context){
 		SharedPreferences preferences = PreferenceManager
 		.getDefaultSharedPreferences(context);
@@ -1304,20 +1311,33 @@ public class SaveUtils {
 		
 		return preferences.getLong(LASTADVUPDATETIME, 0);
 	}
-	
-	public static void setEndPDate(long date, Context context){
-		SharedPreferences preferences = PreferenceManager
-		.getDefaultSharedPreferences(context);
-		Editor editor = preferences.edit();
-		
-		editor.putLong(ENDPDATE, date);		
-		editor.commit();
-	}
+    public static void setEndPDate(long date, Context context){
+        SharedPreferences preferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        Editor editor = preferences.edit();
+
+        editor.putLong(ENDPDATE, date);
+        editor.commit();
+    }
+	/*public static void setEndPDate(long date, Context context){
+        int dayscount = (int) (date / DateUtils.DAY_IN_MILLIS);
+
+        GATraker.sendEvent(RECEIVE_PAYMENT + dayscount,
+                "0".equals( SaveUtils.getSex(context))? "Woman":"Man",
+                "" + (SaveUtils.getAge(context) + Info.MIN_AGE),
+                (long) SaveUtils.getRealWeight(context));
+
+        SharedPreferences preferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        Editor editor = preferences.edit();
+
+        editor.putLong(ENDPDATE, date);
+        editor.commit();
+    }*/
 	//end payment date in mls
 	public static long getEndPDate(Context context){
 		SharedPreferences preferences = PreferenceManager
 		.getDefaultSharedPreferences(context);
-		
 		return preferences.getLong(ENDPDATE, 0);
 	}
 	public static void setLastRationId(Context context, int b) {
@@ -1347,6 +1367,19 @@ public class SaveUtils {
 				.getDefaultSharedPreferences(context);				
 				return preferences.getInt(name, deffValueOf);
 	
+	}
+	public static void writeBoolean(String name, Boolean valueOf, Context context) {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		Editor editor = preferences.edit();
+		editor.putBoolean(name, valueOf);
+		editor.commit();
+	}
+	public static Boolean readBoolean(String name, Boolean deffValueOf, Context context) {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		return preferences.getBoolean(name, deffValueOf);
+
 	}
 	
 	public static void writeFloat(String name, Float valueOf, Context context) {
@@ -1424,5 +1457,31 @@ public class SaveUtils {
 				.getDefaultSharedPreferences(context);				
 				return preferences.getBoolean(USER_USE_FREE_ABONEMENT, false);
 	}
-	
+
+	public static boolean isTrialNotified(Context context) {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		return preferences.getBoolean(TRIAL_NOTIFIED, false);
+	}
+
+	public static void setTrialNotified(boolean value, Context context) {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		Editor editor = preferences.edit();
+		editor.putBoolean(TRIAL_NOTIFIED, value);
+		editor.commit();
+	}
+
+	public static void setSKU(String SKU, Context context) {
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+		Editor editor = preferences.edit();
+		editor.putString(SKU_DETAILS, SKU);
+		editor.commit();
+	}
+
+	public static String getSKU(Context context) {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		return preferences.getString(SKU_DETAILS, "NONE");
+	}
 }

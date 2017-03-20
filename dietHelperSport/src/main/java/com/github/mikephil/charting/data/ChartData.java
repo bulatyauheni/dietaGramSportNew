@@ -156,7 +156,7 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
 
         for (int i = 0; i < mXVals.size(); i++) {
 
-            int length = mXVals.get(i).length();
+            int length = mXVals.get(i) != null ? mXVals.get(i).length() : 0;
 
             if (length > max)
                 max = length;

@@ -9,7 +9,7 @@
     <string name="localeby">by</string>
     <string name="localees">es</string>
     <string name="localede">de</string>
-    <string name="app_name">DietaGram</string>
+    <string name="app_name" translatable="false">DietaGram</string>
     <string name="tab_dish">Сегодня</string>
     <string name="tab_calendar">История</string>
     <string name="tab_dishlist">Список</string>
@@ -209,12 +209,12 @@
     <string name="category">В категорию:</string>
     <string name="type">Тип:</string>
     <string name="russian">Русский</string>
-    <string name="bulgarian">Българска</string>
+    <string name="bulgarian" translatable="false">Българска</string>
     <string name="polish">Polska</string>
     <string name="english">English</string>
-    <string name="belarusian">Беларуская</string>
+    <string name="belarusian" translatable="false">Беларуская</string>
     <string name="espanol">Español</string>
-    <string name="deutsche">Deutsch</string>
+    <string name="deutsche" translatable="false">Deutsch</string>
     <string name="water_label">Вода:</string>
 
     <string name="widjet_prot">Б:</string>
@@ -341,6 +341,7 @@
     <string name="complain_for_payment">Если у вас не получается оплатить абонемент, либо у вас есть другой вопрос - просто напишите мне на почту, вместе мы найдем подходящее решение.</string>
     <string name="vk_recomend">Рекомендую! Калькулятор Калорий - простая и эффективная програма.</string>
     <string name="vk_toast">Запись добавлена на вашей стене ВКонтакте</string>
+    <string name="fb_toast">Запись добавлена на вашей стене в Facebook</string>
     <string name="get_free_time">Не куплю</string>
     <string name="ok">Ок</string>
     <string name="success_in_percantage_text" formatted="false">Мой пищевой баланс на %.2f%% идеален</string>
@@ -359,4 +360,11 @@
     <string name="minutes">мин.</string>
     <string name="activity_weight">Вес:</string>
     <string name="amount">раз</string>
+    <string name="removing">Удаление</string>
+    <string name="info_swipe_edit">Для настройки приемов пищи смахните пальцем любой из приемов пищи вправо или влево.</string>
+    <string name="info_swipe_remove">Для удаления записи смахните ее пальцем вправо или влево.</string>
+    <string name="info_pinch">Сжимать и растягивать график можно двумя пальцами.</string>
+
+    <string name="info_trial">Первые 5 дней приложение работает бесплатно. Если вам понравиться, то дальше нужно будет купить подписку. Все ваши данные сохранятся.</string>
+    <string name="info_install_fb">Для того, чтобы поделится записью, вам необходимо установить приложение Facebook</string>
 </resources>

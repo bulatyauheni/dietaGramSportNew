@@ -11,18 +11,18 @@ public class Constants {
 	public static final  int ACTIVITY = 99; 
 	
 	//public static final  String URL_SOCIAL = "http://social.pusku.com/";
-	public static final  String URL_DISHBASE = "http://www.calorycman.net/";//StartActivity.URLBASE;//"http://calorycounter.16mb.com/";
-	public static final  String URL_ADVERT = "http://calorycman.net/adv.php";//"http://calorycounter.16mb.com/";
+	public static final  String URL_DISHBASE = "http://old.dietagram.ru/";//StartActivity.URLBASE;//"http://calorycounter.16mb.com/";
+	public static final  String URL_ADVERT = "http://old.dietagram.ru/adv.php";//"http://calorycounter.16mb.com/";
 	
-	public static final  String URL_BARCOD = "http://www.calorycman.net/barcode.php";//StartActivity.URLBASE;//"http://calorycounter.16mb.com/";
+	public static final  String URL_BARCOD = "http://old.dietagram.ru/barcode.php";//StartActivity.URLBASE;//"http://calorycounter.16mb.com/";
+
+	public static final  String URL_SOCIAL = "http://old.dietagram.ru/";//StartActivity.URLSOCIAL;
 	
-	public static final  String URL_SOCIAL = "http://www.calorycman.net/";//StartActivity.URLSOCIAL;
-	
-	public static final  String URL_PAY = "http://www.calorycman.net/pay.php";//StartActivity.URLSOCIAL;
-	public static final  String VERSION = "DIETAGRAM_N";
-	public static final  String URL_SOCIAL_NEWS = "http://calorycman.net/news.php";//StartActivity.URLSOCIAL;
+	public static final  String URL_PAY = "http://old.dietagram.ru/pay.php";//StartActivity.URLSOCIAL;
+	public static final  String VERSION = "DIETAGRAM_03_17";
+	public static final  String URL_SOCIAL_NEWS = "http://old.dietagram.ru/news.php";//StartActivity.URLSOCIAL;
 	
 	public static final  String FOLLOWER = "follower";
 	public static final  String IFOLLOW = "ifollow";
-	public static final String URL_SPORTBASE = "http://calorycman.net/sport.php";
+	public static final String URL_SPORTBASE = "http://old.dietagram.ru/sport.php";
 }

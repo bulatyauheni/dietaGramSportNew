@@ -101,4 +101,29 @@
         <item name="android:windowBackground">@drawable/wall</item>
     </style>
 
+    <style name="tipTable">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:shrinkColumns">1</item>
+        <item name="android:padding">5dp</item>
+    </style>
+    <style name="tipImage">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="tipText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">#4E4E4E</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
 </resources>

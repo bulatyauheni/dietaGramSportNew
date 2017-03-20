@@ -93,7 +93,7 @@ public class RecepyUpdater extends AsyncTask<Void, Void, Void> {
         	    Parent.put("userid", userid);
         	    
         	    HttpClient client = new DefaultHttpClient();
-        	    HttpPost post = new HttpPost("http://calorycman.net/server.php");
+        	    HttpPost post = new HttpPost("http://old.dietagram.ru/server.php");
         	    StringEntity se = new StringEntity(Parent.toString());  //new ByteArrayEntity(json.toString().getBytes(            "UTF8"))
         	    se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
         	    post.setHeader("Accept", "application/json");

@@ -45,7 +45,7 @@ public class BasePayActivity extends Activity {
 
 		// enable debug logging (for a production application, you should set
 		// this to false).
-		mHelper.enableDebugLogging(true);
+		mHelper.enableDebugLogging(false);
 
 		// Start setup. This is asynchronous and the specified listener
 		// will be called once setup completes.
@@ -202,6 +202,9 @@ public class BasePayActivity extends Activity {
 			 * verifyDeveloperPayload().
 			 */
 			Date currDate = new Date();
+
+			updateUserInfo(inventory);
+
 			if (currDate.getTime() > SaveUtils
 					.getEndPDate(BasePayActivity.this)) {
 				// Do we have the year plan?
@@ -212,6 +215,7 @@ public class BasePayActivity extends Activity {
 					SaveUtils.setEndPDate(yearPlanPurchase.getPurchaseTime()
 							+ 367 * DateUtils.DAY_IN_MILLIS,
 							BasePayActivity.this);
+
 				}
 
 				// Do we have the manth plan?
@@ -327,6 +331,139 @@ public class BasePayActivity extends Activity {
 			}
 		}
 	};
+
+	private void updateUserInfo(Inventory inventory) {
+		// Do we have the year plan?
+		try {
+			Purchase yearPlanPurchase = inventory
+					.getPurchase(PaymentsListActivity.SKU_YEAR);
+			if (yearPlanPurchase != null && verifyDeveloperPayload(yearPlanPurchase)) {
+				if (new Date().getTime() < yearPlanPurchase.getPurchaseTime() + 367 * DateUtils.DAY_IN_MILLIS) {
+					SaveUtils.setSKU(inventory.getSkuDetails(yearPlanPurchase.getSku()).getPrice() + "__" + yearPlanPurchase.getSku() + "__" + yearPlanPurchase.getPurchaseTime(), this);
+				}
+			}
+
+			// Do we have the manth plan?
+			Purchase munthPlanPurchase = inventory
+					.getPurchase(PaymentsListActivity.SKU_MUNTH);
+			if (munthPlanPurchase != null
+					&& verifyDeveloperPayload(munthPlanPurchase)) {
+				if (new Date().getTime() < munthPlanPurchase.getPurchaseTime() + 32 * DateUtils.DAY_IN_MILLIS) {
+					SaveUtils.setSKU(inventory.getSkuDetails(munthPlanPurchase.getSku()).getPrice() + "__" + munthPlanPurchase.getSku() + "__" + munthPlanPurchase.getPurchaseTime(), this);
+				}
+
+			}
+
+			// Do we have the manth plan?
+			Purchase munthPlanPurchaseOld = inventory
+					.getPurchase(PaymentsListActivity.SKU_MUNTH_OLD);
+			if (munthPlanPurchaseOld != null
+					&& verifyDeveloperPayload(munthPlanPurchaseOld)) {
+				if (new Date().getTime() < munthPlanPurchaseOld.getPurchaseTime() + 32 * DateUtils.DAY_IN_MILLIS) {
+					SaveUtils.setSKU(inventory.getSkuDetails(munthPlanPurchaseOld.getSku()).getPrice() + "__" + munthPlanPurchaseOld.getPurchaseTime(), this);
+				}
+
+			}
+
+			// Do we have the manth plan?
+			Purchase yearPlanPurchaseOld = inventory
+					.getPurchase(PaymentsListActivity.SKU_YEAR_OLD);
+			if (yearPlanPurchaseOld != null
+					&& verifyDeveloperPayload(yearPlanPurchaseOld)) {
+
+				if (new Date().getTime() < yearPlanPurchaseOld.getPurchaseTime()
+						+ 367 * DateUtils.DAY_IN_MILLIS) {
+					SaveUtils.setSKU(inventory.getSkuDetails(yearPlanPurchaseOld.getSku()).getPrice() + "__" + yearPlanPurchaseOld.getSku() + "__" + yearPlanPurchaseOld.getPurchaseTime(), this);
+				}
+
+			}
+
+			// Do we have the manth plan?
+			Purchase yearPlanPurchaseNew = inventory
+					.getPurchase(PaymentsListActivity.SKU_YEAR_NEW);
+			if (yearPlanPurchaseNew != null
+					&& verifyDeveloperPayload(yearPlanPurchaseNew)) {
+				if (new Date().getTime() < yearPlanPurchaseNew.getPurchaseTime()
+						+ 367 * DateUtils.DAY_IN_MILLIS) {
+					SaveUtils.setSKU(inventory.getSkuDetails(yearPlanPurchaseNew.getSku()).getPrice() + "__" + yearPlanPurchaseNew.getSku() + "__" + yearPlanPurchaseNew.getPurchaseTime(), this);
+				}
+
+			}
+
+			// Do we have the manth plan?
+			Purchase yearPlanPurchase2017 = inventory
+					.getPurchase(PaymentsListActivity.SKU_YEAR_2017);
+			if (yearPlanPurchase2017 != null
+					&& verifyDeveloperPayload(yearPlanPurchase2017)) {
+				if (new Date().getTime() < yearPlanPurchase2017.getPurchaseTime()
+						+ 367 * DateUtils.DAY_IN_MILLIS) {
+					SaveUtils.setSKU(inventory.getSkuDetails(yearPlanPurchase2017.getSku()).getPrice() + "__" + yearPlanPurchase2017.getSku() + "__" + yearPlanPurchase2017.getPurchaseTime(), this);
+				}
+
+			}
+
+			// Do we have the manth plan?
+			Purchase yearPlanPurchaseVIP = inventory
+					.getPurchase(PaymentsListActivity.SKU_YEAR_VIP);
+			if (yearPlanPurchaseVIP != null
+					&& verifyDeveloperPayload(yearPlanPurchaseVIP)) {
+				if (new Date().getTime() < yearPlanPurchaseVIP.getPurchaseTime()
+						+ 367 * DateUtils.DAY_IN_MILLIS) {
+					SaveUtils.setSKU(inventory.getSkuDetails(yearPlanPurchaseVIP.getSku()).getPrice() + "__" + yearPlanPurchaseVIP.getSku() + "__" + yearPlanPurchaseVIP.getPurchaseTime(), this);
+				}
+
+			}
+
+			// Do we have the manth plan?
+			Purchase halfYearPlanPurchase = inventory
+					.getPurchase(PaymentsListActivity.SKU_HALFYEAR);
+			if (halfYearPlanPurchase != null
+					&& verifyDeveloperPayload(halfYearPlanPurchase)) {
+				if (new Date().getTime() < halfYearPlanPurchase.getPurchaseTime()
+						+ 190 * DateUtils.DAY_IN_MILLIS) {
+					SaveUtils.setSKU(inventory.getSkuDetails(halfYearPlanPurchase.getSku()).getPrice() + "__" + halfYearPlanPurchase.getSku() + "__" + halfYearPlanPurchase.getPurchaseTime(), this);
+				}
+
+			}
+
+			// Do we have the manth plan?
+			Purchase halfYearPlanPurchase2017 = inventory
+					.getPurchase(PaymentsListActivity.SKU_HALFYEAR_2017);
+			if (halfYearPlanPurchase2017 != null
+					&& verifyDeveloperPayload(halfYearPlanPurchase2017)) {
+				if (new Date().getTime() < halfYearPlanPurchase2017.getPurchaseTime()
+						+ 190 * DateUtils.DAY_IN_MILLIS) {
+					SaveUtils.setSKU(inventory.getSkuDetails(halfYearPlanPurchase2017.getSku()).getPrice() + "__" + halfYearPlanPurchase2017.getSku() + "__" + halfYearPlanPurchase2017.getPurchaseTime(), this);
+				}
+
+			}
+
+			// Do we have the manth plan?
+			Purchase munthPlanPurchasenew = inventory
+					.getPurchase(PaymentsListActivity.SKU_MUUNTH_NEW);
+			if (munthPlanPurchasenew != null
+					&& verifyDeveloperPayload(munthPlanPurchasenew)) {
+				if (new Date().getTime() < munthPlanPurchasenew.getPurchaseTime()
+						+ 32 * DateUtils.DAY_IN_MILLIS) {
+					SaveUtils.setSKU(inventory.getSkuDetails(munthPlanPurchasenew.getSku()).getPrice() + "__" + munthPlanPurchasenew.getSku() + "__" + munthPlanPurchasenew.getPurchaseTime(), this);
+				}
+
+			}
+
+			Purchase munthPlanPurchase2017 = inventory
+					.getPurchase(PaymentsListActivity.SKU_MUUNTH_2017);
+			if (munthPlanPurchase2017 != null
+					&& verifyDeveloperPayload(munthPlanPurchase2017)) {
+				if (new Date().getTime() < munthPlanPurchase2017.getPurchaseTime()
+						+ 32 * DateUtils.DAY_IN_MILLIS) {
+					SaveUtils.setSKU(inventory.getSkuDetails(munthPlanPurchase2017.getSku()).getPrice() + "__" + munthPlanPurchase2017.getSku() + "__" + munthPlanPurchase2017.getPurchaseTime(), this);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			SaveUtils.setSKU(e.getMessage(), this);
+		}
+	}
 
 	public void setWaitScreen(boolean set) {
 		// show progress bar

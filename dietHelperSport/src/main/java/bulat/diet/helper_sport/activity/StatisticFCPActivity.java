@@ -267,7 +267,10 @@ public class StatisticFCPActivity extends Activity implements
 		l.setPosition(LegendPosition.RIGHT_OF_CHART);
 		l.setEnabled(false);
 	}
-
+	@Override
+	protected void onActivityResult(int requestCode, int responseCode, Intent data) {
+		super.onActivityResult(requestCode, responseCode, data);
+	}
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub

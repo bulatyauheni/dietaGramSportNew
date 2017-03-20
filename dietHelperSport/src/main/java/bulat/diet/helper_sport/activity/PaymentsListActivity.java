@@ -82,11 +82,11 @@ public class PaymentsListActivity extends BasePayActivity {
 	static final int RC_REQUEST = 10001;
 	private static final String PAYMENT_ERROR_REPORT = "PAYMENT_ERROR_REPORT";
 	private static final String ABONEMENT = "ABONEMENT";
-	private static final String ABONEMENT_VIP = "ABONEMENT_VIP";
-	private static final String ABONEMENT_YEAR = "ABONEMENT_YEAR";
-	private static final String ABONEMENT_HALFYEAR = "ABONEMENT_HALFYEAR";
-	private static final String ABONEMENT_MONTH = "ABONEMENT_MONTH";
-	private static final String ABONEMENT_FREE = "ABONEMENT_FREE";
+	private static final String ABONEMENT_VIP = "BTN_ABONEMENT_VIP";
+	private static final String ABONEMENT_YEAR = "BTN_ABONEMENT_YEAR";
+	private static final String ABONEMENT_HALFYEAR = "BTN_ABONEMENT_HALFYEAR";
+	private static final String ABONEMENT_MONTH = "BTN_ABONEMENT_MONTH";
+	private static final String ABONEMENT_FREE = "BTN_ABONEMENT_FREE";
 	Context ctx = null;
 	private int selectedInemId;
 	StatisticActivityGroup parent;
@@ -166,19 +166,19 @@ public class PaymentsListActivity extends BasePayActivity {
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						PaymentsListActivity.this.getParent().getParent());
 				if (arg2 == 0) {
-					GATraker.sendEvent(ABONEMENT, ABONEMENT_VIP);
+
 					builder.setMessage(R.string.payment_dialog_vipyear);
 				} else
 				if (arg2 == 1) {
-					GATraker.sendEvent(ABONEMENT, ABONEMENT_YEAR);
+
 					builder.setMessage(R.string.payment_dialog_year);
 				} else
 				if (arg2 == 2) {
-					GATraker.sendEvent(ABONEMENT, ABONEMENT_HALFYEAR);
+
 					builder.setMessage(R.string.payment_dialog_halfyear);
 				} else
 				if (arg2 == 3) {
-					GATraker.sendEvent(ABONEMENT, ABONEMENT_MONTH);
+
 					builder.setMessage(R.string.payment_dialog_month);
 				} else
 				if (arg2 == 4) {
@@ -189,7 +189,7 @@ public class PaymentsListActivity extends BasePayActivity {
 					GATraker.sendEvent(ABONEMENT, PAYMENT_ERROR_REPORT);
 					CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(PaymentsListActivity.this.getParent().getParent());
 					bld.setLayout(R.layout.section_alert_dialog_two_buttons)
-					.setMessage(PaymentsListActivity.this.getParent().getString(R.string.complain_for_payment))			
+					.setMessage(PaymentsListActivity.this.getParent().getString(R.string.complain_for_payment))
 					.setPositiveButton(R.id.dialogButtonOk, new OnClickListener() {
 						
 						@Override
@@ -266,6 +266,10 @@ public class PaymentsListActivity extends BasePayActivity {
 						mHelper.launchPurchaseFlow(PaymentsListActivity.this,
 								SKU_YEAR_VIP, IabHelper.ITEM_TYPE_SUBS, RC_REQUEST,
 								mPurchaseFinishedListener, payload);
+						GATraker.sendEvent(ABONEMENT_VIP,
+								"0".equals( SaveUtils.getSex(PaymentsListActivity.this))? "Woman":"Man",
+								"" + (SaveUtils.getAge(PaymentsListActivity.this) + Info.MIN_AGE),
+								(long) SaveUtils.getRealWeight(PaymentsListActivity.this));
 					} else if (selectedInemId == 1) {
 						if (!mHelper.subscriptionsSupported()) {
 							complain("Subscriptions not supported on your device yet. Sorry!");
@@ -281,6 +285,10 @@ public class PaymentsListActivity extends BasePayActivity {
 						mHelper.launchPurchaseFlow(PaymentsListActivity.this,
 								SKU_YEAR_2017, IabHelper.ITEM_TYPE_SUBS,
 								RC_REQUEST, mPurchaseFinishedListener, payload);
+						GATraker.sendEvent(ABONEMENT_YEAR,
+								"0".equals( SaveUtils.getSex(PaymentsListActivity.this))? "Woman":"Man",
+								"" + (SaveUtils.getAge(PaymentsListActivity.this) + Info.MIN_AGE),
+								(long) SaveUtils.getRealWeight(PaymentsListActivity.this));
 					} else if (selectedInemId == 2) {
 						if (!mHelper.subscriptionsSupported()) {
 							complain("Subscriptions not supported on your device yet. Sorry!");
@@ -296,6 +304,10 @@ public class PaymentsListActivity extends BasePayActivity {
 						mHelper.launchPurchaseFlow(PaymentsListActivity.this,
 								SKU_HALFYEAR_2017, IabHelper.ITEM_TYPE_SUBS,
 								RC_REQUEST, mPurchaseFinishedListener, payload);
+						GATraker.sendEvent(ABONEMENT_HALFYEAR,
+								"0".equals( SaveUtils.getSex(PaymentsListActivity.this))? "Woman":"Man",
+								"" + (SaveUtils.getAge(PaymentsListActivity.this) + Info.MIN_AGE),
+								(long) SaveUtils.getRealWeight(PaymentsListActivity.this));
 					} else if (selectedInemId == 3) {
 						if (!mHelper.subscriptionsSupported()) {
 							complain("Subscriptions not supported on your device yet. Sorry!");
@@ -311,6 +323,10 @@ public class PaymentsListActivity extends BasePayActivity {
 						mHelper.launchPurchaseFlow(PaymentsListActivity.this,
 								SKU_MUUNTH_2017, IabHelper.ITEM_TYPE_SUBS,
 								RC_REQUEST, mPurchaseFinishedListener, payload);
+						GATraker.sendEvent(ABONEMENT_MONTH,
+								"0".equals( SaveUtils.getSex(PaymentsListActivity.this))? "Woman":"Man",
+								"" + (SaveUtils.getAge(PaymentsListActivity.this) + Info.MIN_AGE),
+								(long) SaveUtils.getRealWeight(PaymentsListActivity.this));
 					}
 
 				} catch (Exception e) {
@@ -488,6 +504,7 @@ public class PaymentsListActivity extends BasePayActivity {
 					 SaveUtils.setEndPDate(date.getTime() + 32
 							 * DateUtils.DAY_IN_MILLIS, PaymentsListActivity.this);
 				 }
+				 SaveUtils.setSKU(jo.toString(), PaymentsListActivity.this);
 	            //alert("You have bought the " + sku + ". Excellent choice, adventurer!");
 	          }
 	          catch (JSONException e) {

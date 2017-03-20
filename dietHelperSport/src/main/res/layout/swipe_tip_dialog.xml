@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/tipTable" >
+
+    <TableRow>
+    	<ImageView 
+        	style="@style/tipImage"
+        	android:layout_width="110dp"
+            android:src="@drawable/guesture_swap_right_or_left"/>
+       	<TextView
+			android:id="@+id/tip_text"
+   	        style="@style/tipText"
+            android:text="@string/info_swipe_remove"/>
+	</TableRow>
+</TableLayout>

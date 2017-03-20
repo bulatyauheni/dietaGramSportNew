@@ -42,7 +42,10 @@ private Handler mHandler;
 		push("StatisticActivity", new Intent(this, SelectStatisticsActivity.class));	
 		super.onResume();
 	}
-	
+	@Override
+	protected void onActivityResult(int requestCode, int responseCode, Intent data) {
+		super.onActivityResult(requestCode, responseCode, data);
+	}
 	@Override
 	  public void finishFromChild(Activity child) {
 	    pop();

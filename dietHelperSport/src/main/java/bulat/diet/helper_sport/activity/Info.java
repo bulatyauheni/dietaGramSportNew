@@ -7,7 +7,9 @@ import java.util.Date;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;
@@ -32,6 +34,7 @@ import bulat.diet.helper_sport.component.PrefixedEditText;
 import bulat.diet.helper_sport.db.TodayDishHelper;
 import bulat.diet.helper_sport.item.BodyParams;
 import bulat.diet.helper_sport.item.DishType;
+import bulat.diet.helper_sport.utils.CustomAlertDialogBuilder;
 import bulat.diet.helper_sport.utils.DialogUtils;
 import bulat.diet.helper_sport.utils.SaveUtils;
 import bulat.diet.helper_sport.utils.SocialUpdater;
@@ -232,9 +235,11 @@ public class Info extends Activity {
 		edtFat.removeTextChangedListener(textWatcherPFC);
 		edtCarbon.removeTextChangedListener(textWatcherPFC);
 		edtProtein.removeTextChangedListener(textWatcherPFC);
-		edtCarbon.setText("" + (int)(Integer.valueOf(limitET.getText().toString()) * (100 - Integer.valueOf(tvFat.getText().toString()) - Integer.valueOf(tvProtein.getText().toString())) / 100)/4);
-		edtProtein.setText("" + (int)(Integer.valueOf(limitET.getText().toString()) * multiSlider5.getThumb(0).getValue() / 100)/4);
-		edtFat.setText("" + (int)(Integer.valueOf(limitET.getText().toString()) * (multiSlider5.getThumb(1).getValue() - multiSlider5.getThumb(0).getValue()) / 100)/9);
+
+		int limit = TextUtils.isEmpty(limitET.getText().toString()) ? 1: (int)(Integer.valueOf(limitET.getText().toString()));
+		edtCarbon.setText("" + (int)(limit * (100 - Integer.valueOf(tvFat.getText().toString()) - Integer.valueOf(tvProtein.getText().toString())) / 100)/4);
+		edtProtein.setText("" + (int)(limit * multiSlider5.getThumb(0).getValue() / 100)/4);
+		edtFat.setText("" + (int)(limit * (multiSlider5.getThumb(1).getValue() - multiSlider5.getThumb(0).getValue()) / 100)/9);
 		edtProtein.addTextChangedListener(textWatcherPFC);
 		edtCarbon.addTextChangedListener(textWatcherPFC);
 		edtFat.addTextChangedListener(textWatcherPFC);
@@ -341,6 +346,20 @@ public class Info extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		if (!SaveUtils.isTrialNotified(Info.this) && TodayDishHelper.getDaysCount(Info.this) < 2) {
+			CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(Info.this.getParent().getParent());
+			bld.setLayout(R.layout.section_alert_dialog_one_button)
+					.setMessage(Info.this.getParent().getString(R.string.info_trial))
+					.setPositiveButton(R.id.dialogButtonOk, new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							SaveUtils.setTrialNotified(true, Info.this);
+						}
+					})
+					.setPositiveButtonText(R.string.ok);
+			bld.show();
+		}
 		try {
 			BMI = Double.parseDouble(SaveUtils.getBMI(this));
 			String addText = "";
@@ -570,7 +589,9 @@ public class Info extends Activity {
 			mLimitKK.setText(String.valueOf(currLimit));
 			mLimitKK.addTextChangedListener(textWatcherTotal);
 
-
+			if(currLimit == 0) {
+				currLimit = 1;
+			}
 			multiSlider5.setOnThumbValueChangeListener(null);
 			multiSlider5.getThumb(0).setValue((int)getInt(mProt.getText().toString())*4*100/currLimit);
 			multiSlider5.getThumb(1).setValue((int)(getInt(mProt.getText().toString())*4 + getInt(mFat.getText().toString())*9)*100/currLimit);

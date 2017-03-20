@@ -11,6 +11,7 @@ import java.util.Locale;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -39,6 +40,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.controls.SegmentedGroup;
@@ -69,6 +71,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 public class WeightChartActivity extends Activity implements
 		OnChartValueSelectedListener, OnCheckedChangeListener {
+	private static final String IS_CHART_TIP_SHOWN = "IS_CHART_TIP_SHOWN";
 	protected int mCurrnetChartType = 0;
 	protected String[] mDates;
 	private CombinedChart mChart;
@@ -351,12 +354,22 @@ public class WeightChartActivity extends Activity implements
 				}
 				i++;
 			}
+			if (itemcount > 3 && !SaveUtils.readBoolean(IS_CHART_TIP_SHOWN, false, this)) {
+					showTipsDialog();
+					SaveUtils.writeBoolean(IS_CHART_TIP_SHOWN, true, this);
+			}
 
 		} else {
 			itemcount = 0;
 		}
 	}
-
+	public void showTipsDialog() {
+		final Dialog dialog2 = new Dialog(WeightChartActivity.this.getParent().getParent());
+		dialog2.setContentView(R.layout.pinch_tip_dialog);
+		dialog2.setCanceledOnTouchOutside(true);
+		dialog2.setTitle(R.string.statistic_weight); ((TextView)dialog2.findViewById(R.id.tip_text)).setText(R.string.info_pinch);
+		dialog2.show();
+	}
 	private LineData generateLineData() {
 
 		LineData d = new LineData();

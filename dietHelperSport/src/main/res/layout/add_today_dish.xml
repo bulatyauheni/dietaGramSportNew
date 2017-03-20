@@ -112,7 +112,7 @@
                         android:id="@+id/linearLayoutPartOfDay"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
                         <RelativeLayout
                             android:id="@+id/relativeLayout3"
                             android:layout_width="fill_parent"
@@ -158,12 +158,12 @@
 
                         <LinearLayout
                             android:id="@+id/linearLayoutPartOfDay4"
-                            android:layout_width="0px"
-                            android:layout_height="fill_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/textViewPartOfDayLabel"
@@ -173,16 +173,18 @@
                                 android:text="@string/day_time"
                                 android:textColor="@color/text_color"
                                 android:textSize="19dip" />
+
+                            <Spinner
+                                android:id="@+id/SpinnerPartOfDay"
+                                android:layout_width="0px"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_weight="1"
+                                android:textColor="@color/text_color" />
+
                         </LinearLayout>
 
-                        <Spinner
-                            android:id="@+id/SpinnerPartOfDay"
-                            android:layout_width="0px"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="0dp"
-                            android:layout_weight="1"
-                            android:textColor="@color/text_color" />
 
                     </LinearLayout>
 

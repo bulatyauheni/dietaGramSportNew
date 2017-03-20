@@ -1,7 +1,10 @@
 package bulat.diet.helper_sport.utils;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Patterns;
 import android.widget.Spinner;
 
 import java.io.BufferedReader;
@@ -11,11 +14,25 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.regex.Pattern;
 
 import bulat.diet.helper_sport.R;
+import bulat.diet.helper_sport.activity.SharingActivity;
 import bulat.diet.helper_sport.activity.VolumeInfo;
 
 public class StringUtils {
+
+	public static String getEmail(Context context) {
+		Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+		Account[] accounts = AccountManager.get(context).getAccountsByType("com.google");
+		String email = null;
+		for (Account account : accounts) {
+			if (emailPattern.matcher(account.name).matches()) {
+				email = account.name;
+			}
+		}
+		return email;
+	}
 
 	public static String convertStreamToString(InputStream is) throws IOException {
 		if (is != null) {

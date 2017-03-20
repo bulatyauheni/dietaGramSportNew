@@ -47,7 +47,10 @@ public class SelectStatisticsActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onPause();
 	}
-
+	@Override
+	protected void onActivityResult(int requestCode, int responseCode, Intent data) {
+		super.onActivityResult(requestCode, responseCode, data);
+	}
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
@@ -101,20 +104,6 @@ public class SelectStatisticsActivity extends Activity {
 		});
 		Date currDate = new Date();
 		if(currDate.getTime()>SaveUtils.getEndPDate(this)){
-/*			AlertDialog.Builder builder = new AlertDialog.Builder(
-					this.getParent().getParent());			
-			builder.setMessage(R.string.payment_dialog_alert);
-			
-			builder.setPositiveButton(getString(R.string.ok),
-							dialogClickListener);
-			builder.setNegativeButton(getString(R.string.get_free_time),
-					new OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {				
-						}
-					}).show();*/
-			
 			CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(SelectStatisticsActivity.this.getParent().getParent());
 			bld.setLayout(R.layout.section_alert_dialog_two_buttons)
 			.setMessage(SelectStatisticsActivity.this.getParent().getString(R.string.payment_dialog_alert))		
