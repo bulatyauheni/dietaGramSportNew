@@ -124,7 +124,12 @@ public class AddTodayDishActivity extends BaseAddActivity implements TimePickerD
 		currDate = extras.getString(DishActivity.DATE);
 
 		if (id != null) {
-			TodayDish dish = TodayDishHelper.getDishById(id, this);
+			TodayDish dish;
+			if (templateFlag) {
+				dish = TemplateDishHelper.getDishById(id, this);
+			} else {
+				dish = TodayDishHelper.getDishById(id, this);
+			}
 			dayTimeId = dish.getDayTyme();
 			dishName = dish.getName();
 			weight = dish.getWeight();

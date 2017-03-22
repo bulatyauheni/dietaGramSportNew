@@ -230,25 +230,26 @@
                     android:orientation="vertical" >
 
                     <LinearLayout
-
+                        android:id="@+id/linearLayoutDishCall2"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:orientation="horizontal" >
 
                         <TextView
-
+                            android:id="@+id/textViewAbsCaloricity"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:layout_alignParentTop="true"
                             android:layout_marginLeft="5dip"
                             android:gravity="left|center_vertical"
                             android:maxLines="1"
-                            android:text="TextView"
+                            android:text="0"
                             android:textColor="@color/dark_grey"
                             android:textSize="10dip" />
-                        <TextView
 
+                        <TextView
+                            android:id="@+id/textViewAbsCaloricity2"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:layout_alignParentTop="true"
@@ -271,12 +272,13 @@
                             android:id="@+id/textViewWeight"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
-                            android:gravity="center_vertical"
                             android:layout_marginLeft="5dip"
+                            android:gravity="center_vertical"
                             android:textColor="@color/dark_grey"
                             android:textSize="10dip" />
+
                         <TextView
-                            android:id="@+id/textViewAbsCaloricity"
+                            android:id="@+id/textViewAbsCaloricity1"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:layout_alignParentTop="true"
@@ -386,7 +388,7 @@
                             android:gravity="center_vertical"
                             android:maxLines="2"
                             android:text="@string/protein"
-                            android:textColor="@color/protein"
+                            android:textColor="@color/subtext"
                             android:textSize="10dip" />
 
                         <TextView
@@ -397,7 +399,7 @@
                             android:gravity="center_vertical"
                             android:maxLines="2"
                             android:text=""
-                            android:textColor="@color/protein"
+                            android:textColor="@color/subtext"
                             android:textSize="10dip" />
                     </LinearLayout>
                     <LinearLayout
@@ -415,7 +417,7 @@
                             android:gravity="center_vertical"
                             android:maxLines="2"
                             android:text="@string/fat"
-                            android:textColor="@color/fat"
+                            android:textColor="@color/subtext"
                             android:textSize="10dip" />
 
                         <TextView
@@ -426,7 +428,7 @@
                             android:gravity="center_vertical"
                             android:maxLines="2"
                             android:text=""
-                            android:textColor="@color/fat"
+                            android:textColor="@color/subtext"
                             android:textSize="10dip" />
                     </LinearLayout>
 
@@ -445,7 +447,7 @@
                             android:gravity="center_vertical"
                             android:maxLines="2"
                             android:text="@string/carbon"
-                            android:textColor="@color/carbon"
+                            android:textColor="@color/subtext"
                             android:textSize="10dip" />
 
                         <TextView
@@ -456,7 +458,7 @@
                             android:gravity="center_vertical"
                             android:maxLines="2"
                             android:text=""
-                            android:textColor="@color/carbon"
+                            android:textColor="@color/subtext"
                             android:textSize="10dip" />
                     </LinearLayout>
 

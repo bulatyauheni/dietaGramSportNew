@@ -100,8 +100,10 @@ public static TodayDish getDishById(String id, Context context) {
 		
 		ContentResolver cr = context.getContentResolver();
 		String selection = "_id" + "=" + "?" ;
-		String[] columns = new String[] { DishProvider.TODAY_NAME, DishProvider.TODAY_CALORICITY, 
-				DishProvider.TODAY_DISH_WEIGHT, "_id", DishProvider.TODAY_DISH_DATE_LONG, DishProvider.TYPE };
+	    String[] columns = new String[] { DishProvider.TODAY_NAME, DishProvider.TODAY_CALORICITY, DishProvider.TODAY_DESCRIPTION,
+			DishProvider.TODAY_DISH_WEIGHT, "_id", DishProvider.TODAY_DISH_DATE_LONG, DishProvider.TYPE, DishProvider.TODAY_CATEGORY, DishProvider.TODAY_FAT,
+			DishProvider.TODAY_PROTEIN, DishProvider.TODAY_CARBON, DishProvider.TODAY_DISH_FAT,
+			DishProvider.TODAY_DISH_PROTEIN, DishProvider.TODAY_DISH_CARBON, DishProvider.TODAY_CALORICITY, DishProvider.TODAY_DISH_TIME_HH, DishProvider.TODAY_DISH_TIME_MM};
 		String[] val = new String[] { id };
 		Cursor c = cr.query(DishProvider.TEMPLATE_CONTENT_URI, columns, selection, val,null);
 		TodayDish res = new TodayDish();
@@ -109,13 +111,22 @@ public static TodayDish getDishById(String id, Context context) {
 			try {
 				
 				while (c.moveToNext())
-		        {					
-					res.setName(c.getString(0));
-					res.setCaloricity(c.getInt(1));
-					res.setWeight(c.getInt(2));
-					res.setId(c.getString(3));
-					res.setDateTime(4);
-					res.setType(c.getString(5));
+		        {
+					res.setId(c.getString(c.getColumnIndex("_id")));
+					res.setName(c.getString(c.getColumnIndex(DishProvider.TODAY_NAME)));
+					res.setDayTyme(String.valueOf(c.getInt(c.getColumnIndex(DishProvider.TODAY_DESCRIPTION))));
+					res.setCarbon(Float.parseFloat(c.getString(c.getColumnIndex(DishProvider.TODAY_CARBON))));
+					res.setProtein(Float.parseFloat(c.getString(c.getColumnIndex(DishProvider.TODAY_PROTEIN))));
+					res.setFat(Float.parseFloat(c.getString(c.getColumnIndex(DishProvider.TODAY_FAT))));
+
+					res.setAbsCarbon(Float.parseFloat(c.getString(c.getColumnIndex(DishProvider.TODAY_DISH_CARBON))));
+					res.setAbsProtein(Float.parseFloat(c.getString(c.getColumnIndex(DishProvider.TODAY_DISH_PROTEIN))));
+					res.setAbsFat(Float.parseFloat(c.getString(c.getColumnIndex(DishProvider.TODAY_DISH_FAT))));
+
+					res.setCaloricity(Integer.parseInt(c.getString(c.getColumnIndex(DishProvider.TODAY_CALORICITY))));
+					res.setWeight(Integer.parseInt(c.getString(c.getColumnIndex(DishProvider.TODAY_DISH_WEIGHT))));
+					res.setDateTimeHH(Integer.parseInt(c.getString(c.getColumnIndex(DishProvider.TODAY_DISH_TIME_HH))));
+					res.setDateTimeMM(Integer.parseInt(c.getString(c.getColumnIndex(DishProvider.TODAY_DISH_TIME_MM))));
 					return res;
 		        }
 				return null;
