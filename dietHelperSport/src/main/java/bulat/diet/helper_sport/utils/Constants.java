@@ -13,7 +13,7 @@ public class Constants {
 	//public static final  String URL_SOCIAL = "http://social.pusku.com/";
 	public static final  String URL_DISHBASE = "http://old.dietagram.ru/";//StartActivity.URLBASE;//"http://calorycounter.16mb.com/";
 	public static final  String URL_ADVERT = "http://old.dietagram.ru/adv.php";//"http://calorycounter.16mb.com/";
-	
+	public static final  String URL_REG_PAYMENT = "http://old.dietagram.ru/registerPayment.php";//"http://calorycounter.16mb.com/";
 	public static final  String URL_BARCOD = "http://old.dietagram.ru/barcode.php";//StartActivity.URLBASE;//"http://calorycounter.16mb.com/";
 
 	public static final  String URL_SOCIAL = "http://old.dietagram.ru/";//StartActivity.URLSOCIAL;

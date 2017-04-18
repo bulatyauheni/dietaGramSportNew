@@ -2,6 +2,7 @@ package bulat.diet.helper_sport.activity;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,6 +21,8 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.widget.Button;
@@ -144,24 +147,32 @@ public class VkActivity extends Activity {
     }
 
     public byte[] getBytesFromFile(File file) throws IOException {
-        InputStream is = new FileInputStream(file);
-        long length = file.length();
-        if (length > Integer.MAX_VALUE) {
-            return null;
+        if (file.canRead()) {
+            InputStream is = new FileInputStream(file);
+            long length = file.length();
+            if (length > Integer.MAX_VALUE) {
+                return null;
+            }
+            byte[] bytes = new byte[(int) length];
+            int offset = 0;
+            int numRead = 0;
+            while (offset < bytes.length
+                    && (numRead = is.read(bytes, offset, bytes.length - offset)) >= 0) {
+                offset += numRead;
+            }
+            if (offset < bytes.length) {
+                throw new IOException("Could not completely read file "
+                        + file.getName());
+            }
+            is.close();
+            return bytes;
+        } else{
+                Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.wall);
+                ByteArrayOutputStream bao = new ByteArrayOutputStream();
+                image.compress(Bitmap.CompressFormat.JPEG, 90, bao);
+                return bao.toByteArray();
         }
-        byte[] bytes = new byte[(int) length];
-        int offset = 0;
-        int numRead = 0;
-        while (offset < bytes.length
-                && (numRead = is.read(bytes, offset, bytes.length - offset)) >= 0) {
-            offset += numRead;
-        }
-        if (offset < bytes.length) {
-            throw new IOException("Could not completely read file "
-                    + file.getName());
-        }
-        is.close();
-        return bytes;
+
     }
 
     public static String openUrl(String url, String method, Bundle params, int userId)

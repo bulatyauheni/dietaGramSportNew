@@ -65,36 +65,28 @@
                 android:id="@+id/group_dish_weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="bottom"
                 android:gravity="left|fill_vertical"
                 android:orientation="horizontal"
-                android:visibility="gone"
+                android:visibility="visible"
+
                 android:paddingLeft="10dp">
 
                 <TextView
                     android:id="@+id/textViewDishWeight"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="159"
-                    android:textColor="@color/text_color_blue"
-                    android:textSize="18sp" />
+                    android:text="100"
+                    android:textColor="@color/subtext"
+                    android:textSize="12dip"  />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/gram"
-                    android:textColor="@color/text_color_blue"
-                    android:textSize="13sp" />
+                    android:textColor="@color/subtext"
+                    android:textSize="10dip"  />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/dishType"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Завтрак"
-                android:textColor="@color/text_color_blue"
-                android:textSize="18sp" />
 
             <LinearLayout
                 android:id="@+id/linearLayoutFCP"
@@ -202,6 +194,15 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/btn_add_food"
                 android:clickable="true" />
+
+            <TextView
+                android:id="@+id/dishType"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Завтрак"
+                android:textColor="@color/text_color_blue"
+                android:textSize="18sp" />
         </FrameLayout>
     </FrameLayout>
 </FrameLayout>

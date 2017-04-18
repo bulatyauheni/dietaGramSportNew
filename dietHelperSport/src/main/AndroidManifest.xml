@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bulat.diet.helper_sport"
     android:installLocation="auto"
-    android:versionCode="120"
-    android:versionName="3.2.8" >
+    android:versionCode="122"
+    android:versionName="3.3.0" >
 
     <uses-sdk android:minSdkVersion="15" />
 

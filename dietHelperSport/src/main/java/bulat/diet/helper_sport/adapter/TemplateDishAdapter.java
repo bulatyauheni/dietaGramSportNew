@@ -1,6 +1,7 @@
 package bulat.diet.helper_sport.adapter;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 import android.app.AlertDialog;
@@ -27,13 +28,16 @@ import bulat.diet.helper_sport.activity.DishActivity;
 import bulat.diet.helper_sport.activity.DishActivityGroup;
 import bulat.diet.helper_sport.activity.NewTemplateActivity;
 import bulat.diet.helper_sport.db.DishProvider;
+import bulat.diet.helper_sport.db.NotificationDishHelper;
 import bulat.diet.helper_sport.db.TemplateDishHelper;
 import bulat.diet.helper_sport.item.Dish;
+import bulat.diet.helper_sport.item.NotificationDish;
 import bulat.diet.helper_sport.utils.Constants;
 import bulat.diet.helper_sport.utils.SocialUpdater;
 
 public class TemplateDishAdapter extends CursorAdapter {
     // We have two list item view types
+    private static ArrayList<NotificationDish> notifications = null;
     private static final int VIEW_TYPE_GROUP_START = 0;
     private static final int VIEW_TYPE_GROUP_CONT = 1;
     private static final int VIEW_TYPE_COUNT = 2;
@@ -55,7 +59,7 @@ public class TemplateDishAdapter extends CursorAdapter {
 
     public TemplateDishAdapter(Context context, Cursor c, DishActivityGroup parent) {
         super(context, c);
-
+        notifications = NotificationDishHelper.getAllNotificationsList(context);
         this.page = page;
         ctx = context;
         setHeaders(c);
@@ -68,7 +72,7 @@ public class TemplateDishAdapter extends CursorAdapter {
                                CalendarActivityGroup parent) {
         super(context, c);
         ctx = context;
-
+        notifications = NotificationDishHelper.getAllNotificationsList(context);
         setHeaders(c);
         this.parentCalendarActivity = parent;
         parentName = CalendarActivityGroup.class.toString();
@@ -366,6 +370,12 @@ public class TemplateDishAdapter extends CursorAdapter {
                 tv.setText(R.string.time_active);
                 tvLabel.setText(ctx.getString(R.string.header_out_label));
                 hedLine.setVisibility(View.GONE);
+            } else {
+                try{
+                    tv.setText(notifications.get(itemTime).getName());
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             try {
@@ -424,7 +434,8 @@ public class TemplateDishAdapter extends CursorAdapter {
             // img_icon.setImageResource(R.drawable.food_icon);
         } else {
             if (Integer.valueOf(itemAbsCarbon) > 0 && Integer.valueOf(itemAbsFat) > 0) {
-                wayAndWeight.setText(itemAbsCarbon + " " + ctx.getString(R.string.kgram) + "/" + (Integer.valueOf(itemAbsFat) + 1) + " " + ctx.getString(R.string.count_num));
+                wayAndWeight.setText(itemAbsCarbon + " " + ctx.getString(R.string.kgram) + "/" + (Integer.valueOf(itemAbsFat) + 1) + " " + ctx.getString(R.string.count_num) + "/"
+                        + ctx.getString(R.string.approach_count)+ (Integer.valueOf(itemAbsProtein) + 1) );
                 wayAndWeight.setVisibility(View.VISIBLE);
             } else if (Integer.valueOf(itemAbsFat) > 0) {
                 wayAndWeight.setText((Integer.valueOf(itemAbsFat) + 1) + " " + ctx.getString(R.string.count_num));

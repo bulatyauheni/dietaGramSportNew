@@ -14,6 +14,7 @@ import android.text.format.DateUtils;
 
 import bulat.diet.helper_sport.activity.Info;
 import bulat.diet.helper_sport.activity.PaymentsListActivity;
+import bulat.diet.helper_sport.activity.StartActivity;
 import bulat.diet.helper_sport.activity.VolumeInfo;
 
 public class SaveUtils {
@@ -1483,5 +1484,23 @@ public class SaveUtils {
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(context);
 		return preferences.getString(SKU_DETAILS, "NONE");
+	}
+
+	public static String getLimit(Context ctx) {
+			int mode = SaveUtils.getMode(ctx);
+			try {
+				switch (mode) {
+					case 0:
+						return SaveUtils.getBMR(ctx);
+					case 1:
+						return SaveUtils.getMETA(ctx);
+					case 2:
+						return SaveUtils.getMETA(ctx);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return "0";
+
 	}
 }

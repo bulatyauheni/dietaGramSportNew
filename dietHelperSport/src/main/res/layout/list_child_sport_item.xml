@@ -243,6 +243,32 @@
                     android:layout_marginLeft="7dip"
                     android:gravity="center_vertical"
                     android:maxLines="2"
+                    android:text="@string/approach_count" />
+
+                <TextView
+                    android:id="@+id/textViewApproaches"
+                    style="@style/textSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="5dip"
+                    android:gravity="center_vertical"
+                    android:text="12"
+                    android:maxLines="2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/textSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="7dip"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
                     android:text="@string/activity_weight" />
 
                 <TextView

@@ -56,6 +56,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -121,6 +122,7 @@ public class StartActivity extends BasePayActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
 		DietHelperActivity.dayscount = TodayDishHelper.getDaysCount(this);
 		exportDB();
 		if (SaveUtils.getEndPDate(this) == 0) {
@@ -185,6 +187,9 @@ public class StartActivity extends BasePayActivity {
 			//register user
 			if (0 != SaveUtils.getUserAdvId(this)) {
 				SaveUtils.setLastVisitTime(currDate.getTime(), this);
+				if (currDate.getTime() - SaveUtils.getLastAdvUpdateTime(this) > (DateUtils.HOUR_IN_MILLIS*15)) {
+					new UpdatePaymentInfoTask().execute();
+				}
 				if (currDate.getTime() - SaveUtils.getLastAdvUpdateTime(this) > DateUtils.DAY_IN_MILLIS) {
 					if (NetworkState.isOnline(StartActivity.this)) {
 						new UpdateTask().execute();
@@ -660,14 +665,7 @@ public class StartActivity extends BasePayActivity {
 				int timeoutSocket = 5000;
 				HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
 				HttpClient client = new DefaultHttpClient(httpParameters);
-				Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
-				Account[] accounts = AccountManager.get(StartActivity.this).getAccountsByType("com.google");
-				String email = null;
-				for (Account account : accounts) {
-					if (emailPattern.matcher(account.name).matches()) {
-						email = account.name;
-					}
-				}
+				String email = StringUtils.getEmail(StartActivity.this);
 				// searchString = searchString.replaceAll(" ", "%20");
 				StringBuffer parametersb = new StringBuffer("");
 				parametersb.append("?id=" + SaveUtils.getUserAdvId(StartActivity.this));
@@ -676,9 +674,11 @@ public class StartActivity extends BasePayActivity {
 				parametersb.append("&age="
 						+ (SaveUtils.getAge(StartActivity.this) + Info.MIN_AGE));
 				parametersb.append("&sex=" + (SaveUtils.getSex(StartActivity.this)));
+				parametersb.append("&weight="+ (SaveUtils.getWeight(StartActivity.this) + Info.MIN_WEIGHT));
+				parametersb.append("&height="	+ (SaveUtils.getHeight(StartActivity.this) + Info.MIN_HEIGHT));
 				parametersb.append("&city=" + TodayDishHelper.getDaysCount(StartActivity.this) + "days");
 				try {
-					parametersb.append("&code=" + URLEncoder.encode(SaveUtils.getSKU(StartActivity.this), "UTF-8"));
+					parametersb.append("&code=" + URLEncoder.encode(SaveUtils.getLimit(StartActivity.this), "UTF-8"));
 				} catch (UnsupportedEncodingException e) {
 					parametersb.append("&code=" + e.getMessage());
 				}
@@ -712,6 +712,90 @@ public class StartActivity extends BasePayActivity {
 					e.printStackTrace();
 				} catch (IllegalArgumentException e) {
 					e.printStackTrace();
+				}
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+
+		}
+
+	}
+
+
+	private class UpdatePaymentInfoTask extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			if (NetworkState.isOnline(StartActivity.this)) {
+				StringBuilder builder = new StringBuilder();
+				HttpParams httpParameters = new BasicHttpParams();
+				// Set the timeout in milliseconds until a connection is established.
+				// The default value is zero, that means the timeout is not used.
+				int timeoutConnection = 5000;
+				HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
+				int timeoutSocket = 5000;
+				HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
+				HttpClient client = new DefaultHttpClient(httpParameters);
+				String SKU = SaveUtils.getSKU(StartActivity.this);
+				if (!TextUtils.isEmpty(SKU) && SKU.split("__").length>1) {
+					String absIncome = "";
+					String[] parseSKU = SKU.split("__");
+					absIncome = parseSKU[0];
+
+					// numer could be (1 000,00 $)   or (1,23 $)
+					String[] numberAndCurrency = absIncome.split("\\s+");
+					String currency = numberAndCurrency[numberAndCurrency.length-1];
+					String number = absIncome.replace(",", ".").replace(" ","").replace(currency,"");
+					Double d = Double.parseDouble(number);
+
+
+					String purchaseId = parseSKU[1];
+					String purchaseDate = parseSKU[2];
+
+					String email = StringUtils.getEmail(StartActivity.this);
+
+				// searchString = searchString.replaceAll(" ", "%20");
+					StringBuffer parametersb = new StringBuffer("");
+					parametersb.append("?user_id=" + SaveUtils.getUserAdvId(StartActivity.this));
+					parametersb.append("&user_g_id=" + email);
+
+					parametersb.append("&date=" + purchaseDate);
+					parametersb.append("&sum=" + number);
+					try {
+						parametersb.append("&currency=" + URLEncoder.encode(currency, "UTF-8"));
+
+						parametersb.append("&purchase_id=" + URLEncoder.encode(purchaseId, "UTF-8"));
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					}
+					HttpGet httpGet = new HttpGet(Constants.URL_REG_PAYMENT
+							+ parametersb);
+					try {
+						HttpResponse response = client.execute(httpGet);
+						StatusLine statusLine = response.getStatusLine();
+						int statusCode = statusLine.getStatusCode();
+						if (statusCode == 200) {
+							HttpEntity entity = response.getEntity();
+							InputStream content = entity.getContent();
+							BufferedReader reader = new BufferedReader(
+									new InputStreamReader(content));
+							String line;
+							while ((line = reader.readLine()) != null) {
+								builder.append(line);
+							}
+						}
+						String resultString = builder.toString().trim();
+
+					} catch (ClientProtocolException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					} catch (IllegalArgumentException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 			return null;

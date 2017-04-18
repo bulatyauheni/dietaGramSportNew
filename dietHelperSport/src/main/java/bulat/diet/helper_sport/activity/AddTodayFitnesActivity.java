@@ -82,10 +82,12 @@ public class AddTodayFitnesActivity extends BaseAddActivity implements TimePicke
 	private Spinner fitCountSpinner;
 	private Spinner fitWeightDecSpinner;
 	private int fitnesCountSelection;
+	private int fitApproachCountSelection;
 	private int fitnesWeightSelection;
 	private int fitnesWeightDecSelection;
 	private int weight;
 	private TextView timeTW;
+	private Spinner fitApproachCountSpinner;
 
 	private void initData(Bundle extras) {
 
@@ -134,6 +136,7 @@ public class AddTodayFitnesActivity extends BaseAddActivity implements TimePicke
 			fitnesCountSelection = (int)dish.getAbsFat();
 			fitnesWeightSelection = (int)dish.getAbsCarbon();
 			fitnesWeightDecSelection = (int)dish.getProtein();
+			fitApproachCountSelection = (int)dish.getAbsProtein();
 			calotyBurn = "0";
 			sportName = dish.getName();
 			weight = dish.getWeight();
@@ -261,24 +264,24 @@ public class AddTodayFitnesActivity extends BaseAddActivity implements TimePicke
 						}
 						TodayDish td = new TodayDish(SaveUtils
 								.getRealWeight(AddTodayFitnesActivity.this),
-								sportName, String
-										.valueOf(Constants.ACTIVITY),
-										Integer.valueOf(dishCaloricityVTW.getText().toString())>0?-Integer.valueOf(dishCaloricityVTW.getText().toString()): -1,
-										category.toString(), 
-										Integer.valueOf(weightView.getText().toString()),
-										Integer.valueOf(dishCaloricityVTW.getText().toString())>0?-Integer.valueOf(dishCaloricityVTW.getText().toString()): -1,
-										currDate,
-										curentDateandTime.getTime(), 
-										0,
-										"",
-										Float.parseFloat(fitnesWeight.replace(",", ".")),
-										fitCountSpinner.getSelectedItemId()>=0?fitCountSpinner.getSelectedItemId():0,
-										Float.parseFloat(fitnesWay.replace(",", ".")),
-										fitWeightSpinner.getSelectedItemId()>=0?fitWeightSpinner.getSelectedItemId():0,
-										fitWeightDecSpinner.getSelectedItemId()>=0?fitWeightDecSpinner.getSelectedItemId():0,
-										0,
-										timeHHValue,
-										timeMMValue);
+								sportName,
+								String.valueOf(Constants.ACTIVITY),
+								Integer.valueOf(dishCaloricityVTW.getText().toString())>0?-Integer.valueOf(dishCaloricityVTW.getText().toString()): -1,
+								category.toString(),
+								Integer.valueOf(weightView.getText().toString()),
+								Integer.valueOf(dishCaloricityVTW.getText().toString())>0?-Integer.valueOf(dishCaloricityVTW.getText().toString()): -1,
+								currDate,
+								curentDateandTime.getTime(),
+								0,
+								"",
+								Float.parseFloat(fitnesWeight.replace(",", ".")),
+								fitCountSpinner.getSelectedItemId()>=0?fitCountSpinner.getSelectedItemId():0,
+								Float.parseFloat(fitnesWay.replace(",", ".")),
+								fitWeightSpinner.getSelectedItemId()>=0?fitWeightSpinner.getSelectedItemId():0,
+								fitWeightDecSpinner.getSelectedItemId()>=0?fitWeightDecSpinner.getSelectedItemId():0,
+								fitApproachCountSpinner.getSelectedItemId()>=0?fitApproachCountSpinner.getSelectedItemId():0,
+								timeHHValue,
+								timeMMValue);
 						if (templateFlag) {
 							td.setId(TemplateDishHelper.addNewDish(td,
 									AddTodayFitnesActivity.this));
@@ -300,14 +303,14 @@ public class AddTodayFitnesActivity extends BaseAddActivity implements TimePicke
 									String.valueOf(Constants.ACTIVITY), dc,
 									"", 
 									Integer.parseInt(weightView.getText()
-											.toString()), 
-									Integer.valueOf(dishCaloricityVTW.getText().toString()) < 0? Integer.valueOf(dishCaloricityVTW.getText().toString()): -1,
+											.toString()),
+									Integer.valueOf(dishCaloricityVTW.getText().toString())>0?-Integer.valueOf(dishCaloricityVTW.getText().toString()): -1,
 									currDate,Float.parseFloat(fitnesWeight),
 									fitCountSpinner.getSelectedItemId()>=0?fitCountSpinner.getSelectedItemId():0,
 									Float.parseFloat(fitnesWay),
 									fitWeightSpinner.getSelectedItemId()>=0?fitWeightSpinner.getSelectedItemId():0,
 									fitWeightDecSpinner.getSelectedItemId()>=0?fitWeightDecSpinner.getSelectedItemId():0,
-									0,
+									fitApproachCountSpinner.getSelectedItemId()>=0?fitApproachCountSpinner.getSelectedItemId():0,
 									timeHHValue,
 									timeMMValue);
 
@@ -366,6 +369,7 @@ public class AddTodayFitnesActivity extends BaseAddActivity implements TimePicke
 		
 		fitWeightSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerADDWeight);
 		fitCountSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerCount);
+		fitApproachCountSpinner = (Spinner) viewToLoad.findViewById(R.id.approachCount);
 		fitWeightDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerADDWeightDecimal);
 		setFitnesOrGymView();
 		setContentView(viewToLoad);
@@ -478,7 +482,7 @@ public class AddTodayFitnesActivity extends BaseAddActivity implements TimePicke
 //$_POST['razA11']*19.6*($_POST['vesaA11']+$ves_tela)
 				float job =(float) (
 						(float) Float.parseFloat(fitnesWay.replace(",", "."))*(
-								(fitCountSpinner.getSelectedItemId()*19.6*
+								((fitCountSpinner.getSelectedItemId()+1)*19.6*(fitApproachCountSpinner.getSelectedItemId()+1)*
 										(SaveUtils.getRealWeight(this)*Float.parseFloat(fitnesWeight.replace(",", ".")) + fitWeightSpinner.getSelectedItemId() + fitWeightDecSpinner.getSelectedItemId()/10)
 										*0.239/1000)/(SaveUtils.getExpModeValue(this)*0.01)));
 				job = job + job/100* ((SaveUtils.getHeight(this) + Info.MIN_HEIGHT - 175)/2);
@@ -503,15 +507,18 @@ public class AddTodayFitnesActivity extends BaseAddActivity implements TimePicke
 
 			DialogUtils.setArraySpinnerValues(fitWeightSpinner,0,200,this);	
 			
-			fitWeightSpinner.setSelection(fitnesWeightSelection>0?fitnesWeightSelection:10);
+			fitWeightSpinner.setSelection(fitnesWeightSelection>0?fitnesWeightSelection:11);
 			fitWeightSpinner.setOnItemSelectedListener(spinnerListener);
 			
 			DialogUtils.setArraySpinnerValues(fitWeightDecSpinner,0,10,this);						
 			fitWeightDecSpinner.setSelection(fitnesWeightDecSelection);	
 			fitWeightDecSpinner.setOnItemSelectedListener(spinnerListener);
 			
-			DialogUtils.setArraySpinnerValues(fitCountSpinner,1,100,this);							
-			fitCountSpinner.setSelection(fitnesCountSelection>0?fitnesCountSelection:15);	
+			DialogUtils.setArraySpinnerValues(fitCountSpinner,1,100,this);
+			DialogUtils.setArraySpinnerValues(fitApproachCountSpinner, 1, 20, this);
+			fitApproachCountSpinner.setSelection(fitApproachCountSelection >0? fitApproachCountSelection:0);
+			fitApproachCountSpinner.setOnItemSelectedListener(spinnerListener);
+			fitCountSpinner.setSelection(fitnesCountSelection>0?fitnesCountSelection:11);
 			fitCountSpinner.setOnItemSelectedListener(spinnerListener);									
 		}catch (Exception e) {
 			e.printStackTrace();			

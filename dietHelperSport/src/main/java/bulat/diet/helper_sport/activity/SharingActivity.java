@@ -140,14 +140,21 @@ public class SharingActivity extends StatisticFCPActivity {
         String pathImage = getIntent().getStringExtra(VkActivity.IMAGE_PATH);
         final String imageDesckription = getIntent().getStringExtra(VkActivity.IMAGE_DESK);
 
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        Bitmap image = BitmapFactory.decodeFile(pathImage, options);
-        ByteArrayOutputStream bao = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 90, bao);
-        ba = bao.toByteArray();
-        image.compress(Bitmap.CompressFormat.JPEG, 90, bao);
-        ba = bao.toByteArray();
+        if (!TextUtils.isEmpty(pathImage)) {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            Bitmap image = BitmapFactory.decodeFile(pathImage, options);
+            ByteArrayOutputStream bao = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 90, bao);
+            ba = bao.toByteArray();
+            image.compress(Bitmap.CompressFormat.JPEG, 90, bao);
+            ba = bao.toByteArray();
+        }else {
+            Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.wall);
+            ByteArrayOutputStream bao = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 90, bao);
+            ba =  bao.toByteArray();
+        }
         new uploadToServer().execute();
         ShareDialog shareDialog = new ShareDialog(SharingActivity.this);
         if (!shareDialog.canShow(SharePhotoContent.class)) {

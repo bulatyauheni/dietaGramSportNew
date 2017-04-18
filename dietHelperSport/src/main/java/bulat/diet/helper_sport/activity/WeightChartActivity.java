@@ -1,5 +1,6 @@
 package bulat.diet.helper_sport.activity;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,6 +23,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images;
 import android.util.Log;
@@ -69,7 +71,7 @@ import com.github.mikephil.charting.formatter.YAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
-public class WeightChartActivity extends Activity implements
+public class WeightChartActivity extends RepostActivity implements
 		OnChartValueSelectedListener, OnCheckedChangeListener {
 	private static final String IS_CHART_TIP_SHOWN = "IS_CHART_TIP_SHOWN";
 	protected int mCurrnetChartType = 0;
@@ -87,6 +89,7 @@ public class WeightChartActivity extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		fixMediaDir();
 		readyToRate = (!SaveUtils.isAllreadyRate(WeightChartActivity.this.getParent().getParent())) && (TodayDishHelper.getDaysStat(this).size() > 9);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -152,44 +155,16 @@ public class WeightChartActivity extends Activity implements
 		initTimeIntervalSelector();
 
 	}
-	
-	public String getBitmapFromView(View view) {
-        //Define a bitmap with the same size as the view
-        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),Bitmap.Config.ARGB_8888);
-        //Bind a canvas to it
-        Canvas canvas = new Canvas(returnedBitmap);
-        //Get the view's background
-        Drawable bgDrawable =view.getBackground();
-        if (bgDrawable!=null) 
-            //has background drawable, then draw it on the canvas
-            bgDrawable.draw(canvas);
-        else 
-            //does not have background drawable, then draw white background on the canvas
-            canvas.drawColor(Color.WHITE);
-        // draw the view on the canvas
-        view.draw(canvas);
-        //return the bitmap
-        
-        String uriStr = Images.Media.insertImage(WeightChartActivity.this.getContentResolver(), returnedBitmap, "title", null); 
-        Uri uri = Uri.parse(uriStr);
-        return getRealPathFromURI(this, uri);
-   
-    }
-	
-	public String getRealPathFromURI(Context context, Uri contentUri) {
-		  Cursor cursor = null;
-		  try { 
-		    String[] proj = { MediaStore.Images.Media.DATA };
-		    cursor = context.getContentResolver().query(contentUri,  proj, null, null, null);
-		    int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-		    cursor.moveToFirst();
-		    return cursor.getString(column_index);
-		  } finally {
-		    if (cursor != null) {
-		      cursor.close();
-		    }
-		  }
+
+	void fixMediaDir() {
+		File sdcard = Environment.getExternalStorageDirectory();
+		if (sdcard != null) {
+			File mediaDir = new File(sdcard, "DCIM/Camera");
+			if (!mediaDir.exists()) {
+				mediaDir.mkdirs();
+			}
 		}
+	}
 
 	private void initTimeIntervalSelector() {
 		timePeriodRG = (SegmentedGroup) findViewById(R.id.weightChartTimeSegments);

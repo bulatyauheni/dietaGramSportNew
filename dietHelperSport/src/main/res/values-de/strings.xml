@@ -42,6 +42,7 @@
     <string name="gram_full">Gramm</string>
     <string name="santimetr">cm</string>
     <string name="kcal">kcal</string>
+    <string name="approach_count">Anzahl der Ansätze:</string>
     <string name="maintain">Zur Gewichtserhaltung:</string>
     <string name="losing">Zur Gewichtsabnahme:</string>
     <string name="age">Alter</string>

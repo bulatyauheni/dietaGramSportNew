@@ -268,6 +268,7 @@
     <string name="search_in_all_sport">Поиск активности ...</string>
     <string name="additional_weight">Вес(кг):</string>
     <string name="count">Количество повторений:</string>
+    <string name="approach_count">Количество подходов:</string>
     <string name="fitnes_help">Введите вес снаряжения и число повторений</string>
     <string name="volume_chest">Охват груди</string>
     <string name="volume_pelvis">Таз</string>
@@ -306,7 +307,7 @@
     <string name="water_name">Вода</string>
 
     <string name="user_email_label">Введите ваш email (для получения рациона от диетолога)</string>
-    <string name="user_abonement_label">Введите код (для получения абонемента по акции)</string>
+    <string name="user_abonement_label">Для получения абонемента по акции свяжитесь с разработчиком bulat.yauheni@gmail.com . Введите полученный от разработчика код ниже:</string>
     <string name="user_email_hint">Ваш email</string>
     <string name="user_email_title">Получение рациона</string>
     <string name="user_abonement_title">Получение абонемента</string>
@@ -342,7 +343,7 @@
     <string name="vk_recomend">Рекомендую! Калькулятор Калорий - простая и эффективная програма.</string>
     <string name="vk_toast">Запись добавлена на вашей стене ВКонтакте</string>
     <string name="fb_toast">Запись добавлена на вашей стене в Facebook</string>
-    <string name="get_free_time">Не куплю</string>
+    <string name="get_free_time">Free</string>
     <string name="ok">Ок</string>
     <string name="success_in_percantage_text" formatted="false">Мой пищевой баланс на %.2f%% идеален</string>
 
@@ -365,6 +366,6 @@
     <string name="info_swipe_remove">Для удаления записи смахните ее пальцем вправо или влево.</string>
     <string name="info_pinch">Сжимать и растягивать график можно двумя пальцами.</string>
 
-    <string name="info_trial">Первые 5 дней приложение работает бесплатно. Если вам понравиться, то дальше нужно будет купить подписку. Все ваши данные сохранятся.</string>
+    <string name="info_trial">Первые 5 дней приложение работает бесплатно. Если вам понравится, то дальше нужно будет купить подписку. Все ваши данные сохранятся.</string>
     <string name="info_install_fb">Для того, чтобы поделится записью, вам необходимо установить приложение Facebook</string>
 </resources>

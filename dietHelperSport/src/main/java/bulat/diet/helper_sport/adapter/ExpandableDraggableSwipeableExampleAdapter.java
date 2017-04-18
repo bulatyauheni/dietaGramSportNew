@@ -115,6 +115,7 @@ public class ExpandableDraggableSwipeableExampleAdapter
         // mFat it is also amount of repeat for activity
         public TextView mFat;
         public TextView mProtein;
+        public TextView mApproaches;
         public TextView mCalory;
         public TextView mTime;
         public TextView mDishWeight;
@@ -133,6 +134,7 @@ public class ExpandableDraggableSwipeableExampleAdapter
             mCarbon = (TextView) v.findViewById(R.id.textViewCarbon);
             mFat = (TextView) v.findViewById(R.id.textViewFat);
             mAbsProtein = (TextView) v.findViewById(R.id.textViewAdditionalWeight);
+            mApproaches = (TextView) v.findViewById(R.id.textViewApproaches);
             mProtein = (TextView) v.findViewById(R.id.textViewProtein);
             mCalory = (TextView) v.findViewById(R.id.textViewDishCalorie);
             mDishWeight = (TextView) v.findViewById(R.id.textViewDishWeight);
@@ -303,12 +305,15 @@ public class ExpandableDraggableSwipeableExampleAdapter
 
         if (!TextUtils.isEmpty(holder.mNameTextView.getText()) && holder.mNameTextView.getText().toString().equals(holder.mNameTextView.getContext().getString(R.string.water_name)))  {
             holder.mLinearLayoutFCP.setVisibility(View.GONE);
+            holder.mGroupDishWeight.setVisibility(View.GONE);
             holder.mGroupDishCalorisity.setVisibility(View.GONE);
             holder.mGroupDishWeight.setVisibility(View.VISIBLE);
         } else if (item.getGroupId() != getGroupCount()-1) {
             holder.mLinearLayoutFCP.setVisibility(View.VISIBLE);
+            holder.mGroupDishWeight.setVisibility(View.VISIBLE);
         } else {
             holder.mLinearLayoutFCP.setVisibility(View.GONE);
+            holder.mGroupDishWeight.setVisibility(View.GONE);
         }
 
         // set background resource (target view ID: container)
@@ -373,6 +378,7 @@ public class ExpandableDraggableSwipeableExampleAdapter
         if  (holder.mAbsProtein != null) {
             //if activity params
             holder.mFat.setText("" + (int)(item.getDishInfo().getFat() + 1));
+            holder.mApproaches.setText("" + (int)(item.getDishInfo().getProtein() + 1));
         } else {
             //if dish params
             holder.mFat.setText("" + item.getDishInfo().getFat());
@@ -380,7 +386,8 @@ public class ExpandableDraggableSwipeableExampleAdapter
         holder.mProtein.setText("" + item.getDishInfo().getProtein());
         holder.mCarbon.setText("" + item.getDishInfo().getCarbon());
         if  (holder.mAbsProtein != null) holder.mAbsProtein.setText("" + (item.getDishInfo().getCarbon() + item.getDishInfo().getAbsProtein()/10));
-        holder.mDishWeight.setText("" + item.getDishInfo().getWeight());
+
+            holder.mDishWeight.setText("" + item.getDishInfo().getWeight());
         holder.mTime.setText("" + item.getDishInfo().getDateTimeHH() +  ":" + ((item.getDishInfo().getDateTimeMM() > 9) ? item.getDishInfo().getDateTimeMM() : "0" +item.getDishInfo().getDateTimeMM()) );
 
         if (holder.mDdishWeightLayout != null) {
