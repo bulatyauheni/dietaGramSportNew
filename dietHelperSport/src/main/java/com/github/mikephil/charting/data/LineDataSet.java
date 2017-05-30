@@ -79,22 +79,6 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
         return copied;
     }
 
-    /**
-     * Sets the intensity for cubic lines (if enabled). Max = 1f = very cubic,
-     * Min = 0.05f = low cubic effect, Default: 0.2f
-     * 
-     * @param intensity
-     */
-    public void setCubicIntensity(float intensity) {
-
-        if (intensity > 1f)
-            intensity = 1f;
-        if (intensity < 0.05f)
-            intensity = 0.05f;
-
-        mCubicIntensity = intensity;
-    }
-
     @Override
     public float getCubicIntensity() {
         return mCubicIntensity;
@@ -116,51 +100,6 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
         return mCircleRadius;
     }
 
-    /**
-     * sets the size (radius) of the circle shpaed value indicators,
-     * default size = 4f
-     *
-     * This method is deprecated because of unclarity. Use setCircleRadius instead.
-     *
-     * @param size
-     */
-    @Deprecated
-    public void setCircleSize(float size) {
-        setCircleRadius(size);
-    }
-
-    /**
-     *
-     * This function is deprecated because of unclarity. Use getCircleRadius instead.
-     *
-     */
-    @Deprecated
-    public float getCircleSize() {
-        return getCircleRadius();
-    }
-
-    /**
-     * Enables the line to be drawn in dashed mode, e.g. like this
-     * "- - - - - -". THIS ONLY WORKS IF HARDWARE-ACCELERATION IS TURNED OFF.
-     * Keep in mind that hardware acceleration boosts performance.
-     * 
-     * @param lineLength the length of the line pieces
-     * @param spaceLength the length of space in between the pieces
-     * @param phase offset, in degrees (normally, use 0)
-     */
-    public void enableDashedLine(float lineLength, float spaceLength, float phase) {
-        mDashPathEffect = new DashPathEffect(new float[] {
-                lineLength, spaceLength
-        }, phase);
-    }
-
-    /**
-     * Disables the line to be drawn in dashed mode.
-     */
-    public void disableDashedLine() {
-        mDashPathEffect = null;
-    }
-
     @Override
     public boolean isDashedLineEnabled() {
         return mDashPathEffect == null ? false : true;
@@ -169,16 +108,6 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
     @Override
     public DashPathEffect getDashPathEffect() {
         return mDashPathEffect;
-    }
-
-    /**
-     * set this to true to enable the drawing of circle indicators for this
-     * DataSet, default true
-     * 
-     * @param enabled
-     */
-    public void setDrawCircles(boolean enabled) {
-        this.mDrawCircles = enabled;
     }
 
     @Override
@@ -203,65 +132,9 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
 
     /** ALL CODE BELOW RELATED TO CIRCLE-COLORS */
 
-    /**
-     * returns all colors specified for the circles
-     * 
-     * @return
-     */
-    public List<Integer> getCircleColors() {
-        return mCircleColors;
-    }
-
     @Override
     public int getCircleColor(int index) {
         return mCircleColors.get(index % mCircleColors.size());
-    }
-
-    /**
-     * Sets the colors that should be used for the circles of this DataSet.
-     * Colors are reused as soon as the number of Entries the DataSet represents
-     * is higher than the size of the colors array. Make sure that the colors
-     * are already prepared (by calling getResources().getColor(...)) before
-     * adding them to the DataSet.
-     * 
-     * @param colors
-     */
-    public void setCircleColors(List<Integer> colors) {
-        mCircleColors = colors;
-    }
-
-    /**
-     * Sets the colors that should be used for the circles of this DataSet.
-     * Colors are reused as soon as the number of Entries the DataSet represents
-     * is higher than the size of the colors array. Make sure that the colors
-     * are already prepared (by calling getResources().getColor(...)) before
-     * adding them to the DataSet.
-     * 
-     * @param colors
-     */
-    public void setCircleColors(int[] colors) {
-        this.mCircleColors = ColorTemplate.createColors(colors);
-    }
-
-    /**
-     * ets the colors that should be used for the circles of this DataSet.
-     * Colors are reused as soon as the number of Entries the DataSet represents
-     * is higher than the size of the colors array. You can use
-     * "new String[] { R.color.red, R.color.green, ... }" to provide colors for
-     * this method. Internally, the colors are resolved using
-     * getResources().getColor(...)
-     * 
-     * @param colors
-     */
-    public void setCircleColors(int[] colors, Context c) {
-
-        List<Integer> clrs = new ArrayList<Integer>();
-
-        for (int color : colors) {
-            clrs.add(c.getResources().getColor(color));
-        }
-
-        mCircleColors = clrs;
     }
 
     /**
@@ -282,46 +155,14 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
         mCircleColors = new ArrayList<Integer>();
     }
 
-    /**
-     * Sets the color of the inner circle of the line-circles.
-     * 
-     * @param color
-     */
-    public void setCircleColorHole(int color) {
-        mCircleColorHole = color;
-    }
-
     @Override
     public int getCircleHoleColor() {
         return mCircleColorHole;
     }
 
-    /**
-     * Set this to true to allow drawing a hole in each data circle.
-     * 
-     * @param enabled
-     */
-    public void setDrawCircleHole(boolean enabled) {
-        mDrawCircleHole = enabled;
-    }
-
     @Override
     public boolean isDrawCircleHoleEnabled() {
         return mDrawCircleHole;
-    }
-
-    /**
-     * Sets a custom FillFormatter to the chart that handles the position of the
-     * filled-line for each DataSet. Set this to null to use the default logic.
-     *
-     * @param formatter
-     */
-    public void setFillFormatter(FillFormatter formatter) {
-
-        if (formatter == null)
-            mFillFormatter = new DefaultFillFormatter();
-        else
-            mFillFormatter = formatter;
     }
 
     @Override

@@ -520,7 +520,7 @@ public class RecepyListActivity extends Activity{
 		if (list.size() > 0) {
 			badSearchView.setVisibility(View.GONE);
 			try {
-				DishArrayAdapter da = new DishArrayAdapter(getApplicationContext(),
+				DishArrayAdapter da = new DishArrayAdapter(null, getApplicationContext(),
 						R.layout.dish_list_row, list);
 				dishesList.setAdapter(da);
 				da.notifyDataSetChanged();

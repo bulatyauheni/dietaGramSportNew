@@ -181,6 +181,14 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
 
             final Spinner shinSpinner = (Spinner) dialog.findViewById(R.id.SpinnerShin);
             final Spinner shinDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerShinDecimal);
+            TextView buttonAdd = (TextView) dialog.findViewById(R.id.add_body_param_btn);
+            buttonAdd.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent().setClass(DishActivity.this, VolumeInfo.class);
+                    startActivity(intent);
+                }
+            });
             Button buttonOk = (Button) dialog
                     .findViewById(R.id.buttonYes);
             buttonOk.setOnClickListener(new OnClickListener() {
@@ -328,14 +336,14 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         tvF.setText(df.format(Float.valueOf(sumF)));
         tvC.setText(df.format(Float.valueOf(sumC)));
         tvP.setText(df.format(Float.valueOf(sumP)));
-        float sumTemp = Float.valueOf(sumF) + Float.valueOf(sumC)
-                + Float.valueOf(sumP);
+        float sumTemp = Float.valueOf(sumF*9) + Float.valueOf(sumC*4)
+                + Float.valueOf(sumP*4);
         if (sumTemp > 0) {
-            tvFp.setText("(" + df.format(Float.valueOf(sumF) * 100 / sumTemp)
+            tvFp.setText("(" + df.format(Float.valueOf(sumF)*9 * 100 / sumTemp)
                     + "%)");
-            tvCp.setText("(" + df.format(Float.valueOf(sumC) * 100 / sumTemp)
+            tvCp.setText("(" + df.format(Float.valueOf(sumC)*4 * 100 / sumTemp)
                     + "%)");
-            tvPp.setText("(" + df.format(Float.valueOf(sumP) * 100 / sumTemp)
+            tvPp.setText("(" + df.format(Float.valueOf(sumP)*4 * 100 / sumTemp)
                     + "%)");
 
         } else {
@@ -414,9 +422,11 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         // IMPORTANT: In a PieChart, no values (Entry) should have the same
         // xIndex (even if from different DataSets), since no values can be
         // drawn above each other.
-        for (int i = 0; i < count; i++) {
-            yVals1.add(new Entry(data[i], i));
-        }
+        //for (int i = 0; i < count; i++) {
+            yVals1.add(new Entry(data[0]*4, 0));
+        yVals1.add(new Entry(data[1]*4, 1));
+        yVals1.add(new Entry(data[2]*9, 2));
+       // }
 
         ArrayList<String> xVals = new ArrayList<String>();
 

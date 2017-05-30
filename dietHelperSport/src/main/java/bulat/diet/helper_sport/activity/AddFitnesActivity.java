@@ -190,13 +190,7 @@ public class AddFitnesActivity extends BaseActivity{
 		setContentView(viewToLoad);
 	}
 
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-	}
-
-	@Override
+    @Override
 	protected void onPause() {
 		
 		super.onPause();

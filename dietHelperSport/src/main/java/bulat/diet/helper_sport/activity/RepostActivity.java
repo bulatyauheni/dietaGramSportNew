@@ -15,7 +15,7 @@ import android.view.View;
  * Created by Yauheni.Bulat on 18.04.2017.
  */
 
-public class RepostActivity extends Activity{
+public class RepostActivity extends BasePayActivity{
 
     public String getBitmapFromView(View view) {
         //Define a bitmap with the same size as the view

@@ -7,11 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.activity.DishListActivity;
 import bulat.diet.helper_sport.activity.DishListActivityGroup;
+import bulat.diet.helper_sport.db.DishListHelper;
 import bulat.diet.helper_sport.db.DishProvider;
+import bulat.diet.helper_sport.item.Dish;
 
 public class DishAdapter extends CursorAdapter {
 
@@ -61,7 +64,7 @@ public class DishAdapter extends CursorAdapter {
 	}
 
 	@Override
-	public void bindView(View v, Context context, Cursor c) {
+	public void bindView(View v, final Context context, Cursor c) {
 		 itemName = c.getString(c.getColumnIndex(DishProvider.NAME));
 		 itemCaloricity = c.getString(c
 				.getColumnIndex(DishProvider.CALORICITY));
@@ -125,6 +128,37 @@ public class DishAdapter extends CursorAdapter {
 					}
 				});
 				remButton.setId(Integer.parseInt(itemId));
+			}
+		} else{
+			Button favorite = (Button) v.findViewById(R.id.buttonFav);
+			if (page != null && favorite != null) {
+				favorite.setBackgroundResource(R.drawable.star_empty);
+				favorite.setVisibility(View.VISIBLE);
+				favorite.setId(Integer.parseInt(itemId));
+
+				favorite.setOnClickListener(new View.OnClickListener() {
+
+						public void onClick(View v) {
+							Button rbut = (Button) v;
+							TextView tvi = (TextView) ((View) rbut.getParent())
+									.findViewById(R.id.textViewId);
+
+							TextView tvNum = (TextView) ((View) rbut.getParent())
+									.findViewById(R.id.textViewOrderNum);
+							if ("0".equals(tvi.getText().toString())) {
+								Dish temp = (Dish) getItem(Integer.parseInt(tvNum.getText().toString()));
+								temp.setId(String.valueOf(DishListHelper.addNewDish(temp, context)));
+								page.showingDialogAddToFavorite(temp.getId());
+							}
+							page.showingDialogAddToFavorite(tvi.getText().toString());
+						}
+					});
+
+				favorite.setId(Integer.parseInt(itemId));
+			} else {
+				if (favorite != null) {
+					favorite.setVisibility(View.GONE);
+				}
 			}
 		}
 	}

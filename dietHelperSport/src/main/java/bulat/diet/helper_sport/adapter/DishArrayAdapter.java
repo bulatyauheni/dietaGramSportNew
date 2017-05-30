@@ -8,24 +8,39 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import bulat.diet.helper_sport.R;
+import bulat.diet.helper_sport.activity.DishListActivity;
+import bulat.diet.helper_sport.db.DishListHelper;
 import bulat.diet.helper_sport.item.Dish;
 
 public class DishArrayAdapter extends ArrayAdapter<Dish> {
 
-	private Context context;	
+	private final DishListActivity page;
+	private boolean mIsPopular = false;
+	private Context context;
 	int layoutResourceId;
 	protected boolean remove;
 	List<Dish> list;
 
-	public DishArrayAdapter(Context context, int layoutResourceId, List<Dish> list) {
+	public DishArrayAdapter(DishListActivity page, Context context, int layoutResourceId, List<Dish> list) {
 		super(context, layoutResourceId, list);
 		this.layoutResourceId=layoutResourceId;
 		this.context = context;
 		this.list = list;
-		// TODO Auto-generated constructor stub
+		this.page = page;
+	}
+
+	public DishArrayAdapter(DishListActivity page, Context context, int layoutResourceId, List<Dish> list, boolean isPopular) {
+		super(context, layoutResourceId, list);
+		this.layoutResourceId=layoutResourceId;
+		this.context = context;
+		this.list = list;
+		this.page = page;
+		this.mIsPopular = isPopular;
 	}
 
 	@Override
@@ -91,16 +106,64 @@ public class DishArrayAdapter extends ArrayAdapter<Dish> {
 
 
 			TextView idView = (TextView) rowView.findViewById(R.id.textViewId);
-
+			TextView tvNum = (TextView) rowView.findViewById(R.id.textViewOrderNum);
 			idView.setText(itemId);
+			tvNum.setText("" + position);
 			// ToDo - alcohol does not match for this rule 
 			//if (!item.isValid()) {
 			//	rowView.setBackgroundColor(context.getResources().getColor(R.color.red));				
 			//} else {
 				rowView.setBackgroundColor(context.getResources().getColor(R.color.main_color));	
 			//}
+
+			Button favorite = (Button) rowView.findViewById(R.id.buttonFav);
+			if (page != null && favorite != null) {
+				favorite.setBackgroundResource(mIsPopular ? R.drawable.star_selected : R.drawable.star_empty);
+				favorite.setVisibility(View.VISIBLE);
+				favorite.setId(Integer.parseInt(itemId));
+				if (!mIsPopular) {
+					favorite.setOnClickListener(new View.OnClickListener() {
+
+						public void onClick(View v) {
+							Button rbut = (Button) v;
+							TextView tvi = (TextView) ((View) rbut.getParent())
+									.findViewById(R.id.textViewId);
+
+							TextView tvNum = (TextView) ((View) rbut.getParent())
+									.findViewById(R.id.textViewOrderNum);
+							if ("0".equals(tvi.getText().toString())) {
+								Dish temp = (Dish) getItem(Integer.parseInt(tvNum.getText().toString()));
+								temp.setId(String.valueOf(DishListHelper.addNewDish(temp, context)));
+								page.showingDialogAddToFavorite(temp.getId());
+							} else {
+								page.showingDialogAddToFavorite(tvi.getText().toString());
+							}
+						}
+					});
+				}else {
+					favorite.setOnClickListener(new View.OnClickListener() {
+
+						public void onClick(View v) {
+							Button rbut = (Button) v;
+							TextView tvi = (TextView) ((View) rbut.getParent())
+									.findViewById(R.id.textViewId);
+
+							TextView tvNum = (TextView) ((View) rbut.getParent())
+									.findViewById(R.id.textViewOrderNum);
+							page.showingDialogRemoveFromFavorite(tvi.getText().toString());
+						}
+					});
+				}
+				favorite.setId(Integer.parseInt(itemId));
+			} else {
+				if (favorite != null) {
+					favorite.setVisibility(View.GONE);
+				}
+			}
 		}
-		
+
+
+
 		return rowView;
 
 	}

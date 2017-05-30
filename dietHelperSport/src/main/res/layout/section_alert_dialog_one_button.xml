@@ -11,6 +11,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
+        android:padding="10dp"
         android:fillViewport="true" >
         <LinearLayout 
             android:id="@+id/dialogContent"
@@ -33,15 +34,17 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         android:orientation="horizontal" >
-     
+
         <Button
             android:id="@+id/dialogButtonOk"
             style="@style/Button"
-            android:background="@drawable/blue_button_xml"
             android:layout_margin="5dp"
-            android:layout_weight="1" 
-            android:text="asd"/>
+            android:layout_weight="1"
+            android:background="@drawable/blue_button_xml"
+            android:text="asd" />
     </LinearLayout>
 
 </LinearLayout>

@@ -343,7 +343,7 @@
     <string name="vk_recomend">Рекомендую! Калькулятор Калорий - простая и эффективная програма.</string>
     <string name="vk_toast">Запись добавлена на вашей стене ВКонтакте</string>
     <string name="fb_toast">Запись добавлена на вашей стене в Facebook</string>
-    <string name="get_free_time">Free</string>
+    <string name="get_free_time">Продлить бесплатно</string>
     <string name="ok">Ок</string>
     <string name="success_in_percantage_text" formatted="false">Мой пищевой баланс на %.2f%% идеален</string>
 
@@ -368,4 +368,21 @@
 
     <string name="info_trial">Первые 5 дней приложение работает бесплатно. Если вам понравится, то дальше нужно будет купить подписку. Все ваши данные сохранятся.</string>
     <string name="info_install_fb">Для того, чтобы поделится записью, вам необходимо установить приложение Facebook</string>
+    <string name="add_body_param">Добавить параметр &#62;</string>
+
+    <string name="warning_message"  formatted="false">Вам следует меньше употреблять такой продукт как %1$s</string>
+    <string name="warning_message_fat_to_prot">. Попробуйте заменить продуктом богатым белками, но менее жирным.</string>
+    <string name="warning_message_fat_to_carb">. Попробуйте заменить продуктом богатым углеводами, но менее жирным.</string>
+
+    <string name="warning_message_carb_to_prot">. Попробуйте заменить продуктом богатым белками, но с меньшим содержанием углеводов.</string>
+    <string name="warning_message_carb_to_fat">. Попробуйте заменить продуктом богатым жирами, но с меньшим содержанием углеводов.</string>
+
+    <string name="warning_message_prot_to_carb">. Попробуйте заменить продуктом богатым углеводами, но с меньшим содержанием белков.</string>
+    <string name="warning_message_prot_to_fat">. Попробуйте заменить продуктом богатым жирами, но с меньшим содержанием белков.</string>
+    <string name="get_analiz">Получить анализ рациона</string>
+    <string name="info_analiz_requarements">Заполните данные за 5 дней и приложение покажет вам слабые места вашего рациона.</string>
+    <string name="do_you_really_want_to_exit">Вы хотите выйти из приложения?</string>
+    <string name="add_to_favorites">Добавить продукт в избранные?</string>
+    <string name="remove_from_favorites">Удалить из избранных?</string>
+
 </resources>

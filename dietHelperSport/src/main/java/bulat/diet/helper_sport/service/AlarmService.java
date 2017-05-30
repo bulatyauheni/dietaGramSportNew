@@ -42,22 +42,7 @@ public class AlarmService extends Service{
 	}
 
 
-
-	@Override
-
-	public void onDestroy() {
-
-	// TODO Auto-generated method stub
-
-	super.onDestroy();
-
-	//Toast.makeText(this, "MyAlarmService.onDestroy()", Toast.LENGTH_LONG).show();
-
-	}
-
-
-
-	@Override
+    @Override
 
 	public void onStart(Intent intent, int startId) {
 		super.onStart(intent, startId);	

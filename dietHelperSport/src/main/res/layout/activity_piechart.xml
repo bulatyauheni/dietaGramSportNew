@@ -150,6 +150,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/lastmonth" />
         </bulat.diet.helper_sport.controls.SegmentedGroup>
+
+        <TextView
+            android:id="@+id/warning"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/get_analiz"
+            android:textColor="#dc4650"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:background="@drawable/border_button_red"
+            android:gravity="center_horizontal"/>
+
     </LinearLayout>
 
 </ScrollView>

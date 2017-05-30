@@ -206,44 +206,20 @@ public abstract class GeneralItemAnimator extends BaseItemAnimator {
                 mAddAnimationsManager.hasPending());
     }
 
-    protected ItemRemoveAnimationManager getRemoveAnimationManager() {
-        return mRemoveAnimationManager;
-    }
-
     protected void setItemRemoveAnimationManager(ItemRemoveAnimationManager removeAnimationManager) {
         mRemoveAnimationManager = removeAnimationManager;
-    }
-
-    protected ItemAddAnimationManager getItemAddAnimationsManager() {
-        return mAddAnimationsManager;
     }
 
     protected void setItemAddAnimationsManager(ItemAddAnimationManager addAnimationsManager) {
         mAddAnimationsManager = addAnimationsManager;
     }
 
-    protected ItemChangeAnimationManager getItemChangeAnimationsManager() {
-        return mChangeAnimationsManager;
-    }
-
     protected void setItemChangeAnimationsManager(ItemChangeAnimationManager changeAnimationsManager) {
         mChangeAnimationsManager = changeAnimationsManager;
     }
 
-    protected ItemMoveAnimationManager getItemMoveAnimationsManager() {
-        return mMoveAnimationsManager;
-    }
-
     protected void setItemMoveAnimationsManager(ItemMoveAnimationManager moveAnimationsManager) {
         mMoveAnimationsManager = moveAnimationsManager;
-    }
-
-    public boolean isDebug() {
-        return mDebug;
-    }
-
-    public void setDebug(boolean debug) {
-        mDebug = debug;
     }
 
     /**

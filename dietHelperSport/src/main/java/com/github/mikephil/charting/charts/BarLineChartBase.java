@@ -288,14 +288,6 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
         }
     }
 
-    /**
-     * RESET PERFORMANCE TRACKING FIELDS
-     */
-    public void resetTracking() {
-        totalTime = 0;
-        drawCycles = 0;
-    }
-
     protected void prepareValuePxMatrix() {
 
         if (mLogEnabled)
@@ -656,40 +648,6 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
      */
 
     /**
-     * Zooms in by 1.4f, into the charts center. center.
-     */
-    public void zoomIn() {
-
-        PointF center = mViewPortHandler.getContentCenter();
-
-        Matrix save = mViewPortHandler.zoomIn(center.x, -center.y);
-        mViewPortHandler.refresh(save, this, false);
-
-        // Range might have changed, which means that Y-axis labels
-        // could have changed in size, affecting Y-axis size.
-        // So we need to recalculate offsets.
-        calculateOffsets();
-        postInvalidate();
-    }
-
-    /**
-     * Zooms out by 0.7f, from the charts center. center.
-     */
-    public void zoomOut() {
-
-        PointF center = mViewPortHandler.getContentCenter();
-
-        Matrix save = mViewPortHandler.zoomOut(center.x, -center.y);
-        mViewPortHandler.refresh(save, this, false);
-
-        // Range might have changed, which means that Y-axis labels
-        // could have changed in size, affecting Y-axis size.
-        // So we need to recalculate offsets.
-        calculateOffsets();
-        postInvalidate();
-    }
-
-    /**
      * Zooms in or out by the given scale factor. x and y are the coordinates
      * (in pixels) of the zoom center.
      *
@@ -723,31 +681,6 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
 
         Runnable job = new ZoomJob(mViewPortHandler, scaleX, scaleY, xValue, yValue, getTransformer(axis), axis, this);
         addViewportJob(job);
-    }
-
-    /**
-     * Zooms by the specified scale factor to the specified values on the specified axis.
-     *
-     * @param scaleX
-     * @param scaleY
-     * @param xValue
-     * @param yValue
-     * @param axis
-     * @param duration
-     */
-    @TargetApi(11)
-    public void zoomAndCenterAnimated(float scaleX, float scaleY, float xValue, float yValue, AxisDependency axis, long duration) {
-
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-
-            PointD origin = getValuesByTouchPoint(mViewPortHandler.contentLeft(), mViewPortHandler.contentTop(), axis);
-
-            Runnable job = new AnimatedZoomJob(mViewPortHandler, this, getTransformer(axis), getAxis(axis), mXAxis.getValues().size(), scaleX, scaleY, mViewPortHandler.getScaleX(), mViewPortHandler.getScaleY(), xValue, yValue, (float) origin.x, (float) origin.y, duration);
-            addViewportJob(job);
-
-        } else {
-            Log.e(LOG_TAG, "Unable to execute zoomAndCenterAnimated(...) on API level < 11");
-        }
     }
 
     /**
@@ -825,135 +758,6 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
     public void setVisibleYRangeMaximum(float maxYRange, AxisDependency axis) {
         float yScale = getDeltaY(axis) / maxYRange;
         mViewPortHandler.setMinimumScaleY(yScale);
-    }
-
-    /**
-     * Moves the left side of the current viewport to the specified x-index.
-     * This also refreshes the chart by calling invalidate().
-     *
-     * @param xIndex
-     */
-    public void moveViewToX(float xIndex) {
-
-        Runnable job = new MoveViewJob(mViewPortHandler, xIndex, 0f,
-                getTransformer(AxisDependency.LEFT), this);
-
-        addViewportJob(job);
-    }
-
-    /**
-     * Centers the viewport to the specified y-value on the y-axis.
-     * This also refreshes the chart by calling invalidate().
-     *
-     * @param yValue
-     * @param axis   - which axis should be used as a reference for the y-axis
-     */
-    public void moveViewToY(float yValue, AxisDependency axis) {
-
-        float valsInView = getDeltaY(axis) / mViewPortHandler.getScaleY();
-
-        Runnable job = new MoveViewJob(mViewPortHandler, 0f, yValue + valsInView / 2f,
-                getTransformer(axis), this);
-
-        addViewportJob(job);
-    }
-
-    /**
-     * This will move the left side of the current viewport to the specified
-     * x-value on the x-axis, and center the viewport to the specified y-value
-     * on the y-axis.
-     * This also refreshes the chart by calling invalidate().
-     *
-     * @param xIndex
-     * @param yValue
-     * @param axis   - which axis should be used as a reference for the y-axis
-     */
-    public void moveViewTo(float xIndex, float yValue, AxisDependency axis) {
-
-        float valsInView = getDeltaY(axis) / mViewPortHandler.getScaleY();
-
-        Runnable job = new MoveViewJob(mViewPortHandler, xIndex, yValue + valsInView / 2f,
-                getTransformer(axis), this);
-
-        addViewportJob(job);
-    }
-
-    /**
-     * This will move the left side of the current viewport to the specified x-position
-     * and center the viewport to the specified y-position animated.
-     * This also refreshes the chart by calling invalidate().
-     *
-     * @param xIndex
-     * @param yValue
-     * @param axis
-     * @param duration the duration of the animation in milliseconds
-     */
-    @TargetApi(11)
-    public void moveViewToAnimated(float xIndex, float yValue, AxisDependency axis, long duration) {
-
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-
-            PointD bounds = getValuesByTouchPoint(mViewPortHandler.contentLeft(), mViewPortHandler.contentTop(), axis);
-
-            float valsInView = getDeltaY(axis) / mViewPortHandler.getScaleY();
-
-            Runnable job = new AnimatedMoveViewJob(mViewPortHandler, xIndex, yValue + valsInView / 2f,
-                    getTransformer(axis), this, (float) bounds.x, (float) bounds.y, duration);
-
-            addViewportJob(job);
-        } else {
-            Log.e(LOG_TAG, "Unable to execute moveViewToAnimated(...) on API level < 11");
-        }
-    }
-
-    /**
-     * This will move the center of the current viewport to the specified
-     * x-value and y-value.
-     * This also refreshes the chart by calling invalidate().
-     *
-     * @param xIndex
-     * @param yValue
-     * @param axis   - which axis should be used as a reference for the y-axis
-     */
-    public void centerViewTo(float xIndex, float yValue, AxisDependency axis) {
-
-        float valsInView = getDeltaY(axis) / mViewPortHandler.getScaleY();
-        float xsInView = getXAxis().getValues().size() / mViewPortHandler.getScaleX();
-
-        Runnable job = new MoveViewJob(mViewPortHandler,
-                xIndex - xsInView / 2f, yValue + valsInView / 2f,
-                getTransformer(axis), this);
-
-        addViewportJob(job);
-    }
-
-    /**
-     * This will move the center of the current viewport to the specified
-     * x-value and y-value animated.
-     *
-     * @param xIndex
-     * @param yValue
-     * @param axis
-     * @param duration the duration of the animation in milliseconds
-     */
-    @TargetApi(11)
-    public void centerViewToAnimated(float xIndex, float yValue, AxisDependency axis, long duration) {
-
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-
-            PointD bounds = getValuesByTouchPoint(mViewPortHandler.contentLeft(), mViewPortHandler.contentTop(), axis);
-
-            float valsInView = getDeltaY(axis) / mViewPortHandler.getScaleY();
-            float xsInView = getXAxis().getValues().size() / mViewPortHandler.getScaleX();
-
-            Runnable job = new AnimatedMoveViewJob(mViewPortHandler,
-                    xIndex - xsInView / 2f, yValue + valsInView / 2f,
-                    getTransformer(axis), this, (float) bounds.x, (float) bounds.y, duration);
-
-            addViewportJob(job);
-        } else {
-            Log.e(LOG_TAG, "Unable to execute centerViewToAnimated(...) on API level < 11");
-        }
     }
 
     /**
@@ -1193,20 +997,6 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
      */
     public void setBorderColor(int color) {
         mBorderPaint.setColor(color);
-    }
-
-    /**
-     * Gets the minimum offset (padding) around the chart, defaults to 15.f
-     */
-    public float getMinOffset() {
-        return mMinOffset;
-    }
-
-    /**
-     * Sets the minimum offset (padding) around the chart, defaults to 15.f
-     */
-    public void setMinOffset(float minOffset) {
-        mMinOffset = minOffset;
     }
 
     /**

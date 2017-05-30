@@ -762,8 +762,8 @@ public class IabHelper {
 			if (querySkuDetails) {
 				r = querySkuDetails(ITEM_TYPE_INAPP, inv, moreItemSkus);
 				if (r != BILLING_RESPONSE_RESULT_OK) {
-					throw new IabException(r,
-							"Error refreshing inventory (querying prices of items).");
+					/*throw new IabException(r,
+							"Error refreshing inventory (querying prices of items).");*/
 				}
 			}
 
@@ -778,8 +778,8 @@ public class IabHelper {
 				if (querySkuDetails) {
 					r = querySkuDetails(ITEM_TYPE_SUBS, inv, moreItemSkus);
 					if (r != BILLING_RESPONSE_RESULT_OK) {
-						throw new IabException(r,
-								"Error refreshing inventory (querying prices of subscriptions).");
+						/*throw new IabException(r,
+								"Error refreshing inventory (querying prices of subscriptions).");*/
 					}
 				}
 			}

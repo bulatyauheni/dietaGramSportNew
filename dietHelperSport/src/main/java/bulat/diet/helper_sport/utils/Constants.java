@@ -19,7 +19,7 @@ public class Constants {
 	public static final  String URL_SOCIAL = "http://old.dietagram.ru/";//StartActivity.URLSOCIAL;
 	
 	public static final  String URL_PAY = "http://old.dietagram.ru/pay.php";//StartActivity.URLSOCIAL;
-	public static final  String VERSION = "DIETAGRAM_03_17";
+	public static final  String VERSION = "DIETAGRAM_03_2";
 	public static final  String URL_SOCIAL_NEWS = "http://old.dietagram.ru/news.php";//StartActivity.URLSOCIAL;
 	
 	public static final  String FOLLOWER = "follower";

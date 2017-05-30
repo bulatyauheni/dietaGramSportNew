@@ -343,4 +343,22 @@
     <string name="bulgarian" translatable="false"></string>
     <string name="info_trial">Die ersten 5 Tage sind kostenlos. Wenn Sie die App weiterbenutzen möchten, sollen sie ein Abonnement kaufen. Alle ihre Daten werden gespeichert.</string>
     <string name="info_install_fb">Sie müssen die Facebook-Anwendung installieren.</string>
+    <string name="add_body_param">Parameter hinzufügen &#62;</string>
+
+
+    <string name="warning_message"> Sie sollten solch ein Produkt wie %1$s weniger essen </string>
+    <string name="warning_message_fat_to_prot">. Versuchen Sie durch ein eiweißreiches aber fettarmes Produkt ersetzen. </string>
+    <string name="warning_message_fat_to_carb">. Versuchen Sie durch ein kohlenhydrathaltiges aber fettarmes Produkt ersetzen.</string>
+
+    <string name="warning_message_carb_to_prot">. Versuchen Sie durch ein eiweißreiches aber  kohlenhydratarmes Produkt ersetzen. </string>
+    <string name="warning_message_carb_to_fat">. Versuchen Sie durch ein fettreiches aber kohlenhydratarmes Produkt ersetzen.</string>
+
+    <string name="warning_message_prot_to_carb">. Versuchen Sie durch ein kohlenhydrathaltiges aber eiweißarmes Produkt ersetzen. </string>
+    <string name="warning_message_prot_to_fat">. Versuchen Sie durch ein fettreiches aber eiweißarmes Produkt ersetzen. </string>
+    <string name="get_analiz"> Analyse der Nahrungsration bekommen. </string>
+    <string name="info_analiz_requarements"> Füllen Sie die Daten für 5 Tage aus und App zeigt Ihre Probleme in der Nahrungsration.</string>
+    <string name="do_you_really_want_to_exit">Wollen Sie sich wirklich abmelden?</string>
+    <string name="add_to_favorites">Zu Favoriten hinzufügen</string>
+    <string name="remove_from_favorites">Von Favoriten entfernen</string>
+
 </resources>

@@ -19,6 +19,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.activity.AddTodayDishActivity;
 import bulat.diet.helper_sport.activity.CalendarActivity;
 import bulat.diet.helper_sport.activity.CalendarActivityGroup;
+import bulat.diet.helper_sport.activity.DishActivity;
 import bulat.diet.helper_sport.activity.Info;
 import bulat.diet.helper_sport.activity.VolumeInfo;
 import bulat.diet.helper_sport.db.DishProvider;
@@ -299,6 +301,15 @@ public class DaysAdapter extends CursorAdapter {
 					
 					final Spinner shinSpinner = (Spinner) dialog.findViewById(R.id.SpinnerShin);
 					final Spinner shinDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerShinDecimal);
+					TextView buttonAdd = (TextView) dialog.findViewById(R.id.add_body_param_btn);
+					buttonAdd.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							Intent intent = new Intent().setClass(ctx, VolumeInfo.class);
+							intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							ctx.startActivity(intent);
+						}
+					});
 					Button buttonOk = (Button) dialog
 							.findViewById(R.id.buttonYes);
 					buttonOk.setOnClickListener(new OnClickListener() {

@@ -104,7 +104,7 @@ public class SelectStatisticsActivity extends Activity {
 		});
 		Date currDate = new Date();
 		if(currDate.getTime()>SaveUtils.getEndPDate(this)){
-			CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(SelectStatisticsActivity.this.getParent().getParent());
+/*			CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(SelectStatisticsActivity.this.getParent().getParent());
 			bld.setLayout(R.layout.section_alert_dialog_two_buttons)
 			.setMessage(SelectStatisticsActivity.this.getParent().getString(R.string.payment_dialog_alert))		
 			.setPositiveButton(R.id.dialogButtonOk, new OnClickListener() {
@@ -126,18 +126,18 @@ public class SelectStatisticsActivity extends Activity {
 				@Override
 				public void onClick(View v) {	
 					if(!SaveUtils.isUseFreeAbonement(getApplicationContext())){
-						try {
+						try {*/
 							Intent intent = new Intent();
-							intent.setClass(getParent().getParent(), FreeAbonementActivity.class);
+							intent.setClass(this, FreeAbonementActivity.class);
 							startActivity(intent);
-						} catch (Exception e) {
+		/*				} catch (Exception e) {
 							e.printStackTrace();
 						}
 					}
 				}
 			})
 			.setNegativeButtonText(R.string.get_free_time);
-			bld.show();		
+			bld.show();*/
 		}
 	
 	}

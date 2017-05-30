@@ -175,13 +175,13 @@ public class CalendarActivity extends BaseActivity {
 
 		DecimalFormat df = new DecimalFormat("###.#");
 
-		float sum = Float.valueOf(avgVals[1].replace(",", ".")) + Float.valueOf(avgVals[2].replace(",", "."))
-				+ Float.valueOf(avgVals[3].replace(",", "."));
-		tvFp.setText("(" + df.format(Float.valueOf(avgVals[1].replace(",", ".")) * 100 / sum)
+		float sum = Float.valueOf(avgVals[1].replace(",", "."))*9 + Float.valueOf(avgVals[2].replace(",", "."))*4
+				+ Float.valueOf(avgVals[3].replace(",", "."))*4;
+		tvFp.setText("(" + df.format(Float.valueOf(avgVals[1].replace(",", "."))*9 * 100 / sum)
 				+ "%)");
-		tvCp.setText("(" + df.format(Float.valueOf(avgVals[2].replace(",", ".")) * 100 / sum)
+		tvCp.setText("(" + df.format(Float.valueOf(avgVals[2].replace(",", "."))*4 * 100 / sum)
 				+ "%)");
-		tvPp.setText("(" + df.format(Float.valueOf(avgVals[3].replace(",", ".")) * 100 / sum)
+		tvPp.setText("(" + df.format(Float.valueOf(avgVals[3].replace(",", "."))*4 * 100 / sum)
 				+ "%)");
 
 		checkLimit(Integer.valueOf(avgVals[0]));

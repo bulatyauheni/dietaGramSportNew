@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Pattern;
 
@@ -37,6 +38,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.util.Pair;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +54,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import bulat.diet.helper_sport.R;
+import bulat.diet.helper_sport.adapter.PricesAdapter;
 import bulat.diet.helper_sport.item.Purchase;
 import bulat.diet.helper_sport.utils.Constants;
 import bulat.diet.helper_sport.utils.CustomAlertDialogBuilder;
@@ -79,14 +82,14 @@ public class PaymentsListActivity extends BasePayActivity {
 	protected static final int DIALOG_EMAIL = 2;
 	// static final String SKU_HALFYEAR = "halfyearsubs_diethelper";
 	public static final String SKU_YEAR = "year_plan";
-	static final int RC_REQUEST = 10001;
-	private static final String PAYMENT_ERROR_REPORT = "PAYMENT_ERROR_REPORT";
-	private static final String ABONEMENT = "ABONEMENT";
-	private static final String ABONEMENT_VIP = "BTN_ABONEMENT_VIP";
-	private static final String ABONEMENT_YEAR = "BTN_ABONEMENT_YEAR";
-	private static final String ABONEMENT_HALFYEAR = "BTN_ABONEMENT_HALFYEAR";
-	private static final String ABONEMENT_MONTH = "BTN_ABONEMENT_MONTH";
-	private static final String ABONEMENT_FREE = "BTN_ABONEMENT_FREE";
+	public static final int RC_REQUEST = 10001;
+	public static final String PAYMENT_ERROR_REPORT = "PAYMENT_ERROR_REPORT";
+	public static final String ABONEMENT = "ABONEMENT";
+	public static final String ABONEMENT_VIP = "BTN_ABONEMENT_VIP";
+	public static final String ABONEMENT_YEAR = "BTN_ABONEMENT_YEAR";
+	public static final String ABONEMENT_HALFYEAR = "BTN_ABONEMENT_HALFYEAR";
+	public static final String ABONEMENT_MONTH = "BTN_ABONEMENT_MONTH";
+	public static final String ABONEMENT_FREE = "BTN_ABONEMENT_FREE";
 	Context ctx = null;
 	private int selectedInemId;
 	StatisticActivityGroup parent;
@@ -131,30 +134,16 @@ public class PaymentsListActivity extends BasePayActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		String[] list = { getString(R.string.paymentvipy),
-				getString(R.string.paymenty)+ " " + String.format(getString(R.string.paymentbenefit), "70%"),
-				getString(R.string.paymenthy)+ " " + String.format(getString(R.string.paymentbenefit), "58%"),
-				getString(R.string.paymentm),
-				getString(R.string.paymentspec),
-				getString(R.string.paymenterror) };
+		ArrayList<Pair<String, String>> list = new ArrayList<>();
+		list.add(new Pair<String, String>(getString(R.string.paymentvipy) , BasePayActivity.prices.get(PaymentsListActivity.SKU_YEAR_VIP)));
+		list.add(new Pair<String, String>(getString(R.string.paymenty)+ " " + String.format(getString(R.string.paymentbenefit), "70%") , BasePayActivity.prices.get(PaymentsListActivity.SKU_YEAR_2017)));
+		list.add(new Pair<String, String>(getString(R.string.paymenthy)+ " " + String.format(getString(R.string.paymentbenefit), "58%"),  BasePayActivity.prices.get(PaymentsListActivity.SKU_HALFYEAR_2017)));
+		list.add(new Pair<String, String>(getString(R.string.paymentm) ,  BasePayActivity.prices.get(PaymentsListActivity.SKU_MUUNTH_2017)));
+		list.add(new Pair<String, String>(getString(R.string.paymentspec),""));
+		list.add(new Pair<String, String>(getString(R.string.paymenterror), ""));
 
 		ListView listView = (ListView) findViewById(R.id.listViewStatistics);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.payment_row, list) {
-			@Override
-			public View getView(int position, View convertView, ViewGroup parent) {
-				View view = super.getView(position, convertView, parent);
-				
-				TextView textView = (TextView) view
-						.findViewById(android.R.id.text1);
-				if (position == 0) {
-					textView.setBackgroundColor(Color.WHITE);
-				} else {				
-					textView.setTextColor(Color.DKGRAY);
-				}
-
-				return view;
-			}
-		};
+		PricesAdapter adapter = new PricesAdapter(this, R.layout.payment_row, list);
 		listView.setAdapter(adapter);
 		listView.setTextFilterEnabled(true);
 

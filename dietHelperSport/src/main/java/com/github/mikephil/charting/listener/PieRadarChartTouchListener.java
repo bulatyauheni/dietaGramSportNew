@@ -9,7 +9,6 @@ import android.view.animation.AnimationUtils;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.charts.PieRadarChartBase;
-import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.SelectionDetail;
 import com.github.mikephil.charting.utils.Utils;
@@ -190,11 +189,7 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
                 // get the dataset that is closest to the selection (PieChart
                 // only
                 // has one DataSet)
-                if (mChart instanceof RadarChart) {
 
-                    dataSetIndex = Utils.getClosestDataSetIndex(valsAtIndex, distance
-                            / ((RadarChart) mChart).getFactor(), null);
-                }
 
                 if (dataSetIndex < 0) {
                     mChart.highlightValues(null);

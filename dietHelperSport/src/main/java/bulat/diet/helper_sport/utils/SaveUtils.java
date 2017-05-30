@@ -115,6 +115,7 @@ public class SaveUtils {
 	private static final String RECEIVE_PAYMENT = "RECEIVE_PAYMENT_";
 	private static final String TRIAL_NOTIFIED = "TRIAL_NOTIFIED";
 	private static final String SKU_DETAILS = "SKU_DETAILS";
+	private static final String SITY = "SITY";
 
 
 	public static void saveScrollPosition(int pos, Context context){
@@ -1369,6 +1370,22 @@ public class SaveUtils {
 				return preferences.getInt(name, deffValueOf);
 	
 	}
+
+	public static void writeString(String name, String valueOf, Context context) {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		Editor editor = preferences.edit();
+		editor.putString(name, valueOf);
+		editor.commit();
+	}
+
+	public static String readString(String name, String deffValueOf, Context context) {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		return preferences.getString(name, deffValueOf);
+
+	}
+
 	public static void writeBoolean(String name, Boolean valueOf, Context context) {
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(context);
@@ -1502,5 +1519,18 @@ public class SaveUtils {
 			}
 			return "0";
 
+	}
+
+    public static String getCity(Context context) {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		return preferences.getString(SITY, "");
+    }
+
+	public static void setCity(Context context, String sity) {
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+		Editor editor = preferences.edit();
+		editor.putString(SITY, sity);
+		editor.commit();
 	}
 }

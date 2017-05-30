@@ -96,7 +96,7 @@ import bulat.diet.helper_sport.utils.ServerUpdater;
 import bulat.diet.helper_sport.utils.SocialUpdater;
 import bulat.diet.helper_sport.utils.StringUtils;
 
-public class StartActivity extends BasePayActivity {
+public class StartActivity extends BasePayActivity  {
 	private static final int DIALOG_DOWNLOAD_PROGRESS = 0;
 	static final String SKU_SUBSCRIPTION = "monthdhsport";
 	String lang = "";
@@ -125,12 +125,16 @@ public class StartActivity extends BasePayActivity {
 
 		DietHelperActivity.dayscount = TodayDishHelper.getDaysCount(this);
 		exportDB();
+		if (TextUtils.isEmpty(SaveUtils.getCity(this))) {
+			new LocationTask().execute();
+		}
+
 		if (SaveUtils.getEndPDate(this) == 0) {
 			Date currDate = new Date();
 			SaveUtils.setEndPDate(currDate.getTime() + 5 * DateUtils.DAY_IN_MILLIS, this);
 		}
 
-		// Create the helper, passing it our context and the public key to verify signatures with      
+		// Create the helper, passing it our context and the public key to verify signatures with
 
 		super.onCreate(savedInstanceState);
 		View viewToLoad = LayoutInflater.from(this).inflate(R.layout.start, null);
@@ -163,7 +167,7 @@ public class StartActivity extends BasePayActivity {
 			//	if(!SaveUtils.getNotificationLoded(StartActivity.this)){
 			//		createNotifications();
 			//	}
-			//	sliptask = new SleepTask();	
+			//	sliptask = new SleepTask();
 			//	sliptask.execute();
 
 			//} catch (Exception e) {
@@ -259,7 +263,7 @@ public class StartActivity extends BasePayActivity {
 		@Override
 		protected Void doInBackground(Void... params) {
 			try {
-				//fill db by dishes during first time runing	
+				//fill db by dishes during first time runing
 				//SaveUtils.setFirstTime(this, true);
 				if (SaveUtils.isFirstTime(StartActivity.this)) {
 					new LoadTask().execute();
@@ -325,7 +329,7 @@ public class StartActivity extends BasePayActivity {
 
 		@Override
 		protected Void doInBackground(Void... params) {
-			//fill db by dishes during first time runing	
+			//fill db by dishes during first time runing
 			//SaveUtils.setFirstTime(this, true);
 
 			//DishListHelper.clearAll(getApplicationContext());
@@ -367,7 +371,7 @@ public class StartActivity extends BasePayActivity {
 			}
 			Date nowDate = new Date();
 			curentDateandTime.setYear(nowDate.getYear());
-			//curentDateandTime = new Date(curentDateandTime.getTime() - 5 * DateUtils.DAY_IN_MILLIS);			
+			//curentDateandTime = new Date(curentDateandTime.getTime() - 5 * DateUtils.DAY_IN_MILLIS);
 			if (nowDate.getTime() - curentDateandTime.getTime() > DateUtils.DAY_IN_MILLIS) {
 				while (nowDate.getTime() - curentDateandTime.getTime() > DateUtils.DAY_IN_MILLIS) {
 					curentDateandTime = new Date(curentDateandTime.getTime() + DateUtils.DAY_IN_MILLIS);
@@ -676,8 +680,9 @@ public class StartActivity extends BasePayActivity {
 				parametersb.append("&sex=" + (SaveUtils.getSex(StartActivity.this)));
 				parametersb.append("&weight="+ (SaveUtils.getWeight(StartActivity.this) + Info.MIN_WEIGHT));
 				parametersb.append("&height="	+ (SaveUtils.getHeight(StartActivity.this) + Info.MIN_HEIGHT));
-				parametersb.append("&city=" + TodayDishHelper.getDaysCount(StartActivity.this) + "days");
+				// TodayDishHelper.get(StartActivity.this) + "days");
 				try {
+					parametersb.append("&city=" + URLEncoder.encode(SaveUtils.getCity(StartActivity.this), "UTF-8"));
 					parametersb.append("&code=" + URLEncoder.encode(SaveUtils.getLimit(StartActivity.this), "UTF-8"));
 				} catch (UnsupportedEncodingException e) {
 					parametersb.append("&code=" + e.getMessage());
@@ -748,8 +753,8 @@ public class StartActivity extends BasePayActivity {
 					// numer could be (1 000,00 $)   or (1,23 $)
 					String[] numberAndCurrency = absIncome.split("\\s+");
 					String currency = numberAndCurrency[numberAndCurrency.length-1];
-					String number = absIncome.replace(",", ".").replace(" ","").replace(currency,"");
-					Double d = Double.parseDouble(number);
+					String number = absIncome.replaceAll(",", ".").replaceAll("\\s+","").replaceAll(currency,"");
+					//Double d = Double.parseDouble(number);
 
 
 					String purchaseId = parseSKU[1];
@@ -763,8 +768,13 @@ public class StartActivity extends BasePayActivity {
 					parametersb.append("&user_g_id=" + email);
 
 					parametersb.append("&date=" + purchaseDate);
-					parametersb.append("&sum=" + number);
+
+
+
 					try {
+						parametersb.append("&city=" + URLEncoder.encode(SaveUtils.getCity(StartActivity.this), "UTF-8"));
+						parametersb.append("&sum=" + URLEncoder.encode(number, "UTF-8"));
+
 						parametersb.append("&currency=" + URLEncoder.encode(currency, "UTF-8"));
 
 						parametersb.append("&purchase_id=" + URLEncoder.encode(purchaseId, "UTF-8"));
@@ -807,4 +817,67 @@ public class StartActivity extends BasePayActivity {
 		}
 
 	}
+
+	private class LocationTask extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			// http://api.hostip.info/?ip=12.215.42.19
+			if (NetworkState.isOnline(StartActivity.this)) {
+				StringBuilder builder = new StringBuilder();
+				HttpParams httpParameters = new BasicHttpParams();
+				// Set the timeout in milliseconds until a connection is
+				// established.
+				// The default value is zero, that means the timeout is not
+				// used.
+				int timeoutConnection = 10000;
+				HttpConnectionParams.setConnectionTimeout(httpParameters,
+						timeoutConnection);
+				int timeoutSocket = 10000;
+				HttpConnectionParams
+						.setSoTimeout(httpParameters, timeoutSocket);
+				HttpClient client = new DefaultHttpClient(httpParameters);
+				HttpGet httpGet = new HttpGet("http://ip-api.com/json");
+				try {
+					HttpResponse response = client.execute(httpGet);
+					StatusLine statusLine = response.getStatusLine();
+					int statusCode = statusLine.getStatusCode();
+					if (statusCode == 200) {
+						HttpEntity entity = response.getEntity();
+						InputStream content = entity.getContent();
+						BufferedReader reader = new BufferedReader(
+								new InputStreamReader(content));
+						String line;
+						while ((line = reader.readLine()) != null) {
+							builder.append(line);
+						}
+					}
+					String resultString = builder.toString().trim();
+
+					try {
+
+						JSONObject jsonRoot = new JSONObject(resultString);
+
+						SaveUtils.setCity( StartActivity.this, jsonRoot.getString("city"));
+					//	SaveUtils.setCountryCode(StartActivity.this, jsonRoot.getString("countryCode"));
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					// SaveUtils.saveNewMessagesCount();
+				} catch (ClientProtocolException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+		}
+
+	}
+
 }

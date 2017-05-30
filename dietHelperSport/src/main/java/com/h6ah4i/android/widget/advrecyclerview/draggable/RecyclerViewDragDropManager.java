@@ -436,33 +436,6 @@ public class RecyclerViewDragDropManager implements DraggableItemConstants {
     }
 
     /**
-     * Sets whether dragging starts on a long press. (default: false)
-     *
-     * @param initiateOnLongPress True to initiate dragging on long press.
-     */
-    public void setInitiateOnLongPress(boolean initiateOnLongPress) {
-        mInitiateOnLongPress = initiateOnLongPress;
-    }
-
-    /**
-     * Returns whether dragging starts on move motions.
-     *
-     * @return True if dragging starts on move motions, false otherwise.
-     */
-    public boolean isInitiateOnMoveEnabled() {
-        return mInitiateOnMove;
-    }
-
-    /**
-     * Sets whether dragging starts on move motions. (default: true)
-     *
-     * @param initiateOnMove True to initiate dragging on move motions.
-     */
-    public void setInitiateOnMove(boolean initiateOnMove) {
-        mInitiateOnMove = initiateOnMove;
-    }
-
-    /**
      * Returns whether dragging starts on touch the handle immediately.
      *
      * @return True if dragging starts on touch the handle immediately, false otherwise.

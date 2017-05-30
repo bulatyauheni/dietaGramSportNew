@@ -87,7 +87,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:gravity="bottom"
                                 android:text=","
-                                android:textColor="@color/text_color" />
+                                android:textColor="@color/white" />
 
                             <Spinner
                                 android:id="@+id/search_weight_decimal"
@@ -144,7 +144,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:gravity="bottom"
                                 android:text=","
-                                android:textColor="@color/text_color" />
+                                android:textColor="@color/white" />
 
                             <Spinner
                                 android:id="@+id/SpinnerChestDecimal"
@@ -199,7 +199,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:gravity="bottom"
                                 android:text=","
-                                android:textColor="@color/text_color" />
+                                android:textColor="@color/white" />
 
                             <Spinner
                                 android:id="@+id/SpinnerNeckDecimal"
@@ -254,7 +254,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:gravity="bottom"
                                 android:text=","
-                                android:textColor="@color/text_color" />
+                                android:textColor="@color/white" />
 
                             <Spinner
                                 android:id="@+id/SpinnerBicepsDecimal"
@@ -307,7 +307,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:gravity="bottom"
                                 android:text=","
-                                android:textColor="@color/text_color" />
+                                android:textColor="@color/white" />
 
                             <Spinner
                                 android:id="@+id/SpinnerForearmDecimal"
@@ -362,7 +362,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:gravity="bottom"
                                 android:text=","
-                                android:textColor="@color/text_color" />
+                                android:textColor="@color/white" />
 
                             <Spinner
                                 android:id="@+id/SpinnerWaistDecimal"
@@ -416,7 +416,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:gravity="bottom"
                                 android:text=","
-                                android:textColor="@color/text_color" />
+                                android:textColor="@color/white" />
 
                             <Spinner
                                 android:id="@+id/SpinnerPelvisDecimal"
@@ -470,7 +470,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:gravity="bottom"
                                 android:text=","
-                                android:textColor="@color/text_color" />
+                                android:textColor="@color/white" />
 
                             <Spinner
                                 android:id="@+id/SpinnerHipDecimal"
@@ -524,7 +524,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:gravity="bottom"
                                 android:text=","
-                                android:textColor="@color/text_color" />
+                                android:textColor="@color/white" />
 
                             <Spinner
                                 android:id="@+id/SpinnerShinDecimal"
@@ -536,6 +536,24 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/add_body_param_btn"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:gravity="bottom"
+                android:background="@drawable/border_button"
+                android:padding="3dp"
+                android:text="@string/add_body_param"
+                android:textColor="@color/white" />
+
         </LinearLayout>
 
         <LinearLayout

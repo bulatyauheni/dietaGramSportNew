@@ -91,9 +91,9 @@ public class TodayDishHelper {
 						int temp = c.getInt(1);
 						try{
 							if(c.getString(0)!=null){
-								result.put("f", c.getFloat(1));
 								result.put("p", c.getFloat(2));
 								result.put("c", c.getFloat(3));
+								result.put("f", c.getFloat(1));
 							}
 							
 							return result;
@@ -704,18 +704,64 @@ public static float getBodyWeightByDate(long date, Context context) {
 	public static Cursor getTopDishesCursor(Context context) {				
 		
 		//'SELECT date, sum(value) as value  FROM dishs GROUP BY date ORDER BY id';
-		
+
 		ContentResolver cr = context.getContentResolver();
 		String selection = DishProvider.TODAY_DISH_DATE_LONG + ">" + "? and " + DishProvider.TODAY_IS_DAY + "<>" + "1" + ") GROUP BY (" + DishProvider.TODAY_NAME;
 		String[] columns = new String[] {"_id" , DishProvider.TODAY_NAME, "sum("+DishProvider.TODAY_DISH_CALORICITY +") as t_absolutecaloricity, sum("+DishProvider.TODAY_DISH_WEIGHT +") as t_weight, sum("+DishProvider.TODAY_DISH_PROTEIN +") as t_absprotein, sum("+DishProvider.TODAY_DISH_CARBON +") as t_abscarbon,sum("+DishProvider.TODAY_DISH_FAT +") as t_absfat"};
 
-		 Long date = ((new Date()).getTime() - 30*DateUtils.DAY_IN_MILLIS) ;
-		 String[] val = new String[] {date.toString()};
+		Long date = ((new Date()).getTime() - 30*DateUtils.DAY_IN_MILLIS) ;
+		String[] val = new String[] {date.toString()};
 		Cursor c = cr.query(DishProvider.TODAYDISH_CONTENT_URI, columns, selection, val, "t_absolutecaloricity" + " DESC LIMIT 10");
-		//ArrayList<TodayDish> dayList = new ArrayList<TodayDish>();
-		//TodayDish d = new TodayDish();
-		
+		/*ContentResolver cr = context.getContentResolver();
+		String selection = DishProvider.TODAY_DISH_DATE_LONG + ">" + "? and " + DishProvider.TODAY_IS_DAY + "<>" + "1" + ") GROUP BY (" + DishProvider.TODAY_NAME;
+		String[] columns = new String[] {"_id" , DishProvider.TODAY_NAME, "sum("+DishProvider.TODAY_DISH_CALORICITY +") as t_absolutecaloricity, sum("+DishProvider.TODAY_DISH_WEIGHT +") as t_weight, sum("+DishProvider.TODAY_DISH_PROTEIN +") as t_absprotein, sum("+DishProvider.TODAY_DISH_CARBON +") as t_abscarbon,sum("+DishProvider.TODAY_DISH_FAT +") as t_absfat"};
+
+		Long date = ((new Date()).getTime() - 30*DateUtils.DAY_IN_MILLIS) ;
+		String[] val = new String[] {date.toString()};
+		Cursor c = cr.query(DishProvider.TODAYDISH_CONTENT_URI, columns, selection, val, "t_absolutecaloricity" + " DESC LIMIT 10");*/
 		return c;
+	}
+
+	public static ArrayList<TodayDish> getTopDishesList(Context context, String orderby, int days) {
+
+		//'SELECT date, sum(value) as value  FROM dishs GROUP BY date ORDER BY id';
+
+		ContentResolver cr = context.getContentResolver();
+		String selection = DishProvider.TODAY_DISH_DATE_LONG + ">" + "? and " + DishProvider.TODAY_IS_DAY + "<>" + "1" + ") GROUP BY (" + DishProvider.TODAY_NAME;
+		String[] columns = new String[] {"_id" , DishProvider.TODAY_NAME, "sum("+DishProvider.TODAY_DISH_CALORICITY +") as t_absolutecaloricity, sum("+DishProvider.TODAY_DISH_WEIGHT +") as t_weight, sum("+DishProvider.TODAY_DISH_PROTEIN +") as t_absprotein, sum("+DishProvider.TODAY_DISH_CARBON +") as t_abscarbon,sum("+DishProvider.TODAY_DISH_FAT +") as t_absfat"};
+
+		Long date = ((new Date()).getTime() - days*DateUtils.DAY_IN_MILLIS) ;
+		String[] val = new String[] {date.toString()};
+		Cursor c = cr.query(DishProvider.TODAYDISH_CONTENT_URI, columns, selection, val, orderby + " DESC LIMIT 10");
+
+		ArrayList<TodayDish> dayList = new ArrayList<TodayDish>();
+		TodayDish d = new TodayDish();
+		try {
+
+			while (c.moveToNext())
+			{
+				d = new TodayDish();
+				d.setId(c.getString(c
+						.getColumnIndex("_id")));
+				d.setName(c.getString(c
+						.getColumnIndex(DishProvider.TODAY_NAME)));
+
+				d.setAbsCarbon(Float.parseFloat(c.getString(c
+						.getColumnIndex(DishProvider.TODAY_DISH_CARBON))));
+				d.setAbsFat(Float.parseFloat(c.getString(c
+						.getColumnIndex(DishProvider.TODAY_DISH_FAT))));
+				d.setAbsProtein(Float.parseFloat(c.getString(c
+						.getColumnIndex(DishProvider.TODAY_DISH_PROTEIN))));
+				d.setAbsolutCaloricity(Integer.parseInt(c.getString(c
+						.getColumnIndex(DishProvider.TODAY_DISH_CALORICITY))));
+				dayList.add(d);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			c.close();
+		}
+		return dayList;
 	}
 
 

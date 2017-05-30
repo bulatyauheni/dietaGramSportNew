@@ -65,7 +65,7 @@ public class VolumeInfo extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		final View viewToLoad = LayoutInflater.from(this.getParent()).inflate(
+		final View viewToLoad = LayoutInflater.from(this.getParent()==null? this : this.getParent()).inflate(
 				R.layout.extrasettings, null);
 		setContentView(viewToLoad);					
 		

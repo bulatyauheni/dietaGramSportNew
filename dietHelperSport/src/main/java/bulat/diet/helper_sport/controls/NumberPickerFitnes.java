@@ -151,58 +151,6 @@ OnFocusChangeListener, OnLongClickListener {
         mText.setEnabled(enabled);
     }
 
-    public void setOnChangeListener(OnChangedListener listener) {
-        mListener = listener;
-    }
-
-    public void setFormatter(Formatter formatter) {
-        mFormatter = formatter;
-    }
-
-    /**
-     * Set the range of numbers allowed for the number picker. The current
-     * value will be automatically set to the start.
-     *
-     * @param start the start of the range (inclusive)
-     * @param end the end of the range (inclusive)
-     */
-    public void setRange(int start, int end) {
-        mStart = start;
-        mEnd = end;
-        mCurrent = start;
-        updateView();
-    }
-
-    /**
-     * Set the range of numbers allowed for the number picker. The current
-     * value will be automatically set to the start. Also provide a mapping
-     * for values used to display to the user.
-     *
-     * @param start the start of the range (inclusive)
-     * @param end the end of the range (inclusive)
-     * @param displayedValues the values displayed to the user.
-     */
-    public void setRange(int start, int end, String[] displayedValues) {
-        mDisplayedValues = displayedValues;
-        mStart = start;
-        mEnd = end;
-        mCurrent = start;
-        updateView();
-    }
-
-    public void setCurrent(int current) {
-        mCurrent = current;
-        updateView();
-    }
-
-    /**
-     * The speed (in milliseconds) at which the numbers will scroll
-     * when the the +/- buttons are longpressed. Default is 300ms.
-     */
-    public void setSpeed(long speed) {
-        mSpeed = speed;
-    }
-
     public void onClick(View v) {
         validateInput(mText);
         if (!mText.hasFocus()) mText.requestFocus();
@@ -418,10 +366,4 @@ OnFocusChangeListener, OnLongClickListener {
         return mStart;
     }
 
-    /**
-     * @return the current value.
-     */
-    public int getCurrent() {
-        return mCurrent;
-    }
 }

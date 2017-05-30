@@ -4,18 +4,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/main_color"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/header_color" >
+        android:background="@color/header_color">
 
         <LinearLayout
             android:id="@+id/relativeLayoutHeader"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/buttonBack"
@@ -26,8 +26,7 @@
                 android:clickable="true"
                 android:gravity="center_vertical"
                 android:maxLines="1"
-                android:textSize="12dip" >
-            </Button>
+                android:textSize="12dip"></Button>
         </LinearLayout>
 
         <TextView
@@ -40,35 +39,29 @@
             android:paddingRight="20dip"
             android:text="@string/get_abonement_title"
             android:textColor="@color/text_color"
-            android:textSize="17dip" >
-        </TextView>
+            android:textSize="17dip"></TextView>
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:isScrollContainer="true"
-        android:padding="5dp"
-        android:scrollbars="vertical" >
+
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:background="@color/main_color"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#D9E0E7"
                 android:orientation="vertical"
-                android:padding="5dp" >
+                android:padding="5dp">
 
                 <LinearLayout
                     android:id="@+id/chartsLayout"
                     android:layout_width="match_parent"
                     android:layout_height="180dip"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/chart1"
@@ -111,7 +104,7 @@
                 android:orientation="horizontal"
                 android:visibility="gone"
                 segmentedgroup:sc_border_width="2dp"
-                segmentedgroup:sc_corner_radius="5dp" >
+                segmentedgroup:sc_corner_radius="5dp">
 
                 <RadioButton
                     android:id="@+id/today"
@@ -142,36 +135,121 @@
                     android:text="@string/lastmonth" />
             </bulat.diet.helper_sport.controls.SegmentedGroup>
 
-            <TextView
-                android:id="@+id/freeAbonementOfferTextTV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/free_abonement_offer_text"
-                android:textColor="@color/light_red"
-                android:textSize="18dp" />
             <LinearLayout
+                android:id="@+id/info_block"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/warning"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/border_button"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="@string/get_analiz"
+                    android:textColor="#dc4650" />
+
+                <TextView
+                    android:id="@+id/info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/border_button_red"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="@string/payment_dialog_alert"
+                    android:textColor="#dc4650" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonGetFree"
+                        style="@style/Button"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/red_button_xml"
+                        android:singleLine="false"
+                        android:text="@string/get_free_time" />
+
+                    <Button
+                        android:id="@+id/buttonBay"
+                        style="@style/Button"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_button_xml"
+                        android:singleLine="false"
+                        android:text="@string/get_abonement_title" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pay_block"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <ImageButton
-                android:layout_weight="1"
-                android:id="@+id/buttonVKChart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/vkbig_button_xml"
-                android:clickable="true" />
-            <ImageButton
-                android:id="@+id/buttonFBChart"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/fbbig_button_xml"
-                android:clickable="true" />
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ListView
+                    android:id="@+id/listViewStatistics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cacheColorHint="#00000000"
+                    android:divider="@color/grey_divider"
+                    android:dividerHeight="1dip"></ListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/free_block"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/freeAbonementOfferTextTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/free_abonement_offer_text"
+                    android:textSize="18dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/border_button"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:textColor="#dc4650" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/buttonVKChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="@drawable/vkbig_button_xml"
+                        android:clickable="true" />
+
+                    <ImageButton
+                        android:id="@+id/buttonFBChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="@drawable/fbbig_button_xml"
+                        android:clickable="true" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>

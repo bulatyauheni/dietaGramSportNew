@@ -198,6 +198,23 @@
             android:textStyle="bold"
             android:visibility="gone" />
 
+        <TextView
+            android:id="@+id/textViewOrderNum"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textSize="15dip"
+            android:textStyle="bold"
+            android:visibility="gone" />
+        <Button
+            android:id="@+id/buttonFav"
+            android:layout_width="35dip"
+            android:layout_height="35dip"
+            android:layout_margin="5dip"
+            android:background="@drawable/star_empty"
+            android:clickable="true"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:visibility="gone"></Button>
         <Button
             android:id="@+id/buttonDell"
             android:layout_width="35dip"
@@ -210,6 +227,8 @@
             android:maxLines="1"
             android:textSize="12dip"
             android:visibility="gone"></Button>
+
+
     </LinearLayout>
 
 </LinearLayout>

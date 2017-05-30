@@ -1,6 +1,9 @@
 package bulat.diet.helper_sport.activity;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.TreeMap;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,6 +20,7 @@ import android.widget.TextView;
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.item.Inventory;
 import bulat.diet.helper_sport.item.Purchase;
+import bulat.diet.helper_sport.item.SkuDetails;
 import bulat.diet.helper_sport.utils.IabHelper;
 import bulat.diet.helper_sport.utils.IabResult;
 import bulat.diet.helper_sport.utils.MessagesUpdater;
@@ -25,7 +29,7 @@ import android.support.v4.app.FragmentActivity;
 
 public class BasePayActivity extends Activity {
 	// The helper object
-
+    public static TreeMap<String, String> prices = new TreeMap<String, String>();
 	protected IabHelper mHelper;
 	String part3 = "hn44nVQt0v0Nf6+yZiVrO3QnTi6b4ByUrqyBgIK9VyMnOA4aTlW75v4pULHaT4yiBjRhBq0"
 			+ "K5g5cBMzAFL33fyQAd3Up92mR97EJcLmXIX8odEfmSCER9YwNy8FhuVusxg3tkpvRFMEgaRDITzjDA8k3XoumEt3Kwzx1Vi0hWP7bT4znBgwIDAQAB";
@@ -67,7 +71,10 @@ public class BasePayActivity extends Activity {
 				// IAB is fully set up. Now, let's get an inventory of stuff we
 				// own.
 				Log.d(TAG, "Setup successful. Querying inventory.");
-				mHelper.queryInventoryAsync(mGotInventoryListener);
+
+				String[] moreSkus = {PaymentsListActivity.SKU_YEAR_VIP, PaymentsListActivity.SKU_YEAR_2017, PaymentsListActivity.SKU_HALFYEAR_2017, PaymentsListActivity.SKU_MUUNTH_2017};
+				//mHelper.queryInventoryAsync(mGotInventoryListener);
+				mHelper.queryInventoryAsync(true, Arrays.asList(moreSkus),mGotInventoryListener);
 			}
 		});
 
@@ -205,7 +212,10 @@ public class BasePayActivity extends Activity {
 
 			updateUserInfo(inventory);
 
-			if (currDate.getTime() > SaveUtils
+            updatePrices(inventory);
+
+
+            if (currDate.getTime() > SaveUtils
 					.getEndPDate(BasePayActivity.this)) {
 				// Do we have the year plan?
 				Purchase yearPlanPurchase = inventory
@@ -330,6 +340,155 @@ public class BasePayActivity extends Activity {
 
 			}
 		}
+	};
+
+    private void updatePrices(Inventory inventory) {
+        SkuDetails VIPPlanDetails= inventory
+                .getSkuDetails(PaymentsListActivity.SKU_YEAR_VIP);
+        if (VIPPlanDetails != null) {
+            prices.put(PaymentsListActivity.SKU_YEAR_VIP, VIPPlanDetails.getPrice());
+        }
+
+        SkuDetails yearPlanDetails= inventory
+                .getSkuDetails(PaymentsListActivity.SKU_YEAR_2017);
+        if (yearPlanDetails != null) {
+            prices.put(PaymentsListActivity.SKU_YEAR_2017, yearPlanDetails.getPrice());
+        }
+
+        SkuDetails halfyearPlanDetails= inventory
+                .getSkuDetails(PaymentsListActivity.SKU_HALFYEAR_2017);
+        if (halfyearPlanDetails != null) {
+            prices.put(PaymentsListActivity.SKU_HALFYEAR_2017, halfyearPlanDetails.getPrice());
+        }
+
+        SkuDetails monthPlanDetails= inventory
+                .getSkuDetails(PaymentsListActivity.SKU_MUUNTH_2017);
+        if (monthPlanDetails != null) {
+            prices.put(PaymentsListActivity.SKU_MUUNTH_2017, monthPlanDetails.getPrice());
+        }
+
+    }
+
+
+    IabHelper.QueryInventoryFinishedListener mGetPricesListener = new IabHelper.QueryInventoryFinishedListener() {
+		public void onQueryInventoryFinished(IabResult result,
+											 Inventory inventory) {
+			// Have we been disposed of in the meantime? If so, quit.
+			if (mHelper == null)
+				return;
+
+			// Is it a failure?
+			if (result.isFailure()) {
+				complain("Failed to query inventory: " + result);
+				return;
+			}
+
+			/*
+			 * Check for items we own. Notice that for each purchase, we check
+			 * the developer payload to see if it's correct! See
+			 * verifyDeveloperPayload().
+			 */
+			Date currDate = new Date();
+
+
+
+				// Do we have the year plan?
+			SkuDetails yearPlanDetails= inventory
+						.getSkuDetails(PaymentsListActivity.SKU_YEAR);
+				if (yearPlanDetails != null) {
+
+
+				}
+
+				// Do we have the manth plan?
+				Purchase munthPlanPurchase = inventory
+						.getPurchase(PaymentsListActivity.SKU_MUNTH);
+				if (munthPlanPurchase != null
+						&& verifyDeveloperPayload(munthPlanPurchase)) {
+
+				}
+
+				// Do we have the manth plan?
+				Purchase munthPlanPurchaseOld = inventory
+						.getPurchase(PaymentsListActivity.SKU_MUNTH_OLD);
+				if (munthPlanPurchaseOld != null
+						&& verifyDeveloperPayload(munthPlanPurchaseOld)) {
+
+
+				}
+
+				// Do we have the manth plan?
+				Purchase yearPlanPurchaseOld = inventory
+						.getPurchase(PaymentsListActivity.SKU_YEAR_OLD);
+				if (yearPlanPurchaseOld != null
+						&& verifyDeveloperPayload(yearPlanPurchaseOld)) {
+
+
+				}
+
+				// Do we have the manth plan?
+				Purchase yearPlanPurchaseNew = inventory
+						.getPurchase(PaymentsListActivity.SKU_YEAR_NEW);
+				if (yearPlanPurchaseNew != null
+						&& verifyDeveloperPayload(yearPlanPurchaseNew)) {
+
+
+				}
+
+				// Do we have the manth plan?
+				Purchase yearPlanPurchase2017 = inventory
+						.getPurchase(PaymentsListActivity.SKU_YEAR_2017);
+				if (yearPlanPurchase2017 != null
+						&& verifyDeveloperPayload(yearPlanPurchase2017)) {
+
+
+				}
+
+				// Do we have the manth plan?
+				Purchase yearPlanPurchaseVIP = inventory
+						.getPurchase(PaymentsListActivity.SKU_YEAR_VIP);
+				if (yearPlanPurchaseVIP != null
+						&& verifyDeveloperPayload(yearPlanPurchaseVIP)) {
+
+
+				}
+
+				// Do we have the manth plan?
+				Purchase halfYearPlanPurchase = inventory
+						.getPurchase(PaymentsListActivity.SKU_HALFYEAR);
+				if (halfYearPlanPurchase != null
+						&& verifyDeveloperPayload(halfYearPlanPurchase)) {
+
+
+				}
+
+				// Do we have the manth plan?
+				Purchase halfYearPlanPurchase2017 = inventory
+						.getPurchase(PaymentsListActivity.SKU_HALFYEAR_2017);
+				if (halfYearPlanPurchase2017 != null
+						&& verifyDeveloperPayload(halfYearPlanPurchase2017)) {
+					SaveUtils.setEndPDate(halfYearPlanPurchase2017.getPurchaseTime()
+									+ 190 * DateUtils.DAY_IN_MILLIS,
+							BasePayActivity.this);
+
+				}
+
+				// Do we have the manth plan?
+				Purchase munthPlanPurchasenew = inventory
+						.getPurchase(PaymentsListActivity.SKU_MUUNTH_NEW);
+				if (munthPlanPurchasenew != null
+						&& verifyDeveloperPayload(munthPlanPurchasenew)) {
+
+				}
+
+				Purchase munthPlanPurchase2017 = inventory
+						.getPurchase(PaymentsListActivity.SKU_MUUNTH_2017);
+				if (munthPlanPurchase2017 != null
+						&& verifyDeveloperPayload(munthPlanPurchase2017)) {
+
+				}
+
+			}
 	};
 
 	private void updateUserInfo(Inventory inventory) {

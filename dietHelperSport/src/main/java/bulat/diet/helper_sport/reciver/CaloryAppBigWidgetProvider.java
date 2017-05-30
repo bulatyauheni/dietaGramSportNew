@@ -184,13 +184,13 @@ public class CaloryAppBigWidgetProvider extends AppWidgetProvider {
 		}
 		try {
 			if (statistic.get(Fat) != null) {
-				res[0] = statistic.get(Protein);
+				res[0] = statistic.get(Protein) * 4;
 			}
 			if (statistic.get(Carbon) != null) {
-				res[1] = statistic.get(Carbon);
+				res[1] = statistic.get(Carbon) * 4;
 			}
 			if (statistic.get(Protein) != null) {
-				res[2] = statistic.get(Fat);
+				res[2] = statistic.get(Fat) * 9;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
