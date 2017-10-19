@@ -2,7 +2,6 @@ package bulat.diet.helper_sport.db;
 
 import java.util.ArrayList;
 
-import bulat.diet.helper_sport.item.Dish;
 import bulat.diet.helper_sport.item.Sinch;
 
 import android.content.ContentResolver;

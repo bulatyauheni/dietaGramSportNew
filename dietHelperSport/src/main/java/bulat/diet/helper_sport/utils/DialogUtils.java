@@ -40,7 +40,7 @@ public class DialogUtils {
 	
 	public static void setArraySpinnerValues(Spinner s, int minval, int maxval, Context context) {
 		ArrayList<DishType> values = new ArrayList<DishType>();
-		for (int i = minval; i < maxval; i++) {
+		for (int i = minval; i < maxval + 1; i++) {
 			values.add(new DishType( i, String.valueOf(i)));
 		}
 		

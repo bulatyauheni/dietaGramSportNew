@@ -3,8 +3,6 @@ package bulat.diet.helper_sport.item;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import bulat.diet.helper_sport.common.data.AbstractExpandableDataProvider;
-
 public class TodayDish {
 	
 	private String id;

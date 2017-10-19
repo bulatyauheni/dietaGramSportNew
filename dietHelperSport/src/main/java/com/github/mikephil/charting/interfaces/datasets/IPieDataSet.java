@@ -1,7 +1,6 @@
 package com.github.mikephil.charting.interfaces.datasets;
 
 import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieDataSet;
 
 /**
  * Created by Philipp Jahoda on 03/11/15.

@@ -73,14 +73,12 @@
             android:layout_height="wrap_content" >
 
             <LinearLayout
-                android:id="@+id/linearLayoutAgeLabel"
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/textViewSerchAgeLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5dip"
@@ -179,14 +177,12 @@
             android:layout_height="wrap_content" >
 
             <LinearLayout
-                android:id="@+id/linearLayoutWeightLabel"
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/textViewWeightLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5dip"
@@ -233,14 +229,12 @@
             android:layout_height="wrap_content" >
 
             <LinearLayout
-                android:id="@+id/linearLayoutSexLabel"
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/textViewSerchSexLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5dip"
@@ -287,7 +281,6 @@
             android:layout_height="wrap_content" >
 
             <LinearLayout
-                android:id="@+id/linearLayoutActivityLabel"
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
@@ -365,7 +358,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayoutSpiner"
                 android:layout_width="0px"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"

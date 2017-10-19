@@ -30,7 +30,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import bulat.diet.helper_sport.activity.Info;
 import bulat.diet.helper_sport.db.TodayDishHelper;
-import bulat.diet.helper_sport.item.Dish;
 import bulat.diet.helper_sport.item.TodayDish;
 
 public class RecepyUpdater extends AsyncTask<Void, Void, Void> {

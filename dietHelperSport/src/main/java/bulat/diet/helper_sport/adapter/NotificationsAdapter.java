@@ -7,7 +7,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import android.R.color;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Dialog;

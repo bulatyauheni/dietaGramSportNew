@@ -1,4 +1,4 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
     <style name="RadioButton">
         <item name="android:textColor">@drawable/button_text_color</item>
@@ -32,7 +32,7 @@
 
     <style name="AlertDialogMessage">
         <item name="android:textSize">18dp</item>
-        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textColor">@color/title_color</item>
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
          <item name="android:layout_marginTop">16dp</item>
@@ -64,19 +64,6 @@
         <item name="android:clipToPadding">false</item>
         <item name="android:scrollbarStyle">outsideOverlay</item>
         <item name="android:scrollbars">vertical</item>
-    </style>
-
-    <style name="exampleLauncherButtonStyle">
-        <item name="android:paddingTop">24dp</item>
-        <item name="android:paddingBottom">24dp</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="sectionHeaderItemStyle">
-        <item name="android:gravity">left|bottom</item>
-        <item name="android:paddingBottom">8dp</item>
     </style>
 
     <style name="textMiddle">
@@ -124,6 +111,54 @@
         <item name="android:textSize">16dp</item>
         <item name="android:paddingBottom">3dp</item>
         <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="CommonLabel">
+        <item name="android:textSize">18dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+    <style name="TradeDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:padding">0dp</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+    <style name="DialogAnimation">
+       <item name="android:windowEnterAnimation">@anim/slide_up</item>
+       <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
+    <style name="CommonLabelEditable" parent="CommonLabel">
+        <item name="android:padding">5dp</item>
+        <item name="android:minWidth">65dp</item>
+        <item name="android:background">@drawable/border_button_neitral</item>
+        <item name="android:tint">@color/bg_group_item_dragging_state</item>
+    </style>
+
+    <style name="SwitchTextAppearance">
+        <item name="textColor">@color/light_green</item>
+        <item name="textColorHighlight">@color/white</item>
+        <item name="textColorHint">@color/white</item>
+        <item name="textColorLink">@color/white</item>
+        <item name="textSize">14dp</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="SwitchStyle">
+        <item name="track">@drawable/switch_track</item>
+        <item name="thumb">@drawable/switch_selector</item>
+        <item name="switchTextAppearanceAttrib">@style/SwitchTextAppearance</item>
+        <item name="pushStyle">false</item>
+        <item name="textOnThumb">true</item>
+        <item name="thumbExtraMovement">0dp</item>
+        <item name="thumbTextPadding">8dp</item>
+        <item name="trackTextPadding">8dp</item>
+        <item name="switchMinWidth">29dp</item>
+        <item name="switchMinHeight">5dp</item>
+        <item name="switchPadding">1dp</item>
     </style>
 
 </resources>

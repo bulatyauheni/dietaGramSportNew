@@ -2,7 +2,6 @@ package bulat.diet.helper_sport.activity;
 
 import java.util.Locale;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import bulat.diet.helper_sport.R;
@@ -96,7 +94,7 @@ public class BaseActivity extends AppCompatActivity {
             SaveUtils.saveBMR(String.valueOf(customLimit), this);
             SaveUtils.saveMETA(String.valueOf(customLimit), this);
         }
-        TextView tvSurplus = (TextView) findViewById(R.id.textViewSurplusValue);
+        //TextView tvSurplus = (TextView) findViewById(R.id.textViewSurplusValue);
         ImageView ivIcon = (ImageView) findViewById(R.id.statusIcon);
         switch (mode) {
             case 0:
@@ -104,9 +102,9 @@ public class BaseActivity extends AppCompatActivity {
                 TextView tvLimit = (TextView) findViewById(R.id.textViewLimitValue);
 
                 tvLimit.setText(String.valueOf(SaveUtils.getBMR(this)) + " " + getString(R.string.kcal));
-                if (tvSurplus != null) {
-                    tvSurplus.setText(String.valueOf(Integer.valueOf(SaveUtils.getBMR(this)) - sum));
-                }
+                //if (tvSurplus != null) {
+                //    tvSurplus.setText(String.valueOf(Integer.valueOf(SaveUtils.getBMR(this)) - sum));
+                //}
 
                 if (ivIcon != null) {
                     if (sum > Integer.parseInt(SaveUtils.getBMR(this))) {
@@ -126,9 +124,9 @@ public class BaseActivity extends AppCompatActivity {
                 }
                 TextView tvLimit2 = (TextView) findViewById(R.id.textViewLimitValue);
                 tvLimit2.setText(String.valueOf(SaveUtils.getMETA(this)) + " " + getString(R.string.kcal));
-                if (tvSurplus != null) {
-                    tvSurplus.setText(String.valueOf(Integer.valueOf(SaveUtils.getMETA(this)) - sum));
-                }
+                //if (tvSurplus != null) {
+                 //   tvSurplus.setText(String.valueOf(Integer.valueOf(SaveUtils.getMETA(this)) - sum));
+                //}
                 break;
             case 2:
                 if (ivIcon != null) {
@@ -142,9 +140,9 @@ public class BaseActivity extends AppCompatActivity {
                 TextView tvLimit3 = (TextView) findViewById(R.id.textViewLimitValue);
                 tvLimit3.setText(String.valueOf(SaveUtils.getMETA(this)) + " " + getString(R.string.kcal));
 
-                if (tvSurplus != null) {
-                    tvSurplus.setText(String.valueOf(Integer.valueOf(SaveUtils.getMETA(this)) - sum));
-                }
+                //if (tvSurplus != null) {
+                //    tvSurplus.setText(String.valueOf(Integer.valueOf(SaveUtils.getMETA(this)) - sum));
+                //}
                 break;
             default:
                 break;

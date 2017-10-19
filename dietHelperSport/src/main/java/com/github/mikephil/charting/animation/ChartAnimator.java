@@ -188,6 +188,19 @@ public class ChartAnimator {
      * @param durationMillis
      * @param easing
      */
+    public void animateY(int durationMillis, Easing.EasingOption easing, AnimatorUpdateListener listener) {
+
+        if (android.os.Build.VERSION.SDK_INT < 11)
+            return;
+
+        ObjectAnimator animatorY = ObjectAnimator.ofFloat(this, "phaseY", 0f, 1f);
+        animatorY.setInterpolator(Easing.getEasingFunctionFromOption(easing));
+        animatorY.setDuration(durationMillis);
+        animatorY.addUpdateListener(mListener);
+        animatorY.addUpdateListener(listener);
+        animatorY.start();
+    }
+
     public void animateY(int durationMillis, Easing.EasingOption easing) {
 
         if (android.os.Build.VERSION.SDK_INT < 11)
@@ -196,6 +209,7 @@ public class ChartAnimator {
         ObjectAnimator animatorY = ObjectAnimator.ofFloat(this, "phaseY", 0f, 1f);
         animatorY.setInterpolator(Easing.getEasingFunctionFromOption(easing));
         animatorY.setDuration(durationMillis);
+        animatorY.addUpdateListener(mListener);
         animatorY.addUpdateListener(mListener);
         animatorY.start();
     }

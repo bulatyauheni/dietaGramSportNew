@@ -50,7 +50,6 @@
             android:layout_height="wrap_content" >
 
             <LinearLayout
-                android:id="@+id/linearLayoutActivityLabel"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="2"
@@ -61,7 +60,6 @@
                     android:layout_height="wrap_content" >
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutSpiner"
                         android:layout_width="0px"
                         android:layout_height="fill_parent"
                         android:layout_weight="2"

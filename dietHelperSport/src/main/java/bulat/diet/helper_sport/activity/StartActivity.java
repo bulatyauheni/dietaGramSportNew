@@ -1,19 +1,12 @@
 package bulat.diet.helper_sport.activity;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,7 +35,6 @@ import org.json.JSONObject;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -52,7 +44,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -66,17 +57,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.share.Sharer;
-import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.model.SharePhotoContent;
-import com.facebook.share.widget.ShareDialog;
-import com.google.api.client.util.IOUtils;
-
-import au.com.bytecode.opencsv.CSVWriter;
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.adapter.BaseLoader;
 import bulat.diet.helper_sport.adapter.LocalsArrayAdapter;
@@ -92,7 +73,6 @@ import bulat.diet.helper_sport.utils.Constants;
 import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.NetworkState;
 import bulat.diet.helper_sport.utils.SaveUtils;
-import bulat.diet.helper_sport.utils.ServerUpdater;
 import bulat.diet.helper_sport.utils.SocialUpdater;
 import bulat.diet.helper_sport.utils.StringUtils;
 
@@ -396,7 +376,6 @@ public class StartActivity extends BasePayActivity  {
 			try {
 				start = sdf.parse(sdf.format(new Date(curentDateandTime.getTime())));
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			start.setYear(curentDateandTime.getYear());

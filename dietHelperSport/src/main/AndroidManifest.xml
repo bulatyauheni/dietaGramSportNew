@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bulat.diet.helper_sport"
-    android:installLocation="auto"
-    android:versionCode="132"
-    android:versionName="3.4.0" >
+    android:installLocation="internalOnly"
+    android:versionCode="137"
+    android:versionName="3.4.5" >
 
     <uses-sdk android:minSdkVersion="15" />
 
@@ -71,11 +71,13 @@
         <activity
             android:name=".activity.DietHelperActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".activity.DishActivityGroup"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/app_name" >
         </activity>
         <activity
@@ -111,6 +113,7 @@
             android:name=".activity.AddTodayDishActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/app_name" >
         </activity>
         <activity
@@ -316,6 +319,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
+        <activity android:name="com.vk.sdk.VKServiceActivity" android:label="ServiceActivity" android:theme="@style/VK.Transparent" />
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"

@@ -18,7 +18,6 @@ package bulat.diet.helper_sport.adapter;
 
 import java.text.DecimalFormat;
 
-import android.preference.PreferenceManager;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;

@@ -1,45 +1,55 @@
 package bulat.diet.helper_sport.activity;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Date;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.item.Account;
-import bulat.diet.helper_sport.utils.Constants;
+import bulat.diet.helper_sport.item.VKFriends;
 import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.SaveUtils;
 
-import com.perm.kate.api.Api;
-import com.perm.kate.api.Photo;
+import com.google.gson.Gson;
+import com.vk.sdk.VKAccessToken;
+import com.vk.sdk.VKCallback;
+import com.vk.sdk.VKScope;
+import com.vk.sdk.VKSdk;
+import com.vk.sdk.api.VKApi;
+import com.vk.sdk.api.VKApiConst;
+import com.vk.sdk.api.VKError;
+import com.vk.sdk.api.VKParameters;
+import com.vk.sdk.api.VKRequest;
+import com.vk.sdk.api.VKResponse;
+import com.vk.sdk.api.model.VKApiPhoto;
+import com.vk.sdk.api.model.VKAttachments;
+import com.vk.sdk.api.model.VKPhotoArray;
+import com.vk.sdk.api.model.VKWallPostResult;
+import com.vk.sdk.api.photo.VKImageParameters;
+import com.vk.sdk.api.photo.VKUploadImage;
 
 public class VkActivity extends Activity {
 
+    private static final String FCP_VK_FRIEND_INVITE_SUCCESS = "FCP_VK_FRIEND_INVITE_SUCCESS";
+    private static final String FCP_VK_WALL_POST_SUCCESS = "FCP_VK_WALL_POST_SUCCESS";
+    private static final String FCP_VK_USER_JOIN_SUCCESS = "FCP_VK_USER_JOIN_SUCCESS";
+    private static final String FCP_VK_USER_JOIN_ERROR = "FCP_VK_USER_JOIN_ERROR";
+    private static final String FCP_VK_WALL_POST_ERROR = "FCP_VK_WALL_POST_ERROR";
+    private static final String FCP_VK_FRIEND_INVITE_ERROR = "FCP_VK_FRIEND_INVITE_ERROR";
     private String vkUrl = "https://oauth.vk.com/authorize?client_id=3583596&scope=wall,offline&redirect_uri=oauth.vk.com/blank.html&display=touch&response_type=token";
     private String postUrl = "https://oauth.vk.com/method/wall.post?message=%s&attachment=%s&access_token=%s";
     private final String ACCESS_TOKEN = "blank.html#access_token";
@@ -58,13 +68,13 @@ public class VkActivity extends Activity {
     EditText messageEditText;
 
     Account account = new Account();
-    Api api;
     private String pathImage;
     private String imageDesckription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.vk_share);
         GATraker.sendEvent("VkActivity", FCP_VK_SHARE, FCP_VK_SHARE_CLICK, 1L);
         startLoginActivity();
         pathImage = getIntent().getStringExtra(IMAGE_PATH);
@@ -73,180 +83,112 @@ public class VkActivity extends Activity {
     }
 
     private void startLoginActivity() {
-        Intent intent = new Intent();
-        intent.setClass(this, LoginActivity.class);
-        startActivityForResult(intent, REQUEST_LOGIN);
+        VKSdk.login(this, VKScope.WALL, VKScope.PHOTOS, VKScope.GROUPS, VKScope.FRIENDS);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_LOGIN) {
-            if (resultCode == RESULT_OK) {
-                //авторизовались успешно
-                account.access_token = data.getStringExtra("token");
-                account.user_id = data.getLongExtra("user_id", 0);
-                account.save(VkActivity.this);
-                api = new Api(account.access_token, Constants.API_ID);
-                postToWall();
-                joinToGroup();
-
-            }
-        }
-    }
-
-    private void postToWall() {
-        new Thread() {
+        if (!VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {
             @Override
-            public void run() {
-                try {
-                    String loadServer = api.photosGetWallUploadServer(
-                            account.user_id, null);
-                    File file = new File(pathImage);
-                    Bundle params = new Bundle();
-                    try {
-                        byte[] data = getBytesFromFile(file);
-                        params.putByteArray("photo", data);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+            public void onResult(VKAccessToken res) {
+
+                File file = new File(pathImage);
+/*                Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
+                Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.wall);*/
+                final Bitmap photo = BitmapFactory.decodeFile(file.getPath());
+                VKRequest request = VKApi.uploadWallPhotoRequest(new VKUploadImage(photo, VKImageParameters.jpgImage(0.9f)), 0, 60479154);
+                request.executeWithListener(new VKRequest.VKRequestListener() {
+                    @Override
+                    public void onComplete(VKResponse response) {
+                        VKApiPhoto photoModel = ((VKPhotoArray) response.parsedModel).get(0);
+                        makePost(new VKAttachments(photoModel), getString(R.string.app_name) + " - " + imageDesckription + " #Dietagram https://play.google.com/store/apps/details?id=bulat.diet.helper_sport&referrer=utm_source%3DDG_VK_WALL_WC", getMyId());
                     }
 
-                    JSONObject jsonObj = new JSONObject(openUrl(loadServer,
-                            "POST", params, SaveUtils.getUserAdvId(VkActivity.this)));
-                    String photo = jsonObj.getString("photo");
-                    String server = jsonObj.getString("server");
-                    String hash = jsonObj.getString("hash");
-                    api.saveWallPhoto(server, photo, hash, account.user_id,
-                            null);
-
-                    ArrayList<Photo> photoS;
-                    photoS = api.saveWallPhoto(server, photo, hash, null, null);
-                    String userID = null;
-                    String ownID = null;
-                    for (int i = 0; i < photoS.size(); i++) {
-                        userID = String.valueOf(photoS.get(i).pid);
-                        ownID = photoS.get(i).owner_id;
+                    @Override
+                    public void onError(VKError error) {
+                        Toast.makeText(VkActivity.this, "onError1" + error.errorMessage, Toast.LENGTH_LONG).show();
                     }
-                    final String pid = userID;
-                    final String owner_id = ownID;
-                    Collection<String> attachments = new ArrayList<String>() {
-                        {
-                            add("photo" + owner_id + "_" + pid);
-                        }
-                    };
-                    attachments.add("photo_" + userID);
-                    attachments.add("https://play.google.com/store/apps/details?id=bulat.diet.helper_sport&referrer=utm_source%3DDG_VK_WALL_WC");
-                    api.createWallPost(account.user_id,
-                            getString(R.string.app_name) + " - " + imageDesckription, attachments, null,
-                            false, false, false, null, null, null, null);
-                    runOnUiThread(successRunnable);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
-    }
 
-    public byte[] getBytesFromFile(File file) throws IOException {
-        if (file.canRead()) {
-            InputStream is = new FileInputStream(file);
-            long length = file.length();
-            if (length > Integer.MAX_VALUE) {
-                return null;
+                    @Override
+                    public void attemptFailed(VKRequest request, int attemptNumber, int totalAttempts) {
+                        Toast.makeText(VkActivity.this, "attemptFailed1", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
-            byte[] bytes = new byte[(int) length];
-            int offset = 0;
-            int numRead = 0;
-            while (offset < bytes.length
-                    && (numRead = is.read(bytes, offset, bytes.length - offset)) >= 0) {
-                offset += numRead;
-            }
-            if (offset < bytes.length) {
-                throw new IOException("Could not completely read file "
-                        + file.getName());
-            }
-            is.close();
-            return bytes;
-        } else{
-                Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.wall);
-                ByteArrayOutputStream bao = new ByteArrayOutputStream();
-                image.compress(Bitmap.CompressFormat.JPEG, 90, bao);
-                return bao.toByteArray();
-        }
 
-    }
-
-    public static String openUrl(String url, String method, Bundle params, int userId)
-            throws MalformedURLException, IOException, JSONException {
-        String boundary = "Asrf456BGe4h";
-        String endLine = "\r\n";
-        String twoHyphens = "--";
-        OutputStream os;
-        HttpURLConnection connection = (HttpURLConnection) new URL(url)
-                .openConnection();
-        if (!method.equals("GET")) {
-            Bundle dataparams = new Bundle();
-            for (String key : params.keySet()) {
-                Object parameter = params.get(key);
-                if (parameter instanceof byte[]) {
-                    dataparams.putByteArray(key, (byte[]) parameter);
-                }
-            }
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type",
-                    "multipart/form-data; boundary=" + boundary);
-            connection.setRequestProperty("Connection", "keep-alive");
-            connection.setDoOutput(true);
-            connection.setDoInput(true);
-            connection.connect();
-            os = new BufferedOutputStream(connection.getOutputStream());
-            os.write((twoHyphens + boundary + endLine).getBytes());
-            if (!dataparams.isEmpty()) {
-                for (String key : dataparams.keySet()) {
-                    os.write(("Content-Disposition: form-data; name=\"photo\"; filename=\"photo" + userId + ".jpg\"")
-                            .getBytes());
-                    os.write(("Content-Type: image/jpeg" + endLine + endLine)
-                            .getBytes());
-                    os.write(dataparams.getByteArray(key));
-                    os.write((endLine + twoHyphens + boundary + twoHyphens + endLine)
-                            .getBytes());
-                }
-            }
-            os.flush();
-            os.close();
-        }
-        String response = read(connection.getInputStream());
-        return response;
-    }
-
-    private static String read(InputStream in) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        BufferedReader r = new BufferedReader(new InputStreamReader(in), 1000);
-        for (String line = r.readLine(); line != null; line = r.readLine()) {
-            sb.append(line);
-        }
-        in.close();
-        return sb.toString();
-    }
-
-    private void joinToGroup() {
-        //Общение с сервером в отдельном потоке чтобы не блокировать UI поток
-        new Thread() {
             @Override
-            public void run() {
-                try {
-                    String text = getString(R.string.vk_recomend);
-                    ArrayList<String> attach = new ArrayList<String>();
-                    attach.add("https://play.google.com/store/apps/details?id=bulat.diet.helper_ru");
-                    api.joinGroup(47759767, null, null);
-                    // api.createWallPost(account.user_id, text, attach, null, false, false, false, null, null, null, null);
-                    //Показать сообщение в UI потоке
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            public void onError(VKError error) {
+                Toast.makeText(VkActivity.this, "onError2" + error.errorMessage, Toast.LENGTH_LONG).show();
             }
-        }.start();
+
+        })) {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
+    void makePost(VKAttachments att, String msg, final int ownerId) {
+        VKParameters parameters = new VKParameters();
+        parameters.put(VKApiConst.OWNER_ID, String.valueOf(ownerId));
+        parameters.put(VKApiConst.ATTACHMENTS, att);
+        parameters.put(VKApiConst.MESSAGE, msg);
+        VKRequest post = VKApi.wall().post(parameters);
+        post.setModelClass(VKWallPostResult.class);
+        post.executeWithListener(new VKRequest.VKRequestListener() {
+            @Override
+            public void onComplete(VKResponse response) {
+                GATraker.sendEvent("VkActivity", FCP_VK_SHARE, FCP_VK_WALL_POST_SUCCESS, 1L);
+                VKRequest request = VKApi.groups().join(VKParameters.from(VKApiConst.GROUP_ID, 47759767));
+                request.executeWithListener(new VKRequest.VKRequestListener() {
+                    @Override
+                    public void onComplete(VKResponse response) {
+                        GATraker.sendEvent("VkActivity", FCP_VK_SHARE, FCP_VK_USER_JOIN_SUCCESS, 1L);
+                        runOnUiThread(successRunnable);
+                        inviteFriends();
+                    }
+                    @Override
+                    public void onError(VKError error) {
+                        GATraker.sendEvent("VkActivity", FCP_VK_SHARE, FCP_VK_USER_JOIN_ERROR, 1L);
+                        Toast.makeText(VkActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                        onBackPressed();
+                    }
+
+                });
+            }
+
+            @Override
+            public void onError(VKError error) {
+                Toast.makeText(VkActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                GATraker.sendEvent("VkActivity", FCP_VK_SHARE, FCP_VK_WALL_POST_ERROR, 1L);
+                onBackPressed();
+            }
+        });
+    }
+
+    int getMyId() {
+        final VKAccessToken vkAccessToken = VKAccessToken.currentToken();
+        return vkAccessToken != null ? Integer.parseInt(vkAccessToken.userId) : 0;
+    }
+
+
+    /*  private void joinToGroup() {
+          //Общение с сервером в отдельном потоке чтобы не блокировать UI поток
+          new Thread() {
+              @Override
+              public void run() {
+                  try {
+                      String text = getString(R.string.vk_recomend);
+                      ArrayList<String> attach = new ArrayList<String>();
+                      attach.add("https://play.google.com/store/apps/details?id=bulat.diet.helper_ru");
+                      api.joinGroup(47759767, null, null);
+                      // api.createWallPost(account.user_id, text, attach, null, false, false, false, null, null, null, null);
+                      //Показать сообщение в UI потоке
+                  } catch (Exception e) {
+                      e.printStackTrace();
+                  }
+              }
+          }.start();
+      }
+  */
     Runnable successRunnable = new Runnable() {
         public void run() {
             Toast.makeText(getApplicationContext(), getString(R.string.vk_toast), Toast.LENGTH_LONG).show();
@@ -254,10 +196,86 @@ public class VkActivity extends Activity {
             if (currDate.getTime() > SaveUtils.getEndPDate(getApplicationContext())) {
                 SaveUtils.setEndPDate(currDate.getTime() + 7 * DateUtils.DAY_IN_MILLIS, getApplicationContext());
                 SaveUtils.setUseFreeAbonement(true, getApplicationContext());
+                Toast.makeText(getApplicationContext(), getString(R.string.user_abonement_ok), Toast.LENGTH_LONG).show();
             }
-            onBackPressed();
         }
     };
 
+    public void inviteFriends() {
+        VKRequest request = VKApi.friends().get(VKParameters.from("order", "mobile" ));
 
+        request.executeWithListener(new VKRequest.VKRequestListener() {
+            @Override
+            public void onComplete(VKResponse response) {
+                super.onComplete(response);
+                Gson g = new Gson();
+                VKFriends friends = g.fromJson(response.json.toString(), VKFriends.class);
+                sendInvitations(friends.getResponse().getItems(), 0);
+            }
+
+            @Override
+            public void onError(VKError error) {
+                Toast.makeText(VkActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                onBackPressed();
+            }
+
+            @Override
+            public void attemptFailed(VKRequest request, int attemptNumber, int totalAttempts) {
+                Toast.makeText(VkActivity.this, "attemptFailed", Toast.LENGTH_LONG).show();
+                onBackPressed();
+            }
+        });
+    }
+    Handler handler = new Handler();
+    private void sendInvitations(final List<Integer> items, final int num) {
+        if (num < (items.size() > 15 ? 15 : items.size())) {
+            Class[] cArg = new Class[2];
+            cArg[0] = String.class;
+            cArg[1] = VKParameters.class;
+            Method method = null;
+            try {
+                method = VKApi.groups().getClass().getSuperclass().getDeclaredMethod("prepareRequest", cArg);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+            method.setAccessible(true);
+
+            try {
+                VKRequest request2 = (VKRequest) method.invoke(VKApi.groups(), "invite", VKParameters.from(VKApiConst.GROUP_ID, 47759767, "user_id", items.get(num)));
+                request2.executeWithListener(new VKRequest.VKRequestListener() {
+                    @Override
+                    public void onComplete(VKResponse response) {
+                        Log.e("Item n",  "" + num);
+                        GATraker.sendEvent("VkActivity", FCP_VK_SHARE, FCP_VK_FRIEND_INVITE_SUCCESS, 1L);
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                sendInvitations(items, num + 1);
+                            }
+                        }, 500);
+                    }
+
+                    @Override
+                    public void onError(VKError error) {
+                        GATraker.sendEvent("VkActivity", FCP_VK_SHARE, FCP_VK_FRIEND_INVITE_ERROR, 1L);
+                        Log.e("Item n",  "" + num +  " " + error.errorCode);
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                sendInvitations(items, num + 1);
+                            }
+                        }, 500);
+                    }
+
+                });
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        } else {
+            onBackPressed();
+        }
+
+    }
 }

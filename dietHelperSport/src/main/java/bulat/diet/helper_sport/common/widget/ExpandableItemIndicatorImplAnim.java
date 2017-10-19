@@ -18,12 +18,8 @@ package bulat.diet.helper_sport.common.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.drawable.Animatable;
 import android.os.Build;
-import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
 
 // NOTE: AnimatedVectorDrawableCompat works on API level 11+
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)

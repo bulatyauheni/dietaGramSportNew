@@ -5,19 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:clipChildren="false"
     tools:ignore="RtlHardcoded">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/main.appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipChildren="false"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/main.collapsing"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:background="@color/light_green"
+            android:clipChildren="false"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
 
@@ -26,10 +28,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/today_green"
+                android:clipChildren="false"
                 android:orientation="horizontal"
-                android:paddingTop="105dp"
-                android:paddingRight="7dp"
                 android:paddingLeft="10dp"
+                android:paddingRight="7dp"
+                android:paddingTop="105dp"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_collapseMode="pin">
 
@@ -41,49 +44,47 @@
 
                     <TextView
                         android:id="@+id/textViewProteinLabel"
+                        style="@style/textMiddle"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="7dip"
                         android:gravity="bottom"
                         android:maxLines="2"
                         android:text="@string/protein"
-                        android:layout_marginBottom="8dp"
-                        style="@style/textMiddle"
-                        android:textColor="@color/protein"/>
+                        android:textColor="@color/protein" />
 
                     <TextView
                         android:id="@+id/textViewProteinTotal"
+                        style="@style/textMiddle"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="5dip"
-                        android:gravity="bottom"
                         android:layout_toRightOf="@+id/textViewProteinLabel"
+                        android:gravity="bottom"
                         android:maxLines="1"
                         android:text="0"
-                        android:layout_marginBottom="8dp"
-                        style="@style/textMiddle"
-                        android:textColor="@color/protein"/>
+                        android:textColor="@color/protein" />
 
                     <TextView
                         android:id="@+id/textViewProteinPercent"
+                        style="@style/textMiddle"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="15dip"
                         android:layout_marginTop="5dp"
                         android:gravity="top"
-                        style="@style/textMiddle"
-                        android:textColor="@color/protein"
                         android:maxLines="2"
                         android:text="(0%)"
-                        />
+                        android:textColor="@color/protein" />
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginTop="5dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/ic_prot_point"
-                        />
+                        android:src="@drawable/ic_prot_point" />
 
                 </RelativeLayout>
 
@@ -95,33 +96,32 @@
 
                     <TextView
                         android:id="@+id/textViewFatLabel"
+                        style="@style/textMiddle"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="7dip"
                         android:gravity="bottom"
-                        android:layout_marginBottom="8dp"
                         android:maxLines="2"
-                        style="@style/textMiddle"
                         android:text="@string/fat"
-                        android:textColor="@color/fat"
-                         />
+                        android:textColor="@color/fat" />
 
                     <TextView
                         android:id="@+id/textViewFatTotal"
+                        style="@style/textMiddle"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
-                        android:layout_marginLeft="5dip"
-                        android:gravity="bottom"
                         android:layout_marginBottom="8dp"
-                        android:maxLines="1"
+                        android:layout_marginLeft="5dip"
                         android:layout_toRightOf="@+id/textViewFatLabel"
+                        android:gravity="bottom"
+                        android:maxLines="1"
                         android:text="0"
-                        style="@style/textMiddle"
-                        android:textColor="@color/fat"
-                         />
+                        android:textColor="@color/fat" />
 
                     <TextView
                         android:id="@+id/textViewFatPercent"
+                        style="@style/textMiddle"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="15dip"
@@ -129,17 +129,14 @@
                         android:gravity="top"
                         android:maxLines="2"
                         android:text="(0%)"
-                        style="@style/textMiddle"
-                        android:textColor="@color/fat"
-                         />
+                        android:textColor="@color/fat" />
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginTop="5dp"
                         android:gravity="top"
-                        android:src="@drawable/ic_fat_point"
-                        />
+                        android:src="@drawable/ic_fat_point" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -150,33 +147,32 @@
 
                     <TextView
                         android:id="@+id/textViewCarbonLabel"
+                        style="@style/textMiddle"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="7dip"
                         android:gravity="bottom"
                         android:maxLines="2"
                         android:text="@string/carbon"
-                        android:layout_marginBottom="8dp"
-                        style="@style/textMiddle"
-                        android:textColor="@color/carbon"
-                      />
+                        android:textColor="@color/carbon" />
 
                     <TextView
                         android:id="@+id/textViewCarbonTotal"
+                        style="@style/textMiddle"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="5dip"
                         android:layout_toRightOf="@+id/textViewCarbonLabel"
                         android:gravity="bottom"
                         android:maxLines="1"
                         android:text="0"
-                        android:layout_marginBottom="8dp"
-                        style="@style/textMiddle"
-                        android:textColor="@color/carbon"
-                        />
+                        android:textColor="@color/carbon" />
 
                     <TextView
                         android:id="@+id/textViewCarbonPercent"
+                        style="@style/textMiddle"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="15dip"
@@ -184,23 +180,21 @@
                         android:gravity="top"
                         android:maxLines="2"
                         android:text="(0%)"
-                        style="@style/textMiddle"
-                        android:textColor="@color/carbon"
-                      />
+                        android:textColor="@color/carbon" />
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginTop="5dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/ic_carb_point"
-                        />
+                        android:src="@drawable/ic_carb_point" />
                 </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="0px"
                     android:layout_height="fill_parent"
                     android:layout_weight="0.8"
+                    android:clipChildren="false"
                     android:gravity="center_vertical|right"
                     android:orientation="horizontal">
 
@@ -217,6 +211,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/light_green"
+                android:clipChildren="false"
                 android:paddingTop="50dp"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_collapseMode="pin">
@@ -226,12 +221,34 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/statusIcon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="3dp"
-                        android:src="@drawable/icon_status_best" />
+                    <RelativeLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp">
+
+                        <ImageView
+                            android:id="@+id/statusIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerInParent="true"
+                            android:padding="3dp"
+                            android:src="@drawable/icon_status_best" />
+
+                        <Button
+                            android:id="@+id/notif_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:background="@drawable/shape_notification"
+                            android:gravity="center"
+                            android:minHeight="22dp"
+                            android:minWidth="22dp"
+                            android:singleLine="true"
+                            android:text="1"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:visibility="gone"></Button>
+                    </RelativeLayout>
 
                     <TextView
                         android:id="@+id/textViewTotalValue"
@@ -259,8 +276,8 @@
                         android:layout_width="55dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:maxLines="2"
                         android:gravity="top"
+                        android:maxLines="2"
                         android:padding="3dp"
 
                         android:text=""
@@ -272,51 +289,47 @@
                     android:id="@+id/weightButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp"
                     android:layout_alignParentRight="true"
                     android:clickable="true"
-                    android:src="@drawable/weight_button_today"
-                    />
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:src="@drawable/weight_button_today" />
 
                 <TextView
                     android:id="@+id/kgLabel"
+                    style="@style/textBig"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="14dp"
-                    android:text="@string/kgram"
+                    android:layout_alignBottom="@+id/weightButton"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:gravity="center_vertical"
-                    android:layout_alignBottom="@+id/weightButton"
-                    style="@style/textBig" />
+                    android:paddingRight="14dp"
+                    android:text="@string/kgram" />
 
                 <TextView
                     android:id="@+id/textViewCurrentWeight"
+                    style="@style/textBig"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="120.1"
-                    style="@style/textBig"
+                    android:layout_alignBottom="@+id/weightButton"
                     android:layout_alignParentTop="true"
                     android:layout_toLeftOf="@+id/kgLabel"
-                    android:layout_alignBottom="@+id/weightButton" />
+                    android:gravity="center_vertical"
+                    android:text="120.1" />
             </RelativeLayout>
 
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/light_green"
-                app:layout_collapseMode="pin"
-                app:layout_scrollFlags="scroll|enterAlways"
-                android:contentInsetLeft="0dp"
-                android:contentInsetStart="0dp"
+                android:clipChildren="false"
+                app:contentInsetEnd="0dp"
                 app:contentInsetLeft="0dp"
-                app:contentInsetStart="0dp"
-                android:contentInsetRight="0dp"
-                android:contentInsetEnd="0dp"
                 app:contentInsetRight="0dp"
-                app:contentInsetEnd="0dp" >
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -329,17 +342,17 @@
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:layout_alignParentLeft="true"
-                        android:gravity="center_vertical"
                         android:background="@drawable/back_button_xml"
-                        android:visibility="gone"/>
+                        android:gravity="center_vertical"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/textViewTitle"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginLeft="5dp"
-                        android:ellipsize="end"
                         android:layout_toRightOf="@id/buttonBack"
+                        android:ellipsize="end"
                         android:gravity="left|center_vertical"
                         android:text="Test June"
                         android:textColor="@color/white"
@@ -367,12 +380,25 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        style="@style/myRecyclerViewStyle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/light_grey"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            style="@style/myRecyclerViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="@color/bg_group_item_dragging_state"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

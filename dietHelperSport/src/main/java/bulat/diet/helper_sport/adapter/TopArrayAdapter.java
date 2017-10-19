@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import bulat.diet.helper_sport.R;
-import bulat.diet.helper_sport.item.Dish;
 import bulat.diet.helper_sport.item.TodayDish;
 
 public class TopArrayAdapter extends ArrayAdapter<TodayDish> {

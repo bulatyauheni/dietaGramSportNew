@@ -7,7 +7,6 @@
     <string name="tab_setting">Info</string>
     <string name="tab_mode">Daten</string>
     <string name="tab_statistic">Statistik</string>
-    <string name="tab_about">Vom Autor</string>
     <string name="add_today_dish">Gericht hinzufügen</string>
     <string name="edit_today_dish">Gericht bearbeiten</string>
     <string name="add_dish">Gericht hinzufügen</string>
@@ -31,13 +30,9 @@
     <string name="limit">Limit:</string>
     <string name="dish_name">Bezeichnung:</string>
     <string name="name">Benennung:</string>
-    <string name="indicator">Wirkung</string>
     <string name="portion_size">Gewicht der Portion (in Gramm):</string>
     <string name="fitnes_time">Trainingszeit (in Minuten):</string>
-    <string name="kcal_day">kcal/Tag</string>
     <string name="caloricity">Kalorien (kcal/100 g):</string>
-    <string name="date">Datum</string>
-    <string name="information">Informationen</string>
     <string name="gram">gr</string>
     <string name="gram_full">Gramm</string>
     <string name="santimetr">cm</string>
@@ -49,9 +44,7 @@
     <string name="age_colon">Alter:</string>
     <string name="sex">Geschlecht</string>
     <string name="weight">Gewicht (kg)</string>
-    <string name="weight_fitnes">Ihr Gewicht (kg)</string>
     <string name="high">Größe (cm)</string>
-    <string name="weight_colon">Ihr Gewicht (kg):</string>
     <string name="high_colon">Größe (cm):</string>
     <string name="activity">Aktivitätsniveau</string>
     <string name="amoutnt_of_calory">Die Anzahl der Kalorien</string>
@@ -59,13 +52,9 @@
     <!-- dialogs -->
     <string name="remove_dialog">Sind sie sicher?</string>
     <string name="save_prove">Einstellungen erfolgreich gespeichert</string>
-    <string name="welcome">Der Kalorienzähler heisst Sie willkommen. Diese Anwendung ermöglicht es ihnen Ihre optimale tägliche Aufnahme von Kalorien zu berechnen und Ihren täglichen Speiseplan zu überwachen. Bitte geben Sie Ihre Daten ein.</string>
-    <string name="tip">Bitte geben Sie zunächst Ihre Daten ein und drücken Sie auf die Schaltfläche OK an unteren Rand der Seite.</string>
     <string name="culculated_parameters">Geben Sie Ihre Werte ein</string>
-    <string name="qutstion">Was fehlt Ihnen in der App?</string>
 
     <string name="statistics_parameters">Statistische Daten</string>
-    <string name="target_settings">Auswahl der Diät:</string>
     <string name="mode">Diät:</string>
     <string name="underweight">Untergewicht</string>
     <string name="normal_weight">Normalgewicht</string>
@@ -95,19 +84,12 @@
 
     <!-- Social -->
     <string name="tab_social_header">Gemeinschaft</string>
-    <string name="tab_social_calendar_header">Historie</string>
     <string name="search_parameters_title">Suchoptionen</string>
     <string name="any">Alle</string>
     <string name="any_midle">Alle</string>
     <string name="user_weight">Gewicht:</string>
     <string name="loading_social">Wird geladen ...</string>
-    <string name="time">Zeit:</string>
     <string name="time_1">Frühstück</string>
-    <string name="time_2">Brunch</string>
-    <string name="time_3">Mittagessen</string>
-    <string name="time_4">Zwischenmahlzeit</string>
-    <string name="time_5">Abendessen</string>
-    <string name="time_6">Zweites Abendessen</string>
     <string name="time_active">Tagesaktivität</string>
     <string name="header_in_label">Erhalten:</string>
     <string name="header_out_label">Verbraucht:</string>
@@ -118,7 +100,6 @@
     <string name="username_dialog_title">Benutzerregistrierung</string>
     <string name="username_change_dialog_title">Namen ändern</string>
     <string name="change_weight_dialog_title">Gewichtsänderung</string>
-    <string name="change_weight_label">Hier können Sie die Daten zu Ihrem Gewicht aktualisieren.</string>
     <string name="update_weight_label">Hier können Sie die Daten zu Ihrem Gewicht für einen konkreten Tag ändern.</string>
 
     <string name="username_dialog_registred">Sie sind registriert</string>
@@ -130,10 +111,8 @@
     <string name="conversation">Kommunikation</string>
     <string name="user_history">Benutzerhistorie</string>
     <string name="user_weight_history">Diagramm der Gewichtsänderung ansehen</string>
-    <string name="user_new_messages_label">Neue Mitteilungen:</string>
     <string name="users_notfound">Benutzer mit diesen Kenndaten konnten nicht gefunden werden. Klicken Sie hier, um die Suchparameter zu ändern</string>
     <string name="statistic_food"> Ernährungsbilanz</string>
-    <string name="statistic_other">Anderes</string>
     <string name="statistic_weight">Änderungsstatistik</string>
     <string name="statistic_FCP">Bilanz der Proteine, Fette, Kohlenh.</string>
     <string name="statistic_weight_empty">Der Parameter hat sich noch nicht geändert</string>
@@ -182,7 +161,6 @@
     <string name="type_name">die Kategorie Namen</string>
 
     <string name="reminder">Sie haben den Kalorienzähler seit langem nicht mehr ausgefüllt</string>
-    <string name="reminder_title">Erinnerung</string>
     <string name="newmessage">Neue Mitteilung des Kalorienzählers!</string>
     <string name="newmessage_title">Neue Mitteilung</string>
     <string name="timeHHMM">Zeit (h:min)</string>
@@ -197,8 +175,6 @@
     <string name="statistic_export_save">Aufzeichnungen in einer Datei auf dem Telefon und in der Cloud speichern?</string>
     <string name="statistic_export">Export</string>
     <string name="statistic_import">Import</string>
-    <string name="statistic_export_base">Export von Produkten</string>
-    <string name="statistic_import_bases">Import von Produkten</string>
     <string name="saved_history">Historie gespeichert</string>
     <string name="history_download">Aktuelle Daten gehen verloren. Wollen Sie die Historie laden?</string>
     <string name="empty_dish_search">Hier klicken, um ein Produkt hinzuzufügen ...</string>
@@ -237,8 +213,6 @@
     <string name="day_time">Mahlzeiteneinnahme:</string>
     <string name="set_notiftime_toast_on">Erinnerung ist eingeschaltet</string>
 
-    <string name="advlabel">Der Rechner wird durch die Webseite zur Verfügung gestellt</string>
-    <string name="advlink">www.tvoytrener.com</string>
     <string name="search_in_all_sport">Suche nach Tätigkeit ...</string>
     <string name="additional_weight">Gewicht (kg):</string>
     <string name="count">Anzahl der Wiederholungen:</string>
@@ -265,7 +239,6 @@
     <string name="paymenterror">Problem mit der Zahlung</string>
     <string name="paymentm">Abonnement für einen Monat</string>
     <string name="paymentspec">Abonnement für eine Aktion</string>
-    <string name="payment3m">Abonnement für 3 Monate</string>
     <string name="paymenty">Jahresabonnement</string>
     <string name="paymenthy">Halbjahresabonnement</string>
     <string name="paymentvipy">VIP-Abonnement</string>
@@ -281,7 +254,6 @@
 
     <string name="user_email_label">Geben Sie Ihre E-Mail ein (zum Erhalt des Speiseplans vom Ernährungsberater)</string>
     <string name="user_abonement_label">Geben Sie den Code ein (für die Erhaltung des Aktions-Abonnements)</string>
-    <string name="user_email_hint">Ihre E-Mail</string>
     <string name="user_email_title">Erhalt des Speiseplans</string>
     <string name="user_abonement_title">Erhalt des Abonnements</string>
     <string name="user_ration_empty">Es sind keine neuen Speisepläne im Zusammenhang mit Ihrer E-Mail vorhanden. Kontaktieren Sie den Autor der Anwendung, um eine Lösung zu finden.</string>
@@ -313,7 +285,6 @@
 
     <string name="complain_plaese">Könnten Sie uns mitteilen, was Ihnen nicht gefällt?</string>
     <string name="complain_for_payment">Wenn es Ihnen nicht gelingt, das Abonnement zu zahlen, oder wenn Sie eine andere Frage haben - schreiben Sie mir einfach eine E-Mail, gemeinsam werden wir eine passende Lösung finden.</string>
-    <string name="vk_recomend">Ich kann es wirklich empfehlen! Der Kalorienzähler ist ein einfaches und effektives Programm.</string>
     <string name="vk_toast">Die Notiz wurde Ihrer Wand Facebook hinzugefügt.</string>
     <string name="fb_toast">Die Notiz wurde Ihrer Wand Facebook hinzugefügt.</string>
     <string name="get_free_time">Kaufe ich nicht</string>

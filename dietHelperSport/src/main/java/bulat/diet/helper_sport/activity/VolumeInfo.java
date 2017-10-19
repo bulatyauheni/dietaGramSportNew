@@ -68,169 +68,172 @@ public class VolumeInfo extends Activity {
 		final View viewToLoad = LayoutInflater.from(this.getParent()==null? this : this.getParent()).inflate(
 				R.layout.extrasettings, null);
 		setContentView(viewToLoad);					
-		
-		chestSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerChest);
-		chestDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerChestDecimal);
-		
-		pelvisSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerPelvis);
-		pelvisDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerPelvisDecimal);
-		
-		neckSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerNeck);
-		neckDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerNeckDecimal);
-		
-		bicepsSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerBiceps);
-		bicepsDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerBicepsDecimal);
-		
-		forearmSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerForearm);
-		forearmDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerForearmDecimal);
-		
-		waistSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerWaist);
-		waistDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerWaistDecimal);
-		
-		hipSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerHip);
-		hipDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerHipDecimal);
-		
-		shinSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerShin);
-		shinDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerShinDecimal);
-		
-		
-		chestCB = (CheckBox) viewToLoad.findViewById(R.id.enabledChest);
-		chestCB.setChecked(SaveUtils.getChestEnbl(this));
-		chestSpinner.setEnabled(SaveUtils.getChestEnbl(this));
-		chestDecSpinner.setEnabled(SaveUtils.getChestEnbl(this));
-		chestCB.setOnClickListener(new OnClickListener() {
+		try {
+			chestSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerChest);
+			chestDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerChestDecimal);
 
-			  public void onClick(View v) {
-		                //is chkIos checked?
-				if (((CheckBox) v).isChecked()) {
-					SaveUtils.setChestEnbl(true, VolumeInfo.this);
-					chestSpinner.setEnabled(true);
-					chestDecSpinner.setEnabled(true);
-				}else{
-					SaveUtils.setChestEnbl(false, VolumeInfo.this);
-					chestSpinner.setEnabled(false);
-					chestDecSpinner.setEnabled(false);
+			pelvisSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerPelvis);
+			pelvisDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerPelvisDecimal);
+
+			neckSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerNeck);
+			neckDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerNeckDecimal);
+
+			bicepsSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerBiceps);
+			bicepsDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerBicepsDecimal);
+
+			forearmSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerForearm);
+			forearmDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerForearmDecimal);
+
+			waistSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerWaist);
+			waistDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerWaistDecimal);
+
+			hipSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerHip);
+			hipDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerHipDecimal);
+
+			shinSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerShin);
+			shinDecSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerShinDecimal);
+
+
+			chestCB = (CheckBox) viewToLoad.findViewById(R.id.enabledChest);
+			chestCB.setChecked(SaveUtils.getChestEnbl(this));
+			chestSpinner.setEnabled(SaveUtils.getChestEnbl(this));
+			chestDecSpinner.setEnabled(SaveUtils.getChestEnbl(this));
+			chestCB.setOnClickListener(new OnClickListener() {
+
+				public void onClick(View v) {
+					//is chkIos checked?
+					if (((CheckBox) v).isChecked()) {
+						SaveUtils.setChestEnbl(true, VolumeInfo.this);
+						chestSpinner.setEnabled(true);
+						chestDecSpinner.setEnabled(true);
+					} else {
+						SaveUtils.setChestEnbl(false, VolumeInfo.this);
+						chestSpinner.setEnabled(false);
+						chestDecSpinner.setEnabled(false);
+					}
+
 				}
-		 
-			  }
 			});
-		pelvisCB = (CheckBox) viewToLoad.findViewById(R.id.enabledPelvis);
-		pelvisCB.setChecked(SaveUtils.getPelvisEnbl(this));
-		pelvisSpinner.setEnabled(SaveUtils.getPelvisEnbl(this));
-		pelvisDecSpinner.setEnabled(SaveUtils.getPelvisEnbl(this));
-		pelvisCB.setOnClickListener(new OnClickListener() {
+			pelvisCB = (CheckBox) viewToLoad.findViewById(R.id.enabledPelvis);
+			pelvisCB.setChecked(SaveUtils.getPelvisEnbl(this));
+			pelvisSpinner.setEnabled(SaveUtils.getPelvisEnbl(this));
+			pelvisDecSpinner.setEnabled(SaveUtils.getPelvisEnbl(this));
+			pelvisCB.setOnClickListener(new OnClickListener() {
 
-			  public void onClick(View v) {
-		                //is chkIos checked?
-				if (((CheckBox) v).isChecked()) {
-					SaveUtils.setPelvisEnbl(true, VolumeInfo.this);
-					pelvisSpinner.setEnabled(true);
-					pelvisDecSpinner.setEnabled(true);
-				}else{
-					SaveUtils.setPelvisEnbl(false, VolumeInfo.this);
-					pelvisSpinner.setEnabled(false);
-					pelvisDecSpinner.setEnabled(false);
+				public void onClick(View v) {
+					//is chkIos checked?
+					if (((CheckBox) v).isChecked()) {
+						SaveUtils.setPelvisEnbl(true, VolumeInfo.this);
+						pelvisSpinner.setEnabled(true);
+						pelvisDecSpinner.setEnabled(true);
+					} else {
+						SaveUtils.setPelvisEnbl(false, VolumeInfo.this);
+						pelvisSpinner.setEnabled(false);
+						pelvisDecSpinner.setEnabled(false);
+					}
+
 				}
-		 
-			  }
 			});
-		neckCB = (CheckBox) viewToLoad.findViewById(R.id.enabledNeck);
-		neckCB.setChecked(SaveUtils.getNeckEnbl(this));
-		neckSpinner.setEnabled(SaveUtils.getNeckEnbl(this));
-		neckDecSpinner.setEnabled(SaveUtils.getNeckEnbl(this));
-		neckCB.setOnClickListener(new OnClickListener() {
+			neckCB = (CheckBox) viewToLoad.findViewById(R.id.enabledNeck);
+			neckCB.setChecked(SaveUtils.getNeckEnbl(this));
+			neckSpinner.setEnabled(SaveUtils.getNeckEnbl(this));
+			neckDecSpinner.setEnabled(SaveUtils.getNeckEnbl(this));
+			neckCB.setOnClickListener(new OnClickListener() {
 
-			  public void onClick(View v) {
-		                //is chkIos checked?
+				public void onClick(View v) {
+					//is chkIos checked?
 					SaveUtils.setNeckEnbl(((CheckBox) v).isChecked(), VolumeInfo.this);
 					neckSpinner.setEnabled(((CheckBox) v).isChecked());
-					neckDecSpinner.setEnabled(((CheckBox) v).isChecked());						 
-			  }
+					neckDecSpinner.setEnabled(((CheckBox) v).isChecked());
+				}
 			});
-		bicepsCB = (CheckBox) viewToLoad.findViewById(R.id.enabledBiceps);
-		bicepsCB.setChecked(SaveUtils.getBicepsEnbl(this));
-		bicepsSpinner.setEnabled(SaveUtils.getBicepsEnbl(this));
-		bicepsDecSpinner.setEnabled(SaveUtils.getBicepsEnbl(this));
-		bicepsCB.setOnClickListener(new OnClickListener() {
+			bicepsCB = (CheckBox) viewToLoad.findViewById(R.id.enabledBiceps);
+			bicepsCB.setChecked(SaveUtils.getBicepsEnbl(this));
+			bicepsSpinner.setEnabled(SaveUtils.getBicepsEnbl(this));
+			bicepsDecSpinner.setEnabled(SaveUtils.getBicepsEnbl(this));
+			bicepsCB.setOnClickListener(new OnClickListener() {
 
-			  public void onClick(View v) {
-		                //is chkIos checked?
+				public void onClick(View v) {
+					//is chkIos checked?
 					SaveUtils.setBicepsEnbl(((CheckBox) v).isChecked(), VolumeInfo.this);
 					bicepsSpinner.setEnabled(((CheckBox) v).isChecked());
-					bicepsDecSpinner.setEnabled(((CheckBox) v).isChecked());						 
-			  }
+					bicepsDecSpinner.setEnabled(((CheckBox) v).isChecked());
+				}
 			});
-		forearmCB = (CheckBox) viewToLoad.findViewById(R.id.enabledForearm);
-		forearmCB.setChecked(SaveUtils.getForearmEnbl(this));
-		forearmSpinner.setEnabled(SaveUtils.getForearmEnbl(this));
-		forearmDecSpinner.setEnabled(SaveUtils.getForearmEnbl(this));
-		forearmCB.setOnClickListener(new OnClickListener() {
+			forearmCB = (CheckBox) viewToLoad.findViewById(R.id.enabledForearm);
+			forearmCB.setChecked(SaveUtils.getForearmEnbl(this));
+			forearmSpinner.setEnabled(SaveUtils.getForearmEnbl(this));
+			forearmDecSpinner.setEnabled(SaveUtils.getForearmEnbl(this));
+			forearmCB.setOnClickListener(new OnClickListener() {
 
-			  public void onClick(View v) {
-		                //is chkIos checked?
+				public void onClick(View v) {
+					//is chkIos checked?
 					SaveUtils.setForearmEnbl(((CheckBox) v).isChecked(), VolumeInfo.this);
 					forearmSpinner.setEnabled(((CheckBox) v).isChecked());
-					forearmDecSpinner.setEnabled(((CheckBox) v).isChecked());						 
-			  }
+					forearmDecSpinner.setEnabled(((CheckBox) v).isChecked());
+				}
 			});
-		waistCBr = (CheckBox) viewToLoad.findViewById(R.id.enabledWaist);
-		waistCBr.setChecked(SaveUtils.getWaistEnbl(this));
-		waistSpinner.setEnabled(SaveUtils.getWaistEnbl(this));
-		waistDecSpinner.setEnabled(SaveUtils.getWaistEnbl(this));
-		waistCBr.setOnClickListener(new OnClickListener() {
+			waistCBr = (CheckBox) viewToLoad.findViewById(R.id.enabledWaist);
+			waistCBr.setChecked(SaveUtils.getWaistEnbl(this));
+			waistSpinner.setEnabled(SaveUtils.getWaistEnbl(this));
+			waistDecSpinner.setEnabled(SaveUtils.getWaistEnbl(this));
+			waistCBr.setOnClickListener(new OnClickListener() {
 
-			  public void onClick(View v) {
-		                //is chkIos checked?
+				public void onClick(View v) {
+					//is chkIos checked?
 					SaveUtils.setWaistEnbl(((CheckBox) v).isChecked(), VolumeInfo.this);
 					waistSpinner.setEnabled(((CheckBox) v).isChecked());
-					waistDecSpinner.setEnabled(((CheckBox) v).isChecked());						 
-			  }
+					waistDecSpinner.setEnabled(((CheckBox) v).isChecked());
+				}
 			});
-		hipCB = (CheckBox) viewToLoad.findViewById(R.id.enabledHip);
-		hipCB.setChecked(SaveUtils.getHipEnbl(this));
-		hipSpinner.setEnabled(SaveUtils.getHipEnbl(this));
-		hipDecSpinner.setEnabled(SaveUtils.getHipEnbl(this));
-		hipCB.setOnClickListener(new OnClickListener() {
+			hipCB = (CheckBox) viewToLoad.findViewById(R.id.enabledHip);
+			hipCB.setChecked(SaveUtils.getHipEnbl(this));
+			hipSpinner.setEnabled(SaveUtils.getHipEnbl(this));
+			hipDecSpinner.setEnabled(SaveUtils.getHipEnbl(this));
+			hipCB.setOnClickListener(new OnClickListener() {
 
-			  public void onClick(View v) {
-		                //is chkIos checked?
+				public void onClick(View v) {
+					//is chkIos checked?
 					SaveUtils.setHipEnbl(((CheckBox) v).isChecked(), VolumeInfo.this);
 					hipSpinner.setEnabled(((CheckBox) v).isChecked());
-					hipDecSpinner.setEnabled(((CheckBox) v).isChecked());						 
-			  }
+					hipDecSpinner.setEnabled(((CheckBox) v).isChecked());
+				}
 			});
-		shinCB = (CheckBox) viewToLoad.findViewById(R.id.enabledShin);
-		shinCB.setChecked(SaveUtils.getShinEnbl(this));
-		shinSpinner.setEnabled(SaveUtils.getShinEnbl(this));
-		shinDecSpinner.setEnabled(SaveUtils.getShinEnbl(this));
-		shinCB.setOnClickListener(new OnClickListener() {
+			shinCB = (CheckBox) viewToLoad.findViewById(R.id.enabledShin);
+			shinCB.setChecked(SaveUtils.getShinEnbl(this));
+			shinSpinner.setEnabled(SaveUtils.getShinEnbl(this));
+			shinDecSpinner.setEnabled(SaveUtils.getShinEnbl(this));
+			shinCB.setOnClickListener(new OnClickListener() {
 
-			  public void onClick(View v) {
-		                //is chkIos checked?
+				public void onClick(View v) {
+					//is chkIos checked?
 					SaveUtils.setShinEnbl(((CheckBox) v).isChecked(), VolumeInfo.this);
 					shinSpinner.setEnabled(((CheckBox) v).isChecked());
-					shinDecSpinner.setEnabled(((CheckBox) v).isChecked());						 
-			  }
+					shinDecSpinner.setEnabled(((CheckBox) v).isChecked());
+				}
 			});
-		
-		expirienceSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerExpirienceActivity);
-			
-		
-		ArrayList<DishType> mode = new ArrayList<DishType>();
-		mode.add(new DishType(20, getString(R.string.exp1)));
-		mode.add(new DishType(24, getString(R.string.exp2)));
-		mode.add(new DishType(27, getString(R.string.exp3)));
-		mode.add(new DishType(30, getString(R.string.exp4)));
-		ArrayAdapter<DishType> adapter = new ArrayAdapter<DishType>(this,
-				android.R.layout.simple_spinner_item, mode);
-		//adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		expirienceSpinner.setAdapter(adapter);		
-		expirienceSpinner.setSelection(SaveUtils.getExpModeSelection(this));	
-		expirienceSpinner.setOnItemSelectedListener(spinnerModeListener);
-	////
-			
-			
-		setSpinnerValues();
+
+			expirienceSpinner = (Spinner) viewToLoad.findViewById(R.id.SpinnerExpirienceActivity);
+
+
+			ArrayList<DishType> mode = new ArrayList<DishType>();
+			mode.add(new DishType(20, getString(R.string.exp1)));
+			mode.add(new DishType(24, getString(R.string.exp2)));
+			mode.add(new DishType(27, getString(R.string.exp3)));
+			mode.add(new DishType(30, getString(R.string.exp4)));
+			ArrayAdapter<DishType> adapter = new ArrayAdapter<DishType>(this,
+					android.R.layout.simple_spinner_item, mode);
+			//adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			expirienceSpinner.setAdapter(adapter);
+			expirienceSpinner.setSelection(SaveUtils.getExpModeSelection(this));
+			expirienceSpinner.setOnItemSelectedListener(spinnerModeListener);
+			////
+
+
+			setSpinnerValues();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 	@Override
@@ -313,7 +316,7 @@ public class VolumeInfo extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		
+		setSpinnerValues();
 	}
 
 	private OnItemSelectedListener spinnerModeListener = new OnItemSelectedListener() {

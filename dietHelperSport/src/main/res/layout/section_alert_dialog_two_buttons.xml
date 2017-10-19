@@ -11,20 +11,23 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
+        android:padding="16dp"
         android:fillViewport="true" >
-        <LinearLayout 
-            android:id="@+id/dialogContent"
+        <LinearLayout
             android:layout_width="match_parent"
     		android:layout_height="match_parent"
     		android:orientation="vertical">
         <TextView
             android:id="@+id/dialogTitle"
-            style="@style/AlertDialogTitle" 
+            style="@style/AlertDialogTitle"
+            android:gravity="start"
+            android:textSize="18dp"
 			android:text="asd"/>
 
         <TextView
             android:id="@+id/dialogMessage"
-            style="@style/AlertDialogMessage" 
+            style="@style/AlertDialogMessage"
+            android:gravity="start"
             android:text="asd"/>
         </LinearLayout>
     </ScrollView>
@@ -33,12 +36,15 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/dialogButtonCancel"
             style="@style/Button"
-            android:layout_margin="5dp"
+            android:layout_marginRight="5dp"
             android:background="@drawable/red_button_xml"
             android:layout_weight="1" 
             android:text="asd"/>
@@ -47,7 +53,7 @@
             android:id="@+id/dialogButtonOk"
             style="@style/Button"
             android:background="@drawable/blue_button_xml"
-            android:layout_margin="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1" 
             android:text="asd"/>
     </LinearLayout>

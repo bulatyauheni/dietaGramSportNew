@@ -16,7 +16,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
@@ -51,7 +50,6 @@ import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.adapter.TemplatesAdapter;
 import bulat.diet.helper_sport.db.TemplateDishHelper;
 import bulat.diet.helper_sport.db.TodayDishHelper;
-import bulat.diet.helper_sport.item.Day;
 import bulat.diet.helper_sport.item.TodayDish;
 import bulat.diet.helper_sport.utils.SaveUtils;
 

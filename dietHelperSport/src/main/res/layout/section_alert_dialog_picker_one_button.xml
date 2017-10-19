@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialogRoot"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:minWidth="300dp"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dialogTitle"
+                style="@style/AlertDialogTitle"
+                android:text="asd"
+                 android:visibility="gone"/>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+                <TextView
+                    android:id="@+id/dialogMessage"
+                    style="@style/AlertDialogMessage"
+                    android:layout_width="match_parent"
+                    android:text="asd"
+                    android:gravity="start"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:id="@+id/dialogButtonOk"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/ok_button_blue_xml"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/bg_group_item_dragging_state"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <com.shawnlin.numberpicker.NumberPicker
+                    android:id="@+id/spinner1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="5dp"
+                    app:np_dividerColor="@color/bg_group_item_dragging_active_state"
+                    app:np_height="180dp"
+                    app:np_max="220"
+                    app:np_min="0"
+                    app:np_selectedTextColor="@color/bg_item_normal_state"
+                    app:np_selectedTextSize="18dp"
+                    app:np_textColor="@color/bg_item_dragging_active_state"
+                    app:np_textSize="16dp"
+                    app:np_value="75"
+                    app:np_width="64dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/bg_item_normal_state"
+                    android:text = ","/>
+
+                <com.shawnlin.numberpicker.NumberPicker
+                    android:id="@+id/spinner2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="5dp"
+                    app:np_dividerColor="@color/bg_group_item_dragging_active_state"
+                    app:np_height="180dp"
+                    app:np_max="9"
+
+                    app:np_min="0"
+                    app:np_selectedTextColor="@color/bg_item_normal_state"
+                    app:np_selectedTextSize="18dp"
+                    app:np_textColor="@color/bg_item_dragging_active_state"
+                    app:np_textSize="16dp"
+                    app:np_value="3"
+                    app:np_width="64dp" />
+                <TextView
+                    android:id="@+id/demensionLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    style="@style/CommonLabel"
+                    android:paddingStart="5dp"
+                    android:textColor="@color/bg_item_normal_state"
+                    android:text = "@string/kgram"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

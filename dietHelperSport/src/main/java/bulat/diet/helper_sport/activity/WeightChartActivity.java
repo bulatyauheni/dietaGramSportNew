@@ -10,26 +10,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
-import android.provider.MediaStore.Images;
-import android.util.Log;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager.BadTokenException;
@@ -59,9 +48,6 @@ import com.github.mikephil.charting.components.LimitLine.LimitLabelPosition;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.XAxis.XAxisPosition;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.CombinedData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -74,6 +60,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 public class WeightChartActivity extends RepostActivity implements
 		OnChartValueSelectedListener, OnCheckedChangeListener {
 	private static final String IS_CHART_TIP_SHOWN = "IS_CHART_TIP_SHOWN";
+
 	protected int mCurrnetChartType = 0;
 	protected String[] mDates;
 	private CombinedChart mChart;
@@ -82,7 +69,6 @@ public class WeightChartActivity extends RepostActivity implements
 	private EditText goalET;
 	private Spinner chartTypeSpiner;
 	private SegmentedGroup timePeriodRG;
-	private boolean readyToRate;
 	private float min;
 	private float max;
 
@@ -90,7 +76,6 @@ public class WeightChartActivity extends RepostActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		fixMediaDir();
-		readyToRate = (!SaveUtils.isAllreadyRate(WeightChartActivity.this.getParent().getParent())) && (TodayDishHelper.getDaysStat(this).size() > 9);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		View viewToLoad = LayoutInflater.from(this.getParent().getParent())
@@ -447,81 +432,11 @@ public class WeightChartActivity extends RepostActivity implements
 
 	@Override
 	protected void onDestroy() {
-		if (readyToRate) {
-		try {
-			SaveUtils.setAllreadyRate(true, WeightChartActivity.this.getParent().getParent());
-			CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(WeightChartActivity.this.getParent().getParent());
-			bld.setLayout(R.layout.section_alert_dialog_two_buttons)
-			.setMessage(WeightChartActivity.this.getParent().getString(R.string.do_you_like))		
-			.setPositiveButton(R.id.dialogButtonOk, new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(WeightChartActivity.this.getParent().getParent());
-					bld.setLayout(R.layout.section_alert_dialog_two_buttons)
-					.setMessage(WeightChartActivity.this.getParent().getString(R.string.rating_plaese))			
-					.setPositiveButton(R.id.dialogButtonOk, new OnClickListener() {
-						
-						@Override
-						public void onClick(View v) {
-							WeightChartActivity.this.getParent().getParent().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + WeightChartActivity.this.getParent().getParent().getPackageName())));
-						}
-					})
-					.setPositiveButtonText(R.string.agree)
-					.setNegativeButton(R.id.dialogButtonCancel, new OnClickListener() {
 
-						@Override
-						public void onClick(View v) {
-							// TODO Auto-generated method stub
-							
-						}
-					})
-					.setNegativeButtonText(R.string.disagree);
-					bld.show();
-				}
-			})
-			.setPositiveButtonText(R.string.yes_shure)
-			.setNegativeButton(R.id.dialogButtonCancel, new OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(WeightChartActivity.this.getParent().getParent());
-					bld.setLayout(R.layout.section_alert_dialog_two_buttons)
-					.setMessage(WeightChartActivity.this.getParent().getString(R.string.complain_plaese))			
-					.setPositiveButton(R.id.dialogButtonOk, new OnClickListener() {
-						
-						@Override
-						public void onClick(View v) {
-							Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-						            "mailto","bulat.yauheni@gmail.com", null));
-							emailIntent.putExtra(Intent.EXTRA_SUBJECT, WeightChartActivity.this.getParent().getString(R.string.app_name));
-							emailIntent.putExtra(Intent.EXTRA_TEXT, "");
-							WeightChartActivity.this.getParent().getParent().startActivity((Intent.createChooser(emailIntent, "Send email...")));
-						}
-					})
-					.setPositiveButtonText(R.string.agree)
-					.setNegativeButton(R.id.dialogButtonCancel, new OnClickListener() {
-
-						@Override
-						public void onClick(View v) {
-							// TODO Auto-generated method stub
-							
-						}
-					})
-					.setNegativeButtonText(R.string.disagree);
-					bld.show();
-				}
-			})
-			.setNegativeButtonText(R.string.not_shure);
-			bld.show();
-		}catch (BadTokenException e) {
-			e.printStackTrace();
-		}
-		}
 		super.onDestroy();
 	}
 
-	private ArrayList<DishType> getChartTypes(Context ctx) {
+    private ArrayList<DishType> getChartTypes(Context ctx) {
 		ArrayList<DishType> types = new ArrayList<DishType>();
 		types.add(new DishType(1,
 				getString(R.string.change_weight_dialog_title)));

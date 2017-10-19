@@ -1,35 +1,16 @@
 package bulat.diet.helper_sport.adapter;
 
 import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CursorAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import bulat.diet.helper_sport.R;
-import bulat.diet.helper_sport.activity.CalendarActivity;
-import bulat.diet.helper_sport.activity.CalendarActivityGroup;
-import bulat.diet.helper_sport.activity.Info;
-import bulat.diet.helper_sport.activity.VolumeInfo;
 import bulat.diet.helper_sport.db.DishProvider;
-import bulat.diet.helper_sport.db.TodayDishHelper;
-import bulat.diet.helper_sport.item.BodyParams;
-import bulat.diet.helper_sport.utils.DialogUtils;
-import bulat.diet.helper_sport.utils.SaveUtils;
-import bulat.diet.helper_sport.utils.SocialUpdater;
 
 
 public class TopCursorAdapter extends CursorAdapter {

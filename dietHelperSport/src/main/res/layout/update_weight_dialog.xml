@@ -9,31 +9,38 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/light_broun"
+        android:padding="16dp"
+        android:background="@color/white"
         android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
             <TextView
-                android:id="@+id/textViewSerchActivityLevelLabel"
+                android:id="@+id/dialogTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="5dip"
                 android:gravity="center_vertical"
                 android:text="@string/update_weight_label"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color"
                 android:textSize="14dip"
                 android:textStyle="bold" />
-        </LinearLayout>
 
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_group_item_dragging_state"
+            />
         <LinearLayout
             android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content" >
 
             <LinearLayout
-                android:id="@+id/linearLayoutActivityLabel"
                 android:layout_width="0px"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -45,7 +52,6 @@
                     android:orientation="vertical" >
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutWeight"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal" >
@@ -65,36 +71,24 @@
                                 android:layout_marginLeft="5dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/weight"
-                                android:textColor="@color/white" />
+                                style="@style/CommonLabel"
+                                android:textColor="@color/text_color" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.8"
-                            android:gravity="right"
+                            android:layout_weight="1.3"
+                            android:gravity="center"
                             android:orientation="horizontal" >
 
-                            <Spinner
-                                android:id="@+id/search_weight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#ABABAB" />
-
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_alignParentLeft="true"
-                                android:gravity="bottom"
-                                android:text=","
-                                android:textColor="@color/white" />
-
-                            <Spinner
-                                android:id="@+id/search_weight_decimal"
+                                android:id="@+id/weight"
+                                style="@style/CommonLabelEditable"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dip"
-                                android:textColor="#ABABAB" />
+                                android:text=""
+                                android:textSize="14dp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -102,11 +96,11 @@
                         android:id="@+id/linearLayoutChest"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:orientation="horizontal"
                         android:visibility="gone" >
 
                         <LinearLayout
-                            android:id="@+id/linearLayoutMode"
                             android:layout_width="0px"
                             android:layout_height="fill_parent"
                             android:layout_weight="1"
@@ -119,39 +113,24 @@
                                 android:layout_marginLeft="5dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/volume_chest"
-                                android:textColor="@color/white" />
+                                style="@style/CommonLabel"
+                                android:textColor="@color/text_color" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/linearLayoutCaloricity"
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.8"
-                            android:gravity="right"
+                            android:layout_weight="1.3"
+                            android:gravity="center"
                             android:orientation="horizontal" >
 
-                            <Spinner
-                                android:id="@+id/SpinnerChest"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dip"
-                                android:textColor="@color/text_color" />
-
                             <TextView
-                                android:id="@+id/textViewSex"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_alignParentLeft="true"
-                                android:gravity="bottom"
-                                android:text=","
-                                android:textColor="@color/white" />
-
-                            <Spinner
-                                android:id="@+id/SpinnerChestDecimal"
+                                android:id="@+id/chest"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dip"
-                                android:textColor="@color/text_color" />
+                                android:text=""
+                                style="@style/CommonLabelEditable"
+                                android:textSize="14dp"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -160,6 +139,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                         android:visibility="gone" >
 
                         <LinearLayout
@@ -175,38 +155,23 @@
                                 android:layout_marginLeft="5dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/volume_neck"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/text_color" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.8"
-                            android:gravity="right"
+                            android:layout_weight="1.3"
+                            android:gravity="center"
                             android:orientation="horizontal" >
 
-                            <Spinner
-                                android:id="@+id/SpinnerNeck"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dip"
-                                android:textColor="@color/text_color" />
-
                             <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_alignParentLeft="true"
-                                android:gravity="bottom"
-                                android:text=","
-                                android:textColor="@color/white" />
-
-                            <Spinner
-                                android:id="@+id/SpinnerNeckDecimal"
+                                android:id="@+id/neck"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dip"
-                                android:textColor="@color/text_color" />
+                                android:text=""
+                                style="@style/CommonLabelEditable"
+                                android:textSize="14dp"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -215,6 +180,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                         android:visibility="gone" >
 
                         <LinearLayout
@@ -224,44 +190,29 @@
                             android:orientation="horizontal" >
 
                             <TextView
-
+                                style="@style/CommonLabel"
                                 android:layout_width="wrap_content"
                                 android:layout_height="fill_parent"
                                 android:layout_marginLeft="5dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/volume_biceps"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/text_color" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.8"
-                            android:gravity="right"
+                            android:layout_weight="1.3"
+                            android:gravity="center"
                             android:orientation="horizontal" >
 
-                            <Spinner
-                                android:id="@+id/SpinnerBiceps"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dip"
-                                android:textColor="@color/text_color" />
-
                             <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_alignParentLeft="true"
-                                android:gravity="bottom"
-                                android:text=","
-                                android:textColor="@color/white" />
-
-                            <Spinner
-                                android:id="@+id/SpinnerBicepsDecimal"
+                                android:id="@+id/biceps"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dip"
-                                android:textColor="@color/text_color" />
+                                android:text=""
+                                style="@style/CommonLabelEditable"
+                                android:textSize="14dp"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -270,6 +221,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                         android:visibility="gone" >
 
                         <LinearLayout
@@ -283,38 +235,25 @@
                                 android:layout_height="fill_parent"
                                 android:layout_marginLeft="5dp"
                                 android:gravity="center_vertical"
+                                style="@style/CommonLabel"
                                 android:text="@string/volume_forearm"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/text_color" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.8"
-                            android:gravity="right"
+                            android:layout_weight="1.3"
+                            android:gravity="center"
                             android:orientation="horizontal" >
 
-                            <Spinner
-                                android:id="@+id/SpinnerForearm"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dip"
-                                android:textColor="@color/text_color" />
-
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_alignParentLeft="true"
-                                android:gravity="bottom"
-                                android:text=","
-                                android:textColor="@color/white" />
-
-                            <Spinner
-                                android:id="@+id/SpinnerForearmDecimal"
+                                android:id="@+id/forearm"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dip"
-                                android:textColor="@color/text_color" />
+                                android:text=""
+                                style="@style/CommonLabelEditable"
+                                android:textSize="14dp"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -323,6 +262,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                         android:visibility="gone" >
 
                         <LinearLayout
@@ -332,44 +272,29 @@
                             android:orientation="horizontal" >
 
                             <TextView
-
+                                style="@style/CommonLabel"
                                 android:layout_width="wrap_content"
                                 android:layout_height="fill_parent"
                                 android:layout_marginLeft="5dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/volume_waist"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/text_color" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.8"
-                            android:gravity="right"
+                            android:layout_weight="1.3"
+                            android:gravity="center"
                             android:orientation="horizontal" >
 
-                            <Spinner
-                                android:id="@+id/SpinnerWaist"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dip"
-                                android:textColor="@color/text_color" />
-
                             <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_alignParentLeft="true"
-                                android:gravity="bottom"
-                                android:text=","
-                                android:textColor="@color/white" />
-
-                            <Spinner
-                                android:id="@+id/SpinnerWaistDecimal"
+                                android:id="@+id/waist"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dip"
-                                android:textColor="@color/text_color" />
+                                android:text=""
+                                style="@style/CommonLabelEditable"
+                                android:textSize="14dp"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -378,6 +303,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                         android:visibility="gone" >
 
                         <LinearLayout
@@ -392,38 +318,24 @@
                                 android:layout_marginLeft="5dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/volume_pelvis"
-                                android:textColor="@color/white" />
+                                style="@style/CommonLabel"
+                                android:textColor="@color/text_color" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.8"
-                            android:gravity="right"
+                            android:layout_weight="1.3"
+                            android:gravity="center"
                             android:orientation="horizontal" >
 
-                            <Spinner
-                                android:id="@+id/SpinnerPelvis"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dip"
-                                android:textColor="@color/text_color" />
-
                             <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_alignParentLeft="true"
-                                android:gravity="bottom"
-                                android:text=","
-                                android:textColor="@color/white" />
-
-                            <Spinner
-                                android:id="@+id/SpinnerPelvisDecimal"
+                                android:id="@+id/pelvis"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dip"
-                                android:textColor="@color/text_color" />
+                                android:text=""
+                                style="@style/CommonLabelEditable"
+                                android:textSize="14dp"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -432,6 +344,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                         android:visibility="gone" >
 
                         <LinearLayout
@@ -441,43 +354,29 @@
                             android:orientation="horizontal" >
 
                             <TextView
-
+                                style="@style/CommonLabel"
                                 android:layout_width="wrap_content"
                                 android:layout_height="fill_parent"
                                 android:layout_marginLeft="5dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/volume_hip"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/text_color" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.8"
-                            android:gravity="right"
+                            android:layout_weight="1.3"
+                            android:gravity="center"
                             android:orientation="horizontal" >
 
-                            <Spinner
-                                android:id="@+id/SpinnerHip"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dip"
-                                android:textColor="@color/text_color" />
-
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_alignParentLeft="true"
-                                android:gravity="bottom"
-                                android:text=","
-                                android:textColor="@color/white" />
-
-                            <Spinner
-                                android:id="@+id/SpinnerHipDecimal"
+                                android:id="@+id/hip"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dip"
-                                android:textColor="@color/text_color" />
+                                android:text=""
+                                style="@style/CommonLabelEditable"
+                                android:textSize="14dp"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -486,6 +385,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                         android:visibility="gone" >
 
                         <LinearLayout
@@ -501,37 +401,24 @@
                                 android:layout_marginLeft="5dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/volume_shin"
-                                android:textColor="@color/white" />
+                                style="@style/CommonLabel"
+                                android:textColor="@color/text_color" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.8"
-                            android:gravity="right"
+                            android:layout_weight="1.3"
+                            android:gravity="center"
                             android:orientation="horizontal" >
 
-                            <Spinner
-                                android:id="@+id/SpinnerShin"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dip"
-                                android:textColor="@color/text_color" />
-
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_alignParentLeft="true"
-                                android:gravity="bottom"
-                                android:text=","
-                                android:textColor="@color/white" />
-
-                            <Spinner
-                                android:id="@+id/SpinnerShinDecimal"
+                                android:id="@+id/shin"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="2dip"
-                                android:textColor="@color/text_color" />
+                                android:text=""
+                                style="@style/CommonLabelEditable"
+                                android:textSize="14dp"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -549,10 +436,11 @@
                 android:layout_height="fill_parent"
                 android:layout_alignParentLeft="true"
                 android:gravity="bottom"
+                style="@style/CommonLabel"
                 android:background="@drawable/border_button"
                 android:padding="3dp"
                 android:text="@string/add_body_param"
-                android:textColor="@color/white" />
+                android:textColor="@color/text_color" />
 
         </LinearLayout>
 
@@ -588,7 +476,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutSpiner"
                     android:layout_width="0px"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
@@ -596,11 +483,11 @@
                     android:orientation="vertical" >
 
                     <Button
-                        android:id="@+id/buttonYes"
-                        android:layout_width="70dip"
-                        android:layout_height="70dip"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@drawable/ok_button_xml"
+                        android:id="@+id/dialogButtonOk"
+                        android:layout_width="50dip"
+                        android:layout_height="50dip"
+                        android:layout_gravity="right"
+                        android:background="@drawable/ok_button_blue_xml"
                         android:clickable="true"
                         android:gravity="right"
                         android:maxLines="1"

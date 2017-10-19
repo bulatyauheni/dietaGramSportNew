@@ -874,6 +874,10 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
         mAnimator.animateY(durationMillis, easing);
     }
 
+    public void animateY(int durationMillis, Easing.EasingOption easing,AnimatorUpdateListener listener) {
+        mAnimator.animateY(durationMillis, easing, listener);
+    }
+
     /**
      * ################ ################ ################ ################
      * ANIMATIONS ONLY WORK FOR API LEVEL 11 (Android 3.0.x) AND HIGHER.

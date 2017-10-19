@@ -91,7 +91,6 @@ android:background="@color/contact_color"
                     android:textSize="11dip"
                     android:textStyle="bold" />
 				<LinearLayout
-                    android:id="@+id/relativeLayout9"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"

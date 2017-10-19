@@ -1,21 +1,14 @@
 package bulat.diet.helper_sport.utils;
 
 
-import java.util.Date;
 import java.util.Random;
 
-import android.R.bool;
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
-import android.text.format.DateUtils;
 
 import bulat.diet.helper_sport.activity.Info;
-import bulat.diet.helper_sport.activity.PaymentsListActivity;
-import bulat.diet.helper_sport.activity.StartActivity;
-import bulat.diet.helper_sport.activity.VolumeInfo;
 
 public class SaveUtils {
 	
@@ -61,38 +54,38 @@ public class SaveUtils {
 	private static final String LASTVISITTIME = "LASTVISITTIME";
 	private static final String LANG = "LANG";
 	private static final String EXPFILENAME = "EXPFILENAME";
-	private static final String RESET = "RESET";
+	public static final String RESET = "RESET";
 	public static final String LIMIT = "LIMIT";
-	private static final String NOTIF = "NOTIF";
-	private static final String NOTIF_WATER = "NOTIF_WATER";
-	private static final String CHESTDEC = "CHESTDEC";
-	private static final String CHEST = "CHEST";
-	private static final String SHINDEC = "SHINDEC";
-	private static final String SHIN = "SHIN";
-	private static final String HIPDEC = "HIPDEC";
-	private static final String HIP = "HIP";
-	private static final String WAISTDEC = "WAISTDEC";
-	private static final String WAIST = "WAIST";
-	private static final String FOREARMDEC = "FOREARMDEC";
-	private static final String FOREARM = "FOREARM";
-	private static final String BICEPSDEC = "BICEPSDEC";
-	private static final String BICEPS = "BICEPS";
-	private static final String NECKDEC = "NECKDEC";
-	private static final String NECK = "NECK";
-	private static final String PELVISDEC = "PELVISDEC";
-	private static final String PELVIS = "PELVIS";
-	private static final String EXPMODEVALUE = "EXPMODEVALUE";
-	private static final String CHESTENBL = "CHESTENBL";
-	private static final String SHINENBL = "SHINENBL";
-	private static final String NECENBL = "NECENBL";
-	private static final String WAISTENBL = "WAISTENBL";
-	private static final String FORENBL = "FORENBL";
-	private static final String BITKAENBL = "BITKAENBL";
-	private static final String HIPENBL = "HIPENBL";
-	private static final String PELVISENBL = "PELVISENBL";
-	private static final String PAYKEY = "PAYKEY";
-	private static final String PAYDDAYS = "PAYDDAYS";
-	private static final String FREEDAYSCOUNT = "FREEDAYSCOUNT";
+	public static final String NOTIF = "NOTIF";
+	public static final String NOTIF_WATER = "NOTIF_WATER";
+	public static final String CHESTDEC = "CHESTDEC";
+	public static final String CHEST = "CHEST";
+	public static final String SHINDEC = "SHINDEC";
+	public static final String SHIN = "SHIN";
+	public static final String HIPDEC = "HIPDEC";
+	public static final String HIP = "HIP";
+	public static final String WAISTDEC = "WAISTDEC";
+	public static final String WAIST = "WAIST";
+	public static final String FOREARMDEC = "FOREARMDEC";
+	public static final String FOREARM = "FOREARM";
+	public static final String BICEPSDEC = "BICEPSDEC";
+	public static final String BICEPS = "BICEPS";
+	public static final String NECKDEC = "NECKDEC";
+	public static final String NECK = "NECK";
+	public static final String PELVISDEC = "PELVISDEC";
+	public static final String PELVIS = "PELVIS";
+	public static final String EXPMODEVALUE = "EXPMODEVALUE";
+	public static final String CHESTENBL = "CHESTENBL";
+	public static final String SHINENBL = "SHINENBL";
+	public static final String NECENBL = "NECENBL";
+	public static final String WAISTENBL = "WAISTENBL";
+	public static final String FORENBL = "FORENBL";
+	public static final String BITKAENBL = "BITKAENBL";
+	public static final String HIPENBL = "HIPENBL";
+	public static final String PELVISENBL = "PELVISENBL";
+	public static final String PAYKEY = "PAYKEY";
+	public static final String PAYDDAYS = "PAYDDAYS";
+	public static final String FREEDAYSCOUNT = "FREEDAYSCOUNT";
 	private static final String USERADVICID = "USERADVICID";
 	private static final String LASTADVUPDATETIME = "LASTADVUPDATETIME";
 	private static final String ENDPDATE = "ENDPDATE";
@@ -116,9 +109,11 @@ public class SaveUtils {
 	private static final String TRIAL_NOTIFIED = "TRIAL_NOTIFIED";
 	private static final String SKU_DETAILS = "SKU_DETAILS";
 	private static final String SITY = "SITY";
+	private static final String COIN_REFRESH_DATE = "COIN_REFRESH_DATE";
+    private static final String COINS_COUNT = "COINS_COUNT";
 
 
-	public static void saveScrollPosition(int pos, Context context){
+    public static void saveScrollPosition(int pos, Context context){
 		SharedPreferences preferences = PreferenceManager
 		.getDefaultSharedPreferences(context);
 		Editor editor = preferences.edit();
@@ -368,7 +363,7 @@ public class SaveUtils {
 		SharedPreferences preferences = PreferenceManager
 		.getDefaultSharedPreferences(context);
 		
-		return preferences.getInt(ACTIVITY, 0);
+		return preferences.getInt(ACTIVITY, 1);
 	}
 
 	public static void saveMode(int text, Context context){
@@ -1532,5 +1527,38 @@ public class SaveUtils {
 		Editor editor = preferences.edit();
 		editor.putString(SITY, sity);
 		editor.commit();
+	}
+
+    public static long getCoinRefreshDate(Context context) {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		return preferences.getLong(COIN_REFRESH_DATE, 0l);
+    }
+
+    public static void setCoinRefreshDate(Context context, long date) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Editor editor = preferences.edit();
+        editor.putLong(COIN_REFRESH_DATE, date);
+        editor.commit();
+    }
+
+    public static int getCoinsCount(Context context) {
+        SharedPreferences preferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        return preferences.getInt(COINS_COUNT, 0);
+    }
+
+    public static void setCoinsCount(Context context, int coins) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Editor editor = preferences.edit();
+        editor.putInt(COINS_COUNT, coins);
+        editor.commit();
+    }
+
+	public static float getRealValue(Context context, String key1, String key2, int minValue) {
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(context);
+
+		return (float)preferences.getInt(key1, minValue) + (float)preferences.getInt(key2, 5)/10 + minValue;
 	}
 }

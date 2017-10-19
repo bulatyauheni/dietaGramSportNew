@@ -12,15 +12,15 @@
         android:background="@color/title_color">
 
         <LinearLayout
-            android:id="@+id/linearLayoutHeader"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/relativeLayout4"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@color/light_green" >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -28,8 +28,6 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/buttonBack"
-
-                    android:background="@drawable/header_bg"
                     android:gravity="center_vertical">
 
                     <Button
@@ -69,6 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_centerVertical="true"
+
                     android:layout_weight="0.8"
                     android:gravity="right|center_vertical">
 
@@ -206,7 +205,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/imageLayout1"
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

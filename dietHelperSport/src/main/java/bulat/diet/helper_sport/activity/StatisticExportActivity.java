@@ -1,40 +1,20 @@
 package bulat.diet.helper_sport.activity;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.regex.Pattern;
-
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.app.backup.BackupManager;
 import android.content.Context;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.text.format.DateUtils;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import au.com.bytecode.opencsv.CSVWriter;
+
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.db.DatabaseHelper;
-import bulat.diet.helper_sport.db.TodayDishHelper;
-import bulat.diet.helper_sport.utils.CloudStorage;
 import bulat.diet.helper_sport.utils.SaveUtils;
 
 public class StatisticExportActivity extends Activity {

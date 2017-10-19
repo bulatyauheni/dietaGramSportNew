@@ -13,7 +13,6 @@
         android:background="@color/light_green">
 
         <LinearLayout
-            android:id="@+id/relativeLayoutHeader2"
             android:layout_width="0px"
             android:layout_height="fill_parent"
             android:layout_weight="3"
@@ -32,7 +31,6 @@
                 android:textSize="12dip"></Button>
 
             <LinearLayout
-                android:id="@+id/relativeLayout4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -60,7 +58,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/relativeLayout45"
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -97,24 +94,20 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/linearLayoutInfo"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutTime"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutPartOfDay"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <RelativeLayout
-                            android:id="@+id/relativeLayout3"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             >
@@ -157,7 +150,6 @@
 
 
                         <LinearLayout
-                            android:id="@+id/linearLayoutPartOfDay4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
@@ -166,7 +158,6 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:id="@+id/textViewPartOfDayLabel"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
@@ -189,14 +180,12 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutPartOfDay3"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/bg_group_item_dragging_active_state"
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:id="@+id/linearLayoutPartOfDay2"
                             android:layout_width="0px"
                             android:layout_height="fill_parent"
                             android:layout_marginRight="10dp"
@@ -205,7 +194,6 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textViewPartOfDayLabel2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
@@ -232,14 +220,12 @@
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/linearLayoutCaloricity"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/light_green"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textViewDishCaloricityTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/textViewLoading"
@@ -263,7 +249,6 @@
                         android:textSize="19dip" />
 
                     <TextView
-                        android:id="@+id/textCaloricityValueLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/textViewLoading"
@@ -275,14 +260,12 @@
                         android:textSize="17dip" />
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/linearLayoutCaloricity1"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/light_green"
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutCaloricity2"
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -291,7 +274,6 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textViewDishCaloricityTitle2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@+id/textViewLoading"
@@ -317,7 +299,6 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutCaloricity5"
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -326,7 +307,6 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textViewDishCaloricityTitle21"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@+id/textViewLoading"
@@ -351,7 +331,6 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutCaloricity21"
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -360,7 +339,6 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textViewDishCaloricityTitle22"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@+id/textViewLoading"

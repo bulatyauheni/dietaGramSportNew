@@ -1,16 +1,9 @@
 package bulat.diet.helper_sport.activity;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.TreeSet;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,21 +13,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.adapter.DaysAdapter;
 import bulat.diet.helper_sport.db.TodayDishHelper;
-import bulat.diet.helper_sport.item.Day;
 import bulat.diet.helper_sport.item.DishType;
-import bulat.diet.helper_sport.item.TodayDish;
 import bulat.diet.helper_sport.utils.SaveUtils;
-import bulat.diet.helper_sport.utils.ServerUpdater;
 
 public class CalendarActivity extends BaseActivity {
 	protected static final int DIALOG_CHART = 0;

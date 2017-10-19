@@ -33,7 +33,6 @@ import bulat.diet.helper_sport.db.TemplateDishHelper;
 import bulat.diet.helper_sport.item.Dish;
 import bulat.diet.helper_sport.item.NotificationDish;
 import bulat.diet.helper_sport.utils.Constants;
-import bulat.diet.helper_sport.utils.SocialUpdater;
 
 public class TemplateDishAdapter extends CursorAdapter {
     // We have two list item view types

@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="facebook_app_id">1327703357302523</string>
-    <string name="lkey">75v4pULHaT4yiBjRhBq0K5g5cBMzAFL33fyQAd3Up92mR97EJcLmXIX8odEfmSCER9YwNy8FhuVusxg3tkpvRFMEgaRDITzjDA8k3XoumEt3Kwzx1Vi0hWP7bT4znBgwIDAQAB</string>
     <string name="locale">ru</string>
-    <string name="localebg">bg</string>
-    <string name="localepl">pl</string>
-    <string name="localeen">en</string>
-    <string name="localeby">by</string>
-    <string name="localees">es</string>
     <string name="localede">de</string>
     <string name="app_name" translatable="false">DietaGram</string>
     <string name="tab_dish">Сегодня</string>
@@ -17,7 +11,6 @@
     <string name="tab_setting">Инфо</string>
     <string name="tab_mode">Параметры</string>
     <string name="tab_statistic">Статистика</string>
-    <string name="tab_about">От автора</string>
     <string name="add_today_dish">Добавить блюдо</string>
     <string name="edit_today_dish">Редактировать блюдо</string>
     <string name="add_dish">Добавить блюдо</string>
@@ -42,13 +35,9 @@
     <string name="limit">Лимит: </string>
     <string name="dish_name">Наименование</string>
     <string name="name">Название:</string>
-    <string name="indicator">Эффект</string>
     <string name="portion_size">Вес порции (в граммах):</string>
     <string name="fitnes_time">Время занятия (в минутах):</string>
-    <string name="kcal_day">ккал/день</string>
     <string name="caloricity">Калорийность (ккал/100г):</string>
-    <string name="date">Дата</string>
-    <string name="information">Информация</string>
     <string name="gram">г</string>
     <string name="gram_full">грамм</string>
     <string name="santimetr">см</string>
@@ -59,9 +48,7 @@
     <string name="age_colon">Возраст:</string>
     <string name="sex">Пол</string>
     <string name="weight">Вес(кг)</string>
-    <string name="weight_fitnes">Ваш вес(кг)</string>
     <string name="high">Рост(см)</string>
-    <string name="weight_colon">Ваш вес(кг): </string>
     <string name="high_colon">Рост(см): </string>
     <string name="activity">Уровень активности</string>
     <string name="amoutnt_of_calory">Количество калорий</string>
@@ -70,10 +57,7 @@
     <string name="dialog_ok">OK</string>
     <string name="remove_dialog">Вы уверены?</string>
     <string name="save_prove">Параметры успешно сохранены</string>
-    <string name="welcome">Вас приветсвует Счётчик Калорий\t\nЭто приложение позволяет рассчитать ваше оптимальное дневное потребление калорий и контролировать ваш дневной рацион питания.\t\n Пожалуйста, задайте Ваши параметры.</string>
-    <string name="tip">Пожайлуйста, задайте сначала Ваши параметры и нажмите на кнопку OK внизу старницы.</string>
     <string name="culculated_parameters">Введите ваши значения</string>
-    <string name="qutstion">Чего Вам не хватает в приложении?</string>
 
     <!-- labels -->
     <string name="Meat">Мясо, рыба, яйца, бобовые</string>
@@ -84,7 +68,6 @@
 
 
     <string name="statistics_parameters">Статистические данные</string>
-    <string name="target_settings">Выбор режима:</string>
     <string name="mode">Режим питания:</string>
     <string name="underweight">Вес ниже нормы</string>
     <string name="normal_weight">Вес в норме</string>
@@ -114,19 +97,12 @@
 
     <!-- Social -->
     <string name="tab_social_header">Сообщество</string>
-    <string name="tab_social_calendar_header">История</string>
     <string name="search_parameters_title">Параметры поиска</string>
     <string name="any">любой</string>
     <string name="any_midle">любое</string>
     <string name="user_weight">Вес:</string>
     <string name="loading_social">Идёт загрузка...</string>
-    <string name="time">Время:</string>
     <string name="time_1">Завтрак</string>
-    <string name="time_2">Поздний завтрак</string>
-    <string name="time_3">Обед</string>
-    <string name="time_4">Полдник</string>
-    <string name="time_5">Ужин</string>
-    <string name="time_6">Второй ужин</string>
     <string name="time_active">Дневная активность</string>
     <string name="header_in_label">Получено: </string>
     <string name="header_out_label">Потрачено: </string>
@@ -137,7 +113,6 @@
     <string name="username_dialog_title">Регистрация пользователя</string>
     <string name="username_change_dialog_title">Изменение имени</string>
     <string name="change_weight_dialog_title">Изменение веса</string>
-    <string name="change_weight_label">Здесь Вы можете обновить текущие данные о Вашем весе.</string>
     <string name="update_weight_label">Здесь Вы можете изменть данные о Вашем весе за конкретный день.</string>
 
     <string name="username_dialog_registred">Вы зарегистрированы</string>
@@ -149,10 +124,8 @@
     <string name="conversation">Общение</string>
     <string name="user_history">История пользователя</string>
     <string name="user_weight_history">Посмотреть график изменения веса</string>
-    <string name="user_new_messages_label">Новых сообщений:</string>
     <string name="users_notfound">Пользователей с такими параметрами не найдено, нажмите здесь чтобы изменить параметры поиска</string>
     <string name="statistic_food">Пищевой баланс</string>
-    <string name="statistic_other">Другое</string>
     <string name="statistic_weight">Статистика изменений</string>
     <string name="statistic_FCP">Баланс Б.Ж.У.</string>
     <string name="statistic_weight_empty">Параметр ещё не изменялся</string>
@@ -201,7 +174,6 @@
     <string name="type_name">Введите имя категории</string>
 
     <string name="reminder">Вы давно не заполняли счётчик калорий</string>
-    <string name="reminder_title">Напоминание</string>
     <string name="newmessage">Новое сообщение в Счётчике Калорий!</string>
     <string name="newmessage_title">Новое сообщение</string>
     <string name="timeHHMM">Время(ч:м):</string>
@@ -223,8 +195,6 @@
     <string name="statistic_export_save">Сохранить историю в файл на телефоне и в облаке?</string>
     <string name="statistic_export">Export</string>
     <string name="statistic_import">Import</string>
-    <string name="statistic_export_base">Export продуктов</string>
-    <string name="statistic_import_bases">Import продуктов</string>
     <string name="saved_history">История сохранена</string>
     <string name="history_download">Текущие данные будут потеряны. Вы согласны загрузить историю?</string>
     <string name="empty_dish_search">Нажмите здесь чтобы добавить продукт...</string>
@@ -263,8 +233,6 @@
     <string name="day_time">Приём пищи:</string>
     <string name="set_notiftime_toast_on">напоминание включено</string>
 
-    <string name="advlabel">Калькулятор предоставлен сайтом</string>
-    <string name="advlink">www.tvoytrener.com</string>
     <string name="search_in_all_sport">Поиск активности ...</string>
     <string name="additional_weight">Вес(кг):</string>
     <string name="count">Количество повторений:</string>
@@ -291,8 +259,8 @@
     <string name="payment">Оплата</string>
     <string name="paymenterror">Проблема с оплатой</string>
     <string name="paymentm">Абонемент на месяц</string>
+    <string name="paymentCripto">Другие способы оплаты</string>
     <string name="paymentspec">Абонемент по акции</string>
-    <string name="payment3m">Абонемент на 3 месяца</string>
     <string name="paymenty">Абонемент на год</string>
     <string name="paymenthy">Абонемент на полгода</string>
     <string name="paymentvipy">VIP Абонемент</string>
@@ -308,7 +276,6 @@
 
     <string name="user_email_label">Введите ваш email (для получения рациона от диетолога)</string>
     <string name="user_abonement_label">Для получения абонемента по акции свяжитесь с разработчиком bulat.yauheni@gmail.com . Введите полученный от разработчика код ниже:</string>
-    <string name="user_email_hint">Ваш email</string>
     <string name="user_email_title">Получение рациона</string>
     <string name="user_abonement_title">Получение абонемента</string>
     <string name="user_ration_empty">Нет новых рационов завязанных на ваш email. Свяжитесь с автором приложения для исправления ситуации.</string>
@@ -334,13 +301,13 @@
     <string name="not_shure">Не особо</string>
     <string name="yes_shure">Да!</string>
 
-    <string name="rating_plaese">Как насчет оценить его в Google Play?</string>
+    <string name="rating_plaese">Оцените приложение в Google Play и получите бесплатный абонемент на неделю. </string>
     <string name="agree">Да, конечно</string>
     <string name="disagree">Не сейчас</string>
 
     <string name="complain_plaese">Не могли бы вы рассказать о том, что вам не нравится?</string>
     <string name="complain_for_payment">Если у вас не получается оплатить абонемент, либо у вас есть другой вопрос - просто напишите мне на почту, вместе мы найдем подходящее решение.</string>
-    <string name="vk_recomend">Рекомендую! Калькулятор Калорий - простая и эффективная програма.</string>
+    <string name="cripto_for_payment">Вы можете купить любой абонемнет co скидкой в 10% через: \n \n WebMoney \n BitCoin \n Epherium \n Yandex.Money  \n\nУточнить детали можно по почте.</string>
     <string name="vk_toast">Запись добавлена на вашей стене ВКонтакте</string>
     <string name="fb_toast">Запись добавлена на вашей стене в Facebook</string>
     <string name="get_free_time">Продлить бесплатно</string>
@@ -384,5 +351,6 @@
     <string name="do_you_really_want_to_exit">Вы хотите выйти из приложения?</string>
     <string name="add_to_favorites">Добавить продукт в избранные?</string>
     <string name="remove_from_favorites">Удалить из избранных?</string>
-
+    <string name="years">лет</string>
+    <string name="bmi">BMI:</string>
 </resources>

@@ -1,26 +1,14 @@
 package bulat.diet.helper_sport.db;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.TreeMap;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.text.format.DateUtils;
-import bulat.diet.helper_sport.db.DishProvider.DatabaseHelper;
-import bulat.diet.helper_sport.item.Day;
+
 import bulat.diet.helper_sport.item.NotificationDish;
 import bulat.diet.helper_sport.item.TodayDish;
-import bulat.diet.helper_sport.utils.SaveUtils;
 
 public class NotificationDishHelper {
 	

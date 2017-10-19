@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:switch="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutCastomLimitBSU"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:labelFor="@id/editTextProtein"
+                        android:text="@string/widjet_prot"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/textViewProtein"
+
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dip"
+                        android:drawableRight="@drawable/percent"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:gravity="right"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="0"
+                        android:textColor="@color/text_color" />
+                </LinearLayout>
+
+                <bulat.diet.helper_sport.component.PrefixedEditText
+                    android:id="@+id/editTextProtein"
+                    style="?android:attr/textAppearanceLargeInverse"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="0"
+                    android:textColor="@color/text_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:labelFor="@id/editTextFat"
+                        android:text="@string/widjet_fat"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/textViewFat"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dip"
+                        android:drawableRight="@drawable/percent"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:gravity="right"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="0"
+                        android:textColor="@color/text_color" />
+                </LinearLayout>
+
+                <bulat.diet.helper_sport.component.PrefixedEditText
+                    android:id="@+id/editTextFat"
+                    style="?android:attr/textAppearanceLargeInverse"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="0"
+                    android:textColor="@color/text_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:labelFor="@id/editTextCarbon"
+                        android:text="@string/widjet_carb"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/textViewCarbon"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dip"
+                        android:drawableRight="@drawable/percent"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:gravity="right"
+                        android:inputType="numberDecimal"
+                        android:maxLength="5"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="0"
+                        android:textColor="@color/text_color" />
+                </LinearLayout>
+
+                <bulat.diet.helper_sport.component.PrefixedEditText
+                    android:id="@+id/editTextCarbon"
+                    style="?android:attr/textAppearanceLargeInverse"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="0"
+                    android:textColor="@color/text_color" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <io.apptik.widget.MultiSlider
+        android:id="@+id/range_slider5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+
+        app:drawThumbsApart="false"
+        app:range1="@drawable/example_scrubber_primary_holo"
+        app:range2="@drawable/example_scrubber_secondary_holo"
+        app:stepsThumbsApart="0"
+        app:thumbNumber="2"
+        app:trackColor="@color/today_green" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutCastomLimit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textViewLoading"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/limit"
+                    android:textColor="@color/text_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:orientation="vertical">
+
+                <bulat.diet.helper_sport.component.PrefixedEditText
+                    android:id="@+id/editTextLimitValue"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dip"
+                    android:maxLength="4"
+                    android:maxLines="1"
+                    android:numeric="integer"
+                    android:textColor="@color/text_color" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -39,23 +39,23 @@ Gehen	5.9	0
 Arbeit als Maurer	5.7	8	
 Disco Tanzen	5.7	8	
 Basketball	5.4	9	
-Spiele mit dem Kind (hohe Intensität)	5.4	8	
+Mit dem Kind spielen(hohe Intensität)	5.4	8	
 Tauchen	5.1	8	
 Wasserskilauf	5.1	8	
 Radfahren (15 km/h)	4.6	0	
-Beete durchgraben	4.6	8	
+Beete umgraben	4.6	8	
 Obsternte	4.6	8	
-Moderne Tanzen	4.6	8	
+Moderne Tänze	4.6	8	
 Tischtennis (einzeln)	4.5	9	
 Spaziergang (mit einer Geschwindigkeit von 5,8 km/h)	4.5	0	
-Rollen	4.4	0	
+Rollschuhen laufen	4.4	0	
 Holzhacken	4.3	8	
 Herausreißen von Altgras	4.3	8	
 mittelintensive Gymnastik	4.3	0	
 Radfahren (Geschwindigkeit 14 km/h)	4.3	0	
 Arbeit als Masseur	4.2	8	
 Spiel mit Kindern mit Gehen und Laufen	4	8	
-Spiele mit dem Kind (normale Aktivität)	4	8	
+Mit dem Kind spielen(normale Aktivität)	4	8	
 Fensterputzen	4	8	
 Gesellschaftstanzen	3.9	8	
 Reinigung von Sanitärtechnik	3.9	8	
@@ -79,10 +79,10 @@ Schwimmen (0.4 km/h)	3	0
 Fechten	3	8	
 Einkaufen	3	8	
 Tischtennis (gepaart)	2.9	9	
-Saugen de Teppiche	2.9	8	
-Hausarbeit	2.9	8	
+Staubsaugen	2.9	8	
+Haushalt erledigen	2.9	8	
 Gitarrenspiel im Stehen	2.9	8	
-Rasenschnitt	2.9	8	
+Rasenmähen	2.9	8	
 Spaziergang mit dem Hund	2.9	8	
 langsames Tanzen (Walzer.Tango)	2.9	8	
 Kind baden	2.7	8	
@@ -102,15 +102,15 @@ Lebensmitteleinkauf	2.1	8
 Bügeln (im Stehen)	2.1	8	
 Einlegen der Haare	2	8	
 Motorrad- oder Skooterfahren	2	8	
-Spiel mit Kindern im Sitzen	2	8	
-Nährung und Bekleidung der Kinder	2	8	
+Mit Kindern im Sitzen spielen	2	8	
+Füttern und Anziehen das Kind	2	8	
 Geschirrwäsche	2	8	
 Text eintasten im Schnelltempo	2	8	
 Eintippen	2	8	
 Gärtnerarbeit	1.9	8	
 Bodenreinigung	1.9	8	
 Bett machen	1.9	8	
-Strecken	1.8	8	
+Dehnübungen	1.8	8	
 Stricken	1.7	8	
 Anziehen und Ausziehen. Anprobe	1.7	8	
 Singen	1.7	8	
@@ -172,8 +172,8 @@ leichte Step-Aerobic	7.38	0
 Bogenschießen	3.72	8	
 Trainingsgeräte nach Art von “Reiter”	5.274	8	
 Krafttraining	3.798	8	
-Ausdehnung (Hatha-Yoga)	4.2	8	
-Ausziehen	1.8	8	
+Dehnübungen (Hatha-Yoga)	4.2	8	
+Muskeldehnung	1.8	8	
 Rhythmische Gymnastik (leicht)	4.74	0	
 Rhythmische Gymnastik (schwer)	8.454	0	
 tiefe Kniebeugen (beliebig)	0.75	0.8	1
@@ -183,13 +183,13 @@ Ausfall vorwärts (Schere)	0.75	0.5	1
 Beinbeugen am Fitnessgerät	0	0.5	1
 Beinstrecken am Fitnessgerät im Sitzen	0	0.5	1
 Auftreten auf der Bank	0.75	0.5	1
-Ausfall seitens (Rollen)	0.75	0.6	1
+Ausfall seitwärts (Rollen)	0.75	0.6	1
 Grätschen am Fitnessgerät	0	0.6	1
 Beinezusammenführen am Fitnessgerät	0	0.6	1
 Hackenschmidt-Kniebeugen am Fitnessgerät	0.4	0.4	1
-Stellung auf die Zehenspitzen im Stehen (beliebig)	1	0.1	1
-Stellung auf die Zehenspitzen im Sitzen (beliebig)	0	0.1	1
-Kniebeugen auf einem Bein	0.75	0.7	1
+Zehenspitzenstellung im Stehen (beliebig)	1	0.1	1
+Zehenspitzenstellung im Sitzen (beliebig)	0	0.1	1
+Einbeinige Kniebeugung	0.75	0.7	1
 Hüftenstrecken am Fitnessgerät	0	0.5	1
 Hüftenstrecken liegend auf dem Boden	0.2	0.5	1
 Beckenheben	0.4	0.3	1
@@ -205,27 +205,27 @@ Klimmzug mit engem und weitem Griff	1	0.6	2
 weite Klimmzüge	1	0.4	2
 Überstrecken	0.6	0.7	2
 Überstrecken am Fitnessgerät	1	0.7	2
-Vertical-Zug mit engem und weitem Griff	0	0.6	2
-Vertical-Zug mit weitem Griff	0	0.4	2
-Überzüge liegend	0	0.7	2
+Latzug mit engem und mittlerem Griff	0	0.6	2
+Latzug mit weitem Griff	0	0.4	2
+Überzüge(Pull-Over) liegend	0	0.7	2
 Überzüge am Fitnessgerät	0	0.6	2
-Shrugs im Stehen	0	0.1	2
-Langhantel im Beugen ziehen	0.2	0.4	2
-T-Hantelgriff im Liegen ziehen	0	0.4	2
-T-Hantelgriff im Beugen ziehen	0.2	0.4	2
+Shrugs(Schulterheben) im Stehen	0	0.1	2
+Langhantelrudern (vorgebeugt)	0.2	0.4	2
+T-Hantel im Liegen ziehen	0	0.4	2
+T-Hantel im Beugen rudern	0.2	0.4	2
 Beugen/Streckenvon Hals im Liegen	0.05 	0.15	2
-der Anstieg der direkten Beine (beliebig)	0.4	1	3
-der Aufstieg der angewinkelten Beine (beliebig)	0.4	0.5	3
+gestreckte Beine heben (beliebig)	0.4	1	3
+Anheben der angewinkelten Beine (beliebig)	0.4	0.5	3
 Körperdrehungen (Totalamplitude)	0.6 	0.6	3
 Körperdrehungen (nicht volle Amplitude)	0.6 	0.3	3
 Körperdrehungen vom oberen Teil	0	0.3	3
 Körperdrehungen am Fitnessgerät	0	0.3	3
 Seitenbeugungen über einen Bock	0.5	0.3	3
-Drehung des Körpers mit dem Gymnastikstab	0.1	0.2	3
+Rumpfdrehungen mit dem Gymnastikstab	0.1	0.2	3
 Seitenbeugungen mit Hanteln im Stehen	0.1	0.3	3
 Zehenspitzen Bauchpresse (beliebig)	0.5	0.7	3
-Drücken horizontal im Liegen (beliebig)	0	0.5	4
-Drücken mit den Winkel im Liegen (beliebig)	0	0.5	4
+Drücken in Rückenlage (beliebig)	0	0.5	4
+Drücken in Rückenlage mit den Winkel (beliebig)	0	0.5	4
 Liegestütz mit weitem Griff	0.6 	0.4	4
 Liegestütze auf der Bank mit weitem Griff	0.4	0.3	4
 Streckung der Arme mit den Hanteln im Liegen	0.1	0.6	4

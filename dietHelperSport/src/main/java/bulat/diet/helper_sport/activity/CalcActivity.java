@@ -122,8 +122,9 @@ public class CalcActivity  extends BaseActivity{
 		activity.add(new DishType( 4, getString(R.string.level_4)));
 		activity.add(new DishType( 5, getString(R.string.level_5)));		
 		ArrayAdapter<DishType>  adapter2 = new ArrayAdapter<DishType>(this, android.R.layout.simple_spinner_item, activity);		
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		activitySpinner.setAdapter(adapter2);	
+		adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+		activitySpinner.setAdapter(adapter2);
+
 		activitySpinner.setOnItemSelectedListener(spinnerListener);
 		activitySpinner.setSelection(SaveUtils.getActivity(this));	
 		

@@ -12,14 +12,12 @@
         android:visibility="gone" />
 
     <LinearLayout
-        android:id="@+id/linearLayoutDishWeight"
         android:layout_width="0px"
         android:layout_height="fill_parent"
         android:layout_weight="4"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/linearLayoutDishCall"
             android:layout_width="0px"
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -54,7 +52,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayoutDishName"
             android:layout_width="0px"
             android:layout_height="fill_parent"
             android:layout_weight="4"

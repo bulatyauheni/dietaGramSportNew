@@ -31,6 +31,7 @@ import com.h6ah4i.android.widget.advrecyclerview.swipeable.RecyclerViewSwipeMana
 import com.h6ah4i.android.widget.advrecyclerview.touchguard.RecyclerViewTouchActionGuardManager;
 import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils;
 
+import android.animation.ValueAnimator;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -51,6 +52,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -58,30 +61,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.adapter.DaysAdapter;
 import bulat.diet.helper_sport.adapter.ExpandableDraggableSwipeableExampleAdapter;
-import bulat.diet.helper_sport.common.data.AbstractExpandableDataProvider;
 import bulat.diet.helper_sport.common.data.ExampleExpandableDataProvider;
-import bulat.diet.helper_sport.common.data.ExampleSectionExpandableDataProvider;
+import bulat.diet.helper_sport.db.CoinManager;
 import bulat.diet.helper_sport.db.DishProvider;
 import bulat.diet.helper_sport.db.NotificationDishHelper;
 import bulat.diet.helper_sport.db.TemplateDishHelper;
 import bulat.diet.helper_sport.db.TodayDishHelper;
-import bulat.diet.helper_sport.item.BodyParams;
 import bulat.diet.helper_sport.item.DishType;
 import bulat.diet.helper_sport.item.NotificationDish;
+import bulat.diet.helper_sport.item.Rotate3dAnimation;
 import bulat.diet.helper_sport.item.TodayDish;
+import bulat.diet.helper_sport.utils.ChangeBodyParamsDialogBuilder;
 import bulat.diet.helper_sport.utils.CustomAlertDialogBuilder;
-import bulat.diet.helper_sport.utils.DialogUtils;
 import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.SaveUtils;
 import bulat.diet.helper_sport.utils.SocialUpdater;
-import bulat.diet.helper_sport.utils.StringUtils;
 
 public class DishActivity extends BaseActivity implements RecyclerViewExpandableItemManager.OnGroupCollapseListener,
         RecyclerViewExpandableItemManager.OnGroupExpandListener, OnChartValueSelectedListener{
@@ -123,152 +123,40 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
     private ImageView mWeightButton;
     private TextView mWeighLabel;
     protected String[] mParties = new String[] { "", "", ""};
-
-    private OnClickListener changeWeightClickListener = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            GATraker.sendEvent(DaysAdapter.WEIGHT_BTN, TODAT_WEIGHT_BUTTON_CLICK);
-            final Dialog dialog = new Dialog(DishActivity.this.getParent());
-            dialog.setContentView(R.layout.update_weight_dialog);
-            dialog.setTitle(R.string.change_weight_dialog_title);
-            LinearLayout l1 = (LinearLayout) dialog.findViewById(R.id.linearLayoutForearm);
-            if (SaveUtils.getForearmEnbl(DishActivity.this)) l1.setVisibility(View.VISIBLE);
-            LinearLayout l2 = (LinearLayout) dialog.findViewById(R.id.linearLayoutWaist);
-            if (SaveUtils.getWaistEnbl(DishActivity.this)) l2.setVisibility(View.VISIBLE);
-            LinearLayout l3 = (LinearLayout) dialog.findViewById(R.id.linearLayoutChest);
-            if (SaveUtils.getChestEnbl(DishActivity.this)) l3.setVisibility(View.VISIBLE);
-            LinearLayout l4 = (LinearLayout) dialog.findViewById(R.id.linearLayoutNeck);
-            if (SaveUtils.getNeckEnbl(DishActivity.this)) l4.setVisibility(View.VISIBLE);
-            LinearLayout l5 = (LinearLayout) dialog.findViewById(R.id.linearLayoutShin);
-            if (SaveUtils.getShinEnbl(DishActivity.this)) l5.setVisibility(View.VISIBLE);
-            LinearLayout l6 = (LinearLayout) dialog.findViewById(R.id.linearLayoutBiceps);
-            if (SaveUtils.getBicepsEnbl(DishActivity.this)) l6.setVisibility(View.VISIBLE);
-            LinearLayout l7 = (LinearLayout) dialog.findViewById(R.id.linearLayoutPelvis);
-            if (SaveUtils.getPelvisEnbl(DishActivity.this)) l7.setVisibility(View.VISIBLE);
-            LinearLayout l8 = (LinearLayout) dialog.findViewById(R.id.linearLayoutHip);
-            if (SaveUtils.getHipEnbl(DishActivity.this)) l8.setVisibility(View.VISIBLE);
-            StringUtils.setSpinnerValues(dialog, DishActivity.this);
-            final Spinner weightSpinner = (Spinner) dialog
-                    .findViewById(R.id.search_weight);
-            final Spinner weightSpinnerDec = (Spinner) dialog
-                    .findViewById(R.id.search_weight_decimal);
-            DialogUtils.setArraySpinnerValues(weightSpinner,
-                    Info.MIN_WEIGHT, Info.MAX_WEIGHT, DishActivity.this);
-            DialogUtils.setArraySpinnerValues(weightSpinnerDec, 0, 10,
-                    DishActivity.this);
-            weightSpinner.setSelection(SaveUtils.getWeight(DishActivity.this));
-            weightSpinnerDec.setSelection(SaveUtils.getWeightDec(DishActivity.this));
-            final Spinner chestSpinner = (Spinner) dialog.findViewById(R.id.SpinnerChest);
-            final Spinner chestDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerChestDecimal);
-
-            final Spinner pelvisSpinner = (Spinner) dialog.findViewById(R.id.SpinnerPelvis);
-            final Spinner pelvisDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerPelvisDecimal);
-
-            final Spinner neckSpinner = (Spinner) dialog.findViewById(R.id.SpinnerNeck);
-            final Spinner neckDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerNeckDecimal);
-
-            final Spinner bicepsSpinner = (Spinner) dialog.findViewById(R.id.SpinnerBiceps);
-            final Spinner bicepsDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerBicepsDecimal);
-
-            final Spinner forearmSpinner = (Spinner) dialog.findViewById(R.id.SpinnerForearm);
-            final Spinner forearmDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerForearmDecimal);
-
-            final Spinner waistSpinner = (Spinner) dialog.findViewById(R.id.SpinnerWaist);
-            final Spinner waistDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerWaistDecimal);
-
-            final Spinner hipSpinner = (Spinner) dialog.findViewById(R.id.SpinnerHip);
-            final Spinner hipDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerHipDecimal);
-
-            final Spinner shinSpinner = (Spinner) dialog.findViewById(R.id.SpinnerShin);
-            final Spinner shinDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerShinDecimal);
-            TextView buttonAdd = (TextView) dialog.findViewById(R.id.add_body_param_btn);
-            buttonAdd.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent().setClass(DishActivity.this, VolumeInfo.class);
-                    startActivity(intent);
-                }
-            });
-            Button buttonOk = (Button) dialog
-                    .findViewById(R.id.buttonYes);
-            buttonOk.setOnClickListener(new OnClickListener() {
-
-                public void onClick(View v) {
-
-                    SimpleDateFormat sdf = new SimpleDateFormat(
-                            "EEE dd MMMM", new Locale(SaveUtils.getLang(DishActivity.this)));
-                    String lastDate = TodayDishHelper.getLastDate(DishActivity.this);
-
-                    if (curentDateandTime.equals(TodayDishHelper.getLastDate(DishActivity.this))) {
-                        SaveUtils.saveWeight((int) weightSpinner
-                                .getSelectedItemId(), DishActivity.this);
-                        SaveUtils.saveWeightDec(
-                                (int) weightSpinnerDec
-                                        .getSelectedItemId(), DishActivity.this);
-                        SaveUtils.saveChest((int) chestSpinner.getSelectedItemId(), DishActivity.this);
-                        SaveUtils.saveChestDec((int) chestDecSpinner.getSelectedItemId(), DishActivity.this);
-
-                        SaveUtils.savePelvis((int) pelvisSpinner.getSelectedItemId(), DishActivity.this);
-                        SaveUtils.savePelvisDec((int) pelvisDecSpinner.getSelectedItemId(), DishActivity.this);
-
-                        SaveUtils.saveNeck((int) neckSpinner.getSelectedItemId(), DishActivity.this);
-                        SaveUtils.saveNeckDec((int) neckDecSpinner.getSelectedItemId(), DishActivity.this);
-
-                        SaveUtils.saveBiceps((int) bicepsSpinner.getSelectedItemId(), DishActivity.this);
-                        SaveUtils.saveBicepsDec((int) bicepsDecSpinner.getSelectedItemId(), DishActivity.this);
-
-                        SaveUtils.saveForearm((int) forearmSpinner.getSelectedItemId(), DishActivity.this);
-                        SaveUtils.saveForearmDec((int) forearmDecSpinner.getSelectedItemId(), DishActivity.this);
-
-                        SaveUtils.saveWaist((int) waistSpinner.getSelectedItemId(), DishActivity.this);
-                        SaveUtils.saveWaistDec((int) waistDecSpinner.getSelectedItemId(), DishActivity.this);
-
-                        SaveUtils.saveHip((int) hipSpinner.getSelectedItemId(), DishActivity.this);
-                        SaveUtils.saveHipDec((int) hipDecSpinner.getSelectedItemId(), DishActivity.this);
-
-                        SaveUtils.saveShin((int) shinSpinner.getSelectedItemId(), DishActivity.this);
-                        SaveUtils.saveShinDec((int) shinDecSpinner.getSelectedItemId(), DishActivity.this);
-                        if (SaveUtils.getUserUnicId(DishActivity.this) != 0) {
-                            new SocialUpdater(DishActivity.this).execute();
-                        }
-                    }
-                    TodayDishHelper.updateBobyParams(
-                            DishActivity.this,
-                            curentDateandTime,
-                            String.valueOf(((float) weightSpinner
-                                    .getSelectedItemId() + Info.MIN_WEIGHT)
-                                    + (float) weightSpinnerDec
-                                    .getSelectedItemId()
-                                    / 10),
-                            new BodyParams(String.valueOf((float) chestSpinner.getSelectedItemId() + VolumeInfo.MIN_CHEST + (float) chestDecSpinner.getSelectedItemId() / 10),
-                                    String.valueOf((float) bicepsSpinner.getSelectedItemId() + VolumeInfo.MIN_BICEPS + (float) bicepsDecSpinner.getSelectedItemId() / 10),
-                                    String.valueOf((float) pelvisSpinner.getSelectedItemId() + VolumeInfo.MIN_PELVIS + (float) pelvisDecSpinner.getSelectedItemId() / 10),
-                                    String.valueOf((float) neckSpinner.getSelectedItemId() + VolumeInfo.MIN_NECK + (float) neckDecSpinner.getSelectedItemId() / 10),
-                                    String.valueOf((float) waistSpinner.getSelectedItemId() + VolumeInfo.MIN_WAIST + (float) waistDecSpinner.getSelectedItemId() / 10),
-                                    String.valueOf((float) forearmSpinner.getSelectedItemId() + VolumeInfo.MIN_FOREARM + (float) forearmDecSpinner.getSelectedItemId() / 10),
-                                    String.valueOf((float) hipSpinner.getSelectedItemId() + VolumeInfo.MIN_HIP + (float) hipDecSpinner.getSelectedItemId() / 10),
-                                    String.valueOf((float) shinSpinner.getSelectedItemId() + VolumeInfo.MIN_SHIN + (float) shinDecSpinner.getSelectedItemId() / 10)));
-                    dialog.cancel();
-                    DishActivity.this.mWeighLabel.setText(String.valueOf(TodayDishHelper.getBodyWeightByDate(curentDateandTime, DishActivity.this)));
-                }
-            });
-            Button nobutton = (Button) dialog
-                    .findViewById(R.id.buttonNo);
-            nobutton.setOnClickListener(new OnClickListener() {
-
-                public void onClick(View v) {
-                    dialog.cancel();
-                }
-            });
-            dialog.show();
-        }
-    };
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
     private GoogleApiClient client;
     private PieChart mChartClient;
+
+    ImageView image = null;
+    Rotate3dAnimation rotation = null;
+    private Button coins;
+
+    private void startRotation(View image , float start, float end) {
+        AnimationSet animationSet = new AnimationSet(true);
+        // Calculating center point
+        final float centerX = 60;
+        final float centerY = 60;
+        // Create a new 3D rotation with the supplied parameter
+        // The animation listener is used to trigger the next animation
+        //final Rotate3dAnimation rotation =new Rotate3dAnimation(start, end, centerX, centerY, 310.0f, true);
+        //Z axis is scaled to 0
+        rotation =new Rotate3dAnimation(start, end, image.getPivotX(), image.getY()/2, 0f, true);
+        rotation.setDuration(500);
+        rotation.setRepeatCount(1);
+        rotation.setFillAfter(true);
+        //rotation.setInterpolator(new AccelerateInterpolator());
+        //Uniform rotation
+        rotation.setInterpolator(new LinearInterpolator());
+        //Monitor settings
+        //rotation.setAnimationListener(startNext);
+        int[] location = new int[2];
+        mChartClient.getLocationOnScreen(location);
+        int x = location[0];
+        int y = location[1];
+        animationSet.addAnimation(rotation);
+        image.startAnimation(animationSet);
+        coins.setText("" + CoinManager.getCoins(this));
+    }
+
 
     private void bindActivity() {
 
@@ -282,6 +170,25 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         mWeightButton = (ImageView) findViewById(R.id.weightButton);
         mWeighLabel = (TextView) findViewById(R.id.textViewCurrentWeight);
         mChartClient = (PieChart) findViewById(R.id.chartMini);
+        image = (ImageView) findViewById(R.id.statusIcon);
+        coins = (Button) findViewById(R.id.notif_count);
+        coins.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(DishActivity.this.getParent().getParent());
+                bld.setLayout(R.layout.section_alert_dialog_one_button)
+                        .setMessage(DishActivity.this.getParent().getParent().getString(R.string.info_analiz_requarements))
+                        .setPositiveButton(R.id.dialogButtonOk, null, new OnClickListener() {
+
+                            @Override
+                            public void onClick(View v) {
+                                GATraker.sendEvent("ANALIZ_RACIONA", "GET_ANALIZ_BTN_CLICK");
+                            }
+                        })
+                        .setPositiveButtonText(R.string.ok);
+                bld.show();
+            }
+        });
     }
 
     @Override
@@ -323,7 +230,7 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         }
 
         TextView tvTotalCalorie = (TextView) findViewById(R.id.textViewTotalValue);
-        TextView tvLoose = (TextView) findViewById(R.id.textViewTotalLooseValue);
+        //TextView tvLoose = (TextView) findViewById(R.id.textViewTotalLooseValue);
         TextView tvF = (TextView) findViewById(R.id.textViewFatTotal);
         TextView tvC = (TextView) findViewById(R.id.textViewCarbonTotal);
         TextView tvP = (TextView) findViewById(R.id.textViewProteinTotal);
@@ -408,7 +315,13 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
 
 
         mChart.setOnChartValueSelectedListener(this);
-        mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
+        mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad, new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                startRotation(coins, 0 , 360);
+            }
+        });
+
         // mChart.spin(2000, 0, 360);
         Legend l = mChart.getLegend();
         l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART);
@@ -423,7 +336,7 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         // xIndex (even if from different DataSets), since no values can be
         // drawn above each other.
         //for (int i = 0; i < count; i++) {
-            yVals1.add(new Entry(data[0]*4, 0));
+        yVals1.add(new Entry(data[0]*4, 0));
         yVals1.add(new Entry(data[1]*4, 1));
         yVals1.add(new Entry(data[2]*9, 2));
        // }
@@ -498,7 +411,6 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
             curentDateandTime = date;
         }
 
-
         mWeighLabel.setText(String.valueOf(TodayDishHelper.getBodyWeightByDate(curentDateandTime, this)));
         initDishTable();
 
@@ -508,6 +420,8 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
         } catch (ParseException e1) {
             e1.printStackTrace();
         }
+
+
     }
 
     private void initRecyclerView(Bundle savedInstanceState) {
@@ -1003,7 +917,7 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
                                 }
                             }
                         }, getTemplatesAdapter())
-                        .setPositiveButton(R.id.dialogButtonOk, new OnClickListener() {
+                        .setPositiveButton(R.id.dialogButtonOk, null, new OnClickListener() {
 
                             @Override
                             public void onClick(View v) {
@@ -1040,7 +954,7 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
                     .setTitle(getString(R.string.save))
                     .setMessage(getString(R.string.template_save))
                     .setAutoCLose(false)
-                    .setPositiveButton(R.id.dialogButtonOk, new OnClickListener() {
+                    .setPositiveButton(R.id.dialogButtonOk, null, new OnClickListener() {
 
                         @Override
                         public void onClick(View v) {
@@ -1349,4 +1263,198 @@ public class DishActivity extends BaseActivity implements RecyclerViewExpandable
             initDishTable();
         }
     } ;
+
+    private OnClickListener changeWeightClickListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            GATraker.sendEvent(DaysAdapter.WEIGHT_BTN, TODAT_WEIGHT_BUTTON_CLICK);
+            ChangeBodyParamsDialogBuilder changeBodyParamsDialogBuilder = new ChangeBodyParamsDialogBuilder(DishActivity.this.getParent())
+                    .setLayout(R.layout.update_weight_dialog);
+            changeBodyParamsDialogBuilder.setPositiveButton(R.id.dialogButtonOk, null, new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mWeighLabel.setText(String.valueOf(TodayDishHelper.getBodyWeightByDate(curentDateandTime, DishActivity.this)));
+                }
+            });
+            changeBodyParamsDialogBuilder.setTitle(R.string.update_weight_label);
+            changeBodyParamsDialogBuilder.show();
+            /*final Dialog dialog = new Dialog(DishActivity.this.getParent());
+            dialog.setContentView(R.layout.update_weight_dialog);
+            dialog.setTitle(R.string.change_weight_dialog_title);
+            LinearLayout l1 = (LinearLayout) dialog.findViewById(R.id.linearLayoutForearm);
+            if (SaveUtils.getForearmEnbl(DishActivity.this)) l1.setVisibility(View.VISIBLE);
+            LinearLayout l2 = (LinearLayout) dialog.findViewById(R.id.linearLayoutWaist);
+            if (SaveUtils.getWaistEnbl(DishActivity.this)) l2.setVisibility(View.VISIBLE);
+            LinearLayout l3 = (LinearLayout) dialog.findViewById(R.id.linearLayoutChest);
+            if (SaveUtils.getChestEnbl(DishActivity.this)) l3.setVisibility(View.VISIBLE);
+            LinearLayout l4 = (LinearLayout) dialog.findViewById(R.id.linearLayoutNeck);
+            if (SaveUtils.getNeckEnbl(DishActivity.this)) l4.setVisibility(View.VISIBLE);
+            LinearLayout l5 = (LinearLayout) dialog.findViewById(R.id.linearLayoutShin);
+            if (SaveUtils.getShinEnbl(DishActivity.this)) l5.setVisibility(View.VISIBLE);
+            LinearLayout l6 = (LinearLayout) dialog.findViewById(R.id.linearLayoutBiceps);
+            if (SaveUtils.getBicepsEnbl(DishActivity.this)) l6.setVisibility(View.VISIBLE);
+            LinearLayout l7 = (LinearLayout) dialog.findViewById(R.id.linearLayoutPelvis);
+            if (SaveUtils.getPelvisEnbl(DishActivity.this)) l7.setVisibility(View.VISIBLE);
+            LinearLayout l8 = (LinearLayout) dialog.findViewById(R.id.linearLayoutHip);
+            if (SaveUtils.getHipEnbl(DishActivity.this)) l8.setVisibility(View.VISIBLE);
+            StringUtils.setSpinnerValues(dialog, DishActivity.this);
+
+            final TextView weightSpinner = (TextView) dialog
+                    .findViewById(R.id.weight);
+           *//* DialogUtils.setArraySpinnerValues(weightSpinner,
+                    Info.MIN_WEIGHT, Info.MAX_WEIGHT, DishActivity.this);
+            DialogUtils.setArraySpinnerValues(weightSpinnerDec, 0, 10,
+                    DishActivity.this);*//*
+            weightSpinner.setText("" + SaveUtils.getRealWeight(DishActivity.this));
+            weightSpinner.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CustomBottomAlertDialogBuilder bld = new CustomBottomAlertDialogBuilder(DishActivity.this.getParent().getParent());
+                    bld.setLayout(R.layout.section_alert_dialog_picker_one_button)
+                            .setFirstPicker(Info.MIN_WEIGHT, Info.MAX_WEIGHT, Info.MIN_WEIGHT + SaveUtils.getWeight(DishActivity.this))
+                            .setSecondPicker(0, 9, SaveUtils.getWeightDec(DishActivity.this))
+                            .setMessage(DishActivity.this.getParent().getParent().getString(R.string.body_weight))
+                            .setPositiveButton(R.id.dialogButtonOk, new CustomAlertDialogBuilder.DialogValueListener() {
+
+                                @Override
+                                public void onNewDialogValue(Map<String, String> value) {
+                                    SaveUtils.saveWeight(Integer.parseInt(value.get(CustomAlertDialogBuilder.FIRST_VALUE)) - Info.MIN_WEIGHT, DishActivity.this);
+                                    SaveUtils.saveWeightDec(Integer.parseInt(value.get(CustomAlertDialogBuilder.SECOND_VALUE)), DishActivity.this);
+                                    weightSpinner.setText(value.get(CustomAlertDialogBuilder.FIRST_VALUE) + ", " + value.get(CustomAlertDialogBuilder.SECOND_VALUE));
+                                }
+                            }, new OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                }
+                            });
+                    bld.show();
+                }
+            });
+            final TextView chestSpinner = (TextView) dialog.findViewById(R.id.chest);
+            chestSpinner.setText("" + SaveUtils.getRealValue(DishActivity.this, SaveUtils.CHEST, SaveUtils.CHESTDEC, VolumeInfo.MIN_CHEST));
+            chestSpinner.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CustomBottomAlertDialogBuilder bld = new CustomBottomAlertDialogBuilder(DishActivity.this.getParent().getParent());
+                    bld.setLayout(R.layout.section_alert_dialog_picker_one_button)
+                            .setFirstPicker(VolumeInfo.MIN_CHEST,180, VolumeInfo.MIN_CHEST + SaveUtils.getWeight(DishActivity.this))
+                            .setSecondPicker(0, 9, SaveUtils.getWeightDec(DishActivity.this))
+                            .setMessage(DishActivity.this.getParent().getParent().getString(R.string.body_weight))
+                            .setPositiveButton(R.id.dialogButtonOk, new CustomAlertDialogBuilder.DialogValueListener() {
+
+                                @Override
+                                public void onNewDialogValue(Map<String, String> value) {
+                                    SaveUtils.saveChest(Integer.parseInt(value.get(CustomAlertDialogBuilder.FIRST_VALUE)) - VolumeInfo.MIN_CHEST, DishActivity.this);
+                                    SaveUtils.saveChestDec(Integer.parseInt(value.get(CustomAlertDialogBuilder.SECOND_VALUE)), DishActivity.this);
+                                    chestSpinner.setText(value.get(CustomAlertDialogBuilder.FIRST_VALUE) + ", " + value.get(CustomAlertDialogBuilder.SECOND_VALUE));
+                                }
+                            }, new OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                }
+                            });
+                    bld.show();
+                }
+            });
+
+            final Spinner pelvisSpinner = (Spinner) dialog.findViewById(R.id.SpinnerPelvis);
+            final Spinner pelvisDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerPelvisDecimal);
+
+            final Spinner neckSpinner = (Spinner) dialog.findViewById(R.id.SpinnerNeck);
+            final Spinner neckDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerNeckDecimal);
+
+            final Spinner bicepsSpinner = (Spinner) dialog.findViewById(R.id.SpinnerBiceps);
+            final Spinner bicepsDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerBicepsDecimal);
+
+            final Spinner forearmSpinner = (Spinner) dialog.findViewById(R.id.SpinnerForearm);
+            final Spinner forearmDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerForearmDecimal);
+
+            final Spinner waistSpinner = (Spinner) dialog.findViewById(R.id.SpinnerWaist);
+            final Spinner waistDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerWaistDecimal);
+
+            final Spinner hipSpinner = (Spinner) dialog.findViewById(R.id.SpinnerHip);
+            final Spinner hipDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerHipDecimal);
+
+            final Spinner shinSpinner = (Spinner) dialog.findViewById(R.id.SpinnerShin);
+            final Spinner shinDecSpinner = (Spinner) dialog.findViewById(R.id.SpinnerShinDecimal);
+            TextView buttonAdd = (TextView) dialog.findViewById(R.id.add_body_param_btn);
+            buttonAdd.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent().setClass(DishActivity.this, VolumeInfo.class);
+                    startActivity(intent);
+                }
+            });
+            Button buttonOk = (Button) dialog
+                    .findViewById(R.id.buttonYes);
+            buttonOk.setOnClickListener(new OnClickListener() {
+
+                public void onClick(View v) {
+
+                    SimpleDateFormat sdf = new SimpleDateFormat(
+                            "EEE dd MMMM", new Locale(SaveUtils.getLang(DishActivity.this)));
+                    String lastDate = TodayDishHelper.getLastDate(DishActivity.this);
+
+                    if (curentDateandTime.equals(TodayDishHelper.getLastDate(DishActivity.this))) {
+                        *//*SaveUtils.saveWeight((int) weightSpinner
+                                .getSelectedItemId(), DishActivity.this);
+                        SaveUtils.saveWeightDec(
+                                (int) weightSpinnerDec
+                                        .getSelectedItemId(), DishActivity.this);*//*
+                        *//*SaveUtils.saveChest((int) chestSpinner.getSelectedItemId(), DishActivity.this);
+                        SaveUtils.saveChestDec((int) chestDecSpinner.getSelectedItemId(), DishActivity.this);*//*
+
+                        SaveUtils.savePelvis((int) pelvisSpinner.getSelectedItemId(), DishActivity.this);
+                        SaveUtils.savePelvisDec((int) pelvisDecSpinner.getSelectedItemId(), DishActivity.this);
+
+                        SaveUtils.saveNeck((int) neckSpinner.getSelectedItemId(), DishActivity.this);
+                        SaveUtils.saveNeckDec((int) neckDecSpinner.getSelectedItemId(), DishActivity.this);
+
+                        SaveUtils.saveBiceps((int) bicepsSpinner.getSelectedItemId(), DishActivity.this);
+                        SaveUtils.saveBicepsDec((int) bicepsDecSpinner.getSelectedItemId(), DishActivity.this);
+
+                        SaveUtils.saveForearm((int) forearmSpinner.getSelectedItemId(), DishActivity.this);
+                        SaveUtils.saveForearmDec((int) forearmDecSpinner.getSelectedItemId(), DishActivity.this);
+
+                        SaveUtils.saveWaist((int) waistSpinner.getSelectedItemId(), DishActivity.this);
+                        SaveUtils.saveWaistDec((int) waistDecSpinner.getSelectedItemId(), DishActivity.this);
+
+                        SaveUtils.saveHip((int) hipSpinner.getSelectedItemId(), DishActivity.this);
+                        SaveUtils.saveHipDec((int) hipDecSpinner.getSelectedItemId(), DishActivity.this);
+
+                        SaveUtils.saveShin((int) shinSpinner.getSelectedItemId(), DishActivity.this);
+                        SaveUtils.saveShinDec((int) shinDecSpinner.getSelectedItemId(), DishActivity.this);
+                        if (SaveUtils.getUserUnicId(DishActivity.this) != 0) {
+                            new SocialUpdater(DishActivity.this).execute();
+                        }
+                    }
+                    TodayDishHelper.updateBobyParams(
+                            DishActivity.this,
+                            curentDateandTime,
+                            String.valueOf(SaveUtils.getRealWeight(DishActivity.this)),
+                            new BodyParams(String.valueOf(SaveUtils.getRealValue(DishActivity.this, SaveUtils.CHEST, SaveUtils.CHESTDEC, VolumeInfo.MIN_CHEST)),
+                                    String.valueOf((float) bicepsSpinner.getSelectedItemId() + VolumeInfo.MIN_BICEPS + (float) bicepsDecSpinner.getSelectedItemId() / 10),
+                                    String.valueOf((float) pelvisSpinner.getSelectedItemId() + VolumeInfo.MIN_PELVIS + (float) pelvisDecSpinner.getSelectedItemId() / 10),
+                                    String.valueOf((float) neckSpinner.getSelectedItemId() + VolumeInfo.MIN_NECK + (float) neckDecSpinner.getSelectedItemId() / 10),
+                                    String.valueOf((float) waistSpinner.getSelectedItemId() + VolumeInfo.MIN_WAIST + (float) waistDecSpinner.getSelectedItemId() / 10),
+                                    String.valueOf((float) forearmSpinner.getSelectedItemId() + VolumeInfo.MIN_FOREARM + (float) forearmDecSpinner.getSelectedItemId() / 10),
+                                    String.valueOf((float) hipSpinner.getSelectedItemId() + VolumeInfo.MIN_HIP + (float) hipDecSpinner.getSelectedItemId() / 10),
+                                    String.valueOf((float) shinSpinner.getSelectedItemId() + VolumeInfo.MIN_SHIN + (float) shinDecSpinner.getSelectedItemId() / 10)));
+                    dialog.cancel();
+                    DishActivity.this.mWeighLabel.setText(String.valueOf(TodayDishHelper.getBodyWeightByDate(curentDateandTime, DishActivity.this)));
+                }
+            });
+            Button nobutton = (Button) dialog
+                    .findViewById(R.id.buttonNo);
+            nobutton.setOnClickListener(new OnClickListener() {
+
+                public void onClick(View v) {
+                    dialog.cancel();
+                }
+            });
+            dialog.show();*/
+        }
+    };
 }

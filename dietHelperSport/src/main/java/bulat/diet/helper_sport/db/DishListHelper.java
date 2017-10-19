@@ -3,7 +3,6 @@ package bulat.diet.helper_sport.db;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;

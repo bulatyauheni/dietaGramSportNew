@@ -1,8 +1,6 @@
 package bulat.diet.helper_sport.utils;
 
 import bulat.diet.helper_sport.R;
-import bulat.diet.helper_sport.activity.DishActivity;
-import bulat.diet.helper_sport.db.TemplateDishHelper;
 import bulat.diet.helper_sport.item.DishType;
 
 import android.content.DialogInterface.OnCancelListener;
@@ -20,8 +18,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Alert dialog builder for custom application dialogs
@@ -38,7 +36,8 @@ public class CustomAlertDialogBuilder extends AlertDialog.Builder {
     protected TextView messageView;
     protected ListView listView;
 
-
+    public static final String FIRST_VALUE = "FIRST_VALUE";
+    public static final String SECOND_VALUE = "SECOND_VALUE";
 
     protected EditText inputView;
 
@@ -48,6 +47,7 @@ public class CustomAlertDialogBuilder extends AlertDialog.Builder {
 
     protected int positiveButtonId;
     protected String positiveButtonText;
+    protected Map<String, String> dialogValue = new TreeMap<>();
     protected OnClickListener positiveButtonListener;
 
     protected int negativeButtonId;
@@ -58,6 +58,7 @@ public class CustomAlertDialogBuilder extends AlertDialog.Builder {
 
     protected boolean canceledOnTouchOutside = true;
     private boolean isAutoClose = true;
+    private DialogValueListener dialogValueListener;
 
     /**
      * Class constructor.
@@ -66,12 +67,11 @@ public class CustomAlertDialogBuilder extends AlertDialog.Builder {
      */
     public CustomAlertDialogBuilder(Activity context) {
         super(context);
-        
         this.context = context;
     }
     
     public CustomAlertDialogBuilder(Activity context, int themeResId) {
-        super(context);
+        super(context, themeResId);
         this.context = context;
     }
 
@@ -97,6 +97,7 @@ public class CustomAlertDialogBuilder extends AlertDialog.Builder {
         this.isAutoClose = flag;
         return this;
     }
+
 
     @Override
     public CustomAlertDialogBuilder setMessage(int messageId) {
@@ -135,10 +136,9 @@ public class CustomAlertDialogBuilder extends AlertDialog.Builder {
         } else {
             titleView.setText(title);
         }
-
-        setButton(neutralButtonId, neutralButtonListener, neutralButtonText, isAutoClose);
-        setButton(positiveButtonId, positiveButtonListener, positiveButtonText, isAutoClose);
-        setButton(negativeButtonId, negativeButtonListener, negativeButtonText, isAutoClose);
+        setButton(neutralButtonId, neutralButtonListener, null, neutralButtonText, isAutoClose);
+        setButton(positiveButtonId, positiveButtonListener, dialogValueListener, positiveButtonText, isAutoClose);
+        setButton(negativeButtonId, negativeButtonListener, null, negativeButtonText, isAutoClose);
         dialog = super.show();
         dialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -171,9 +171,10 @@ public class CustomAlertDialogBuilder extends AlertDialog.Builder {
     }
 
     public CustomAlertDialogBuilder setPositiveButton(int buttonId,
-                                                      OnClickListener onClickListener) {
+                                                      DialogValueListener onDialogValueListener, OnClickListener onClickListener) {
         positiveButtonId = buttonId;
         positiveButtonListener = onClickListener;
+        dialogValueListener = onDialogValueListener;
         return this;
     }
 
@@ -235,15 +236,21 @@ public class CustomAlertDialogBuilder extends AlertDialog.Builder {
         return this;
     }
 
-    protected void setButton(int id, final OnClickListener listener, final String text, final boolean isAutoClose) {
+    protected void setButton(int id, final OnClickListener listener, final DialogValueListener valueListener, final String text, final boolean isAutoClose) {
         if (listener != null) {
             final Button button = (Button) rootView.findViewById(id);
             if (button != null) {
                 button.setOnClickListener(new OnClickListener() {
                     public void onClick(View v) {
-                        listener.onClick(v);
-                        if (isAutoClose) {
-                            dialog.dismiss();
+                        if (dialogValue != null) {
+                            if (valueListener != null) {
+                                valueListener.onNewDialogValue(dialogValue);
+                            }
+                            listener.onClick(v);
+
+                            if (isAutoClose) {
+                                dialog.dismiss();
+                            }
                         }
                     }
                 });
@@ -267,5 +274,8 @@ public class CustomAlertDialogBuilder extends AlertDialog.Builder {
                 (ViewGroup) context.findViewById(R.id.dialogRoot));
         setView(dialog);
         return this;
+    }
+    public interface DialogValueListener {
+        void onNewDialogValue(Map<String,String> value);
     }
 }

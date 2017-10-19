@@ -268,7 +268,7 @@ class ExpandableRecyclerViewWrapperAdapter
     @SuppressWarnings("unchecked")
     @Override
     public boolean onCheckCanStartDrag(RecyclerView.ViewHolder holder, int position, int x, int y) {
-        if (!(mExpandableItemAdapter instanceof ExpandableDraggableItemAdapter)) {
+      /*  if (!(mExpandableItemAdapter instanceof ExpandableDraggableItemAdapter)) {
             return false;
         }
 
@@ -292,7 +292,8 @@ class ExpandableRecyclerViewWrapperAdapter
         mDraggingItemChildRangeStart = RecyclerView.NO_POSITION;
         mDraggingItemChildRangeEnd = RecyclerView.NO_POSITION;
 
-        return canStart;
+        return canStart;*/
+      return false;
     }
 
     @SuppressWarnings("unchecked")

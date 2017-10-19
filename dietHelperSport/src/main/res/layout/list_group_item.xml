@@ -53,7 +53,6 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textViewCaloryLabel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/kcal"
@@ -96,7 +95,6 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutDishCall3"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
@@ -126,7 +124,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutDishCall4"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
@@ -156,7 +153,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutDishCall5"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"

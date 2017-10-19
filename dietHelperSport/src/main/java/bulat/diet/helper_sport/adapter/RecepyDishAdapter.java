@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
@@ -29,8 +28,6 @@ import bulat.diet.helper_sport.activity.RecepyActivity;
 import bulat.diet.helper_sport.db.DishProvider;
 import bulat.diet.helper_sport.db.TemplateDishHelper;
 import bulat.diet.helper_sport.item.Dish;
-import bulat.diet.helper_sport.utils.Constants;
-import bulat.diet.helper_sport.utils.SocialUpdater;
 
 public class RecepyDishAdapter extends CursorAdapter {
 	// We have two list item view types

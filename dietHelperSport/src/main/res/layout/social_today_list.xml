@@ -13,7 +13,6 @@
         android:background="@color/title_color">
 
         <LinearLayout
-            android:id="@+id/linearLayoutHeader"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -25,7 +24,6 @@
                 android:background="@color/title_color">
 
                 <LinearLayout
-                    android:id="@+id/relativeLayout4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"

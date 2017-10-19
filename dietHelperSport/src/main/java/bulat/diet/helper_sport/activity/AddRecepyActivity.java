@@ -1,6 +1,8 @@
 package bulat.diet.helper_sport.activity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.TreeSet;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +28,8 @@ import bulat.diet.helper_sport.db.DishListHelper;
 import bulat.diet.helper_sport.db.DishProvider;
 import bulat.diet.helper_sport.item.Dish;
 import bulat.diet.helper_sport.item.DishType;
+import bulat.diet.helper_sport.utils.SaveUtils;
+import bulat.diet.helper_sport.utils.StringUtils;
 
 public class AddRecepyActivity extends BaseActivity{
 
@@ -122,7 +126,12 @@ public class AddRecepyActivity extends BaseActivity{
 										carbon,
 										protein,
 										((DishType)typeSpinner.getSelectedItem()).getDescription()),
-								AddRecepyActivity.this));				
+								AddRecepyActivity.this));
+						String ids = SaveUtils.readString(DishListActivity.POPULAR, "-1", AddRecepyActivity.this);
+						TreeSet<String> newIds = new TreeSet<String>(Arrays.asList(ids.split(",")));
+						newIds.add(id);
+						String [] idsUpdated = newIds.toArray(new String[newIds.size()]);
+						SaveUtils.writeString(DishListActivity.POPULAR, StringUtils.toSingleString(idsUpdated), AddRecepyActivity.this);
 					}									
 					try{
 						if(getParent() instanceof DishListActivityGroup ){

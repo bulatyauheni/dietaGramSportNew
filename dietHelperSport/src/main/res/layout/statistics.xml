@@ -19,7 +19,6 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/relativeLayout3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/header_color">
@@ -55,7 +54,6 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayoutCharts"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:baselineAligned="false"
@@ -63,7 +61,6 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutChartText"
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -80,7 +77,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutChart2Text"
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -126,7 +122,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayoutChartsMap"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:baselineAligned="false"

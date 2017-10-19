@@ -6,14 +6,12 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:id="@+id/linearLayoutDishWeight"
         android:layout_width="0px"
         android:layout_height="fill_parent"
         android:layout_weight="5"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/linearLayoutDishCall"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -45,21 +43,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayoutDish"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/linearLayoutDish2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textViewCaloricityPre"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="10dip"
@@ -93,7 +88,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayoutDishCall4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -123,7 +117,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayoutDishCall5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -153,7 +146,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayoutDishCall6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

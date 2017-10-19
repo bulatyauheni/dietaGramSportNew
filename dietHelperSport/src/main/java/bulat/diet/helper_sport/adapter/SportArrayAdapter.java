@@ -8,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import bulat.diet.helper_sport.R;
-import bulat.diet.helper_sport.db.DishProvider;
 import bulat.diet.helper_sport.item.Dish;
 import bulat.diet.helper_sport.utils.SaveUtils;
 

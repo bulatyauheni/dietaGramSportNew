@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.item.TodayDish;
-import bulat.diet.helper_sport.utils.Constants;
 
 public class SocialDishListArrayAdapter extends ArrayAdapter<TodayDish> {
 	

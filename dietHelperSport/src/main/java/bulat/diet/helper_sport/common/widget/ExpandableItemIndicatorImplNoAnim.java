@@ -17,10 +17,7 @@
 package bulat.diet.helper_sport.common.widget;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
 
 class ExpandableItemIndicatorImplNoAnim extends ExpandableItemIndicator.Impl {
     //private AppCompatImageView mImageView;

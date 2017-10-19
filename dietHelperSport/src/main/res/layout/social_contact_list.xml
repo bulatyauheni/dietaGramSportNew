@@ -9,10 +9,11 @@
         android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/title_color">
+        android:background="@color/light_green"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
 
         <LinearLayout
-            android:id="@+id/linearLayoutHeader"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -20,7 +21,8 @@
             <LinearLayout
 
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="5dp">
 
                 <LinearLayout
 
@@ -29,8 +31,6 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/buttonBack"
-
-                    android:background="@drawable/header_bg"
                     android:gravity="center_vertical">
 
                     <Button
@@ -84,7 +84,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/relativeLayout4"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_centerVertical="true"
@@ -125,6 +124,7 @@
                         android:layout_height="35dip"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
+                        android:textColor="@color/white"
                         android:background="@drawable/selected_tab"
                         android:text="@string/soc_tab_messages"></Button>
                 </LinearLayout>
@@ -144,6 +144,7 @@
                         android:layout_centerVertical="true"
                         android:background="@drawable/noselected_tab"
                         android:clickable="true"
+                        android:textColor="@color/white"
                         android:focusable="true"
                         android:text="@string/soc_tab_search"></Button>
                 </LinearLayout>
@@ -164,6 +165,7 @@
                         android:background="@drawable/noselected_tab"
                         android:clickable="true"
                         android:focusable="true"
+                        android:textColor="@color/white"
                         android:text="@string/soc_tab_news"></Button>
                 </LinearLayout>
             </LinearLayout>
@@ -214,7 +216,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/imageLayout1"
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -285,7 +286,6 @@
         android:visibility="visible">
 
         <LinearLayout
-            android:id="@+id/linearLayoutDishCall"
             android:layout_width="0px"
             android:layout_height="fill_parent"
             android:layout_weight="4"

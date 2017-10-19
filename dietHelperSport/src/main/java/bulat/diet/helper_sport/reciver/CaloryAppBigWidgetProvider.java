@@ -8,12 +8,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.Legend.LegendPosition;
-import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -21,13 +18,10 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import bulat.diet.helper_sport.R;
-import bulat.diet.helper_sport.activity.AddTodayDishActivity;
-import bulat.diet.helper_sport.activity.Info;
 import bulat.diet.helper_sport.activity.StartActivity;
 import bulat.diet.helper_sport.db.DishProvider;
 import bulat.diet.helper_sport.db.TodayDishHelper;
 import bulat.diet.helper_sport.item.Day;
-import bulat.diet.helper_sport.item.DishType;
 import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.SaveUtils;
 import android.app.PendingIntent;
@@ -44,10 +38,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.RemoteViews;
 
 public class CaloryAppBigWidgetProvider extends AppWidgetProvider {
@@ -392,11 +384,14 @@ public class CaloryAppBigWidgetProvider extends AppWidgetProvider {
 		chart.measure(View.MeasureSpec.makeMeasureSpec(convertDpToPixel(200),View.MeasureSpec.EXACTLY),
 		              View.MeasureSpec.makeMeasureSpec(500,View.MeasureSpec.EXACTLY));
 		chart.layout(0, 0, chart.getMeasuredWidth(), chart.getMeasuredHeight());
-
-		Bitmap chartBitmap = chart.getChartBitmap();
-		setBitmap(remoteViews, R.id.graph , chartBitmap);
-		AppWidgetManager manager = AppWidgetManager.getInstance(context);
-		manager.updateAppWidget(thiswidget, remoteViews);
+		try {
+			Bitmap chartBitmap = chart.getChartBitmap();
+			setBitmap(remoteViews, R.id.graph, chartBitmap);
+			AppWidgetManager manager = AppWidgetManager.getInstance(context);
+			manager.updateAppWidget(thiswidget, remoteViews);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void initIdealFCP(Context context) {

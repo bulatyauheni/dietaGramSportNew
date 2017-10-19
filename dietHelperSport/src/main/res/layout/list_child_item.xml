@@ -30,7 +30,6 @@
 
 
         <LinearLayout
-            android:id="@+id/linearLayoutDishWeight"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -60,7 +59,6 @@
                         android:text="357" />
 
                     <TextView
-                        android:id="@+id/textViewAbsCaloricity2"
                         style="@style/textSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -103,7 +101,6 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:id="@+id/linearLayoutDishCall3"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:orientation="horizontal">
@@ -129,7 +126,6 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/linearLayoutDishCall4"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:gravity="bottom|left"
@@ -156,7 +152,6 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/linearLayoutDishCall5"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:layout_weight="1"
@@ -266,7 +261,6 @@
                             android:text="" />
 
                         <TextView
-                            android:id="@+id/textViewAbsCaloricity1"
                             style="@style/textSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"

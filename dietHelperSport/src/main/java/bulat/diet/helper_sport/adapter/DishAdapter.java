@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.activity.DishListActivity;

@@ -20,9 +20,6 @@ import android.util.Log;
 import bulat.diet.helper_sport.utils.Base64;
 import bulat.diet.helper_sport.utils.Base64DecoderException;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;

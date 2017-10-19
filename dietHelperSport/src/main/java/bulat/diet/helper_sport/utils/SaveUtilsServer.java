@@ -1,15 +1,10 @@
 package bulat.diet.helper_sport.utils;
 
 
-import java.util.Random;
-
-import android.R.bool;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
-import bulat.diet.helper_sport.activity.Info;
-import bulat.diet.helper_sport.activity.VolumeInfo;
 
 public class SaveUtilsServer {
 	

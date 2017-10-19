@@ -4,18 +4,12 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.provider.MediaStore.Images;
 import android.text.SpannableString;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +33,7 @@ import bulat.diet.helper_sport.item.DishType;
 import bulat.diet.helper_sport.item.TodayDish;
 import bulat.diet.helper_sport.utils.CustomAlertDialogBuilder;
 import bulat.diet.helper_sport.utils.GATraker;
+import bulat.diet.helper_sport.utils.NetworkState;
 import bulat.diet.helper_sport.utils.SaveUtils;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -65,7 +60,11 @@ public class StatisticFCPActivity extends RepostActivity implements
     private static final String FCP_MODE_LASTWEEK = "FCP_MODE_LASTWEEK";
     private static final String FCP_MODE_CHANGE = "FCP_MODE_CHANGE";
     private static final String FCP_MODE = "FCP_MODE";
-
+    private static final String IS_USER_HAPPY = "IS_USER_HAPPY_DIALOG";
+    private static final String USER_HAPPY = "USER_HAPPY";
+    private static final String USER_UNHAPPY = "USER_UNHAPPY";
+    private static final String APP_RATED_BY_USER = "APP_RATED_BY_USER";
+    private static final String APP_NOT_RATED_BY_USER = "APP_NOT_RATED_BY_USER";
 
     protected int lifestyle = 0;
     protected float valuesNormal[] = {1, 4, 1};
@@ -90,7 +89,10 @@ public class StatisticFCPActivity extends RepostActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        boolean readyToRate = (!SaveUtils.isAllreadyRate(this)) && (TodayDishHelper.getDaysStat(this).size() > 3);
+        if (readyToRate) {
+            showQuestion();
+        }
         mParties = new String[]{getString(R.string.protein),
                 getString(R.string.carbon), getString(R.string.fat)};
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -200,18 +202,23 @@ public class StatisticFCPActivity extends RepostActivity implements
                     warning.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(StatisticFCPActivity.this.getParent().getParent());
-                            bld.setLayout(R.layout.section_alert_dialog_one_button)
-                                    .setMessage(StatisticFCPActivity.this.getParent().getString(R.string.info_analiz_requarements))
-                                    .setPositiveButton(R.id.dialogButtonOk, new OnClickListener() {
+                            try {
+                                CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(StatisticFCPActivity.this.getParent().getParent());
+                                bld.setLayout(R.layout.section_alert_dialog_one_button)
+                                        .setMessage(StatisticFCPActivity.this.getParent().getString(R.string.info_analiz_requarements))
+                                        .setPositiveButton(R.id.dialogButtonOk, null, new OnClickListener() {
 
-                                        @Override
-                                        public void onClick(View v) {
-                                            GATraker.sendEvent("ANALIZ_RACIONA", "GET_ANALIZ_BTN_CLICK");
-                                        }
-                                    })
-                                    .setPositiveButtonText(R.string.ok);
-                            bld.show();
+                                            @Override
+                                            public void onClick(View v) {
+                                                GATraker.sendEvent("ANALIZ_RACIONA", "GET_ANALIZ_BTN_CLICK");
+                                            }
+                                        })
+                                        .setPositiveButtonText(R.string.ok);
+                                bld.show();
+                            } catch (NullPointerException ex ) {
+                                ex.printStackTrace();
+                            }
+
                         }
                     });
                 }
@@ -222,6 +229,95 @@ public class StatisticFCPActivity extends RepostActivity implements
 
 
         return res;
+    }
+
+    private void showQuestion() {
+        try {
+            SaveUtils.setAllreadyRate(true, getApplicationContext());
+            CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(StatisticFCPActivity.this.getParent().getParent());
+            bld.setLayout(R.layout.section_alert_dialog_two_buttons)
+                    .setMessage(StatisticFCPActivity.this.getParent().getString(R.string.do_you_like))
+                    .setPositiveButton(R.id.dialogButtonOk, null, new OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            GATraker.sendEvent(IS_USER_HAPPY, USER_HAPPY);
+                            CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(StatisticFCPActivity.this.getParent().getParent());
+                            bld.setLayout(R.layout.section_alert_dialog_two_buttons)
+                                    .setMessage(StatisticFCPActivity.this.getParent().getString(R.string.rating_plaese))
+                                    .setPositiveButton(R.id.dialogButtonOk, null, new OnClickListener() {
+
+                                        @Override
+                                        public void onClick(View v) {
+                                            startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getApplicationContext().getPackageName())), 1);
+                                            if (NetworkState.isOnline(getApplicationContext())) {
+                                                GATraker.sendEvent(IS_USER_HAPPY, USER_HAPPY, APP_RATED_BY_USER, 1L);
+                                                SaveUtils.setEndPDate(SaveUtils.getEndPDate(getApplicationContext()) + 7 * DateUtils.DAY_IN_MILLIS, getApplicationContext());
+                                                SaveUtils.setUseFreeAbonement(true, getApplicationContext());
+                                            }
+                                        }
+                                    })
+                                    .setPositiveButtonText(R.string.agree)
+                                    .setNegativeButton(R.id.dialogButtonCancel, new OnClickListener() {
+
+                                        @Override
+                                        public void onClick(View v) {
+                                            GATraker.sendEvent(IS_USER_HAPPY, USER_HAPPY, APP_NOT_RATED_BY_USER, 1L);
+
+                                        }
+                                    })
+                                    .setNegativeButtonText(R.string.disagree);
+                            bld.show();
+                        }
+                    })
+                    .setPositiveButtonText(R.string.yes_shure)
+                    .setNegativeButton(R.id.dialogButtonCancel, new OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            GATraker.sendEvent(IS_USER_HAPPY, USER_HAPPY);
+                            CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(StatisticFCPActivity.this.getParent().getParent());
+                            bld.setLayout(R.layout.section_alert_dialog_two_buttons)
+                                    .setMessage(getApplicationContext().getString(R.string.complain_plaese))
+                                    .setPositiveButton(R.id.dialogButtonOk, null, new OnClickListener() {
+
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                                                    "mailto", "bulat.yauheni@gmail.com", null));
+                                            emailIntent.putExtra(Intent.EXTRA_SUBJECT, getApplicationContext().getString(R.string.app_name));
+                                            emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+                                            StatisticFCPActivity.this.getParent().getParent().startActivity((Intent.createChooser(emailIntent, "Send email...")));
+                                        }
+                                    })
+                                    .setPositiveButtonText(R.string.agree)
+                                    .setNegativeButton(R.id.dialogButtonCancel, new OnClickListener() {
+
+                                        @Override
+                                        public void onClick(View v) {
+                                            // TODO Auto-generated method stub
+
+                                        }
+                                    })
+                                    .setNegativeButtonText(R.string.disagree);
+                            bld.show();
+                        }
+                    })
+                    .setNegativeButtonText(R.string.not_shure);
+            bld.show();
+        } catch (WindowManager.BadTokenException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+             /*SaveUtils.setEndPDate(SaveUtils.getEndPDate(getApplicationContext()) + 7 * DateUtils.DAY_IN_MILLIS, getApplicationContext());
+                            SaveUtils.setUseFreeAbonement(true, getApplicationContext());
+                            Toast.makeText(getApplicationContext(), getString(R.string.user_abonement_ok), Toast.LENGTH_LONG).show();*/
+        }
     }
 
     protected void initDietTypeSpinner() {
@@ -304,11 +400,6 @@ public class StatisticFCPActivity extends RepostActivity implements
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int responseCode, Intent data) {
-        super.onActivityResult(requestCode, responseCode, data);
-    }
-
-    @Override
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
@@ -340,9 +431,9 @@ public class StatisticFCPActivity extends RepostActivity implements
     }
 
     private void setClientsPersents(float[] values) {
-        values[0] = values[0]*4;
-        values[1] = values[1]*4;
-        values[2] = values[2]*9;
+        values[0] = values[0] * 4;
+        values[1] = values[1] * 4;
+        values[2] = values[2] * 9;
         setData(mChartClient, 3, 100, values);
     }
 
@@ -436,7 +527,7 @@ public class StatisticFCPActivity extends RepostActivity implements
     private SpannableString getCenterSpannableText() {
 
         SpannableString s = new SpannableString("BZU ideal");
-		/*
+        /*
 		 * s.setSpan(new RelativeSizeSpan(1.5f), 0, 14, 0); s.setSpan(new
 		 * StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0); s.setSpan(new
 		 * ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);

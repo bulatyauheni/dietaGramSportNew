@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 import bulat.diet.helper_sport.R;
-import bulat.diet.helper_sport.activity.DishListActivity;
 import bulat.diet.helper_sport.activity.DishListActivityGroup;
 import bulat.diet.helper_sport.activity.RecepyListActivity;
 import bulat.diet.helper_sport.db.DishProvider;

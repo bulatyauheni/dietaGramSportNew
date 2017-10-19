@@ -12,7 +12,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import bulat.diet.helper_sport.R;
-import bulat.diet.helper_sport.item.Dish;
 
 public class PricesAdapter extends ArrayAdapter<Pair<String, String>> {
 

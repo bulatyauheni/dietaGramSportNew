@@ -24,7 +24,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bulat.diet.helper_sport.activity.DishListActivity;
+
 import bulat.diet.helper_sport.item.DishType;
 
 public class MessagesUpdater extends AsyncTask<Void, Void, Void> {
@@ -119,6 +119,8 @@ public class MessagesUpdater extends AsyncTask<Void, Void, Void> {
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
 				e.printStackTrace();
 			}
 		} else {

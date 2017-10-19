@@ -17,7 +17,6 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/imageLayout1"
             android:layout_width="0px"
             android:layout_height="fill_parent"
             android:layout_weight="0.6"

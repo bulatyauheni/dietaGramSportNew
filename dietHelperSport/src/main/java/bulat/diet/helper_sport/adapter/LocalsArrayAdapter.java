@@ -1,26 +1,18 @@
 package bulat.diet.helper_sport.adapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import bulat.diet.helper_sport.R;
-import bulat.diet.helper_sport.activity.ChatActivity;
-import bulat.diet.helper_sport.activity.SocialActivityGroup;
-import bulat.diet.helper_sport.activity.SocialDishActivity;
-import bulat.diet.helper_sport.activity.SocialUserListActivity;
 import bulat.diet.helper_sport.item.DishType;
 import bulat.diet.helper_sport.item.User;
-import bulat.diet.helper_sport.utils.SaveUtils;
 
 public class LocalsArrayAdapter extends ArrayAdapter<User> {
 

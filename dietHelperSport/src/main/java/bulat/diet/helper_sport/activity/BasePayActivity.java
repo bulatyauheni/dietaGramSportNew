@@ -2,30 +2,21 @@ package bulat.diet.helper_sport.activity;
 
 import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 import java.util.TreeMap;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.format.DateUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.WindowManager.BadTokenException;
-import android.widget.TextView;
-import bulat.diet.helper_sport.R;
+
 import bulat.diet.helper_sport.item.Inventory;
 import bulat.diet.helper_sport.item.Purchase;
 import bulat.diet.helper_sport.item.SkuDetails;
 import bulat.diet.helper_sport.utils.IabHelper;
 import bulat.diet.helper_sport.utils.IabResult;
-import bulat.diet.helper_sport.utils.MessagesUpdater;
 import bulat.diet.helper_sport.utils.SaveUtils;
-import android.support.v4.app.FragmentActivity;
 
 public class BasePayActivity extends Activity {
 	// The helper object

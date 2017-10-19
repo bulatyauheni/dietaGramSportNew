@@ -15,6 +15,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
+
+import com.github.mikephil.charting.utils.Utils;
+
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.utils.SaveUtils;
 
@@ -50,18 +53,21 @@ public class SettingsActivity extends TabActivity implements OnTabChangeListener
 		tview.setText(getString(R.string.tab_mode));
 		tview.setTextColor(Color.WHITE);
 		tview.setWidth(LayoutParams.FILL_PARENT);
-		tview.setGravity(Gravity.CENTER_HORIZONTAL);
-		tview3=new TextView(this); 
+		tview.setHeight((int)Utils.convertDpToPixel(40));
+		tview.setGravity(Gravity.CENTER);
+		tview3=new TextView(this);
 		tview3.setText(getString(R.string.tab_statistic));
 		tview3.setTextColor(Color.WHITE);
+		tview3.setHeight((int)Utils.convertDpToPixel(40));
 		tview3.setWidth(LayoutParams.FILL_PARENT);
-		tview3.setGravity(Gravity.CENTER_HORIZONTAL);
+		tview3.setGravity(Gravity.CENTER);
 		
 		tview2=new TextView(this); 
 		tview2.setText(getString(R.string.tab_add_params));
 		tview2.setTextColor(Color.WHITE);
 		tview2.setWidth(LayoutParams.FILL_PARENT);
-		tview2.setGravity(Gravity.CENTER_HORIZONTAL);
+		tview2.setHeight((int)Utils.convertDpToPixel(40));
+		tview2.setGravity(Gravity.CENTER);
 		
  		tabHost = getTabHost();
  		TabHost.TabSpec spec;

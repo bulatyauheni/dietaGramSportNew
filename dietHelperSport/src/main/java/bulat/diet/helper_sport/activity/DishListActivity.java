@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Locale;
 import java.util.TreeSet;
 
@@ -71,20 +70,19 @@ import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.adapter.DishAdapter;
 import bulat.diet.helper_sport.adapter.DishArrayAdapter;
 import bulat.diet.helper_sport.db.DishListHelper;
-import bulat.diet.helper_sport.db.TodayDishHelper;
 import bulat.diet.helper_sport.item.Dish;
 import bulat.diet.helper_sport.item.DishType;
-import bulat.diet.helper_sport.item.TodayDish;
 import bulat.diet.helper_sport.utils.Constants;
 import bulat.diet.helper_sport.utils.NetworkState;
 import bulat.diet.helper_sport.utils.SaveUtils;
+import bulat.diet.helper_sport.utils.StringUtils;
 
 public class DishListActivity extends BaseActivity {
 
     private static final String URL = Constants.URL_DISHBASE;
     private static final String URL_BARCOD = Constants.URL_BARCOD;
     protected static final int DIALOG_TYPE_NAME = 0;
-    private static final String POPULAR = "POPULAR";
+    public static final String POPULAR = "POPULAR";
     protected String selectedInemId;
     ListView dishesList;
     Spinner typeSpinner;
@@ -666,7 +664,7 @@ public class DishListActivity extends BaseActivity {
                         TreeSet<String> newIds = new TreeSet<String>(Arrays.asList(id.split(",")));
                         newIds.add(selectedInemId);
                         String [] idsUpdated = newIds.toArray(new String[newIds.size()]);
-                        SaveUtils.writeString(POPULAR, toSingleString(idsUpdated), DishListActivity.this);
+                        SaveUtils.writeString(POPULAR, StringUtils.toSingleString(idsUpdated), DishListActivity.this);
                         selectedInemId = null;
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -691,7 +689,7 @@ public class DishListActivity extends BaseActivity {
                         ArrayList<String> newIds = new ArrayList<String>(Arrays.asList(ids));
                         newIds.remove(selectedInemId);
                         String [] idsUpdated = newIds.toArray(new String[newIds.size()]);
-                        SaveUtils.writeString(POPULAR, toSingleString(idsUpdated), DishListActivity.this);
+                        SaveUtils.writeString(POPULAR, StringUtils.toSingleString(idsUpdated), DishListActivity.this);
 
                         if (getFavoriteDishes().size()<1) {
                             setSpiner();
@@ -710,20 +708,6 @@ public class DishListActivity extends BaseActivity {
             }
         }
     };
-
-    private String toSingleString(String[] idsUpdated) {
-        if (idsUpdated.length > 0) {
-            StringBuilder nameBuilder = new StringBuilder();
-
-            for (String n : idsUpdated) {
-                nameBuilder.append(n).append(",");
-            }
-            nameBuilder.deleteCharAt(nameBuilder.length() - 1);
-            return nameBuilder.toString();
-        } else {
-            return "";
-        }
-    }
 
     private OnEditorActionListener searchEditorListener = new OnEditorActionListener() {
 
@@ -833,6 +817,12 @@ public class DishListActivity extends BaseActivity {
                 }
             }
         }
+        Collections.sort(list, new Comparator<Dish>() {
+            @Override
+            public int compare(Dish o1, Dish o2) {
+                return o1.getName().toLowerCase().compareTo(o2.getName().toLowerCase());
+            }
+        });
         return list;
     }
 

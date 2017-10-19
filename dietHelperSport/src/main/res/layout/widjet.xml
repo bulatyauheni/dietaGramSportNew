@@ -6,14 +6,12 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:id="@+id/widget_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:orientation="horizontal" >
 
         <LinearLayout
-            android:id="@+id/imageLayout1"
             android:layout_width="0px"
             android:layout_height="fill_parent"
             android:layout_weight="0.5"
@@ -41,7 +39,6 @@
                     
                    
                     <LinearLayout
-                        android:id="@+id/imageLayoutKkal"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dip"
@@ -103,7 +100,6 @@
                 android:orientation="horizontal" >
 
                 <ImageView
-                    android:id="@+id/widget_border2"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginBottom="10dip"
@@ -111,7 +107,6 @@
                     android:src="@drawable/border_widget" />
             </LinearLayout>
         <LinearLayout
-            android:id="@+id/infol"
             android:layout_width="0px"
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -468,7 +463,6 @@
                 android:orientation="horizontal" >
 
                 <ImageView
-                    android:id="@+id/widget_border"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginBottom="10dip"

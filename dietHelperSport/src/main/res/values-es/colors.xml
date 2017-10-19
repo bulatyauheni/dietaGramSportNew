@@ -16,13 +16,10 @@
 	<color name="title_color">#4A829E</color>
 	<color name="tab_color">#F8F8F8</color>
 	<color name="tab_selected_color">#D39A6F</color>
-	<color name="light_orange_color">#F9C89A</color>
-	<color name="sec_tab_color">#FF0000</color>
-	<color name="text_color">#512F10</color>
+    <color name="text_color">#512F10</color>
 	<color name="yelow">#D39A6F</color>
-	<color name="search">#ff5392B1</color>
 
-	<color name="cyan">#ff00ffff</color>
+    <color name="cyan">#ff00ffff</color>
 	<color name="user_list">#7F0000</color>
 	<color name="user_name">#55587A</color>
 	<color name="contact_color">#FFA444</color>
@@ -60,12 +57,6 @@
 
 	<color name="bg_swipe_item_neutral">@android:color/transparent</color>
 	<color name="bg_swipe_item_pinned">#47d353</color>
-	<color name="bg_swipe_item_dismiss">#47d353</color>
-	<color name="bg_swipe_group_item_pinned">#47d353</color>
-	<color name="bg_swipe_group_item_dismiss">#47d353</color>
-
-	<color name="snackbar_action_color_done">#ffccccff</color>
-
-	<color name="expandable_item_indicator_color">#42000000</color>
+    <color name="bg_swipe_group_item_pinned">#47d353</color>
 
 </resources>

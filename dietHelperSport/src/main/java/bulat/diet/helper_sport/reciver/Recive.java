@@ -15,7 +15,6 @@ import java.util.TreeMap;
 
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.activity.DietHelperActivity;
-import bulat.diet.helper_sport.activity.NotificationActivity;
 import bulat.diet.helper_sport.item.DishType;
 import bulat.diet.helper_sport.utils.SaveUtils;
 

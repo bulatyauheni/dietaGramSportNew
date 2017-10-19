@@ -1,22 +1,15 @@
 package bulat.diet.helper_sport.activity;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.regex.Pattern;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.app.backup.BackupManager;
-import android.app.backup.RestoreObserver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -35,12 +28,9 @@ import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import au.com.bytecode.opencsv.CSVReader;
+
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.db.DatabaseHelper;
-import bulat.diet.helper_sport.db.DishProvider;
-import bulat.diet.helper_sport.db.TodayDishHelper;
-import bulat.diet.helper_sport.item.TodayDish;
 
 public class StatisticImportActivity extends Activity {
 	Context ctx = null;

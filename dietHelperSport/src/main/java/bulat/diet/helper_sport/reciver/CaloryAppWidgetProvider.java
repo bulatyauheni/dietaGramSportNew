@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Locale;
 
 import bulat.diet.helper_sport.R;
-import bulat.diet.helper_sport.activity.AddTodayDishActivity;
 import bulat.diet.helper_sport.activity.StartActivity;
 import bulat.diet.helper_sport.db.DishProvider;
 import bulat.diet.helper_sport.db.TodayDishHelper;

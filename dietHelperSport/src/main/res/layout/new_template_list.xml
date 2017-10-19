@@ -13,7 +13,6 @@
         android:background="@color/title_color" >
 
         <LinearLayout
-            android:id="@+id/linearLayoutHeader"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
@@ -25,7 +24,6 @@
                 android:background="@color/grey" >
 
                 <LinearLayout
-                    android:id="@+id/relativeLayout4"
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -107,7 +105,6 @@
                 android:visibility="visible" >
 
                 <LinearLayout
-                    android:id="@+id/imageLayout1"
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -171,7 +168,6 @@
                 android:visibility="gone" >
 
                 <TextView
-                    android:id="@+id/textViewEmptyList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dip"
@@ -201,7 +197,6 @@
             android:visibility="gone" >
 
             <TextView
-                android:id="@+id/textViewTotalWeightLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dip"
@@ -345,7 +340,6 @@
                 android:orientation="horizontal" >
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutDishCall"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"

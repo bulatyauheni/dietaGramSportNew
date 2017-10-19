@@ -1,0 +1,10 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <style name="CommonLabelEditable" parent="CommonLabel">
+        <item name="android:drawableRight">@drawable/ic_edit</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:minWidth">65dp</item>
+        <item name="android:background">@drawable/border_button_neitral</item>
+        <item name="android:tint">@color/bg_group_item_dragging_state</item>
+    </style>
+
+</resources>

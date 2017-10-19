@@ -43,24 +43,19 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.adapter.PricesAdapter;
-import bulat.diet.helper_sport.item.Purchase;
 import bulat.diet.helper_sport.utils.Constants;
 import bulat.diet.helper_sport.utils.CustomAlertDialogBuilder;
 import bulat.diet.helper_sport.utils.GATraker;
 import bulat.diet.helper_sport.utils.IabHelper;
-import bulat.diet.helper_sport.utils.IabResult;
 import bulat.diet.helper_sport.utils.NetworkState;
 import bulat.diet.helper_sport.utils.SaveUtils;
 
@@ -90,6 +85,7 @@ public class PaymentsListActivity extends BasePayActivity {
 	public static final String ABONEMENT_HALFYEAR = "BTN_ABONEMENT_HALFYEAR";
 	public static final String ABONEMENT_MONTH = "BTN_ABONEMENT_MONTH";
 	public static final String ABONEMENT_FREE = "BTN_ABONEMENT_FREE";
+	public static final String ABONEMENT_CRIPTO = "BTN_ABONEMENT_CRIPTO";
 	Context ctx = null;
 	private int selectedInemId;
 	StatisticActivityGroup parent;
@@ -139,6 +135,7 @@ public class PaymentsListActivity extends BasePayActivity {
 		list.add(new Pair<String, String>(getString(R.string.paymenty)+ " " + String.format(getString(R.string.paymentbenefit), "70%") , BasePayActivity.prices.get(PaymentsListActivity.SKU_YEAR_2017)));
 		list.add(new Pair<String, String>(getString(R.string.paymenthy)+ " " + String.format(getString(R.string.paymentbenefit), "58%"),  BasePayActivity.prices.get(PaymentsListActivity.SKU_HALFYEAR_2017)));
 		list.add(new Pair<String, String>(getString(R.string.paymentm) ,  BasePayActivity.prices.get(PaymentsListActivity.SKU_MUUNTH_2017)));
+		list.add(new Pair<String, String>(getString(R.string.paymentCripto),"-10%"));
 		list.add(new Pair<String, String>(getString(R.string.paymentspec),""));
 		list.add(new Pair<String, String>(getString(R.string.paymenterror), ""));
 
@@ -171,15 +168,44 @@ public class PaymentsListActivity extends BasePayActivity {
 					builder.setMessage(R.string.payment_dialog_month);
 				} else
 				if (arg2 == 4) {
+					GATraker.sendEvent(ABONEMENT, ABONEMENT_CRIPTO);
+					CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(PaymentsListActivity.this.getParent().getParent());
+					bld.setLayout(R.layout.section_alert_dialog_two_buttons)
+							.setTitle(PaymentsListActivity.this.getParent().getString(R.string.paymentCripto))
+							.setMessage(PaymentsListActivity.this.getParent().getString(R.string.cripto_for_payment))
+							.setPositiveButton(R.id.dialogButtonOk, null, new OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+									Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+											"mailto","bulat.yauheni@gmail.com", null));
+									emailIntent.putExtra(Intent.EXTRA_SUBJECT, PaymentsListActivity.this.getParent().getString(R.string.app_name));
+									emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+									PaymentsListActivity.this.getParent().getParent().startActivity((Intent.createChooser(emailIntent, "Send email...")));
+								}
+							})
+							.setPositiveButtonText(R.string.agree)
+							.setNegativeButton(R.id.dialogButtonCancel, new OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+									// TODO Auto-generated method stub
+
+								}
+							})
+							.setNegativeButtonText(R.string.disagree);
+					bld.show();
+				}
+				if (arg2 == 5) {
 					GATraker.sendEvent(ABONEMENT, ABONEMENT_FREE);
 					PaymentsListActivity.this.showDialog(DIALOG_EMAIL);
 				} else
-				if (arg2 == 5) {
+				if (arg2 == 6) {
 					GATraker.sendEvent(ABONEMENT, PAYMENT_ERROR_REPORT);
 					CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(PaymentsListActivity.this.getParent().getParent());
 					bld.setLayout(R.layout.section_alert_dialog_two_buttons)
 					.setMessage(PaymentsListActivity.this.getParent().getString(R.string.complain_for_payment))
-					.setPositiveButton(R.id.dialogButtonOk, new OnClickListener() {
+					.setPositiveButton(R.id.dialogButtonOk, null, new OnClickListener() {
 						
 						@Override
 						public void onClick(View v) {
@@ -202,7 +228,7 @@ public class PaymentsListActivity extends BasePayActivity {
 					.setNegativeButtonText(R.string.disagree);
 					bld.show();
 				}
-				if (arg2 !=5 && arg2 != 4){
+				if (arg2 !=4 && arg2 !=6 && arg2 != 5){
 					builder.setPositiveButton(getString(R.string.yes),
 							dialogClickListener)
 							.setNegativeButton(getString(R.string.no),

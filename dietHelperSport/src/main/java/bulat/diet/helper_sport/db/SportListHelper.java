@@ -12,7 +12,6 @@ import android.util.Log;
 import bulat.diet.helper_sport.item.Dish;
 import bulat.diet.helper_sport.item.DishType;
 import bulat.diet.helper_sport.item.FitnesType;
-import bulat.diet.helper_sport.utils.SaveUtils;
 
 public class SportListHelper {
 

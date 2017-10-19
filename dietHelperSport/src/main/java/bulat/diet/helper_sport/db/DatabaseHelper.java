@@ -2,7 +2,6 @@ package bulat.diet.helper_sport.db;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +10,6 @@ import java.nio.channels.FileChannel;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import bulat.diet.helper_sport.activity.StatisticExportActivity;
 import bulat.diet.helper_sport.utils.CloudStorage;
 
 import android.accounts.Account;
@@ -24,7 +22,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.util.Log;
 import android.util.Patterns;
-import android.widget.Toast;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 	private static String TAG = "TAG";

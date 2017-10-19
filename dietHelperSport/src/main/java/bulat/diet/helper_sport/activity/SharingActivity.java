@@ -1,7 +1,5 @@
 package bulat.diet.helper_sport.activity;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -16,39 +14,19 @@ import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.Base64;
 import android.util.Log;
-import android.util.Patterns;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookRequestError;
 import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.HttpMethod;
-import com.facebook.Profile;
 import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.share.ShareApi;
 import com.facebook.share.Sharer;
-import com.facebook.share.model.ShareContent;
 import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.model.ShareOpenGraphAction;
-import com.facebook.share.model.ShareOpenGraphContent;
-import com.facebook.share.model.ShareOpenGraphObject;
-import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
-import com.google.api.client.http.HttpResponse;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -62,10 +40,7 @@ import java.io.ByteArrayOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
-import java.util.regex.Pattern;
 
 import bulat.diet.helper_sport.R;
 import bulat.diet.helper_sport.utils.CustomAlertDialogBuilder;
@@ -161,7 +136,7 @@ public class SharingActivity extends StatisticFCPActivity {
             CustomAlertDialogBuilder bld = new CustomAlertDialogBuilder(SharingActivity.this);
             bld.setLayout(R.layout.section_alert_dialog_two_buttons)
                     .setMessage(SharingActivity.this.getString(R.string.info_install_fb))
-                    .setPositiveButton(R.id.dialogButtonOk, new OnClickListener() {
+                    .setPositiveButton(R.id.dialogButtonOk, null, new OnClickListener() {
 
                         @Override
                         public void onClick(View v) {

@@ -29,7 +29,7 @@ import android.os.RemoteException;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.Log;
-import bulat.diet.helper_sport.activity.BasePayActivity;
+
 import bulat.diet.helper_sport.activity.PaymentsListActivity;
 import bulat.diet.helper_sport.item.Inventory;
 import bulat.diet.helper_sport.item.Purchase;

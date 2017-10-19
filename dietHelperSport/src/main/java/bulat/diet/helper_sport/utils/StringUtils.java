@@ -17,7 +17,6 @@ import java.io.Writer;
 import java.util.regex.Pattern;
 
 import bulat.diet.helper_sport.R;
-import bulat.diet.helper_sport.activity.SharingActivity;
 import bulat.diet.helper_sport.activity.VolumeInfo;
 
 public class StringUtils {
@@ -53,6 +52,22 @@ public class StringUtils {
 			return "";
 		}
 	}
+
+	public static String toSingleString(String[] idsUpdated) {
+		if (idsUpdated.length > 0) {
+			StringBuilder nameBuilder = new StringBuilder();
+
+			for (String n : idsUpdated) {
+				nameBuilder.append(n).append(",");
+			}
+			nameBuilder.deleteCharAt(nameBuilder.length() - 1);
+			return nameBuilder.toString();
+		} else {
+			return "";
+		}
+	}
+
+
 	public static void setSpinnerValues(Dialog dialog, Context ctx) {
 		try{
 			Spinner chestSpinner = (Spinner) dialog.findViewById(R.id.SpinnerChest);
