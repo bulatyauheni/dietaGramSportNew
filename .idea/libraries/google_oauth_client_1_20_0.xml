@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="google-oauth-client-1.20.0">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/dietHelperSport/libs/google-oauth-client-1.20.0.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
